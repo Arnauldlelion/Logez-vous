@@ -104,10 +104,8 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/d3.min.js') }}"></script>
     <script src="{{ asset('js/all.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/map.js') }}"></script>
 </body>
 
 </html>

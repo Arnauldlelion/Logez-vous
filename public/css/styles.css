@@ -269,6 +269,22 @@
     margin-left: 1.5rem;
 }
 
+/* Video Modal */
+.video-modal .modal-content,
+.video-modal .modal-body {
+    background-color: black;
+}
+
+.video-modal .modal-close {
+    display: inline-block;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
 /* Responsiveness */
 @media (max-width: 991px) {
     .benefits h1 {
@@ -303,5 +319,14 @@
     .testimonials .carousel-indicators,
     .videos .carousel-indicators {
         margin-top: -2rem;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-social a {
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 }

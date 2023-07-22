@@ -137,7 +137,7 @@
                                         <div class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
                                             <div class="video-img">
                                                 <img src="/storage/images/video.jpg" alt="Video" class="card-img-top">
-                                                <button class="play">
+                                                <button class="play" data-bs-toggle="modal" data-bs-target="#video-modal">
                                                     <i class="fas fa-play"></i>
                                                 </button>
                                             </div>
@@ -174,4 +174,22 @@
             </div>
         </div>
     </section>
+
+    {{-- Video Modal --}}
+    <div class="modal fade video-modal" id="video-modal" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-end mb-3">
+                        <button type="button" data-bs-dismiss="modal" class="modal-close">x</button>
+                    </div>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/XKAkgdu5ZUc" title="YouTube video"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
