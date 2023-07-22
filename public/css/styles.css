@@ -2,4 +2,306 @@
 
 :root {
     --main-color: #ff040c;
+    --text-color: #646464;
+    --header-size: 28px;
+}
+
+* {
+    font-family: "Varela Round", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.text-main {
+    color: var(--main-color) !important;
+}
+
+.bg-main {
+    background-color: var(--main-color) !important;
+}
+
+.btn-main {
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 50px;
+}
+
+.btn-main:hover {
+    background-color: var(--main-color);
+    color: white;
+    opacity: 0.8;
+}
+
+/* Home page benefits section */
+.benefits {
+    background-color: white;
+}
+
+.benefits h1 {
+    font-size: var(--header-size);
+    text-align: center;
+    font-weight: 500;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+}
+
+.benefits p {
+    color: var(--text-color);
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 2rem;
+}
+
+.benefits .col-6 {
+    margin-bottom: 3rem;
+}
+
+.benefits .col-6 a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.benefits .col-6 a:hover {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.benefits img {
+    height: 500px;
+    width: 70%;
+}
+
+.benefits .cities {
+    margin-top: 3rem;
+}
+
+/* Home page testimonials */
+.testimonials {
+    background-color: #f0faf8;
+}
+
+.testimonials .company {
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+.testimonials .title {
+    font-size: 20px;
+    color: var(--main-color);
+    margin-bottom: 0.5rem;
+}
+
+.testimonials p {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.testimonials .date {
+    color: var(--text-color);
+    font-size: 12px;
+}
+
+.testimonials .card-body,
+.testimonials .card {
+    border-radius: 10px !important;
+    border: none;
+}
+
+.testimonials h1 {
+    color: var(--main-color);
+    text-align: center;
+    font-size: var(--header-size);
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+.testimonials .control-left,
+.testimonials .control-right {
+    padding: 0 15px;
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    background-color: inherit;
+    font-size: 30px;
+}
+
+.testimonials .control-left {
+    margin-left: 4rem;
+}
+
+.testimonials .control-right {
+    margin-right: 4rem;
+}
+
+.testimonials .carousel-indicators,
+.videos .carousel-indicators {
+    position: static;
+}
+
+.testimonials .carousel-indicators button,
+.videos .carousel-indicators button {
+    background-color: red;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+}
+
+.testimonials .carousel-indicators button:not(.active),
+.videos .carousel-indicators button:not(.active) {
+    background-color: var(--text-color);
+}
+
+/* Home page video testimonials */
+.videos {
+    background-color: white;
+}
+
+.videos .video-img {
+    position: relative;
+}
+
+.videos .play {
+    position: absolute;
+    top: 30%;
+    left: 36%;
+    color: white;
+    font-size: 50px;
+    border: 4px solid white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transition: transform 0.3s ease-in-out;
+}
+
+.videos .play:hover {
+    transform: scale(1.2);
+}
+
+.videos .card-body {
+    color: var(--text-color);
+}
+
+.videos .quote-right {
+    text-align: right;
+}
+
+.videos p {
+    font-weight: 500;
+    line-height: 1.6rem;
+}
+
+.videos .name {
+    font-size: 12px;
+}
+
+.videos h1 {
+    color: var(--main-color);
+    text-align: center;
+    font-size: var(--header-size);
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer-slogan {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+    width: 150px;
+    margin-bottom: 1rem;
+}
+
+.apple,
+.playstore {
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.footer {
+    background-color: #f2f4f7;
+}
+
+.footer a:not(.playstore, .apple) {
+    text-decoration: none;
+    color: #475467;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.footer a:not(.playstore, .apple):hover {
+    color: var(--main-color);
+}
+
+.footer h5 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.footer-social {
+    display: flex;
+}
+
+.footer-end p {
+    color: #475467;
+    font-style: italic;
+}
+
+.footer-social a {
+    color: var(--text-color);
+    font-size: 30px !important;
+    display: block;
+    margin-left: 1.5rem;
+}
+
+/* Responsiveness */
+@media (max-width: 991px) {
+    .benefits h1 {
+        font-size: 20px;
+    }
+
+    .benefits p {
+        font-size: 16px;
+    }
+
+    .benefits img {
+        width: 100%;
+    }
+
+    .benefits .cities {
+        margin-top: 1rem;
+    }
+
+    .benefits .col-6 {
+        margin-bottom: 0.5rem;
+    }
+
+    .benefits .col-6 a {
+        font-size: 13px;
+    }
+
+    .benefits .city-btn {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .testimonials .carousel-indicators,
+    .videos .carousel-indicators {
+        margin-top: -2rem;
+    }
 }
