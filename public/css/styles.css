@@ -30,6 +30,21 @@
     opacity: 0.8;
 }
 
+.text-sec {
+    color: var(--text-color);
+}
+
+.form-control,
+.form-select {
+    color: var(--text-color);
+}
+
+.btn-link,
+.btn-link:hover {
+    color: var(--main-color);
+    text-decoration-color: var(--main-color);
+}
+
 /* Home page benefits section */
 .benefits {
     background-color: white;
@@ -285,6 +300,68 @@
     font-size: 25px;
 }
 
+.auth-modal h5 {
+    color: var(--main-color);
+    font-size: var(--header-size);
+}
+
+.auth-modal .input-group-text {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+}
+
+.auth-modal .form-control:focus {
+    box-shadow: none;
+    border-color: var(--main-color);
+}
+
+.auth-modal .form-check-input:checked {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.auth-modal .form-check-input:focus {
+    box-shadow: none;
+}
+
+.auth-modal .form-check-label {
+    color: var(--text-color);
+}
+
+.auth-modal .terms {
+    font-size: 12px;
+    margin-top: 1rem;
+}
+
+.auth-modal .btn-google img {
+    width: 30px;
+}
+
+.auth-modal .btn-google {
+    background-color: white;
+    margin-top: 0.5rem;
+    border-radius: 20px;
+    color: var(--text-color);
+    font-size: 18px;
+    align-items: center;
+}
+
+.auth-modal .btn-google:hover {
+    opacity: 0.8;
+}
+
+.auth-modal .modal-footer .btn-link {
+    margin-left: -0.7rem;
+}
+
+.auth-modal .login-text {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 18px;
+}
+
 /* Responsiveness */
 @media (max-width: 991px) {
     .benefits h1 {
@@ -328,5 +405,9 @@
     .footer-social a {
         margin-left: 1rem;
         margin-right: 1rem;
+    }
+
+    .auth-modal .login-text {
+        font-size: 14px;
     }
 }
