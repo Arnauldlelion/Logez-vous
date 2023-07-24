@@ -11,7 +11,8 @@
                         <div class="input-group-text">
                             <i class="fas fa-user"></i>
                         </div>
-                        <input type="text" name="name" class="form-control" placeholder="Prénom et nom" required>
+                        <input type="text" name="name" class="form-control" placeholder="Votre nom complet"
+                            required>
                     </div>
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-text">
