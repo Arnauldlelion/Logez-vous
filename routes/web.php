@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Http\Controllers\AppartementsController;
+use App\Http\Controllers\AideController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
@@ -38,3 +41,9 @@ Route::controller(MainController::class)->group(function () {
 Route::controller(HomeController::class)->group(function () {
     Route::get('/home', 'index')->name('home');
 });
+
+
+Route::get('/appartements', [AppartementsController::class, 'appartements'])->name('appartements');
+
+
+Route::get('/aide', [AideController::class, 'aide'])->name('aide');
