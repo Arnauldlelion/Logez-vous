@@ -55,3 +55,7 @@ Route::get('/aide', [AideController::class, 'aide'])->name('aide');
 
 Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel'); 
 Route::get('/layouts/locatairespanel', [locatairesPanelController::class, 'locatairespanel'])->name('locataires'); 
+
+Route::get('/help', function () {
+    return view('help');
+});
