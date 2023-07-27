@@ -2,4 +2,230 @@
 
 :root {
     --main-color: #ff040c;
+    --secondary:#28a745;
+    --grey:#6c757d;
+    --orangered:rgb(218, 74, 22);
+    --white::#fff;
+    --black:#000000;
+    --light-bleu:#F0FAF8;
 }
+
+body {
+    font-family: 'Varela Round', 'Helvetica Neue', Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333333;
+    background: var(--white);
+}
+
+#videoBG{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+}
+ .main-header .bg-dark{
+    background-color: var(--white) !important;
+  }
+
+.banner{
+    width: 100%;
+    height: 80vh;
+    min-height: 400px
+}
+.banner input, button{
+    border-radius: 30px;
+}
+.main-header .navbar-brand .logo {
+    max-height: 4.25rem;
+    max-width: 490px;
+}
+
+.main-header .btn{
+    border-radius: 30px;
+    background: var(--main-color);
+}
+.main-header .btn:hover{
+    background: var(--orangered);
+}
+.main-header .search-box{
+    flex: 1;
+    position: relative;
+ 
+}
+.main-header .search-box input{
+    width: 100%;
+    border: 1px solid black;
+    outline: none;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.main-header .search-box div{
+    position: relative;
+}
+
+ .main-header .search-box button{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(1);
+    background: none;
+ }
+
+ .nav-tabs .nav-item .nav-link.active {
+    border: 2px solid transparent;
+    border-bottom-color: var(--main-color);
+    color: var(--main-color);
+
+}
+
+.nav-tabs .nav-link:not(.active) {
+  color: var(--grey);   /* muted color for inactive tabs */
+    border: 0px solid transparent;
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+    color: var(--main-color);
+}
+#landlord button{
+    width: 300px;
+    border-radius: 30px;
+    color: var(--orangered);
+}
+.nav-tabs button{
+    border-radius: 30px;
+    width: 190px;
+}
+
+
+ .more-text {
+    display: none;
+  }
+  
+  .text {
+    cursor: pointer;
+  }
+
+
+.loge{
+    background: var(--light-bleu);
+}
+.featured .card {
+    transition: all 0.5s;
+    border:1px solid var(--main-color);
+}
+
+.featured .card:hover{
+    transform: scale(1.03);
+}
+
+.rounded-circle{
+    border: 1px solid var(--main-color);
+}
+section .tab2{
+    background: var(--light-bleu);
+}
+.wrapper{
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+}
+.wrapper .carousel{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+.wrapper .carousel::-webkit-scrollbar{
+    display: none;
+}
+.wrapper i{
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--grey);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+}
+.wrapper i:first-child{
+    left: -62px;
+}
+.wrapper i:last-child{
+    right: -62px;
+}
+
+.calculator{
+    background: var(--main-color);
+}
+.help-banner-image{
+    background-size: cover;
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+      height: 80vh;
+    min-height: 400px
+}
+
+.help-banner{
+    width: 100%;
+    height: 80vh;
+    min-height: 400px
+}
+
+.card-slider .card {
+    margin: 0 10px;
+  }
+  
+  .card-slider .card img {
+    height: 250px;
+  }
+
+  @media screen and (max-width: 991px) {
+   .tab-content  #tenant img{
+        background: var(--main-color);
+    }
+  }
+
+
+@media screen  and (max-width: 900px){
+    .wrapper .carousel{
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+@media screen  and (max-width: 600px){
+    .wrapper .carousel{
+        grid-auto-columns: 100%;
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #videoBG{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    #videoBG{
+        width: auto;
+        height: 100%;
+    }
+}
+=

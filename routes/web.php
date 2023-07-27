@@ -38,3 +38,9 @@ Route::controller(MainController::class)->group(function () {
 Route::controller(HomeController::class)->group(function () {
     Route::get('/home', 'index')->name('home');
 });
+
+
+
+Route::get('/help', function () {
+    return view('help');
+});
