@@ -351,6 +351,7 @@
  
 
   
+  
   .button-container {
     position: absolute;
     padding-left: 18%;
@@ -465,6 +466,7 @@
     background-color: white;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    padding-left: 1.5%;
   }
   
  
@@ -473,6 +475,7 @@
   .block-left .card .card-body{
    
     border-radius: 50px;
+
     
   }
 
@@ -486,7 +489,7 @@
   }
   
   .scrollbar {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 60%;
     height: 100%;
@@ -502,7 +505,85 @@
     background-color: none;
   }
 
+/* Responsiveness of the page 'Rechercher' */
+@media screen and (max-width: 991px) {
+    .benefits .ms-2 .search-block {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      margin-right: 1rem;
+     }
+     
 
+     .benefits .ms-2 .button-container{
+        display: flex;
+        font-size: 9px;
+        text-align: center;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+     }
+     .benefits .ms-2  .button2-container   {
+        display: flex;
+        font-size: 9px;
+        text-align: center;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+
+    }
+
+    .benefits .ms-2 .button3-container{
+        display: flex;
+        font-size: 9px;
+        text-align: center;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+
+    .benefits .ms-2 .checkbox-container{
+        display: flex;
+        font-size: 9px;
+        text-align: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        padding-top: 0.75rem;
+        margin-left: -1rem;
+    }
+
+      hr {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+        padding-top: 3rem;
+      
+      }
+      .container2 .block-left .ms-2 h5{
+        padding-left: 10px;
+
+      }
+
+        .container2 .block-left, .block-right {
+            width: 100%;
+            margin-top: 2rem;
+            padding-top: 2rem;
+          }
+      
+          .scrollbar {
+            position: relative;
+            top: 0;
+            left: 60%;
+            height: 100%;
+            width: 10px;
+            background-color: #aaa;
+            z-index: 1;
+          }
+  }
   
     
   
@@ -519,17 +600,16 @@
 .header-overlay {
     position: relative;
     height: 100%;
-    background-image: url("/storage/images/Aide.jpg");
+    background-image: url("/storage/images/imageAide.jpeg");
+    background-position: center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.header .header-overlay .search-box{
-    align-items: center;
-    align-content: center;
-}
+
 
 
 .search-container01{
@@ -557,15 +637,16 @@
 
 .horizontal-section01 {
     display: flex;
-    padding: 20px;
-   
+    padding: 10px;
     background-color: #e6c1c1;
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    padding-top: 5%;
 }
 
 
@@ -628,3 +709,72 @@
         background-attachment: fixed;
         background-color: var(--main-color);
     }
+
+    .nav {
+      margin-top: 50px;
+     
+    }
+
+
+    @media screen and (max-width: 991px) {
+        
+
+        .container-horizontal01 .horizontal-section01 {
+            display: block;
+            height: 20rem;
+            justify-content: space-between;
+            font-size: 0%;
+            height: fit-content;
+           ;
+            
+        }
+
+       #main .nav {
+
+       
+        margin-top: 5rem;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+        font-size: 0.5px;
+        text-align: center;
+        position: relative;
+      
+    
+       }
+
+       #main .nav .nav-link{
+
+       
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+        font-size: 20px;
+        text-align: center;
+        position: relative;
+        color: black;
+       }
+
+       #main  .question-section .question-block{
+           
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+        font-size: 2px;
+        text-align: center;
+        position: relative;
+       }
+    }
+
+    #main .nav .nav-link{
+
+       
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+        font-size: 20px;
+        text-align: center;
+        position: relative;
+        color: black;
+      
+    
+       }

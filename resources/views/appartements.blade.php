@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="benefits py-3 pl-2" >
+    <section class="benefits py-3 pl-2 " >
         <div class="ms-2" >
             <div class="search-block">
                 <form>
@@ -29,11 +29,13 @@
     </section>
     <hr>
     <section class="container2">
+        
+     
         <div class="block-left" >
             <h2 > 95 logements disponible</h2>
             <div class="ms-2">
                 
-                <h5 style="padding-left: 500px;">Trier par <i class="fas fa-paper-plane" style="color: #ff040c"></i> <span style="color:#ff040c">distance du lieu choisi</span></h5>
+                <h5 style="padding-left: 450px;">Trier par <i class="fas fa-paper-plane" style="color: #ff040c"></i> <span style="color:#ff040c">distance du lieu choisi</span></h5>
                 <h5 style="color: gray;">sur 3138</h5>
 
                 <div data-bs-ride="card">
@@ -59,7 +61,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-                            </div>
+                           
                         @endforeach
                     </div>
                 </div>
@@ -72,5 +74,7 @@
         </div>
 
         <div class="scrollbar"></div>
+
+     </div>
     </section>
 @endsection

@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-5sD/9nqOwBZD3tP5xhNwP4s11LzGyV5YvbJfUjVJ8yLb7sG6JQ0wqfl+qRb2J95" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-QvEwEK+y/W6z1c1zU7t3K1+6zJd2dA8U0+8ohxJlL8B+2yVt8JX9KLHv/vD0QzH+" crossorigin="anonymous"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
