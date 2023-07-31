@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mettre en - vente un logement</a>
+                    <a class="nav-link" href="#">Mettre en  vente un logement</a>
                 </li>
                 <li class="nav-item">
                     <div class="link-border" style="border: solid; border-color:#ff040c; border-radius:1.5rem; color:#ff040c !important;">
