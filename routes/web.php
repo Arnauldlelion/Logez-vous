@@ -33,6 +33,7 @@ Auth::routes();
 
 Route::controller(MainController::class)->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/appartements/{name}', 'singleAppartment')->name('single-appartment');
 });
 
 Route::controller(HomeController::class)->group(function () {

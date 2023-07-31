@@ -1,3 +1,3 @@
-window.onload = () => {
-    document.getElementById("trigger-register")?.click();
-};
+// window.onload = () => {
+//     document.getElementById("trigger-register")?.click();
+// };
