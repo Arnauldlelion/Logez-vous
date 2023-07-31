@@ -41,6 +41,6 @@ Route::controller(HomeController::class)->group(function () {
 
 
 
-Route::get('/help', function () {
-    return view('help');
+Route::get('/candidate', function () {
+    return view('components.candidate');
 });

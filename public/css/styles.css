@@ -125,8 +125,9 @@ body {
     transform: scale(1.03);
 }
 
-.rounded-circle{
+#rounded-circle{
     border: 1px solid var(--main-color);
+    border-radius: 50%;
 }
 section .tab2{
     background: var(--light-bleu);
@@ -170,26 +171,6 @@ section .tab2{
     right: -62px;
 }
 
-.calculator{
-    background: var(--main-color);
-}
-.help-banner-image{
-    background-size: cover;
-    position: absolute;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-      height: 80vh;
-    min-height: 400px
-}
-
-.help-banner{
-    width: 100%;
-    height: 80vh;
-    min-height: 400px
-}
-
 .card-slider .card {
     margin: 0 10px;
   }
@@ -197,6 +178,46 @@ section .tab2{
   .card-slider .card img {
     height: 250px;
   }
+
+ .dashboard_dropdown .dashboard_dropdown_header{
+    cursor: pointer;
+    border-left: 5px solid var(--main-color);
+    border-radius: 3px;
+ }
+
+ .dashboard_dropdown .dashboard_dropdown_content{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+ }
+
+
+.dashboard_dropdown_header.active .dashboard_dropdown_content{
+    max-height: 900px;
+    animation: fade 1s ease-in-out;
+ }
+ .dashboard_dropdown_header i{
+    padding: 4px 7px 4px 7px;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+ }
+.dashboard_dropdown_header.active i{
+    transform: rotate(180deg);
+ }
+ .dashboard_dropdown i{
+    transition: transform 0.5s ease-in;
+ }
+
+ @keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(-10);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+ }
 
   @media screen and (max-width: 991px) {
    .tab-content  #tenant img{
@@ -228,4 +249,5 @@ section .tab2{
         height: 100%;
     }
 }
-=
+
+ 
