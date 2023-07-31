@@ -6,6 +6,8 @@ use App\Http\Controllers\AideController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PanelController; 
+use App\Http\Controllers\locatairesPanelController; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,4 +48,9 @@ Route::controller(HomeController::class)->group(function () {
 Route::get('/appartements', [AppartementsController::class, 'appartements'])->name('appartements');
 
 
-Route::get('/aide', [AideController::class, 'aide'])->name('aide');
+Route::get('/aide', [AideController::class, 'aide'])->name('aide'); 
+
+/*routes for all the panels*/
+
+Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel'); 
+Route::get('/layouts/locatairespanel', [locatairesPanelController::class, 'locatairespanel'])->name('locataires'); 
