@@ -59,3 +59,6 @@ Route::get('/layouts/locatairespanel', [locatairesPanelController::class, 'locat
 Route::get('/help', function () {
     return view('help');
 });
+Route::get('/candidate', function () {
+    return view('components.candidate');
+});

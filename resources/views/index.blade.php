@@ -167,9 +167,9 @@
 
     @include('layouts.banner')
     <a href="#featured" class="text-decoration-none  fw-lighter">
-        <i class="bi bi-chevron-down d-flex justify-content-center mt-3" style="font-size: 70px; color:gray"></i>
+        <i class="fa fa-chevron-down d-flex justify-content-center mt-3" style="font-size: 70px; color:gray"></i>
     </a>
-    {{-- <section>
+    <section>
         <div class="container pb-5 featured col-10 mx-auto " id="featured">
             <h1 class="text-center mb-4 pb-2">Nos logements à la une</h1>
             <div class="container">
@@ -195,50 +195,20 @@
 =======
             </div>
             <div class="col-lg-11 mx-lg-auto row d-flex justify-content-between mt-5">
-                <div class="col-lg-5mb-lg-0">
-                    <span class="text"><i class="bi bi-chevron-right"></i>Comment faire apparaître mon logement à la une ?</span>
+                <div class="col-lg-5 mb-lg-0">
+                    <span class="text"><i class="fa fa-chevron-right"></i>Comment faire apparaître mon logement à la une ?</span>
                     <small class="more-text ms-4">Si vous êtes propriétaire, vous pouvez faire apparaître vos logements à la
                         une en souscrivant à l’offre premium sur la recherche de locataire.</small>
                 </div>
                 <div class="col-lg-5">
                     <a href="">
-                        <span><i class="bi bi-chevron-right"></i> Voir d'autres logements parmi les 7455 annonces déjà publiées
+                        <span><i class="fa fa-chevron-right"></i> Voir d'autres logements parmi les 7455 annonces déjà publiées
                             par Flatlooker</span>
                     </a>
                 </div>
             </div>
         </div>
-    </section> --}}
-
-
-
-    <section>
-        <div class="container">
-            {{-- <div class="row large-screen-images d-none d-lg-flex">
-              @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
-                <div class="col-lg-3">
-                  <img src="{{ asset('storage/images/home/house.jpg') }}" class="img-fluid" alt="">
-                </div>
-              @endforeach
-            </div> --}}
-            <div class="small-screen-images owl-carousel ">
-              @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
-                <div class="item">
-                  <img src="{{ asset('storage/images/home/house.jpg') }}" class="img-fluid" alt="">
-                </div>
-              @endforeach
-            </div>
-          </div>
     </section>
-
-   
-
-
-
-
-
-
-
 
 
     <section>
@@ -260,87 +230,134 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane show active " id="tenant">
-                                <div class="row gy-5 d-sm-flex">
-                                    <div class="col-lg-3 col-md-6 justify-content-center  text-center">
-                                        <span class="p-2 px-3 rounded-circle fs-4 my-5">1</span>
-                                        <p class="my-4">Fiche locative</p>
-                                        <small>Complétez une fiche descriptive et déposez une candidature <span
-                                                class="text-danger"> en moins de 3 minutes.</span></small>
-                                       <div class="pt-5 mt-1">
-                                        <img src="{{ asset('storage/images/logos/board.png') }}" class=""alt="">
-                                       </div>
+                            <div role="tabpanel" class="tab-pane show active  " id="tenant">
+                                <div class="row ">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">1</span><br><br>
+                                        <h4>Fiche locative</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
+                                            <div>
+                                                <small>Complétez une fiche descriptive et déposez une candidature <span class="text-dange">en moins de 3 minutes.</span> </small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center">
+                                                <img src="{{ asset('storage/images/logos/board.png') }}" class="img-fluid "
+                                                    alt="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-6 justify-content-center text-center">
-                                        <span class="p-2 px-3 rounded-circle fs-4">2</span>
-                                        <p class="my-4">Dossier sécurisé</p>
-                                        <small>Vos documents sont chiffrés puis stockés dans des serveurs sécurisés pour
-                                            <span class="text-danger"> une sécurité optimale</span>. La gestion des données
-                                            et des documents est conforme à la RGPD.</small>
-                                       <div class="pt-3">
-                                        <img src="{{ asset('storage/images/logos/whistle.png') }}" alt="">
-                                       </div>
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">2</span><br><br>
+                                        <h4>Dossier sécurisé</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
+                                            <div>
+                                                <small>Vos documents sont chiffrés puis stockés dans des serveurs sécurisés pour une <span class="text-danger">sécurité optimale</span> . La gestion des données et des documents est conforme à la RGPD.</small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center mt-lg-auto">
+                                                <img src="{{ asset('storage/images/logos/whistle.png') }}" class="img-fluid "
+                                                    alt="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-6 justify-content-center text-center">
-                                        <span class="p-2 px-3 rounded-circle fs-4">3</span>
-                                        <p class="my-4">État des lieux physique</p>
-                                        <small>Signez votre bail <span class="text-danger"> 100% en ligne</span> avec une
-                                            signature électronique via notre <span class="text-danger"> partenaire sécurisé Docusign®.</span></small>
-                                     <div class="pt-4 mt-1">
-                                        <img src="{{ asset('storage/images/logos/pen.png') }}" alt="">
-                                     </div>
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">3</span><br><br>
+                                        <h4>Signature électronique</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
+                                            <div>
+                                                <small>Signez votre bail <span class="text-danger">100% en ligne </span>  avec une signature électronique via notre <span class="text-danger"> partenaire sécurisé</span> Docusign ®.</small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center mt-lg-auto">
+                                                <img src="{{ asset('storage/images/logos/pen.png') }}" class="img-fluid "
+                                                    alt="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-6 justify-content-center text-center">
-                                        <span class="p-2 px-3 rounded-circle fs-4">4</span>
-                                        <p class="my-4"> Signature électronique</p>
-                                        <small>Découvrez physiquement votre, logement lors de l<span
-                                                class="text-danger"> ’état des lieux d’entrée</span>. <br> Si celui-ci ne
-                                            correspond pas à la visite virtuelle, vous pouvez <span
-                                                class="text-danger"> vous rétracter sans frais</span> lors de ce
-                                            rendez-vous.</small>
-                                        <div class="mt-3">
-                                            <img src="{{ asset('storage/images/logos/hand.png') }}" alt="">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">4</span><br><br>
+                                        <h4>État des lieux physique</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
+                                            <div>
+                                                <small>Découvrez physiquement votre logement lors de l<span class="text-danger">’état des lieux d’entrée</span> . Si celui-ci ne correspond pas à la visite virtuelle, vous pouvez <span class="text-dander">vous rétracter sans frais</span>  lors de ce rendez-vous.</small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center mt-lg-auto">
+                                                <img src="{{ asset('storage/images/logos/hand.png') }}" class="img-fluid "
+                                                    alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane show mt-4" id="landlord">
-                                <div class="row rows-col-lg-4 row-cols-md-2 rows-col-sm-1 gy-5">
-                                    <div class="col-lg-3 col-md-6 justify-content-center text-center">
-                                            <span class="p-2 px-3 rounded-circle fs-4">1</span>
-                                        <p class="my-4">Mise en valeur de votre bien</p>
-                                        <small>Nous réalisons un <span class="text-danger">reportage photo et <br> vidéo complet</span> et diffusons votre <br> annonce sur
-                                            <span class="text-danger">plus de 15 plateformes.</span></small>
-                                        <div class="d-flex justify-content-center mt-4">
+                                <div class="row ">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">1</span><br><br>
+                                        <h4>Mise en valeur de votre bien</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <img src="{{ asset('storage/images/logos/globe.png') }}" alt="">
+                                                <small>Nous réalisons un <span class="text-danger">reportage photo et vidéo complet</span> et diffusons votre annonce sur <span class="text-danger">plus de 15 plateformes</span> .</small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center mt-lg-auto">
+                                                <img src="{{ asset('storage/images/logos/globe.png') }}" class="img-fluid "
+                                                    alt="">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col] justify-content-center text-center">
-                                            <span class="p-2 px-3 rounded-circle fs-4">2</span>
-                                        <p class="my-4">Sélection du locataire</p>
-                                       <small>Nous <span class="text-danger">vérifions minutieusement</span> les <br> candidatures, rédigeons le  <span class="text-danger">bail</span> et <br> assurons l’ <span class="text-danger">état des lieux d’entrée.</span></small>
-                                           <div class="pt-4">
-                                            <img src="{{ asset('storage/images/logos/loop.png') }}" alt="">
-                                           </div>
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">3</span><br><br>
+                                        <h4>Sélection du locataire</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
+                                            <div>
+                                                <small>Nous <span class="text-danger">vérifions minutieusement</span>  les candidatures, rédigeons le bail et assurons l<span class="text-danger">’état des lieux d’entrée</span> .</small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center mt-lg-auto">
+                                                <img src="{{ asset('storage/images/logos/whistle.png') }}" class="img-fluid "
+                                                    alt="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-6 justify-content-center text-center">
-                                            <span class="p-2 px-3 rounded-circle fs-4">3</span>
-                                        <p class="my-4">Gestion réactive et moderne</p>
-                                        <small>Votre <span class="text-danger">espace en ligne</span> vous permet de <br> suivre toutes les opérations et de <span class="text-danger"> <br>contacter facilement</span> votre conseiller.</small>
-                                        <div class="pt-4">
-                                            <img src="{{ asset('storage/images/logos/call.png') }}" alt="">
-                                           </div>
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">3</span><br><br>
+                                        <h4>Gestion réactive et moderne</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
+                                            <div>
+                                                <small>Votre <span class="text-danger">espace en ligne</span>  vous permet de suivre toutes les opérations et de <span class="text-danger">contacter facilement</span>  votre conseiller.</small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center mt-lg-auto">
+                                                <img src="{{ asset('storage/images/logos/pen.png') }}" class="img-fluid "
+                                                    alt="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-6 justify-content-center text-center">
-                                            <span class="p-2 px-3 rounded-circle fs-4">4</span>
-                                        <p class="my-4">Loyer en moins de 7 jours</p>
-                                        <small>Grâce à notre technologie de paiement, <br>vous recevez vos fonds <span class="text-danger">moins de 7 jours
-                                            <br> après le paiement du locataire.</span></small>
-                                           <div class="pt-4">
-                                            <img src="{{ asset('storage/images/logos/wallet.png') }}" alt="">
-                                           </div>
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                            <span class=" p-2" id="rounded-circle">4</span><br><br>
+                                        <h4>Loyer en moins de 7 jours</h4>
+                                        </div>
+                                        <div class="d-flex d-md-block gap-5">
+                                            <div>
+                                                <small>Grâce à notre technologie de paiement, vous recevez vos fonds <span class="text-danger">moins de 7 jours après le paiement du locataire.</span> </small>
+                                            </div>
+                                            <div class="d-block justify-content-center align-items-center ">
+                                                <img src="{{ asset('storage/images/logos/hand.png') }}" class="img-fluid "
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 mx-auto mt-5">
+                                        <button class="btn btn-danger rounded-pill p-3 w-100 text-light">En savoir plus</button>
                                     </div>
                                 </div>
                             </div>
@@ -400,7 +417,7 @@
                                             galères !</p>
                                         <h4 class="text-danger mb-3">Ces logements pourraient vous intéresser</h4>
                                         <div class="wrapper ">
-                                            <i class="bi bi-chevron-left" id="left"></i>
+                                            <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
                                                     <div class="card  shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }}"
@@ -415,7 +432,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <i class="bi bi-chevron-right" id="right"></i>
+                                            <i class="fa fa-chevron-right" id="right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -435,7 +452,7 @@
                                                 déplacement.</span></p>
                                         <h4 class="text-danger mt-4">Ces logements pourraient vous intéresser</h4>
                                         <div class="wrapper">
-                                            <i class="bi bi-chevron-left" id="left"></i>
+                                            <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
                                                     <div class="card shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }}"
@@ -450,7 +467,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <i class="bi bi-chevron-right" id="right"></i>
+                                            <i class="fa fa-chevron-right" id="right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -470,7 +487,7 @@
                                             France l’esprit tranquille ! </p>
                                         <h4 class="text-danger mt-4">Ces logements pourraient vous intéresser</h4>
                                         <div class="wrapper">
-                                            <i class="bi bi-chevron-left" id="left"></i>
+                                            <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
                                                     <div class="card shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }} d-flex align-tems-sm-center"
@@ -485,7 +502,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <i class="bi bi-chevron-right" id="right"></i>
+                                            <i class="fa fa-chevron-right" id="right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -509,7 +526,7 @@
                                                 recherche de location.</span></p>
                                         <h4 class="text-danger mb-3 mt-5">Ces logements pourraient vous intéresser</h4>
                                         <div class="wrapper">
-                                            <i class="bi bi-chevron-left" id="left"></i>
+                                            <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
                                                     <div class="card shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }}"
@@ -524,7 +541,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <i class="bi bi-chevron-right" id="right"></i>
+                                            <i class="fa fa-chevron-right" id="right"></i>
                                         </div>
                                     </div>
                                 </div>
