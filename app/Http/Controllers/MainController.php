@@ -12,4 +12,9 @@ class MainController extends Controller
         return view('index'); 
 
     }
+
+    public function singleAppartment($name)
+    {
+        return view('appartment');
+    }
 }

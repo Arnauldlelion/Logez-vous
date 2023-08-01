@@ -105,8 +105,14 @@
         </div>
     </footer>
 
+    {{-- Register Modal --}}
+    @include('components.modals.register')
+    {{-- Login Modal --}}
+    @include('components.modals.login')
+
     <script src="{{ asset('js/all.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
