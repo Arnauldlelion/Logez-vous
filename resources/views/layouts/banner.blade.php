@@ -26,7 +26,7 @@
                                         <div class="col-lg-12 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <input type="text" name="title"
-                                                    placeholder="Indiquez une adresse, un lieu, un metro..."
+                                                    placeholder="Indiquez une adresse, un lieu, un rue..."
                                                     class="form-control">
                                             </div>
                                         </div>

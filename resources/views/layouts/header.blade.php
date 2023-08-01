@@ -2,8 +2,8 @@
 <header class="main-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent fixed-top ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="{{asset('storage/images/logos/logo.png')}}" alt="logo" class="logo logo-white"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="#"><img src="{{asset('storage/images/logos/logo-white.jpg')}}" alt="logo" class="logo logo-white"></a>
+          <button class="navbar-toggler"  type="button " data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
