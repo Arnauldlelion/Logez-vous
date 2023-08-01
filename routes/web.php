@@ -62,3 +62,7 @@ Route::get('/help', function () {
 Route::get('/candidate', function () {
     return view('components.candidate');
 });
+
+Route::get('/candidate', function () {
+    return view('components.candidate');
+});

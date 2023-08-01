@@ -187,12 +187,15 @@
                     @endforeach
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="carousel-indicators d-lg-none">
                     <button type="button" data-bs-target="#videos" data-bs-slide-to="0" class="active"
                         aria-current="true"></button>
                     <button type="button" data-bs-target="#videos" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#videos" data-bs-slide-to="2"></button>
 =======
+=======
+>>>>>>> 7175341778e194c3a39e71ec47b396b7f4bdc8d2
             </div>
             <div class="col-lg-11 mx-lg-auto row d-flex justify-content-between mt-5">
                 <div class="col-lg-5 mb-lg-0">
@@ -363,16 +366,22 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
 >>>>>>> 857f634 (navbar)
+=======
+>>>>>>> 7175341778e194c3a39e71ec47b396b7f4bdc8d2
                 </div>
             </div>
         </div>
     </section>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     {{-- Video Modal --}}
     @include('components.modals.video')
 =======
+=======
+>>>>>>> 7175341778e194c3a39e71ec47b396b7f4bdc8d2
 
 
     <section>
@@ -557,5 +566,8 @@
 
 
  
+<<<<<<< HEAD
 >>>>>>> 857f634 (navbar)
+=======
+>>>>>>> 7175341778e194c3a39e71ec47b396b7f4bdc8d2
 @endsection

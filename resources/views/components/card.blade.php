@@ -41,4 +41,8 @@
         <small class="card-text">Some quick example text to build on the card tit</small>
     </div>
 </div>   
+<<<<<<< HEAD
 @endif
+=======
+@endif
+>>>>>>> 7175341778e194c3a39e71ec47b396b7f4bdc8d2

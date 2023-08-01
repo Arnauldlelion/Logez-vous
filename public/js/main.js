@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // window.onload = () => {
 //     document.getElementById("trigger-register")?.click();
 // };
 =======
+=======
+>>>>>>> 7175341778e194c3a39e71ec47b396b7f4bdc8d2
 
 const nav = document.querySelector('.main-header nav');
 window.addEventListener('scroll', function() {
@@ -75,4 +78,7 @@ const infiniteScroll = () => {
 
 
 
+<<<<<<< HEAD
 >>>>>>> 857f634 (navbar)
+=======
+>>>>>>> 7175341778e194c3a39e71ec47b396b7f4bdc8d2
