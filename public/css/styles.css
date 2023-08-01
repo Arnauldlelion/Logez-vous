@@ -3,6 +3,12 @@
     --main-color: #ff040c;
     --text-color: #646464;
     --header-size: 28px;
+    --secondary:#28a745;
+    --grey:#6c757d;
+    --orangered:rgb(218, 74, 22);
+    --white::#fff;
+    --black:#000000;
+    --light-bleu:#F0FAF8;
 }
 
 * {
@@ -1199,10 +1205,10 @@ body {
 }
 
 
-{
+/* {
   margin-left: 250px;
   padding: 15px;
-}
+} */
 
     .expert .contact {
         border-left: none;
@@ -1248,13 +1254,7 @@ body {
     .house-sidebar button {
         padding: 0.1 rem !important;
     }
-    --secondary:#28a745;
-    --grey:#6c757d;
-    --orangered:rgb(218, 74, 22);
-    --white::#fff;
-    --black:#000000;
-    --light-bleu:#F0FAF8;
-}
+   
 
 body {
     font-family: 'Varela Round', 'Helvetica Neue', Helvetica, sans-serif;
