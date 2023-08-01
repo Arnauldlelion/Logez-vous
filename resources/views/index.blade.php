@@ -29,7 +29,7 @@
             </div>
             <div class="col-lg-11 mx-lg-auto row d-flex justify-content-between mt-5">
                 <div class="col-lg-5 mb-lg-0">
-                    <span class="text"><i class="fa fa-chevron-right"></i>Comment faire apparaître mon logement à la une ?</span>
+                    <span class="text"><i class="fa fa-chevron-right"></i> Comment faire apparaître mon logement à la une ?</span>
                     <small class="more-text ms-4">Si vous êtes propriétaire, vous pouvez faire apparaître vos logements à la
                         une en souscrivant à l’offre premium sur la recherche de locataire.</small>
                 </div>
