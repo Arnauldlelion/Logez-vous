@@ -1537,9 +1537,7 @@ section .tab2{
            
           }
 
-          .sidebar ul .links li{
-            color: red;
-          }
+        
           
         .sidebar .settings a {
             display: none;
