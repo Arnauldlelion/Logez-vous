@@ -4,6 +4,7 @@
 <head>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport"  content="width=device-width", initial-scale=1.0 >
     <title>My Panel</title>
     <!-- Include Bootstrap CSS and JS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -37,7 +38,8 @@
     </nav>
 
     <!-- Sidebar Section -->
-    <div class="sidebar" style="padding-left: 0%">
+   
+     <div class="sidebar" style="padding-left: 0%">
         <div class="logo" >
             <img src="/storage/images/logo.png" alt="Logo" class="img-fluid" style="width: 100px; margin-top: -2rem;">
         </div>
@@ -54,12 +56,13 @@
             <a href="#" >Se deconnecter</a>
         </div>
     </div>
-
+  
     
 
     <!-- Main Section -->
     <div class="main">
         @yield('content')
     </div>
+
 </body>
 </html>
