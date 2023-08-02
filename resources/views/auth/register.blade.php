@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="/register" method="post">
+    <form action="/register" method="post" style="padding-top: 10rem; padding-bottom: 10rem; position:relative; align-items:center; display:block; text=align: center">
         @csrf
         <div>
             <input type="text" placeholder="name" name="name">

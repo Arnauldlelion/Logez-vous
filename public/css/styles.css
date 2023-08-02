@@ -1114,6 +1114,7 @@ body {
 }
 
 .navbar {
+    
   display: flex;
   flex-wrap: wrap;
   align-items: center;

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-5" style="padding-top: 10rem; padding-bottom: 10rem;">
         <div id="house-images" class="house-images" onclick="alert('Hello, world!')">
             <div class="row">
                 <div class="col-lg-6 mb-3 d-none d-lg-block">

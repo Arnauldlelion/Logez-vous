@@ -22,10 +22,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="#">Aide</a>
+                <a class="nav-link text-light" href="{{'/aide'}}">Aide</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="#">Mon compte</a>
+                <a class="nav-link text-light" href="{{'/mon-compte'}}">Mon compte</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-light" href="#">Deconnexion</a>

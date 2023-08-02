@@ -44,24 +44,23 @@
                   <a class="nav-link active" href="#"><img src="/storage/images/Accueil.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Accueil</a>
                 </li><br>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="/storage/images/candidatures.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Candidatures</a>
+                  <a class="nav-link" href="{{'/candidate'}}"><img src="/storage/images/candidatures.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Candidatures</a>
                 </li><br>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><img src="/storage/images/dossierLocatif.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Dossier Locatif <i class="fas fa-exclamation-circle" style="color: orangered"></i></a>
                 </li><br>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="/storage/images/nosPartenaires.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Nos partenaires</a>
+                  <a class="nav-link" href="{{'/nos-partenaires'}}"><img src="/storage/images/nosPartenaires.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Nos partenaires</a>
                 </li><br>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="/storage/images/monCompte.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Mon compte</a>
+                  <a class="nav-link" href="{{'/mon-compte'}}"><img src="/storage/images/monCompte.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Mon compte</a>
                 </li><br>
               </ul>
             </div>
           </nav>
           <main role="main" class="col-md-10 ml-auto">
             <div class="jumbotron"> <!-- La classe "jumbotron" est une classe Bootstrap qui ajoute des styles pour créer un grand conteneur avec des bords arrondis et un fond coloré.  -->
-              <h2>Bonjour, Arnauld!</h2>
-              <p class="lead">Comment tu vas?</p>
+              @yield('content')
             </div>
           </main>
         </div>

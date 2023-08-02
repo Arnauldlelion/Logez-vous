@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="benefits py-3 pl-2 " >
+    <section class="benefits py-3 pl-2 " style="padding-top: 10rem; padding-bottom: 10rem;" >
         <div class="ms-2" >
             <div class="search-block">
                 <form>

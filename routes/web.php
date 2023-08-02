@@ -51,9 +51,9 @@ Route::get('/appartements', [AppartementsController::class, 'appartements'])->na
 
 Route::get('/aide', [AideController::class, 'aide'])->name('aide'); 
 
-/*routes for all the panels*/
+/*routes for locataires panel*/
 
-Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel'); 
+
 Route::get('/layouts/locatairespanel', [locatairesPanelController::class, 'locatairespanel'])->name('locataires'); 
 
 Route::get('/help', function () {
@@ -63,6 +63,18 @@ Route::get('/candidate', function () {
     return view('components.candidate');
 });
 
-Route::get('/candidate', function () {
-    return view('components.candidate');
+Route::get('/dossier-locatif', function () {
+    return view('components.dossier-locatif');
 });
+
+Route::get('/nos-partenaires', function () {
+    return view('components.nos-partenaires');
+});
+
+Route::get('/mon-compte', function () {
+    return view('components.mon-compte');
+});
+
+/*routes for proprietaires panel*/
+
+Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel'); 
