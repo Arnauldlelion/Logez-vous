@@ -44,7 +44,7 @@
                 <div class="col-lg-5">
                     <a href="">
                         <span><i class="fa fa-chevron-right"></i> Voir d'autres logements parmi les 7455 annonces déjà publiées
-                            par Flatlooker</span>
+                            par Logez-vous.</span>
                     </a>
                 </div>
             </div>

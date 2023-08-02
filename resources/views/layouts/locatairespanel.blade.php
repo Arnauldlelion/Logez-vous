@@ -19,7 +19,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white col-md-12 ml-auto"  >
         <div class="logo" style="padding-top: 2rem">
-            <img src="/storage/images/logo.png" alt="Logo" class="img-fluid" style="width: 70px; margin-top: -2rem;">
+          <a href="/"> <img src="/storage/images/logo.png" alt="Logo" class="img-fluid" style="width: 70px; margin-top: -2rem;"></a>
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
@@ -41,7 +41,7 @@
             <div class="sidebar1-sticky">
               <ul class="nav flex-column" style="padding-top: 6rem">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#"><img src="/storage/images/Accueil.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Accueil</a>
+                  <a class="nav-link active" href="#" style="color: #ff040c"><img src="/storage/images/Accueil.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Accueil</a>
                 </li><br>
                 <li class="nav-item">
                   <a class="nav-link" href="{{'/candidate'}}"><img src="/storage/images/candidatures.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Candidatures</a>

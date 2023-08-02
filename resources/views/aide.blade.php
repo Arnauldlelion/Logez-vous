@@ -6,10 +6,10 @@
 <header class="header">
     <div class="header-overlay">
         <div class="search-box">
-            <h1 style="color: white">Posez-nous vos questions !</h1>
+            <h1 style="color: white; padding-bottom: 2%">Posez-nous vos questions !</h1>
             <form>
                 <div class="search-container01">
-                    <div ><i class="fas fa-search"></i></div>
+                    <div ><i class="fas fa-search" style="color: gray; padding-top: .5rem; padding-left: .5rem;"></i></div>
                     <input type="text" class="search-input01" placeholder="Recherche">
                 </div>
             </form>

@@ -2,7 +2,7 @@
    <video  id="videoBG" poster="{{ asset('storage/images/home/img.jpg') }}" autoplay muted loop>
     <source src="{{ asset('storage/images/video/video.mp4') }}" type="video/mp4" >
     </video>
-    <div class="content col-lg-5 mx-lg-auto text-center pb-3">
+    <div class="content col-lg-7 mx-lg-auto text-center pb-3">
         <h1 class="text-light mb-4">Visitez et louez votre prochain logement depuis chez vous</h1>
         <div class="row  ">
             <div class="col-10 mx-auto">
@@ -26,7 +26,7 @@
                                         <div class="col-lg-12 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <input type="text" name="title"
-                                                    placeholder="Indiquez une adresse, un lieu, un rue..."
+                                                    placeholder="Indiquez une adresse, un lieu, une rue..."
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -34,7 +34,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-3">
-                                                <input type="text" name="price" placeholder="Budeget CFA max"
+                                                <input type="text" name="price" placeholder="Budget CFA max"
                                                     class="form-control">
                                             </div>
                                             <div class="col-3">
@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <button class="btn btn-danger rounded-pill w-100"
-                                                    type="submit">Submit</button>
+                                                    type="submit">Rechercher</button>
                                             </div>
                                         </div>
                                     </div>
