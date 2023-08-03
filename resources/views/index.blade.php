@@ -17,13 +17,12 @@
                 <div class="row gy-3 my-3">
                     @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
                         <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card shadow">
-                                <img src="{{ asset('storage/images/home/house.jpg') }}" class="card-img-top" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title">title</h5>
-                                    <p class="card-text">some text</p>
-                                </div>
-                            </div>
+                            @include('components.card', [
+                                'index' => $item,
+                                'showBanner' => false,
+                                'isSlider' => false,
+                                'showBorder' => true,
+                            ])
                         </div>
                     @endforeach
                 </div>
@@ -80,7 +79,7 @@
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Complétez une fiche descriptive et déposez une candidature <span class="text-dange">en moins de 3 minutes.</span> </small>
+                                                <small>Complétez une fiche descriptive et déposez une candidature <span class="text-danger">en moins de 3 minutes.</span> </small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center">
                                                 <img src="{{ asset('storage/images/logos/board.png') }}" class="img-fluid "
@@ -379,6 +378,7 @@
                                                                 the card tit</small>
                                                         </div>
                                                     </div>
+                                                    
                                                 @endforeach
                                             </div>
                                             <i class="fa fa-chevron-right" id="right"></i>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="benefits py-3 pl-2 " style="padding-top: 10rem; padding-bottom: 10rem;" >
+    <section class="" style="padding-top: 6rem; padding-bottom: .5rem;" >
         <div class="ms-2" >
             <div class="search-block">
                 <form>
@@ -37,34 +37,25 @@
                 
                 <h5 style="padding-left: 450px;">Trier par <i class="fas fa-paper-plane" style="color: #ff040c"></i> <span style="color:#ff040c">distance du lieu choisi</span></h5>
                 <h5 style="color: gray;">sur 3138</h5>
+                    <div class="row">
+              
+                        @foreach ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] as $item)
+                            
+                          
 
-                <div data-bs-ride="card">
-                    <div class="card">
-                        @foreach ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] as $i)
-                            {{-- card item --}}
-                            <div class="card-item {{ $i == 1 ? 'active' : '' }}" >
-                                <div class="row">
-                                    @foreach ([1, 2, 3] as $item)
-                                        <div class="col-lg-4 mb-3" >
-                                            <div class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
-                                                <img src="/storage/images/appartements.jpg" alt="Google Rating"
-                                                    class="card-img-top">
-                                                <div class="card-body bg-white">
+                            <div class="col-md-6 col-xl-4 mb-3">
+                                @include('components.card', [
+                                    'index' => $item,
+                                    'showBanner' => false,
+                                    'isSlider' => true,
+                                    'showBorder' => true,
+                                ])
+                            </div>
 
-                                                    <p>
-                                                    <h6 style="color: gray;">Douala Bonamousadi(5e)</h6>
-                                                    <h6 style="color:#ff040c;">75000 f - 48m2</h6>
-                                                    <h6>2 pieces Meubles 4e etages</h6>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                           
+
+                          
                         @endforeach
                     </div>
-                </div>
             </div>
         </div>
 

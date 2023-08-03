@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white col-md-12 ml-auto"  >
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white col-md-12 ml-auto"  >
         <div class="logo" style="padding-top: 2rem">
           <a href="/"> <img src="/storage/images/logo.png" alt="Logo" class="img-fluid" style="width: 70px; margin-top: -2rem;"></a>
         </div>
@@ -41,24 +41,24 @@
             <div class="sidebar1-sticky">
               <ul class="nav flex-column" style="padding-top: 6rem">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#" style="color: #ff040c"><img src="/storage/images/Accueil.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Accueil</a>
+                  <a class="{{request()->is('/')? 'active' : ''}}" href="#" ><img src="/storage/images/Accueil.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Accueil</a>
                 </li><br>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{'/candidate'}}"><img src="/storage/images/candidatures.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Candidatures</a>
+                  <a class="{{request()->is('candidate')? 'active' : ''}}" href="{{'/candidate'}}"><img src="/storage/images/candidatures.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Candidatures</a>
                 </li><br>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="/storage/images/dossierLocatif.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Dossier Locatif <i class="fas fa-exclamation-circle" style="color: orangered"></i></a>
+                  <a class="{{request()->is('dossierLocatif')? 'active' : ''}}" href="#"><img src="/storage/images/dossierLocatif.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Dossier Locatif <i class="fas fa-exclamation-circle" style="color: orangered"></i></a>
                 </li><br>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{'/nos-partenaires'}}"><img src="/storage/images/nosPartenaires.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Nos partenaires</a>
+                  <a class="{{request()->is('nos-partenaires')? 'active' : ''}}" href="{{'/nos-partenaires'}}"><img src="/storage/images/nosPartenaires.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Nos partenaires</a>
                 </li><br>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{'/mon-compte'}}"><img src="/storage/images/monCompte.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Mon compte</a>
+                  <a class="{{request()->is('mon-compte')? 'active' : ''}}" href="{{'/mon-compte'}}"><img src="/storage/images/monCompte.png" alt="partenaires" class="img-fluid" style="width: 60px; margin-top: -2rem;">Mon compte</a>
                 </li><br>
               </ul>
             </div>
           </nav>
-          <main role="main" class="col-md-10 ml-auto">
+          <main role="main" class="col-md-10 ml-auto " style="padding-top: 3rem">
             <div class="jumbotron"> <!-- La classe "jumbotron" est une classe Bootstrap qui ajoute des styles pour créer un grand conteneur avec des bords arrondis et un fond coloré.  -->
               @yield('content')
             </div>
