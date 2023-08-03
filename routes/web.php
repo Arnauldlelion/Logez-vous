@@ -63,8 +63,8 @@ Route::get('/candidate', function () {
     return view('components.candidate');
 });
 
-Route::get('/dossier-locatif', function () {
-    return view('components.dossier-locatif');
+Route::get('/landloard', function () {
+    return view('components.landlord');
 });
 
 Route::get('/nos-partenaires', function () {
