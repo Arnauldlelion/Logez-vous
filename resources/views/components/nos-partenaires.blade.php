@@ -10,7 +10,7 @@
         <div class="row d-block d-md-flex mb-4 gap-4">
             <div class="col shadow py-4">
                 <div>
-                    <img src="{{ asset('storage/images/logos/luko.png') }}" alt="">
+                    <img src="à" alt="">
                 </div>
                 <div class="container ">
                     <div>

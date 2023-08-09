@@ -96,12 +96,18 @@
               </div>
             </div>
             <div class="mb-4">
-                <div class="d-flex gap-2">
+                <div class="d-flex gap-2 ">
                     <div class="pt-2"><h6>Actualités Flatlooker</h6></div>
-                    <div class="d-grid gap-1 d-md-flex justify-content-md-start">
-                        <i class="fa fa-arrow-left border rounded-circle p-2"></i>
-                        <i class="fa fa-arrow-right border rounded-circle p-2"></i>
-                      </div>
+                    <div class="d-grid gap-1 d-md-flex justify-content-md-start landlord-arrowBtns">
+                        <i class="fa fa-arrow-left border rounded-circle p-2" id="left"></i>
+                        <i class="fa fa-arrow-right border rounded-circle p-2" id="right"></i>
+                    </div>
+                </div>
+                <div class="d-flex gap-4 overflow-hidden landlord-dashboard">
+                    <img src="{{ asset('storage/images/impot.png')}}" alt="" draggable="false">
+                    <img src="{{ asset('storage/images/nosExpert.png')}}" alt="" draggable="false">
+                    <img src="{{ asset('storage/images/plateform.png')}}" alt="" draggable="false">
+                    <img src="{{ asset('storage/images/parrainage.png')}}" alt="" draggable="false">
                 </div>
             </div>
             <div>
@@ -132,17 +138,4 @@
 </section>
 
 
-
-<section>
-    <div class="lanlord-menu">
-        <div class="landlord-menu-header">
-            <button class="btn-banner"><i class="fa fa-chevron-down"></i></button>
-        </div>
-        <div class="landlord-menu-body">
-           <a href="" style="display:  black;">
-            <img src="{{asset('storage/images/home/img.jpg')}}" width="100%" alt="">
-        </a>
-        </div>
-    </div>
-</section>
 @endsection

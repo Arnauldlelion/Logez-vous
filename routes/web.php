@@ -75,6 +75,13 @@ Route::get('/mon-compte', function () {
     return view('components.mon-compte');
 });
 
+Route::get('/dossier', function () {
+    return view('components.dossier-locatif');
+});
+
 /*routes for proprietaires panel*/
 
-Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel'); 
+Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel');
+Route::get('/confirmaton', function () {
+    return view('components.confirmation');
+}); 
