@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="" style="padding-top: 6rem; padding-bottom: .5rem;" >
+    <section class="" style="padding-top: 8rem; padding-bottom: .5rem;" >
         <div class="ms-2" >
             <div class="search-block">
                 <form>

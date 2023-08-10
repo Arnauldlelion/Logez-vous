@@ -37,9 +37,9 @@
                     <div class="footer-slogan">
                         &copy; {{ config('app.name') }} {{ \Carbon\Carbon::now()->format('Y') }}
                     </div>
-                    <img src="/storage/images/logo.png" alt="{{ config('app.name') }} Logo"
+                    <img src="/storage/images/logos/logez-vous.png" alt="{{ config('app.name') }} Logo"
                         class="img-fluid footer-logo">
-                    <a href="#" class="apple">
+                    <a href="/" class="apple">
                         <img src="/storage/images/apple.png" alt="Apple" class="img-fluid">
                     </a>
                     <a href="#" class="playstore">
@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-6">
                         <p>
-                            Hoozon Sarl, professionnel de l'immobilier titulaire de la carte professionnelle n° CPI 7501
+                            Logez-vous, professionnel de l'immobilier titulaire de la carte professionnelle n° CPI 7501
                             2016
                             000 014 044 portant les mentions 'Transaction sur Immeubles et fonds de commerce' et
                             'Gestion

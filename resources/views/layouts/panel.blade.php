@@ -40,7 +40,7 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none  d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="index.html"><img src="/storage/images/logo.png" alt="logo" style="height: 9rem; padding-top: 3rem; "/></a>
+          <a class="sidebar-brand brand-logo" href="/"><img src="/storage/images/logos/logez-vous.png" alt="logo" style="height: 9rem; padding-top: 3rem; "/></a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="/storage/assets/images/logoWhite.png" alt="logo" /></a>
         </div>
         <ul class="nav" style="padding-top: 8rem">

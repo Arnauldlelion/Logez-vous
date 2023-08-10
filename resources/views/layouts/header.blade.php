@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light {{ request()->is('/') ? 'transparent' : 'white-navbar' }} fixed-top"
         id="{{ request()->is('/') ? 'main-header' : '' }}">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="{{ asset('/storage/images/logos/logo.png') }}" alt="logo"
+            <a class="navbar-brand" href="/"><img src="{{ asset('/storage/images/logos/logez-vous.png') }}" alt="logo"
                     class="logo logo-white"></a>
             <button class="navbar-toggler" type="button " data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
