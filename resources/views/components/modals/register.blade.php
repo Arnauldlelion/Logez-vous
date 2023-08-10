@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/user/premiere-connexion">
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-text">
                             <i class="fas fa-user"></i>
@@ -64,7 +64,7 @@
                             <span class="text-sec">OU</span>
                             <hr class="w-25 mx-auto">
                         </div>
-                        <form action="/user/premiere-connexion">
+                        <form action="#">
                             <button type="submit" class="btn btn-google w-75 shadow-lg">
                                 <img src="/storage/images/google-sm.png" alt="Google" class="img-fluid">
                                 <span>Continuer avec Google</span>
