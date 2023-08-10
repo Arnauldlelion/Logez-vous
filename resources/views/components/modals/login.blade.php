@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <div class="login-text">Connectez-vous afin d'accéder à votre compte</div>
-                <form>
+                <form action="/mon-compte">
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-text">
                             <i class="fas fa-envelope"></i>
