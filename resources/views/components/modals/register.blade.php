@@ -64,7 +64,7 @@
                             <span class="text-sec">OU</span>
                             <hr class="w-25 mx-auto">
                         </div>
-                        <form action="#">
+                        <form action="/user/premiere-connexion">
                             <button type="submit" class="btn btn-google w-75 shadow-lg">
                                 <img src="/storage/images/google-sm.png" alt="Google" class="img-fluid">
                                 <span>Continuer avec Google</span>
@@ -83,6 +83,3 @@
         </div>
     </div>
 </div>
-
-<!-- Button trigger modal -->
-<button data-bs-toggle="modal" id="trigger-register" hidden data-bs-target="#register-modal"></button>

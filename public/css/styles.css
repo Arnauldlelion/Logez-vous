@@ -25,15 +25,15 @@
 }
 
 .btn-main {
-    background-color: var(--main-color);
-    color: white;
-    border-radius: 50px;
+    background-color: var(--main-color) !important;
+    color: white !important;
+    border-radius: 50px !important;
 }
 
 .btn-main:hover {
-    background-color: var(--main-color);
-    color: white;
-    opacity: 0.8;
+    background-color: var(--main-color) !important;
+    color: white !important;
+    opacity: 0.8 !important;
 }
 
 .text-sec {
@@ -359,6 +359,7 @@
 
 .auth-modal .modal-footer .btn-link {
     margin-left: -0.7rem;
+    color: var(--main-color);
 }
 
 .auth-modal .login-text {
@@ -591,6 +592,14 @@
         font-size: 14px;
     }
 
+    .landlord-info p {
+        font-size: 15px !important;
+        font-weight: 600;
+     }   
+     
+     .landlord-info label {
+        font-size: 13px;
+     }
 }
 
 /* Arnauld */
@@ -1456,6 +1465,42 @@ section .tab2{
  }
  .dashboard_dropdown i{
     transition: transform 0.5s ease-in;
+ }
+
+ .landlord-info p {
+    font-size: 20px;
+ }
+
+ .divider {
+    display: block;
+    background-color: var(--main-color);
+    height: 7px;
+    width: 100%;
+ }
+
+ .btn-outline-main {
+    border-radius: 999px !important;
+    border: 1px solid var(--main-color) !important;
+    color: var(--main-color) !important;
+ }
+
+ .btn-outline-main:hover {
+    background-color: var(--main-color) !important;
+    color: white !important;
+ }
+
+ .transparent a, .transparent button {
+    color: white;
+    font-weight: bold;
+ }
+
+ .transparent a:hover, .transparent button:hover {
+    color: var(--main-color);
+ }
+
+ .white-navbar {
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
  }
 
  @keyframes fade {
