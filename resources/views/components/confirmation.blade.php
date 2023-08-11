@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="auth-fluid">
+<div class="auth-fluid" >
     <!--Auth fluid left content -->
-    <div class=" auth-fluid-form-box">
-        <div class="align-items-center d-flex h-100">
+    <div class=" auth-fluid-form-box" >
+        <div class="align-items-center d-flex h-100" >
             <div class="container col-lg-10">
             <div class="card-body">
                  <!-- title-->
