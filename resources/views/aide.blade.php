@@ -43,79 +43,79 @@
 	<div id="locataire-questions" class="question-section" class="d-flex d-lg-block">
 			<div class="question-block" >
 				<h3 style=" background-position: center;">Informations sur mon appartement</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3 style=" background-position: center;">Incident</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Sinistre</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Rétractation</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Etat des lieux</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c" > Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#"  > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Clés / Digicode</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Immeuble</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Paiements</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Charges</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Aménagements du locataire</h3>
-				<h6><a href="#" style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#" style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#" >Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#" >Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 			<div class="question-block">
 				<h3>Administratif</h3>
-				<h6><a href="#"style="color: #ff040c">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
-                    <a href="#"style="color: #ff040c">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
-                    <a href="#" style="color: #ff040c"> Comment mettre un complément loyer à Paris ?</a></h6>
+				<h6><a href="#">Quel loyer pour mon PINEL en 2020 et quelles sont les conditions de revenus ?</a><br>
+                    <a href="#">Je suis propriétaire, que se passe-t-il une fois que mon locataire est entré dans les lieux ?</a><br>
+                    <a href="#" > Comment mettre un complément loyer à Paris ?</a></h6>
                     <a href="voir tous les articles" style="text-decoration:none; color:#ff040c">voir tous les articles</a>
 			</div>
 		</div>
