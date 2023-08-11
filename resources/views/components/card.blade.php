@@ -1,4 +1,4 @@
-<a href="#" class="house-card h-100 shadow-lg">
+<a href="/appartements/name" class="house-card h-100 shadow-lg">
     @if ($showBanner)
         <div class="img-container">
             <img src="/storage/images/premium.png" class="img-fluid premium" alt="{{ config('app.name') }}">
@@ -22,5 +22,3 @@
         </div>
     </div>
 </a>
-
-

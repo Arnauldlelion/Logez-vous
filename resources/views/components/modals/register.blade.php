@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/user/premiere-connexion">
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-text">
                             <i class="fas fa-user"></i>
@@ -83,6 +83,3 @@
         </div>
     </div>
 </div>
-
-<!-- Button trigger modal -->
-<button data-bs-toggle="modal" id="trigger-register" hidden data-bs-target="#register-modal"></button>

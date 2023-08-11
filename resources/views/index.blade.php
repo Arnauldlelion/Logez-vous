@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    
     {{-- Please put your navbar code inside the layouts.app file --}}
 
     {{-- logement --}}
@@ -33,21 +32,24 @@
                     <button type="button" data-bs-target="#videos" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#videos" data-bs-slide-to="2"></button>
 
-            </div>
-            <div class="col-lg-11 mx-lg-auto row d-flex justify-content-between mt-5">
-                <div class="col-lg-5 mb-lg-0">
-                    <span class="text"><i class="fa fa-chevron-right"></i> Comment faire apparaître mon logement à la une ?</span>
-                    <small class="more-text ms-4">Si vous êtes propriétaire, vous pouvez faire apparaître vos logements à la
-                        une en souscrivant à l’offre premium sur la recherche de locataire.</small>
                 </div>
-                <div class="col-lg-5">
-                    <a href="">
-                        <span><i class="fa fa-chevron-right"></i> Voir d'autres logements parmi les 7455 annonces déjà publiées
-                            par Logez-vous.</span>
-                    </a>
+                <div class="col-lg-11 mx-lg-auto row d-flex justify-content-between mt-5">
+                    <div class="col-lg-5 mb-lg-0">
+                        <span class="text"><i class="fa fa-chevron-right"></i> Comment faire apparaître mon logement à la
+                            une ?</span>
+                        <small class="more-text ms-4">Si vous êtes propriétaire, vous pouvez faire apparaître vos logements
+                            à la
+                            une en souscrivant à l’offre premium sur la recherche de locataire.</small>
+                    </div>
+                    <div class="col-lg-5">
+                        <a href="#" class="text-main">
+                            <span><i class="fa fa-chevron-right"></i> Voir d'autres logements parmi les 7455 annonces déjà
+                                publiées
+                                par Logez-vous.</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 
 
@@ -75,11 +77,15 @@
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center ">
                                             <span class=" p-2" id="rounded-circle">1</span><br><br>
+
                                         <h5>Fiche locative</h5>
                                         </div>
+                                       
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small >Complétez une fiche descriptive et déposez une candidature <span class="text-danger">en moins de 3 minutes.</span> </small>
+                                                <small>Complétez une fiche descriptive et déposez une candidature <span
+                                                        class="text-danger">en moins de 3 minutes.</span> </small>
+
                                             </div>
                                             <div class="d-block justify-content-center align-items-center">
                                                 <img src="{{ asset('storage/images/logos/board.png') }}" class="img-fluid "
@@ -90,26 +96,38 @@
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">2</span><br><br>
-                                        <h5>Dossier sécurisé</h5>
+
+                                      
+
+                                            <h4>Dossier sécurisé</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Vos documents sont chiffrés puis stockés dans des serveurs sécurisés pour une <span class="text-danger">sécurité optimale</span> . La gestion des données et des documents est conforme à la RGPD.</small>
+                                                <small>Vos documents sont chiffrés puis stockés dans des serveurs sécurisés
+                                                    pour une <span class="text-danger">sécurité optimale</span> . La gestion
+                                                    des données et des documents est conforme à la RGPD.</small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center mt-lg-auto">
-                                                <img src="{{ asset('storage/images/logos/whistle.png') }}" class="img-fluid "
-                                                    alt="">
+                                                <img src="{{ asset('storage/images/logos/whistle.png') }}"
+                                                    class="img-fluid " alt="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">3</span><br><br>
-                                        <h5>Signature électronique</h5>
+
+                                      
+
+                                            <h4>Signature électronique</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Signez votre bail <span class="text-danger">100% en ligne </span>  avec une signature électronique via notre <span class="text-danger"> partenaire sécurisé</span> Docusign ®.</small>
+                                                <small>Signez votre bail <span class="text-danger">100% en ligne </span>
+                                                    avec une signature électronique via notre <span class="text-danger">
+                                                        partenaire sécurisé</span> Docusign ®.</small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center mt-lg-auto">
                                                 <img src="{{ asset('storage/images/logos/pen.png') }}" class="img-fluid "
@@ -120,11 +138,19 @@
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">4</span><br><br>
-                                        <h5>État des lieux physique</h5>
+
+                                       
+
+                                            <h4>État des lieux physique</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Découvrez physiquement votre logement lors de l<span class="text-danger">’état des lieux d’entrée</span> . Si celui-ci ne correspond pas à la visite virtuelle, vous pouvez <span class="text-dander">vous rétracter sans frais</span>  lors de ce rendez-vous.</small>
+                                                <small>Découvrez physiquement votre logement lors de l<span
+                                                        class="text-danger">’état des lieux d’entrée</span> . Si celui-ci ne
+                                                    correspond pas à la visite virtuelle, vous pouvez <span
+                                                        class="text-dander">vous rétracter sans frais</span> lors de ce
+                                                    rendez-vous.</small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center mt-lg-auto">
                                                 <img src="{{ asset('storage/images/logos/hand.png') }}" class="img-fluid "
@@ -139,41 +165,60 @@
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">1</span><br><br>
-                                        <h5>Mise en valeur de votre bien</h5>
+
+                                       
+
+                                            <h4>Mise en valeur de votre bien</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Nous réalisons un <span class="text-danger">reportage photo et vidéo complet</span> et diffusons votre annonce sur <span class="text-danger">plus de 15 plateformes</span> .</small>
+                                                <small>Nous réalisons un <span class="text-danger">reportage photo et vidéo
+                                                        complet</span> et diffusons votre annonce sur <span
+                                                        class="text-danger">plus de 15 plateformes</span> .</small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center mt-lg-auto">
-                                                <img src="{{ asset('storage/images/logos/globe.png') }}" class="img-fluid "
-                                                    alt="">
+                                                <img src="{{ asset('storage/images/logos/globe.png') }}"
+                                                    class="img-fluid " alt="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">3</span><br><br>
-                                        <h5>Sélection du locataire</h5>
+
+                                        
+
+                                            <h4>Sélection du locataire</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Nous <span class="text-danger">vérifions minutieusement</span>  les candidatures, rédigeons le bail et assurons l<span class="text-danger">’état des lieux d’entrée</span> .</small>
+                                                <small>Nous <span class="text-danger">vérifions minutieusement</span> les
+                                                    candidatures, rédigeons le bail et assurons l<span
+                                                        class="text-danger">’état des lieux d’entrée</span> .</small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center mt-lg-auto">
-                                                <img src="{{ asset('storage/images/logos/whistle.png') }}" class="img-fluid "
-                                                    alt="">
+                                                <img src="{{ asset('storage/images/logos/whistle.png') }}"
+                                                    class="img-fluid " alt="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">3</span><br><br>
-                                        <h5>Gestion réactive et moderne</h5>
+
+                                      
+
+                                            <h4>Gestion réactive et moderne</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Votre <span class="text-danger">espace en ligne</span>  vous permet de suivre toutes les opérations et de <span class="text-danger">contacter facilement</span>  votre conseiller.</small>
+                                                <small>Votre <span class="text-danger">espace en ligne</span> vous permet
+                                                    de suivre toutes les opérations et de <span
+                                                        class="text-danger">contacter facilement</span> votre
+                                                    conseiller.</small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center mt-lg-auto">
                                                 <img src="{{ asset('storage/images/logos/pen.png') }}" class="img-fluid "
@@ -184,11 +229,15 @@
                                     <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">4</span><br><br>
-                                        <h5>Loyer en moins de 7 jours</h5>
+
+                                            <h4>Loyer en moins de 7 jours</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
-                                                <small>Grâce à notre technologie de paiement, vous recevez vos fonds <span class="text-danger">moins de 7 jours après le paiement du locataire.</span> </small>
+                                                <small>Grâce à notre technologie de paiement, vous recevez vos fonds <span
+                                                        class="text-danger">moins de 7 jours après le paiement du
+                                                        locataire.</span> </small>
                                             </div>
                                             <div class="d-block justify-content-center align-items-center ">
                                                 <img src="{{ asset('storage/images/logos/hand.png') }}" class="img-fluid "
@@ -197,7 +246,8 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mx-auto mt-5">
-                                        <button class="btn btn-danger rounded-pill p-3 w-100 text-light">En savoir plus</button>
+                                        <button class="btn btn-danger rounded-pill p-3 w-100 text-light">En savoir
+                                            plus</button>
                                     </div>
                                 </div>
                             </div>
@@ -259,16 +309,12 @@
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
-                                                    <div class="card  shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }}"
-                                                        style="width: 14rem;">
-                                                        <img src="{{ asset('storage/images/home/house.jpg') }}"
-                                                            class="card-img-top" alt="...">
-                                                        <div class="card-body">
-                                                            <h6 class="card-title">Card title</h6>
-                                                            <small class="card-text">Some quick example text to build on
-                                                                the card tit</small>
-                                                        </div>
-                                                    </div>
+                                                    @include('components.card', [
+                                                        'index' => $item,
+                                                        'showBanner' => false,
+                                                        'isSlider' => false,
+                                                        'showBorder' => false,
+                                                    ])
                                                 @endforeach
                                             </div>
                                             <i class="fa fa-chevron-right" id="right"></i>
@@ -294,16 +340,12 @@
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
-                                                    <div class="card shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }}"
-                                                        style="width: 14rem;">
-                                                        <img src="{{ asset('storage/images/home/house.jpg') }}"
-                                                            class="card-img-top" alt="...">
-                                                        <div class="card-body">
-                                                            <h6 class="card-title">Card title</h6>
-                                                            <small class="card-text">Some quick example text to build on
-                                                                the card tit</small>
-                                                        </div>
-                                                    </div>
+                                                    @include('components.card', [
+                                                        'index' => $item,
+                                                        'showBanner' => false,
+                                                        'isSlider' => false,
+                                                        'showBorder' => false,
+                                                    ])
                                                 @endforeach
                                             </div>
                                             <i class="fa fa-chevron-right" id="right"></i>
@@ -329,16 +371,12 @@
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
-                                                    <div class="card shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }} d-flex align-tems-sm-center"
-                                                        style="width: 14rem;">
-                                                        <img src="{{ asset('storage/images/home/house.jpg') }}"
-                                                            class="card-img-top" alt="...">
-                                                        <div class="card-body">
-                                                            <h6 class="card-title">Card title</h6>
-                                                            <small class="card-text">Some quick example text to build on
-                                                                the card tit</small>
-                                                        </div>
-                                                    </div>
+                                                    @include('components.card', [
+                                                        'index' => $item,
+                                                        'showBanner' => false,
+                                                        'isSlider' => false,
+                                                        'showBorder' => false,
+                                                    ])
                                                 @endforeach
                                             </div>
                                             <i class="fa fa-chevron-right" id="right"></i>
@@ -368,17 +406,12 @@
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
                                                 @foreach ([1, 2, 3, 4] as $item)
-                                                    <div class="card shadow col-4 col-sm-12 hv-10 {{ $item > 1 ? 'd-none d-lg-block' : '' }}"
-                                                        style="width: 14rem;">
-                                                        <img src="{{ asset('storage/images/home/house.jpg') }}"
-                                                            class="card-img-top" alt="...">
-                                                        <div class="card-body">
-                                                            <h6 class="card-title">Card title</h6>
-                                                            <small class="card-text">Some quick example text to build on
-                                                                the card tit</small>
-                                                        </div>
-                                                    </div>
-                                                    
+                                                    @include('components.card', [
+                                                        'index' => $item,
+                                                        'showBanner' => false,
+                                                        'isSlider' => false,
+                                                        'showBorder' => false,
+                                                    ])
                                                 @endforeach
                                             </div>
                                             <i class="fa fa-chevron-right" id="right"></i>
@@ -389,177 +422,180 @@
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
     </section>
 
-   
-{{-- Benefits --}}
-<section class="benefits py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-lg-6 offset-md-2 offset-lg-3">
-                <h1>Plus de 30 villes camerounaises en bénéficient de la gestion locative Hoozon Sarl!</h1>
+
+    {{-- Benefits --}}
+    <section class="benefits py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+                    <h1>Plus de 30 villes camerounaises en bénéficient de la gestion locative Hoozon Sarl!</h1>
+                </div>
             </div>
-        </div>
-        <p>Retrouvez notre service de gestion locative dans les grandes villes camerounaises</p>
-        <div class="row">
-            <div class="col-lg-6">
-                {{-- <div id="map"></div> --}}
-                <img src="/storage/images/cameroon-map.jpg" class="img-fluid" alt="Cameroun Map">
-            </div>
-            <div class="col-lg-6 cities">
-                <div class="row">
-                    <div class="col-6">
-                        <a href="#">Gestion locative Yaoundé</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Douala</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Garoua</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Bamenda</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Bafoussam</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Ngaoundéré</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Bertoua</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Ebolowa</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Maroua</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#">Gestion locative Buéa</a>
-                    </div>
-                    <div class="col-md-6 offset-md-2 city-btn">
-                        <a href="#" class="btn btn-main">Toutes nos villes en gestion</a>
+            <p>Retrouvez notre service de gestion locative dans les grandes villes camerounaises</p>
+            <div class="row">
+                <div class="col-lg-6">
+                    {{-- <div id="map"></div> --}}
+                    <img src="/storage/images/cameroon-map.jpg" class="img-fluid" alt="Cameroun Map">
+                </div>
+                <div class="col-lg-6 cities">
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="#">Gestion locative Yaoundé</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Douala</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Garoua</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Bamenda</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Bafoussam</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Ngaoundéré</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Bertoua</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Ebolowa</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Maroua</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">Gestion locative Buéa</a>
+                        </div>
+                        <div class="col-md-6 offset-md-2 city-btn">
+                            <a href="#" class="btn btn-main">Toutes nos villes en gestion</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-{{-- Testimonials --}}
-<section class="testimonials py-5">
-    <div class="container-fluid">
-        <h1>La presse parle de nous</h1>
+    </section>
+    {{-- Testimonials --}}
+    <section class="testimonials py-5">
+        <div class="container-fluid">
+            <h1>La presse parle de nous</h1>
 
-        <div class="d-lg-flex align-items-center">
-            <button data-bs-target="#testimonials" class="control-left d-none d-lg-block"
-                data-bs-slide="prev">&laquo;</button>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div id="testimonials" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach ([1, 2, 3] as $i)
-                                {{-- Carousel item --}}
-                                <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
-                                    <div class="row">
-                                        @foreach ([1, 2, 3] as $item)
-                                            {{-- Testimonial item --}}
-                                            <div class="col-lg-4 mb-3">
-                                                <div
-                                                    class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
-                                                    <div class="card-body bg-white px-4 pt-5 pb-3">
-                                                        <div class="text-center mb-4">
-                                                            <img src="/storage/images/testimonial-{{ $item }}.png"
-                                                                class="img-fluid" alt="Le Monde">
+            <div class="d-lg-flex align-items-center">
+                <button data-bs-target="#testimonials" class="control-left d-none d-lg-block"
+                    data-bs-slide="prev">&laquo;</button>
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div id="testimonials" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach ([1, 2, 3] as $i)
+                                    {{-- Carousel item --}}
+                                    <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
+                                        <div class="row">
+                                            @foreach ([1, 2, 3] as $item)
+                                                {{-- Testimonial item --}}
+                                                <div class="col-lg-4 mb-3">
+                                                    <div
+                                                        class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
+                                                        <div class="card-body bg-white px-4 pt-5 pb-3">
+                                                            <div class="text-center mb-4">
+                                                                <img src="/storage/images/testimonial-{{ $item }}.png"
+                                                                    class="img-fluid" alt="Le Monde">
+                                                            </div>
+                                                            <div class="company">le monde</div>
+                                                            <div class="title">
+                                                                &laquo; A Yaoundé, c'est dans le 9ème qu'il est le plus
+                                                                difficile de
+                                                                louer
+                                                                un
+                                                                logement &raquo;
+                                                            </div>
+                                                            <p>Hoozon Sarl reçoit, pour ce quartier, en moyenne 5 cas par
+                                                                jour et
+                                                                par
+                                                                logement
+                                                                et 3,8 appels.
+                                                            </p>
+                                                            <div class="date">Posted on January 27, 2020</div>
                                                         </div>
-                                                        <div class="company">le monde</div>
-                                                        <div class="title">
-                                                            &laquo; A Yaoundé, c'est dans le 9ème qu'il est le plus
-                                                            difficile de
-                                                            louer
-                                                            un
-                                                            logement &raquo;
-                                                        </div>
-                                                        <p>Hoozon Sarl reçoit, pour ce quartier, en moyenne 5 cas par
-                                                            jour et
-                                                            par
-                                                            logement
-                                                            et 3,8 appels.
-                                                        </p>
-                                                        <div class="date">Posted on January 27, 2020</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="carousel-indicators d-lg-none">
-                            <button type="button" data-bs-target="#testimonials" data-bs-slide-to="0" class="active"
-                                aria-current="true"></button>
-                            <button type="button" data-bs-target="#testimonials" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#testimonials" data-bs-slide-to="2"></button>
+                                @endforeach
+                            </div>
+                            <div class="carousel-indicators d-lg-none">
+                                <button type="button" data-bs-target="#testimonials" data-bs-slide-to="0"
+                                    class="active" aria-current="true"></button>
+                                <button type="button" data-bs-target="#testimonials" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#testimonials" data-bs-slide-to="2"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button data-bs-target="#testimonials" class="control-right d-none d-lg-block"
+                    data-bs-slide="next">&raquo;</button>
             </div>
-            <button data-bs-target="#testimonials" class="control-right d-none d-lg-block"
-                data-bs-slide="next">&raquo;</button>
         </div>
-    </div>
-</section>
+    </section>
 
-{{-- Video Testimonials --}}
-<section class="videos py-5">
-    <div class="container">
-        <h1>Nos clients témoignent</h1>
+    {{-- Video Testimonials --}}
+    <section class="videos py-5">
+        <div class="container">
+            <h1>Nos clients témoignent</h1>
 
 
-        <div id="videos" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @foreach ([1, 2, 3] as $i)
-                    {{-- Carousel item --}}
-                    <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
-                        <div class="row">
-                            @foreach ([1, 2, 3] as $item)
-                                {{-- Video Item --}}
-                                <div class="col-lg-4 mb-3">
-                                    <div class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
-                                        <div class="video-img">
-                                            <img src="/storage/images/video.jpg" alt="Video" class="card-img-top">
-                                            <button class="play" data-bs-toggle="modal" data-bs-target="#video-modal">
-                                                <i class="fas fa-play"></i>
-                                            </button>
-                                        </div>
-                                        <div class="card-body bg-white">
-                                            <div class="text-center">
-                                                <img src="/storage/images/google.png" alt="Google Rating"
-                                                    class="img-fluid">
+            <div id="videos" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach ([1, 2, 3] as $i)
+                        {{-- Carousel item --}}
+                        <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
+                            <div class="row">
+                                @foreach ([1, 2, 3] as $item)
+                                    {{-- Video Item --}}
+                                    <div class="col-lg-4 mb-3">
+                                        <div class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
+                                            <div class="video-img">
+                                                <img src="/storage/images/video.jpg" alt="Video" class="card-img-top">
+                                                <button class="play" data-bs-toggle="modal"
+                                                    data-bs-target="#video-modal">
+                                                    <i class="fas fa-play"></i>
+                                                </button>
                                             </div>
-                                            <i class="fas fa-quote-left"></i>
-                                            <p>Hoozon Sarl s'occupe de tout en 24h, nous avions déjà eu une
-                                                dizaine de candidatures et
-                                                le
-                                                studio a été loué en moins d'une semaine
-                                            </p>
-                                            <div class="quote-right">
-                                                <i class="fas fa-quote-right"></i>
-                                            </div>
-                                            <div class="name">Lucas A. Propriétaire de 2 studios à Douala
+                                            <div class="card-body bg-white">
+                                                <div class="text-center">
+                                                    <img src="/storage/images/google.png" alt="Google Rating"
+                                                        class="img-fluid">
+                                                </div>
+                                                <i class="fas fa-quote-left"></i>
+                                                <p>Hoozon Sarl s'occupe de tout en 24h, nous avions déjà eu une
+                                                    dizaine de candidatures et
+                                                    le
+                                                    studio a été loué en moins d'une semaine
+                                                </p>
+                                                <div class="quote-right">
+                                                    <i class="fas fa-quote-right"></i>
+                                                </div>
+                                                <div class="name">Lucas A. Propriétaire de 2 studios à Douala
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>  
-    </div>
-</section>      
 
+
+        </div>
+    </section>
 @endsection
+

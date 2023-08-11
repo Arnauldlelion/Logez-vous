@@ -6,8 +6,8 @@ use App\Http\Controllers\AideController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PanelController; 
-use App\Http\Controllers\locatairesPanelController; 
+use App\Http\Controllers\PanelController;
+use App\Http\Controllers\locatairesPanelController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,18 +43,19 @@ Route::controller(MainController::class)->group(function () {
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/home', 'index')->name('home');
+    Route::get('/user/premiere-connexion', 'landlordInfo')->name('landlord-info');
 });
 
 
 Route::get('/appartements', [AppartementsController::class, 'appartements'])->name('appartements');
 
 
-Route::get('/aide', [AideController::class, 'aide'])->name('aide'); 
+Route::get('/aide', [AideController::class, 'aide'])->name('aide');
 
 /*routes for locataires panel*/
 
 
-Route::get('/layouts/locatairespanel', [locatairesPanelController::class, 'locatairespanel'])->name('locataires'); 
+Route::get('/layouts/locatairespanel', [locatairesPanelController::class, 'locatairespanel'])->name('locataires');
 
 Route::get('/help', function () {
     return view('help');
@@ -82,6 +83,8 @@ Route::get('/dossier', function () {
 /*routes for proprietaires panel*/
 
 Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel');
+
 Route::get('/confirmaton', function () {
     return view('components.confirmation');
 }); 
+

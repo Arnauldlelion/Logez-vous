@@ -1,6 +1,6 @@
 <div class="banner w-100 d-flex justify-content-center align-items-end">
-   <video  id="videoBG" poster="{{ asset('storage/images/home/img.jpg') }}" autoplay muted loop>
-    <source src="{{ asset('storage/images/video/video.mp4') }}" type="video/mp4" >
+    <video id="videoBG" poster="{{ asset('storage/images/home/img.jpg') }}" autoplay muted loop>
+        <source src="{{ asset('storage/images/video/video.mp4') }}" type="video/mp4">
     </video>
     <div class="content col-lg-7 mx-lg-auto text-center pb-3">
         <h1 class="text-light mb-4">Visitez et louez votre prochain logement depuis chez vous</h1>
@@ -20,7 +20,7 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane show fade active" id="tab1">
                             <div class="container">
-                                <form method="POST" enctype="multipart/form-data" action="">
+                                <form method="GET" enctype="multipart/form-data" action="/appartements">
                                     @csrf
                                     <div class="row mb-3">
                                         <div class="col-lg-12 col-md-6 col-sm-12">
@@ -56,19 +56,20 @@
                                     <div class="row mb-3">
                                         <div class="col-lg-12 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                <input type="text" name="title"
-                                                    placeholder="Indiquez une adresse"
+                                                <input type="text" name="title" placeholder="Indiquez une adresse"
                                                     class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="row"> 
+                                        <div class="row">
                                             <div class="col-6">
-                                              <button class="btn btn-outline-danger rounded-pill w-100">Estimer mon loyer</button>
+                                                <button class="btn btn-outline-danger rounded-pill w-100">Estimer mon
+                                                    loyer</button>
                                             </div>
                                             <div class="col-6">
-                                                <button class="btn btn-danger rounded-pill w-100">Obtenir un devis</button>
+                                                <button class="btn btn-danger rounded-pill w-100">Obtenir un
+                                                    devis</button>
                                             </div>
                                         </div>
                                     </div>
