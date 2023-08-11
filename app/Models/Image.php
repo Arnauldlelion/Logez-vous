@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PropertyImage extends Model
+class Image extends Model
 {
-    protected $fillable = ['url', 'description', 'property_id'];
+    use HasFactory;
+
+    protected $fillable = [
+        'property_id',
+        'url',
+    ];
 
     public function property()
     {

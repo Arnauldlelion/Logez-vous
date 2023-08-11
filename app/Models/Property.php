@@ -7,24 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
-    public function agent()
-    {
-        return $this->belongsTo(Agent::class);
-    }
+    use HasFactory;
 
-    public function type()
-    {
-        return $this->belongsTo(PropertyType::class, 'property_type_id');
-    }
-
-    public function features()
-    {
-        return $this->belongsToMany(PropertyFeature::class, 'property_type_feature', 'property_id', 'property_feature_id');
-    }
+    protected $fillable = [
+        'type',
+        'user_id',
+        'description',
+        'town',
+        'quarter',
+        'monthly_price',
+        'size',
+        'pieces',
+        'furnished',
+        'floor'
+    ];
 
     public function images()
     {
-        return $this->hasMany(PropertyImage::class);
+        return $this->hasMany(Image::class);
     }
 
+    public function landlord()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

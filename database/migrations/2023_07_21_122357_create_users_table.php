@@ -8,7 +8,10 @@ class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * Type "normal" is for a locataire
+     * Type "landlord" is for a proprietaire
+     * subscribed is to recieve notifications
+     * 
      * @return void
      */
     public function up()
@@ -17,10 +20,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone');
             $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('subscribed')->default(0);
-            $table->string('password');
+            $table->string('phone');
             $table->enum('type', [
                 'normal',
                 'agent',
@@ -28,6 +29,8 @@ class CreateUsersTable extends Migration
                 'admin',
                 'team'
             ]);
+            $table->boolean('subscribed')->default(0);
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
