@@ -1275,7 +1275,6 @@ body {
     .house-sidebar button {
         padding: 0.1 rem !important;
     }
-   
 
 
 #videoBG{
@@ -1441,7 +1440,7 @@ section .tab2{
  .dashboard_dropdown .dashboard_dropdown_header{
     cursor: pointer;
     border-left: 5px solid var(--main-color);
-    border-radius: 3px;
+    border-radius: 5px;
  }
 
  .dashboard_dropdown .dashboard_dropdown_content{
@@ -1467,6 +1466,91 @@ section .tab2{
     transition: transform 0.5s ease-in;
  }
 
+
+.landlord-dashboard.dragging .img{
+    cursor: grab;
+    user-select: none;
+}
+
+.landlord-arrowBtns i{
+    font-size: 60px;
+}
+
+.auth-fluid {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: row;
+    align-items: stretch;
+    background: url('/storage/images/black-woman.jpg') ;
+    background-size: cover;
+}
+
+.auth-fluid .auth-fluid-form-box {
+    max-width: 1020px;
+    border-radius: 0;
+    z-index: 2;
+    background-color: #fff;
+    position: relative;
+    width: 100%
+}
+
+.auth-fluid .auth-fluid-right {
+    padding: 6rem 3rem;
+    flex: 1;
+    position: relative;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .3)
+}
+
+.auth-brand {
+    margin-bottom: 2rem
+}
+
+.auth-user-testimonial {
+    position: absolute;
+    margin: 0 auto;
+    padding: 2.7rem;
+    bottom: 0.5rem;
+    left: 0;
+    right: 0
+}
+
+.auth-user-testimonial small {
+   font-size: 12px;
+}
+
+@media (min-width: 992px) {
+    .auth-brand {
+        position: absolute;
+        top: 3rem
+    }
+}
+
+@media (max-width: 991.98px) {
+    .auth-fluid {
+        display: block
+    }
+
+    .auth-fluid .auth-fluid-form-box {
+        max-width: 100%;
+        min-height: 100vh
+    }
+
+    .auth-fluid .auth-fluid-right {
+        display: none
+    }
+}
+
+.auth-logo .logo-light {
+    display: none
+}
+
+.auth-logo .logo-dark {
+    display: block
+}
+=======
  .landlord-info p {
     font-size: 20px;
  }
@@ -1502,6 +1586,7 @@ section .tab2{
     background-color: white;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
  }
+
 
  @keyframes fade {
     from {

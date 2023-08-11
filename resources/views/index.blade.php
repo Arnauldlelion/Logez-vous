@@ -74,15 +74,18 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane show active  " id="tenant">
                                 <div class="row ">
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
-                                        <div class="d-flex d-md-block gap-2 align-items-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted text-muted">
+                                        <div class="d-flex d-md-block gap-2 align-items-center ">
                                             <span class=" p-2" id="rounded-circle">1</span><br><br>
-                                            <h4>Fiche locative</h4>
+
+                                        <h5>Fiche locative</h5>
                                         </div>
+                                       
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
                                                 <small>Complétez une fiche descriptive et déposez une candidature <span
                                                         class="text-danger">en moins de 3 minutes.</span> </small>
+
                                             </div>
                                             <div class="d-block justify-content-center align-items-center">
                                                 <img src="{{ asset('storage/images/logos/board.png') }}" class="img-fluid "
@@ -90,10 +93,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">2</span><br><br>
+
+                                      
+
                                             <h4>Dossier sécurisé</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
@@ -107,10 +114,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">3</span><br><br>
+
+                                      
+
                                             <h4>Signature électronique</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
@@ -124,10 +135,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">4</span><br><br>
+
+                                       
+
                                             <h4>État des lieux physique</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
@@ -147,10 +162,14 @@
                             </div>
                             <div role="tabpanel" class="tab-pane show mt-4" id="landlord">
                                 <div class="row ">
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">1</span><br><br>
+
+                                       
+
                                             <h4>Mise en valeur de votre bien</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
@@ -164,10 +183,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">3</span><br><br>
+
+                                        
+
                                             <h4>Sélection du locataire</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
@@ -181,10 +204,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">3</span><br><br>
+
+                                      
+
                                             <h4>Gestion réactive et moderne</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
@@ -199,10 +226,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center">
+                                    <div class="col-12 col-md-4 col-lg-3 pt-3 text-lg-center text-muted">
                                         <div class="d-flex d-md-block gap-2 align-items-center">
                                             <span class=" p-2" id="rounded-circle">4</span><br><br>
+
                                             <h4>Loyer en moins de 7 jours</h4>
+
                                         </div>
                                         <div class="d-flex d-md-block gap-5">
                                             <div>
@@ -269,7 +298,7 @@
                                             height="300" loading="lazy">
                                     </div>
                                     <div class="col-lg-8">
-                                        <h4 class="text-danger mb-4">Vous faites des études ou un stage dans une nouvelle
+                                        <h5 class="text-danger mb-4">Vous faites des études ou un stage dans une nouvelle
                                             ville ?</h4>
                                         <p>Logez-vous est la solution idéale pour vous permettre de <span
                                                 class="text-danger">trouver votre futur logement à distance
@@ -564,6 +593,9 @@
                     @endforeach
                 </div>
             </div>
+
+
         </div>
     </section>
 @endsection
+
