@@ -91,6 +91,7 @@
 
             </div> <!-- end .card-body -->
         </div> <!-- end .align-items-center.d-flex.h-100-->
+        
     </div>
     <!-- end auth-fluid-form-box-->
 
