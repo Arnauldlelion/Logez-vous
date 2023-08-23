@@ -5,7 +5,7 @@
     --secondary: #28a745;
     --grey: #6c757d;
     --orangered: rgb(218, 74, 22);
-    --white: :#fff;
+    --white: #fff;
     --black: #000000;
     --light-bleu: #F0FAF8;
 
@@ -603,75 +603,13 @@
 
 /* Arnauld */
 
-.search-block {
-    position: absolute;
-    margin-bottom: 20px;
-    width: 35%;
-    justify-content: center;
-
-}
-
-.search-block input[type="text"] {
-    height: 40px;
-    width: 50%;
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-    margin-right: 10px;
+.filter-btn {
+    border: 5px dotted #ccc;
+    color: red;
 }
 
 
 
-
-.button-container {
-    position: absolute;
-    padding-left: 18%;
-    margin-bottom: 20px;
-    width: 50%;
-    display: flex;
-    height: 40px;
-}
-
-.button-container button {
-    margin-right: 10px;
-    width: 50%;
-    padding: 10px 20px;
-    border-radius: 40px;
-    border: 1px Dashed #ccc;
-    outline: none;
-    margin-right: 10px;
-    background-color: white;
-}
-
-.button2-container {
-    position: absolute;
-    padding-left: 50%;
-    margin-bottom: 20px;
-    width: 80%;
-    display: flex;
-    height: 40px;
-}
-
-.button2-container button {
-    margin-right: 10px;
-    width: 50%;
-    padding: 10px 20px;
-    border-radius: 40px;
-    border: 1px Dashed #ccc;
-    outline: none;
-    margin-right: 10px;
-    background-color: white;
-}
-
-.button3-container {
-    position: relative;
-    padding-left: 80%;
-    margin-bottom: 10px;
-    width: 105%;
-    display: flex;
-    height: 40px;
-}
 
 .button3-container button {
     margin-right: 10px;
@@ -679,20 +617,11 @@
     padding: 10px 20px;
     border-radius: 40px;
     border: 1px solid var(--main-color);
-
     outline: none;
     margin-right: 10px;
     background-color: white;
 }
 
-.checkbox-container {
-    position: relative;
-    padding-left: 81%;
-    width: 110%;
-    display: flex;
-    height: 30px;
-    background: none;
-}
 
 input[type="checkbox"] {
     -webkit-appearance: none;
@@ -730,6 +659,7 @@ input[type="checkbox"]:checked::before {
     align-items: center;
     height: 500px;
     position: relative;
+    transition: 0.5s;
 }
 
 .block-left {
@@ -745,14 +675,8 @@ input[type="checkbox"]:checked::before {
 
 
 .block-left .card .card-body {
-
     border-radius: 50px;
-
-
 }
-
-
-
 
 .block-right {
     width: 40%;
@@ -839,6 +763,7 @@ hr {
 
     .container2 .block-left .ms-2 h5 {
         padding-left: 10px;
+        
 
     }
 
@@ -1702,14 +1627,122 @@ section .tab2 {
 
     }
 
-
-
     .sidebar .settings a {
         display: none;
-
     }
 
 
 
 
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background: var(--white);
+    width: 400px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999; /* Set a high z-index value */
+    transition: 0.3s;
+  }
+
+.popup .btn-close{
+    cursor: pointer;
+    padding: 10px;
+    width: 20px;
+    color: var(--grey);
+    border: 3px solid var(--main-color);
+    border-radius: 20px;
+} 
+
+.popup .slider{
+    height: 11px;
+    border-radius: 5px;
+    background: #ddd;
+    position: relative;
+}
+.popup .slider .progress{
+    height: 11px;
+    left: 0%;
+    right: 0%;
+    position: absolute;
+    border-radius: 5px;
+    background: var(--orangered);
+}
+
+.popup .range-input{
+    position: relative;
+}
+.popup .range-input input{
+    position: absolute;
+    top: -11px;
+    height: 11px;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+}
+.popup input[type="range"]::-webkit-slider-thumb{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background: #17A2B8;
+}
+.popup input[type="range"]::-moz-range-thumb{
+    height: 17px;
+    width: 17px;
+    border: none;
+    border-radius: 50%;
+    pointer-events: auto;
+    -moz-appearance: none;
+    background: #17A2B8;
+}   
+body.popup-open {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+  }
+.popup-5 .offcanvas-content{
+    transform: translateX(100%);
+    transition: all .4s ease;
+}
+.popup-5 .offcanvas-content.active{
+    transform: translateX(0);
+}
+
+.box .slider input{
+    -webkit-appearance: none;
+    height: 3px;
+    width: 100%;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+.box .slider input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: var(--main-color);
+}
+
+/*progressbar */
+.progressbar{
+    position: relative;
+}
+.progress-step{
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: var(--grey);
+    border-radius: 50%;
+}
+
+.economise-circle{
+    width: 10.1875rem;
+    height: 10.1875rem;
+    background-color: var(--main-color);
+    border-radius: 50%;
 }
