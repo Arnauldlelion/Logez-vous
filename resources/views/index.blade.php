@@ -14,7 +14,7 @@
             <h1 class="text-center mb-4 pb-2">Nos logements à la une</h1>
             <div class="container">
                 <div class="row gy-3 my-3">
-                    @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
+                    @foreach ($properties as $item)
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             @include('components.card', [
                                 'index' => $item,
@@ -308,7 +308,7 @@
                                         <div class="wrapper ">
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
-                                                @foreach ([1, 2, 3, 4] as $item)
+                                                @foreach ($properties as $item)
                                                     @include('components.card', [
                                                         'index' => $item,
                                                         'showBanner' => false,
@@ -339,7 +339,7 @@
                                         <div class="wrapper">
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
-                                                @foreach ([1, 2, 3, 4] as $item)
+                                                @foreach ($few_props as $item)
                                                     @include('components.card', [
                                                         'index' => $item,
                                                         'showBanner' => false,
@@ -370,7 +370,7 @@
                                         <div class="wrapper">
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
-                                                @foreach ([1, 2, 3, 4] as $item)
+                                                @foreach ($few_props as $item)
                                                     @include('components.card', [
                                                         'index' => $item,
                                                         'showBanner' => false,
@@ -405,7 +405,7 @@
                                         <div class="wrapper">
                                             <i class="fa fa-chevron-left" id="left"></i>
                                             <div class="carousel">
-                                                @foreach ([1, 2, 3, 4] as $item)
+                                                @foreach ($few_props as $item)
                                                     @include('components.card', [
                                                         'index' => $item,
                                                         'showBanner' => false,
@@ -497,31 +497,23 @@
                                     {{-- Carousel item --}}
                                     <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
                                         <div class="row">
-                                            @foreach ([1, 2, 3] as $item)
+                                            @foreach ($news as $item)
                                                 {{-- Testimonial item --}}
                                                 <div class="col-lg-4 mb-3">
                                                     <div
-                                                        class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
+                                                        class="card shadow h-100 {{ count($news) > 1 ? 'd-none d-lg-block' : '' }}">
                                                         <div class="card-body bg-white px-4 pt-5 pb-3">
                                                             <div class="text-center mb-4">
-                                                                <img src="/storage/images/testimonial-{{ $item }}.png"
+                                                                <img src="{{ asset('storage/' . $item->logo )}}"
                                                                     class="img-fluid" alt="Le Monde">
                                                             </div>
-                                                            <div class="company">le monde</div>
+                                                            <div class="company">{{$item->name}}</div>
                                                             <div class="title">
-                                                                &laquo; A Yaoundé, c'est dans le 9ème qu'il est le plus
-                                                                difficile de
-                                                                louer
-                                                                un
-                                                                logement &raquo;
+                                                                &laquo; {{$item->title}} &raquo;
                                                             </div>
-                                                            <p>Hoozon Sarl reçoit, pour ce quartier, en moyenne 5 cas par
-                                                                jour et
-                                                                par
-                                                                logement
-                                                                et 3,8 appels.
+                                                            <p>{{$item->description}}
                                                             </p>
-                                                            <div class="date">Posted on January 27, 2020</div>
+                                                            <div class="date">Posted on {{$item->created_at->DiffForHumans()}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -557,12 +549,12 @@
                         {{-- Carousel item --}}
                         <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
                             <div class="row">
-                                @foreach ([1, 2, 3] as $item)
+                                @foreach ($testimonials as $item)
                                     {{-- Video Item --}}
                                     <div class="col-lg-4 mb-3">
-                                        <div class="card shadow h-100 {{ $item > 1 ? 'd-none d-lg-block' : '' }}">
+                                        <div class="card shadow h-100 {{ count($testimonials) > 1 ? 'd-none d-lg-block' : '' }}">
                                             <div class="video-img">
-                                                <img src="/storage/images/video.jpg" alt="Video" class="card-img-top">
+                                                <img src="{{ asset('storage/' . $item->photo )}}" alt="Video" class="card-img-top">
                                                 <button class="play" data-bs-toggle="modal"
                                                     data-bs-target="#video-modal">
                                                     <i class="fas fa-play"></i>
@@ -574,10 +566,7 @@
                                                         class="img-fluid">
                                                 </div>
                                                 <i class="fas fa-quote-left"></i>
-                                                <p>Hoozon Sarl s'occupe de tout en 24h, nous avions déjà eu une
-                                                    dizaine de candidatures et
-                                                    le
-                                                    studio a été loué en moins d'une semaine
+                                                <p>{{$item->description}}
                                                 </p>
                                                 <div class="quote-right">
                                                     <i class="fas fa-quote-right"></i>

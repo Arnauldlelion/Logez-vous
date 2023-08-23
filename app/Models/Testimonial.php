@@ -14,4 +14,6 @@ class Testimonial extends Model
         'video',
         'description',
     ];
+
+    protected $table = 'testimonials';
 }

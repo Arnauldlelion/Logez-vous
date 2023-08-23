@@ -24,11 +24,16 @@ class Property extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class, 'property_id');
     }
 
     public function landlord()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function featured()
+    {
+        return ($this->images)[0]->path;
     }
 }

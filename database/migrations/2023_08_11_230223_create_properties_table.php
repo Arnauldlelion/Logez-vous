@@ -39,10 +39,7 @@ class CreatePropertiesTable extends Migration
                 'ninth',
                 'tenth',
             ]);
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
