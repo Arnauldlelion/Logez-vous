@@ -1704,26 +1704,8 @@ body.popup-open {
     transform: translateX(0);
 }
 
-.box .slider input{
-    -webkit-appearance: none;
-    height: 3px;
-    width: 100%;
-    background-color: var(--main-color);
-    border-radius: 5px;
-    outline: none;
-    border: none;
-}
-.box .slider input::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    height: 20px;
-    width: 20px;
-    background: var(--main-color);
-}
 
-/*progressbar */
-.progressbar{
-    position: relative;
-}
+
 .progress-step{
     width: 2.1875rem;
     height: 2.1875rem;

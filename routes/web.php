@@ -153,19 +153,6 @@ Route::get('/properties/recent', [PropertiesController::class, 'recent'])->name(
 //     return view('components.confirmation');
 // });
 
-Route::get('/help', function () {
-    return view('help');
-});
-
-Route::get('/prop', function () {
-    return view('landlord.create_property');
-});
-
-Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
-
-Route::get('/help', function () {
-    return view('help');
-});
 
 Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
 
