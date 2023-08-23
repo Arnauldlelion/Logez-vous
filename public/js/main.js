@@ -113,3 +113,13 @@ const infiniteScroll = () => {
         carousel.classList.add("no-transition");
     }
 };
+
+
+// function togglePopup(popupId){
+//     const popup = document.getElementById(popupId);
+//     popup.classList.toggle('active');
+//     document.body.classList.toggle("popup-open"); // Add this line
+// }
+
+
+
