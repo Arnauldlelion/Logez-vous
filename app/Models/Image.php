@@ -16,6 +16,7 @@ class Image extends Model
 
     public function property()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class); //one or more images belongs to one property
     }
 }
+ 

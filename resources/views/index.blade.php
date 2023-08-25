@@ -10,6 +10,7 @@
         <i class="fa fa-chevron-down d-flex justify-content-center mt-3" style="font-size: 70px; color:gray"></i>
     </a>
     <section>
+        
         <div class="container pb-5 featured col-10 mx-auto " id="featured">
             <h1 class="text-center mb-4 pb-2">Nos logements à la une</h1>
             <div class="container">
@@ -18,7 +19,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             @include('components.card', [
                                 'index' => $item,
-                                'showBanner' => false,
+                                'showBanner' => true,
                                 'isSlider' => false,
                                 'showBorder' => true,
                             ])
@@ -26,6 +27,7 @@
                     @endforeach
                 </div>
 
+               
                 <div class="carousel-indicators d-lg-none">
                     <button type="button" data-bs-target="#videos" data-bs-slide-to="0" class="active"
                         aria-current="true"></button>
@@ -408,7 +410,7 @@
                                                 @foreach ([1, 2, 3, 4] as $item)
                                                     @include('components.card', [
                                                         'index' => $item,
-                                                        'showBanner' => false,
+                                                        'showBanner' => true,
                                                         'isSlider' => false,
                                                         'showBorder' => false,
                                                     ])

@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\AppartementsController;
+use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\AideController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
@@ -68,8 +68,14 @@ Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlo
 
 // My routes 
 
-Route::get('/appartements', [AppartementsController::class, 'appartements'])->name('appartements');
+Route::get('/properties', [PropertiesController::class, 'properties'])->name('properties');
 
+// Route to display the create property form
+Route::get('/properties/create', [PropertiesController::class, 'create'])->name('create-property');
+
+// Route to handle property creation
+Route::post('/properties', [PropertiesController::class, 'store'])->name('properties.store');
+Route::get('/properties/recent', [PropertiesController::class, 'recent'])->name('properties.recent');
 
 Route::get('/aide', [AideController::class, 'aide'])->name('aide');
 
