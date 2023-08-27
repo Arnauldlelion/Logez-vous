@@ -13,10 +13,10 @@ class Property extends Model
     protected $fillable = [
         'user_id',
         'slug',
+        'location',
         'accomodation',
         'type',
         'description',
-        'location',
         'number_of_rooms',
         'need_tenant',
         'monthly_rent_price',

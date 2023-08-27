@@ -131,3 +131,7 @@ Route::get('/help', function () {
 
 Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
 
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

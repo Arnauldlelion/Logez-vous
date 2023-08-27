@@ -15,6 +15,7 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->unsignedBigInteger('user_id');
             $table->string('slug');
             $table->enum('accomodation', [
@@ -30,6 +31,18 @@ class CreatePropertiesTable extends Migration
             $table->string('approx_surface_area')->nullable();
             $table->enum('furnished', ['yes', 'no'])->default('no');
             $table->dateTime('availability_date');
+=======
+            $table->enum('appartmentType', [
+                'room',
+                'studio',
+                'appartment',
+                'pent house',
+                'villa',
+            ]);
+            $table->string('name');
+            $table->string('location');
+            $table->integer('slug');
+>>>>>>> 6eaa4bc (CRUD for landlord dashboard)
             $table->timestamps();
         });
     }
