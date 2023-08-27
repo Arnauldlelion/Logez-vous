@@ -10,16 +10,18 @@ class Property extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type',
         'user_id',
+        'slug',
+        'accomodation',
+        'type',
         'description',
-        'town',
-        'quarter',
-        'monthly_price',
-        'size',
-        'pieces',
+        'location',
+        'number_of_rooms',
+        'need_tenant',
+        'monthly_rent_price',
+        'approx_surface_area',
         'furnished',
-        'floor'
+        'availability_date'
     ];
 
     public function images()

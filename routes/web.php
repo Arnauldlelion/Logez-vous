@@ -7,7 +7,9 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PanelController;
+use App\Http\Controllers\Landlord\LandlordController;
 use App\Http\Controllers\locatairesPanelController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,8 +36,6 @@ Route::controller(EmailController::class)
             ->middleware(['throttle:6,1'])->name('verification.resend');
     });
 
-Auth::routes();
-
 Route::controller(MainController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/appartements/{name}', 'singleAppartment')->name('single-appartment');
@@ -46,6 +46,27 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/user/premiere-connexion', 'landlordInfo')->name('landlord-info');
 });
 
+// My routes 
+Auth::routes(['verify'=>true]);
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
+    Route::group(['middleware' => ['auth:landlord']], function () {
+        Route::get('/', [LandlordController::class, 'index'])->name('index');
+        Route::get('/tenants', [LandlordController::class, 'tenants'])->name('tenants');
+        Route::get('/profile', [LandlordController::class, 'profile'])->name('profile');
+        Route::put('/profile', [LandlordController::class, 'updateProfile'])->name('profile');
+        Route::get('/create', [LandlordController::class, 'create'])->name('create');
+        Route::post('/store', [LandlordController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [LandlordController::class, 'edit'])->name('edit');
+        Route::put('/{id}/update', [LandlordController::class, 'update'])->name('update');
+        Route::delete('/{id}/destroy', [LandlordController::class, 'destroy'])->name('destroy');
+        Route::put('/change_password', [LandlordController::class, 'postChangePassword'])->name('change_password');
+    });
+});
+
+// My routes 
 
 Route::get('/appartements', [AppartementsController::class, 'appartements'])->name('appartements');
 
@@ -86,5 +107,9 @@ Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel');
 
 Route::get('/confirmaton', function () {
     return view('components.confirmation');
-}); 
+});
 
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

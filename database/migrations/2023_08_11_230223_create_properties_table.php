@@ -15,34 +15,21 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', [
-                'room',
-                'studio',
-                'appartment'
-            ]);
-            $table->text('description');
-            $table->string('town');
-            $table->string('quarter');
-            $table->float('monthly_price');
-            $table->float('size');
-            $table->integer('pieces');
-            $table->boolean('furnished')->default(0);
-            $table->enum('floor', [
-                'first',
-                'second',
-                'third',
-                'fourth',
-                'fifth',
-                'sixth',
-                'seventh',
-                'eighth',
-                'ninth',
-                'tenth',
-            ]);
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->string('slug');
+            $table->enum('accomodation', [
+                'single',
+                'many'
+            ])->default('single');
+            $table->string('type');
+            $table->longText('description')->nullable();
+            $table->string('location');
+            $table->string('number_of_rooms');
+            $table->enum('need_tenant', ['yes', 'no'])->default(('no'));
+            $table->string('monthly_rent_price');
+            $table->string('approx_surface_area')->nullable();
+            $table->enum('furnished', ['yes', 'no'])->default('no');
+            $table->dateTime('availability_date');
             $table->timestamps();
         });
     }

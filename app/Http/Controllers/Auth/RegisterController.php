@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+// use Auth;
+// use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cookie;
 
 class RegisterController extends Controller
 {
@@ -29,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::EMAILVERIFY;
 
     /**
      * Create a new controller instance.
@@ -39,6 +42,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:landlord');
+
     }
 
     /**
@@ -50,12 +55,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|string|size:9',
-            'password' => 'required|string|min:5|confirmed',
-            'type' => 'nullable',
-            'subscribed' => 'nullable',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['nullable', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'type' => ['required', 'in:landlord,admin'], // Validate user type
         ]);
     }
 
@@ -67,13 +71,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            'type' => array_key_exists('type', $data) ? 'landlord' : 'normal',
-            'subscribed' => array_key_exists('subscribed', $data) ? 1 : 0,
         ]);
+
+        // Dispatch the Registered event
+        Cookie::forget('laravel_session');
+        Cookie::forget('XSRF-TOKEN');
+
+        return $user;
     }
 }

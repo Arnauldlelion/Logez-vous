@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Support\Arr;
 
 class Handler extends ExceptionHandler
 {
@@ -37,5 +40,32 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function handleException($request, Exception $exception)
+    {
+        if($exception instanceof AuthenticationException && $request->expectsJson()) {
+            $guard = Arr::get($exception->guards(), 0);
+            if($guard == 'api') {
+                return response()->json(['success' => 401, 'message' => 'Authenticated Session has expired'], 401);
+            }
+        }
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Unauthenticated.'], 401);
+        }
+
+        if ($request->is('landlord') || $request->is('landlord/*')) {
+            return redirect()->guest('/login');
+        }
+
+        if ($request->is('admin') || $request->is('admin/*')) {
+            return redirect()->guest('/admin/login');
+        }
+        
+        return redirect()->guest(route('login'));
     }
 }

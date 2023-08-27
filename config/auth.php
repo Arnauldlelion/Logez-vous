@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'landlord' => [
+            'driver' => 'session',
+            'provider' => 'landlords',
+        ]
     ],
 
     /*
@@ -64,6 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'landlords' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -71,6 +79,7 @@ return [
         // ],
     ],
 
+    'verification' => true,
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -89,6 +98,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'landlords' => [
+            'provider' => 'landlords',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
