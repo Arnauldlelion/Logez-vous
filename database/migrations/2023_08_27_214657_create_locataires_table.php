@@ -15,16 +15,12 @@ class CreateLocatairesTable extends Migration
     {
         Schema::create('locataires', function (Blueprint $table) {
             $table->id();
-            $table->string('full name');
-            $table->integer('dateEntree');
-            $table->integer('dateEntree');
-            $table->integer('phone number');
+            $table->string('full_name');
+            $table->dateTime('date_entree');
+            $table->string('phone_number');
             $table->string('email');
-            $table->string('images')->nullable(); // Add id card image column (nullable)
-            $table->foreign('appartment_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->string('image')->nullable(); // Add id card image column (nullable)
+            $table->unsignedBigInteger('appartment_id');
             $table->timestamps();
         });
     }

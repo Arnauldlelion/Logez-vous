@@ -27,18 +27,12 @@ class CreateAppartmentsTable extends Migration
                 'ninth',
                 'tenth',
             ]);
-            $table->boolean('furnished')->default(0);
-            $table->text('description');
+            $table->enum('furnished', ['yes', 'no'])->default('yes');
+            $table->longText('description');
             $table->float('monthly_price');
-            $table->integer('numberOfAppartments');
-            $table->foreign('property_id')
-            ->constrained()
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-            $table->foreign('apt_type_id')
-            ->constrained()
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+            $table->integer('number_of_appartments');
+            $table->unsignedBigInteger('property_id');
+            $table->unsignedBigInteger('apt_type_id');
             $table->timestamps();
         });
     }

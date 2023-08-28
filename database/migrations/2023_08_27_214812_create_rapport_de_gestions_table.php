@@ -15,13 +15,10 @@ class CreateRapportDeGestionsTable extends Migration
     {
         Schema::create('rapport_de_gestions', function (Blueprint $table) {
             $table->id();
-            $table->integer('annee construction');
+            $table->dateTime('annee_construction');
             $table->integer('nombreDeLocataire');
             $table->float('dureeDuLocataire');
-            $table->foreign('appartment_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->unsignedBigInteger('appartment_id');
             $table->timestamps();
         });
     }

@@ -17,10 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->decimal('commission', 5, 2); // 5 total digits, 2 decimal places
             $table->decimal('prices', 10, 2); // 10 total digits, 2 decimal places
-            $table->foreign('appartment_id')
-            ->constrained()
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+            $table->unsignedBigInteger('appartment_id');
             $table->timestamps();
         });
     }

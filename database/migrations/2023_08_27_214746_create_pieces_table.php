@@ -15,12 +15,9 @@ class CreatePiecesTable extends Migration
     {
         Schema::create('pieces', function (Blueprint $table) {
             $table->id();
-            $table->integer('nombreOfPrices');
-            $table->float('size');
-            $table->foreign('appartment_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->integer('nombre_of_pieces');
+            $table->string('size');
+            $table->unsignedBigInteger('appartment_id');
             $table->timestamps();
         });
     }

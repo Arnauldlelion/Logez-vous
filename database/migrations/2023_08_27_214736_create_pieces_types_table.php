@@ -15,11 +15,8 @@ class CreatePiecesTypesTable extends Migration
     {
         Schema::create('pieces_types', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->foreignId('pieces_id')
-            ->constrained()
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+            $table->longText('description');
+            $table->unsignedBigInteger('pieces_id');
             $table->timestamps();
         });
     }

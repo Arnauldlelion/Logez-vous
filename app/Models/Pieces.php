@@ -11,7 +11,7 @@ class Pieces extends Model
 
     protected $fillable = [
         'pieces_id',
-        'numberOfpieces',
+        'number_of_pieces',
         'size',
         'appartment_id',
     ];
