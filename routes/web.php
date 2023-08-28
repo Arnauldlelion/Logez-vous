@@ -119,3 +119,9 @@ Route::get('/prop', function () {
 
 Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
 
+Route::get('/help', function () {
+    return view('help');
+});
+
+Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
+
