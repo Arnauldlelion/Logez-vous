@@ -113,5 +113,9 @@ Route::get('/help', function () {
     return view('help');
 });
 
+Route::get('/prop', function () {
+    return view('landlord.create_property');
+});
+
 Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
 
