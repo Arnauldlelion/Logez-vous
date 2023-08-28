@@ -1,0 +1,301 @@
+a:hover {
+    text-decoration: none;
+}
+
+.blog .section-1 {
+    background: url('/assets/images/blog/about-us-image-headerbg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid var(--light);
+    padding: 10px 0 10px 0;
+}
+
+.blog .section-2 .container>.row {
+    padding: 70px;
+    padding-top: 50px;
+}
+
+.blog .section-2 .bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 16rem;
+    border-radius: 10px;
+    border: 1px solid var(--black-light);
+}
+
+.blog .section-2 .badge-content {
+    position: relative;
+    left: 7%;
+    bottom: 12%;
+}
+
+.blog .section-2 .date-badge {
+    max-width: 80px;
+    max-height: 80px;
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.blog .section-2 a:hover {
+    text-decoration: none;
+}
+
+.blog .section-2  .title {
+    position: absolute;
+    top: 90px;
+}
+
+.blog .section-2  .title h5:hover {
+    color: var(--primary-light) !important;
+}
+
+.blog .section-2 .date-badge h5 {
+    color: var(--white);
+    padding: 15px;
+}
+
+
+
+/* blog-detail  */
+.blog-detail .section-1 .bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 28.5rem;
+    border-radius: 15px 0 0 15px;
+    border: 1px solid var(--black-light);
+}
+
+.blog-detail .section-1 .header-right .category {
+    position: absolute;
+    top: 5%;
+}
+
+.blog-detail .section-1 .header-right {
+    border-radius: 0 15px 15px 0;
+    box-shadow: 1px 1px 5px var(--black-light);
+    position: relative;
+}
+
+.blog-detail .section-1 .no-image {
+    border-radius: 15px;
+}
+
+.blog-detail .section-1 .header-right .dot {
+    font-size: 7px;
+    color:var(--primary-light);
+    padding-top: 6px;
+}
+
+.blog-detail .section-1 .header-right .share {
+    position: absolute;
+    bottom: 5%;
+}
+
+.blog-detail .section-1 .header-right .share .shareon>* {
+    background-color: var(--primary);
+    border-radius: 50%;
+    font-size: 15px;
+    height: 18px;
+    min-width: 10px;
+}
+
+.blog-detail .section-1 .header-right .share .shareon>:before {
+    background-size: 12px 12px;
+    left: 9px;
+    top: 9px;
+    padding: 7px;
+}
+
+.blog-detail .section-1 .header-right .share .shareon>a:hover {
+    background-color: var(--primary-light);
+}
+
+.blog-detail .section-2 .quote .p-5 {
+    padding: 15px !important;
+}
+
+
+.blog-detail .section-2 .quote {
+    box-shadow: 1px 1px 3px var(--black-light);
+    background: var(--white);
+    border-radius: 10px;
+    min-height: 200px;
+    min-width: 50%;
+    max-width: 70%;
+    position: relative;
+}
+
+.blog-detail .section-2 .quote p {
+    padding: 35px;
+}
+
+.blog-detail .section-2 .message-icon {
+    font-size: 13px;
+    color: var(--primary);
+    background: var(--neutral-light);
+    padding: 25px;
+    border: 1px solid var(--primary-light);
+    position: absolute;
+    top: -12%;
+    left: 9%;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.blog-detail .section-3 .container {
+    position: relative;
+}
+
+.blog-detail .section-3 .container {
+    background-color: var(--primary-light);
+    padding: 0 100px 0 100px;
+}
+
+.blog-detail .section-3 .left-img {
+    transform: rotateY(180deg);
+}
+
+.blog-detail .section-3 .arrow {
+    width: 70px;
+    padding: 15px;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+}
+
+.blog-detail .section-3 .blog-preview-image {
+    height: 90px;
+    width: 120px;   
+}
+
+.blog-detail .section-3 .preview-md-sm {
+    display: none !important;
+}
+
+.blog-detail .section-3 a h5:hover {
+    opacity: 0.7;
+}
+
+.blog-detail .section-4 {
+    background-color: var(--neutral-light);
+}
+
+.blog-detail .section-4 .container {
+    padding: 80px 50px;
+}
+
+.blog-detail .section-4 textarea,
+.blog-detail .section-4 input {
+    border: 2px solid;
+    border-color: var(--neutral-medium);
+}
+
+.blog-detail .section-4 textarea::placeholder,
+.blog-detail .section-4 input::placeholder {
+    color: var(--black);
+    font-family: Inter-Medium;
+}
+
+@media screen and (max-width: 991px) {
+    .blog-detail .section-1 .bg-image {
+        height: 20rem;
+    }
+    .blog-detail .section-1 h2 {
+        font-size: 25px;
+    }
+
+    .blog .section-2 .bg-image {
+        height: 13rem;
+    }
+    .blog .section-2 .container>.row {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .blog-detail .section-2 .message-icon {
+        top: -11%;
+    }
+
+    .blog-detail .section-3 .preview-md-sm {
+        display: flex !important; 
+    }
+
+    .blog-detail .section-3 .preview-md-sm .blog-preview-image {
+        height: 180px;
+        width: 240px;   
+    }
+    .blog-detail .section-3 .preview-right,
+    .blog-detail .section-3 .preview-left {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .blog-detail .section-1 .bg-image {
+        border-radius: 15px 15px 0 0;
+    }
+    .blog-detail .section-1 .header-right {
+        border-radius: 0 0 15px 15px;
+    }
+
+    .blog .section-2 .bg-image {
+        height: 16rem;
+    }
+    .blog-detail .section-2 .message-icon {
+        top: -10%;
+    }
+    .blog-detail .section-2 .quote p {
+        padding: 25px;
+    }
+
+    .blog-detail .section-3 .container {
+        padding: 0 60px 0 60px;
+    }
+    .blog-detail .section-3 .preview-md-sm .blog-preview-image {
+        height: 170px;
+        width: 100%;   
+    }
+    .blog-detail .section-3 .arrow {
+        width: 40px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .blog-detail .section-1 .bg-image {
+        height: 16rem;
+    }
+
+    .blog-detail .section-2 .quote {
+        min-width: 70%;
+        max-width: 90%;
+    }
+    .blog-detail .section-2 .message-icon {
+        top: -9%;
+    }
+
+    .blog-detail .section-3 .container {
+        padding: 0 20px 0 20px;
+    }
+    .blog-detail .section-3 .preview-md-sm .blog-preview-image {
+        height: 160px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .blog .section-2 .bg-image {
+        height: 13rem;
+    }
+    .blog-detail .section-2 .quote p {
+        padding: 10px;
+    }
+    
+    .blog-detail .section-3 .preview-md-sm .blog-preview-image {
+        height: 130px;
+    }
+    .blog-detail .section-4 .container {
+        padding: 80px 20px;
+    }
+}

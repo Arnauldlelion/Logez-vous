@@ -1,0 +1,218 @@
+.tiny__display ul,
+.tiny__display ol{
+    list-style: none;
+    /* position: relative; */
+}
+
+.tiny__display ul li,
+.tiny__display ol li {
+    position: relative;
+    /* padding: 10px; */
+    padding-left: 2.5rem;
+}
+
+.tiny__display ul li::before,
+.tiny__display ol li::before {
+    content: "";
+    position: absolute;
+    background: url('/assets/icons/icon-check-square.svg');
+    height: 25px;
+    width: 25px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    margin-top: 5px;
+    left: 0;
+}
+
+.section-1 {
+    background: url('/assets/images/blog/about-us-image-headerbg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid var(--light);
+    padding: 10px 0 10px 0;
+}
+
+.section-2 .container {
+    padding: 100px 30px 50px 100px;
+    position: relative;
+}
+
+.section-2 .left {
+    position: relative;
+}
+
+.section-2 .right {
+    position: relative;
+}
+
+.section-2 .right .bg-right {
+    background-color: var(--neutral-light);
+    height: 30rem;
+    width: 350px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.section-2 .right img {
+    height: 30rem;
+    width: 350px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 21%;
+    right: 20%;
+    z-index: 1;
+}
+
+.section-3 .left {
+    background-color: var(--neutral-light);
+    border-radius: 10px;
+    padding: 80px 130px 80px 30px;
+    position: relative;
+    border: 0.1px solid var(--neutral-light);
+    z-index: 1;
+}
+
+.section-3 .right {
+    background-color: var(--neutral-medium);
+    border-radius: 10px;
+    padding: 80px 130px 80px 30px;
+    position: relative;
+    border: 0.1px solid var(--neutral-light);
+    z-index: 1;
+}
+
+.section-3 .right .icon, 
+.section-3 .left .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.section-3 .right small,
+.section-3 .left small,
+.section-4 .intro small {
+    font-size: 10px;
+}
+
+.section-3 {
+    margin-bottom: 50px;
+}
+
+.section-4 {
+    box-shadow: 0px -2px 20px var(--black-light);
+    padding-bottom: 50px;
+}
+
+.section-4 .team .bg-color-side {
+    background-color: var(--neutral-light);
+    height: 19rem;
+    width: 240px;
+    border-radius: 10px;
+    position: relative;
+    transform: rotate(-20deg);
+}
+
+.section-4 .team .bg-color-center {
+    background-color: var(--neutral-medium);
+    height: 19rem;
+    width: 240px;
+    border-radius: 10px;
+    position: relative;
+    transform: rotate(20deg);
+}
+
+.section-4 .team img {
+    height: 19rem;
+    width: 240px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+}
+
+.section-4 .team {
+    position: relative;
+}
+
+
+
+.section-5 .left {
+    background: url('/assets/images/about/about-us-image-getintouch.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 100%;
+}.section-5 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.section-5 .right {
+    background-color: var(--neutral-light);
+    width: 100%;
+    height: 400px;
+    padding: 0px 30px;
+}
+
+@media screen and (max-width: 1199px) {
+    .section-2 .container {
+        padding: 100px 30px 20px 20px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .section-2 .container {
+        padding: 70px 30px 20px 20px;
+    }
+    .section-2 .right {
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+    .section-2 .right img {
+        bottom: 10%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .section-2 .container {
+        padding: 50px 30px 20px 20px;
+    }
+    .section-2 .right img {
+        right: 15%;
+    }
+
+    .section-5 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .section-2 .container {
+        padding: 50px 20px 20px 20px;
+    }
+    .section-2 .right .bg-right {
+        height: 19rem;
+        width: 210px;
+    }
+    .section-2 .right img {
+        height: 21rem;
+        width: 250px;
+    }
+    
+    .section-3 .left,
+    .section-3 .right {
+        padding: 80px 20px 80px 20px;
+    }
+    .section-3 .btn {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .section-2 .right img {
+        right: 10%;
+    }
+}

@@ -1,0 +1,85 @@
+.contact {
+    background-color: var(--neutral-light);
+}
+.section-1 {
+    background: url('/assets/images/blog/about-us-image-headerbg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid var(--light);
+    padding: 10px 0 10px 0;
+}
+
+.section-2 {
+    padding: 70px 0px;
+}
+
+.section-2 .card-box {
+    background-color: var(--white);
+    height: 17rem;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px var(--black-light);
+}
+
+.section-3 {
+    display: grid;
+    grid-template-columns: 46% 54%;
+}
+
+.section-3 .left {
+    background-color: var(--primary-bold);
+    color: var(--light);
+    padding: 80px 120px;
+}
+
+.section-3 input,
+.section-3 textarea {
+    background-color: rgb(29, 39, 70);
+    border: 0;
+}
+
+.section-3 input:hover,
+.section-3 textarea:hover,
+.section-3 input:focus,
+.section-3 textarea:focus {
+    background-color: rgb(29, 39, 70);
+    color: var(--black-xlight);
+    border: 2px solid var(--primary-light);
+}
+
+.section-3 .right {
+    background: url('/assets/images/contact/contact-us-image-map.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    /* width: 500px; */
+}
+
+@media screen and (max-width: 1199px) {
+    .section-3 .left {
+        padding: 80px 50px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .section-3 .left {
+        padding: 80px 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .section-3 {
+        grid-template-columns: 1fr;
+    }
+    .section-3 .left {
+        padding: 50px 50px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .section-3 .left {
+        padding: 50px 10px;
+    }
+}

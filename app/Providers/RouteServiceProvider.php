@@ -19,6 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
     public const LANDLORD = '/landlord';
+    public const ADMIN_DASHBOARD = "/admins";
     public const EMAILVERIFY = '/email/verify';
 
     /**

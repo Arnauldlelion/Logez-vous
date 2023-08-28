@@ -43,6 +43,10 @@ return [
         'landlord' => [
             'driver' => 'session',
             'provider' => 'landlords',
+        ],
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'adminss'
         ]
     ],
 
@@ -71,7 +75,11 @@ return [
         'landlords' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ]
+        ],
+        'adminss' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -101,13 +109,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
-        ],
-        'landlords' => [
-            'provider' => 'landlords',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+        ]
     ],
 
     /*

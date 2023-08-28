@@ -1,0 +1,128 @@
+.products small {
+    font-size: 11px;
+}
+
+.products .section-1 {
+    background: url('/assets/images/products/products-hero-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 22rem;
+    position: relative;
+}
+
+.products .section-1::before {
+    content: "";
+    background-color: rgba(31, 60, 119, 0.5);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.products .section-1 .header-content {
+    padding: 80px 0;
+}
+
+.products .section-2 .container {
+    padding: 80px 100px 50px 100px;
+}
+
+.products .section-2 .container .row{
+    padding: 20px 0;
+}
+
+.products .section-2 .bg-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 21rem;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.products .section-3 .testimony {
+    border-top: 1px solid var(--black-medium);
+    position: relative;
+}
+
+.products .section-3 .quote-img {
+    position: absolute;
+    top: -15%;
+    left: 6%;
+}
+
+.products .section-3 .owl-carousel .owl-item .person-img {
+    width: 40px;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    width: 20px;
+    height: 20px;
+    margin: 5px 7px;
+    background: var(--neutral-light);
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: var(--primary);
+}
+
+
+
+.products .section-4 {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    margin-top: 30px;
+}
+
+.products .section-4 .left {
+    background: url('/assets/images/products/products-contact-us-image1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 25rem;
+    width: 100%;
+    border-radius: 0 10px 0 0;
+}
+
+.products .section-4 .right .content {
+    background: url('/assets/images/products/products-contact-us-bg-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 19rem;
+    width: 100%;
+    position: relative;
+}
+
+.products .section-4 .right .content::before {
+    content: "";
+    background-image: linear-gradient(to bottom, rgb(32, 62, 133), rgba(32, 62, 133, 0.6));
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+    .products .section-2 .container {
+        padding: 80px 0 50px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .products .section-2 .container {
+        padding: 30px 20px 30px 20px;
+    }
+    .products .section-2 .bg-image {
+        margin: 30px 0 30px 0;
+    }
+
+    .products .section-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .products .section-2 .bg-image {
+        height: 15rem;
+    }
+}
