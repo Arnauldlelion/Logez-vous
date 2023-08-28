@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Appartment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,6 +29,12 @@ class Property extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    public function appartments()
+    {
+        return $this->hasMany(Appartment::class);
+    }
+
 
     public function landlord()
     {

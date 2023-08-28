@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagesTable extends Migration
+class CreateRapportDeGestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('rapport_de_gestions', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('url');
+            $table->integer('annee construction');
+            $table->integer('nombreDeLocataire');
+            $table->float('dureeDuLocataire');
             $table->foreign('appartment_id')
                 ->constrained()
                 ->onDelete('cascade')
@@ -32,6 +33,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('rapport_de_gestions');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagesTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('url');
+            $table->decimal('commission', 5, 2); // 5 total digits, 2 decimal places
+            $table->decimal('prices', 10, 2); // 10 total digits, 2 decimal places
             $table->foreign('appartment_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            ->constrained()
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('payments');
     }
 }

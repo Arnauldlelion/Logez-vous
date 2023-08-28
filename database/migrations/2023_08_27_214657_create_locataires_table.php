@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagesTable extends Migration
+class CreateLocatairesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('locataires', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('url');
+            $table->string('full name');
+            $table->integer('dateEntree');
+            $table->integer('dateEntree');
+            $table->integer('phone number');
+            $table->string('email');
+            $table->string('images')->nullable(); // Add id card image column (nullable)
             $table->foreign('appartment_id')
                 ->constrained()
                 ->onDelete('cascade')
@@ -32,6 +36,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('locataires');
     }
 }
