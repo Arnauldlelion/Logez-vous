@@ -20,11 +20,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('landlord.create_accom');
     }
 
     public function landlordInfo()
     {
-        return view('landlord-info');
+        return view('landlord.create');
     }
 }

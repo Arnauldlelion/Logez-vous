@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class EmailController extends Controller
 {
@@ -15,7 +16,9 @@ class EmailController extends Controller
     public function verifyEmail(EmailVerificationRequest $request)
     {
         $request->fulfill();
-        return redirect('/home');
+        $request->cookie('laravel_session', null);
+        $request->cookie('XSRF-TOKEN', null);
+        return redirect('/login');
     }
 
     public function resendEmail(Request $request)
