@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Appartment;
+use App\Models\Appartment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,16 +13,9 @@ class Property extends Model
     protected $fillable = [
         'user_id',
         'slug',
+        'name',
         'location',
-        'accomodation',
-        'type',
-        'description',
-        'number_of_rooms',
-        'need_tenant',
-        'monthly_rent_price',
-        'approx_surface_area',
-        'furnished',
-        'availability_date'
+        'appartmentType',
     ];
 
     public function images()

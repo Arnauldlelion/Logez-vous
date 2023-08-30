@@ -15,21 +15,10 @@ class CreateAppartmentsTable extends Migration
     {
         Schema::create('appartments', function (Blueprint $table) {
             $table->id();
-            $table->enum('floor', [
-                'first',
-                'second',
-                'third',
-                'fourth',
-                'fifth',
-                'sixth',
-                'seventh',
-                'eighth',
-                'ninth',
-                'tenth',
-            ]);
-            $table->enum('furnished', ['yes', 'no'])->default('yes');
-            $table->longText('description');
-            $table->float('monthly_price');
+            $table->string('floor');
+            $table->enum('furnished', ['yes', 'no'])->default('no');
+            $table->longText('description')->nullable();
+            $table->string('monthly_price');
             $table->integer('number_of_appartments');
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('apt_type_id');

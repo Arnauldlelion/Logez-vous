@@ -24,6 +24,18 @@
                         <span> Pages </span>
                     </a>
                 </li>
+                <li class="{{ Route::is('admins.piece_types.*') ? 'menuitem-active' : '' }}">
+                    <a href="{{ route('admins.piece_types.index') }}">
+                        <i data-feather="book-open"></i>
+                        <span> Piece Types </span>
+                    </a>
+                </li>
+                <li class="{{ Route::is('admins.apartment_types.*') ? 'menuitem-active' : '' }}">
+                    <a href="{{ route('admins.apartment_types.index') }}">
+                        <i data-feather="book-open"></i>
+                        <span> Apartment Types </span>
+                    </a>
+                </li>
 
 
             </ul>

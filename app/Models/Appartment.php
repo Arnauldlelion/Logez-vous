@@ -10,12 +10,11 @@ class Appartment extends Model
     use HasFactory;
     protected $table = 'appartments';
     protected $fillable = [
-        'appartment_id',
         'floor',
         'furnished',
         'description',
-        'montly_cost',
-        'numberOfAppartment',
+        'monthly_price',
+        'number_of_appartments',
         'apt_type_id',
         'property_id',
     ];

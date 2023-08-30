@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Landlord\ApartmentController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\AideController;
 use App\Http\Controllers\EmailController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\Landlord\LandlordController;
+use App\Http\Controllers\Landlord\PropertyController;
 use App\Http\Controllers\locatairesPanelController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
@@ -48,24 +50,6 @@ use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 // });
 
 // My routes 
-// Route::get('/admin/ad_login', 'App\Http\Controllers\Admin\Auth\LoginController@showLoginForm')->name('admin.ad_login');
-// Route::post('/admin/ad_login', 'App\Http\Controllers\Admin\Auth\LoginController@login')->name('ad_login');
-// // });
-
-// Route::group(['middleware' => ['auth:admin']], function () {
-//     Route::get('/', function () {
-//         return redirect()->route('admin.dashboard');
-//     });
-
-//     Route::get('/admin/dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name('admin.dashboard');
-//     Route::resource('pages', 'PageContentController');
-
-//     Route::get('/profile', 'ProfileController@getProfile')->name('admin.profile');
-//     Route::post('/profile/edit', 'ProfileController@editProfile')->name('profile.edit');
-//     Route::post('/profile/change-password', 'ProfileController@changePassword')->name('profile.password');
-
-//     Route::get('/logout', 'Auth\LoginController@logout')->name('admin.logout');
-// });
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins', 'as' => 'admins.'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -79,6 +63,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins',
 
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::resource('pages', 'PageContentController');
+        Route::resource('apartment_types', 'ApartmentTypesController');
+        Route::resource('piece_types', 'PiecesTypeController');
 
         Route::get('/profile', 'ProfileController@getProfile')->name('profile');
         Route::post('/profile/edit', 'ProfileController@editProfile')->name('profile.edit');
@@ -88,14 +74,23 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins',
     });
 });
 
-Auth::routes(['verify' => true]);
+// Auth::routes();
+Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@index')->name('register-view');
+    Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@createBizUser')->name('register');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
     Route::group(['middleware' => ['auth:landlord']], function () {
         Route::get('/', [LandlordController::class, 'index'])->name('index');
         Route::get('/tenants', [LandlordController::class, 'tenants'])->name('tenants');
+        Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
+        Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
+        // Route::get('/apartment', [LandlordController::class, 'getApartment'])->name('apartment');
+        // Route::post('/apartment', [LandlordController::class, 'postApartment'])->name('apartment');
+        Route::resource('property', 'PropertyController');
+        Route::resource('apartment', 'ApartmentController');
+        Route::resource('pieces', 'PiecesController');
         Route::get('/profile', [LandlordController::class, 'profile'])->name('profile');
         Route::put('/profile', [LandlordController::class, 'updateProfile'])->name('profile');
         Route::get('/create', [LandlordController::class, 'create'])->name('create');

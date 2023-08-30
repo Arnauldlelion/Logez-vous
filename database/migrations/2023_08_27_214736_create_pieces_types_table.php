@@ -15,8 +15,7 @@ class CreatePiecesTypesTable extends Migration
     {
         Schema::create('pieces_types', function (Blueprint $table) {
             $table->id();
-            $table->longText('description');
-            $table->unsignedBigInteger('pieces_id');
+            $table->string('name');
             $table->timestamps();
         });
     }
