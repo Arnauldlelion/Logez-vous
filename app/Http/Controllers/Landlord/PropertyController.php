@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Landlord;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppartmentType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Property;
@@ -42,13 +43,14 @@ class PropertyController extends Controller
             'location' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string']
         ]);
+        $types = implode(', ', $request['appartmentType']);
         $property = $request->all();
+        $property['appartmentType'] = $types;
         $property['user_id'] = auth()->id();
         $property['slug'] = Str::slug($request->get('name') . '-' . time());
         // dd($property);
-        $new_prop = Property::create($property);
-        session()->put('new_prop', $new_prop);
-        return redirect()->route('landlord.apartment.create');
+        Property::create($property);
+        return redirect()->route('landlord.index');
     }
 
     /**
@@ -60,9 +62,10 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property = Property::findOrfail($id);
-        $apartments = $property->appartments();
-        dd($apartments);
-        return view('landlord.apartments.index', compact('apartments'));
+        session()->put('new_prop_id', $id);
+        $apartments = $property->appartments;
+        // dd($apartments);
+        return view('landlord.apartments.index', compact('apartments', 'property'));
     }
 
     /**
@@ -71,9 +74,11 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $property = Property::where('slug', $slug)->first();
+        $apt_types = explode(', ', $property->appartmentType);
+        return view('landlord.property.edit', compact('property', 'apt_types'));
     }
 
     /**
@@ -85,7 +90,21 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'appartmentType' => ['required'],
+            'location' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string']
+        ]);
+
+        $types = implode(', ', $request['appartmentType']);
+        $property = Property::findOrFail($id);
+        $property->name = $request->get('name');
+        $property->location = $request->get('location');
+        $property->appartmentType = $types;
+
+        $property->save();
+
+        return redirect()->route('landlord.index');
     }
 
     /**
@@ -96,6 +115,15 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $property = Property::findOrFail($id);
+        foreach($property->appartments as $apt) {
+            foreach($apt->pieces as $piece) {
+                $piece->delete();
+            }
+            $apt->delete();
+        }
+        $property->delete();
+
+        return redirect()->route('landlord.index');
     }
 }

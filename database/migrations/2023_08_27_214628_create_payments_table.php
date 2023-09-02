@@ -15,8 +15,8 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->decimal('commission', 5, 2); // 5 total digits, 2 decimal places
-            $table->decimal('prices', 10, 2); // 10 total digits, 2 decimal places
+            $table->string('commission'); // 5 total digits, 2 decimal places
+            $table->string('prices'); // 10 total digits, 2 decimal places
             $table->unsignedBigInteger('appartment_id');
             $table->timestamps();
         });

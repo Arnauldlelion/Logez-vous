@@ -9,9 +9,12 @@ class Testimonial extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'photo',
-        'video',
-        'description',
-    ];
+    // protected $fillable = [
+    //     'photo',
+    //     'video',
+    //     'description',
+    // ];
+    public function getImageUrl() {
+        return asset($this->photo ? 'storage/'.$this->photo : 'no_user.png');
+    }
 }

@@ -20,8 +20,12 @@ class Image extends Model
     }
 
     public function pieces()
-{
-    return $this->belongsToMany(Piece::class, 'images');
+    {
+        return $this->belongsToMany(Piece::class, 'images');
+    }
+
+    public function getImageUrl()
+    {
+        return asset($this->url ? 'storage/' . $this->url : 'no_user.png');
+    }
 }
-}
- 

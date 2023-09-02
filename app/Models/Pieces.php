@@ -21,4 +21,9 @@ class Pieces extends Model
 {
     return $this->belongsTo(Appartment::class);
 }
+
+public function pieceType()
+{
+    return $this->belongsTo(PiecesType::class, 'pieces_types_id');
+}
 }

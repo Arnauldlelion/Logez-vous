@@ -25,7 +25,7 @@ class Property extends Model
 
     public function appartments()
     {
-        return $this->hasMany(Appartment::class);
+        return $this->hasMany(Appartment::class, 'property_id');
     }
 
 

@@ -26,13 +26,13 @@ class Appartment extends Model
 
 public function appartmentType()
 {
-    return $this->belongsTo(AppartmentType::class);
+    return $this->belongsTo(AppartmentType::class, );
 }
 
 
-public function paiements()
+public function payments()
 {
-    return $this->hasMany(Paiement::class);
+    return $this->hasMany(Payment::class);
 }
 
 public function locataire()
@@ -47,13 +47,13 @@ public function rapportDeGestions()
 
 public function pieces()
 {
-    return $this->hasMany(Piece::class);
+    return $this->hasMany(Pieces::class, 'appartment_id');
 }
 
 
-public function propertiesImages()
+public function images()
 {
-    return $this->hasManyThrough(PropertiesImage::class, Piece::class);
+    return $this->hasMany(Image::class, "appartment_id");
 }
 
 }

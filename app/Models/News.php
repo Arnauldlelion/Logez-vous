@@ -15,4 +15,8 @@ class News extends Model
         'title',
         'description',
     ];
+
+    public function getImageUrl() {
+        return asset($this->logo ? 'storage/'.$this->logo : 'no_user.png');
+    }
 }

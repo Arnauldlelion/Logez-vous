@@ -9,9 +9,10 @@ class RapportDeGestion extends Model
 {
     use HasFactory;
 
+    protected $dates = ['annee_construction'];
     protected $fillable = [
         'Rapport_id',
-        'annee construction',
+        'annee_construction',
         'nombreDeLocataire',
         'dureeDuLocataire',
         'requete des locataires',

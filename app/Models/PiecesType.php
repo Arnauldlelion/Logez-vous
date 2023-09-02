@@ -17,6 +17,6 @@ class PiecesType extends Model
     ];
     public function pieces()
 {
-    return $this->hasMany(Piece::class);
+    return $this->hasMany(Piece::class, 'pieces_types_id');
 }
 }

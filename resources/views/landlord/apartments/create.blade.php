@@ -16,7 +16,7 @@
                 </div>
 
                  <!-- form -->
-                 <form action="{{ route('landlord.apartment.store') }}" method="POST">
+                 <form action="{{ route('landlord.apartments.store') }}" method="POST">
                     @csrf
 
 
@@ -127,9 +127,14 @@
                         </div>
                       </div>
 
-                      <div class="float-end mb-5 d-flex gap-2">
-                        <button class="btn btn-danger rounded-pill ">Ajouter</button>
-                      </div>
+                      <div class="w-100 mb-5">
+                        <div class="text-black float-start">
+                            <a href="{{ route('landlord.property.show', session('new_prop_id')) }}" class="text-secondary">
+                                Back
+                            </a>
+                        </div>
+                        <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>
+                    </div>
 
                 </form>
                 <!-- end form-->

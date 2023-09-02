@@ -51,7 +51,7 @@
 							<x-delete-modal
 									:id="$piece_type->id"
 									:url="route('admins.piece_types.destroy', $piece_type->id)"
-									:content="'Are you sure you want to delete this category <strong>'.$piece_type->name.'</strong>? This action is irreversible'"/>
+									:content="'Are you sure you want to delete this Piece type <strong>'.$piece_type->name.'</strong>? This action is irreversible'"/>
 
 							
 						@empty

@@ -27,33 +27,22 @@ use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 |
 */
 
-// Email verification routes during registration
-// Route::controller(EmailController::class)
-//     ->middleware(['auth'])
-//     ->group(function () {
-//         Route::get('/email/verify', 'verify')->name('verification.notice');
-//         Route::get('/email/verify/{id}/{hash}', 'verifyEmail')
-//             ->middleware('signed')
-//             ->name('verification.verify');
-//         Route::post('/email/verification-notification', 'resendEmail')
-//             ->middleware(['throttle:6,1'])->name('verification.resend');
-//     });
+Route::controller(MainController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/appartements/{name}', 'singleAppartment')->name('single-appartment');
+});
 
-// Route::controller(MainController::class)->group(function () {
-//     Route::get('/', 'index')->name('index');
-//     Route::get('/appartements/{name}', 'singleAppartment')->name('single-appartment');
-// });
-
-// Route::controller(HomeController::class)->group(function () {
-//     Route::get('/home', 'index')->name('home');
-//     Route::get('/user/premiere-connexion', 'landlordInfo')->name('landlord-info');
-// });
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/home', 'index')->name('home');
+    Route::get('/user/premiere-connexion', 'landlordInfo')->name('landlord-info');
+});
 
 // My routes 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins', 'as' => 'admins.'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
         Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
+        Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
     });
 
     Route::group(['middleware' => ['auth:admins']], function () {
@@ -65,10 +54,13 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins',
         Route::resource('pages', 'PageContentController');
         Route::resource('apartment_types', 'ApartmentTypesController');
         Route::resource('piece_types', 'PiecesTypeController');
+        Route::resource('testimonials', 'TestimonyController');
+        Route::resource('news', 'NewsController');
+        Route::resource('faqs', 'FaqsController');
 
-        Route::get('/profile', 'ProfileController@getProfile')->name('profile');
-        Route::post('/profile/edit', 'ProfileController@editProfile')->name('profile.edit');
-        Route::post('/profile/change-password', 'ProfileController@changePassword')->name('profile.password');
+        Route::get('/profile', 'DashboardController@profile')->name('profile');
+        Route::put('/profile/edit', 'DashboardController@editProfile')->name('profile.edit');
+        Route::put('/profile/change-password', 'DashboardController@changePassword')->name('profile.change_password');
 
         Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
     });
@@ -76,7 +68,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins',
 
 // Auth::routes();
 Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@index')->name('register-view');
-    Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@createBizUser')->name('register');
+Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@createBizUser')->name('register');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -84,13 +76,17 @@ Route::group(['namespace' => 'App\Http\Controllers\Landlord', 'prefix' => 'landl
     Route::group(['middleware' => ['auth:landlord']], function () {
         Route::get('/', [LandlordController::class, 'index'])->name('index');
         Route::get('/tenants', [LandlordController::class, 'tenants'])->name('tenants');
-        Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
-        Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
-        // Route::get('/apartment', [LandlordController::class, 'getApartment'])->name('apartment');
-        // Route::post('/apartment', [LandlordController::class, 'postApartment'])->name('apartment');
+        // Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
+        // Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
         Route::resource('property', 'PropertyController');
-        Route::resource('apartment', 'ApartmentController');
+        Route::resource('apartments', 'ApartmentController');
+        Route::post('/apartments/storeImages', 'ApartmentController@storeImages')->name('apartments.storeImages');
+        Route::get('/apartments/showRapports/{id}', 'ApartmentController@showRapports')->name('apartments.showRapports');
+        Route::get('/apartments/showPayments/{id}', 'ApartmentController@showPayments')->name('apartments.showPayments');
         Route::resource('pieces', 'PiecesController');
+        Route::delete('/pieces/destroyImage/{id}', 'PiecesController@destroyImage')->name('pieces.destroyImage');
+        Route::resource('rapports', 'RapportController');
+        Route::resource('payments', 'PaymentsController');
         Route::get('/profile', [LandlordController::class, 'profile'])->name('profile');
         Route::put('/profile', [LandlordController::class, 'updateProfile'])->name('profile');
         Route::get('/create', [LandlordController::class, 'create'])->name('create');

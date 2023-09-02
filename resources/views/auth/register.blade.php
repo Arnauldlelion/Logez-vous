@@ -64,7 +64,7 @@
 
                             <div class="form-group row">
                                 <label for="phone"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="phone" type="text"
@@ -79,30 +79,8 @@
                                 </div>
                             </div>
 
-                            <!-- Add radio buttons for user type -->
-                            <div class="form-group row">
-                                <label class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="type" value="landlord"
-                                            {{ old('type') == 'landlord' ? 'checked' : '' }}>
-                                        <label class="form-check-label">{{ __('Landlord') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="type" value="admin"
-                                            {{ old('type') == 'admin' ? 'checked' : '' }}>
-                                        <label class="form-check-label">{{ __('Admin') }}</label>
-                                    </div>
-
-                                    @error('type')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
+                            <input name="type" value="landlord" hidden>
+                            <br>
 
                             <div class="row mb-3">
                                 <label for="password"

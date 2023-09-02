@@ -16,6 +16,6 @@ class AppartmentType extends Model
 
     public function appartments()
 {
-    return $this->hasMany(Appartment::class);
+    return $this->hasMany(Appartment::class, "appartmentType_id");
 }
 }
