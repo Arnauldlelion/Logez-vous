@@ -15,9 +15,10 @@
                     <div class="search-box">
                         <form class="d-flex" role="search">
                             <div>
+                               
                                 <input class="form-control me-2 " type="search" placeholder="Reference"
-                                    aria-label="Search">
-                                <button type="submit"><i class="bi bi-search"></i></button>
+                                    aria-label="Search" action="/properties">
+                               <button type="submit"><a class="nav-link" href="{{ '/properties' }}"><i class="bi bi-search"></i></a></button>
                             </div>
                         </form>
                     </div>

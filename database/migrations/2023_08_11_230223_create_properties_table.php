@@ -16,20 +16,10 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('appartmentType');
             $table->string('slug');
-            $table->enum('accomodation', [
-                'single',
-                'many'
-            ])->default('single');
-            $table->string('type');
-            $table->longText('description')->nullable();
+            $table->string('name');
             $table->string('location');
-            $table->string('number_of_rooms');
-            $table->enum('need_tenant', ['yes', 'no'])->default(('no'));
-            $table->string('monthly_rent_price');
-            $table->string('approx_surface_area')->nullable();
-            $table->enum('furnished', ['yes', 'no'])->default('no');
-            $table->dateTime('availability_date');
             $table->timestamps();
         });
     }

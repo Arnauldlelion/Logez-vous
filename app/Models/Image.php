@@ -16,6 +16,16 @@ class Image extends Model
 
     public function property()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class); //one or more images belongs to one property
+    }
+
+    public function pieces()
+    {
+        return $this->belongsToMany(Piece::class, 'images');
+    }
+
+    public function getImageUrl()
+    {
+        return asset($this->url ? 'storage/' . $this->url : 'no_user.png');
     }
 }

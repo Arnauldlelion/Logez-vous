@@ -20,7 +20,8 @@ class LandlordController extends Controller
      */
     public function index()
     {
-        $properties = Property::where('user_id', auth()->id())->get();
+        $properties = Property::where('user_id', auth()->id())->orderBy('created_at', 'DESC')->get();
+        // $apt_types = explode((', ', ));
         return view('landlord.index', compact('properties'));
     }
 
@@ -69,28 +70,7 @@ class LandlordController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'accomodation' => ['required', 'string', 'max:255'],
-            'type' => ['required'],
-            'description' => ['nullable', 'string', 'max:255'],
-            'location' => ['required', 'string', 'max:255'],
-            'number_of_rooms' => ['required', 'string'],
-            // Validate user type
-            'need_tenant' => ['required', 'string'],
-            'monthly_rent_price' => ['required', 'string', 'max:255'],
-            'approx_surface_area' => ['nullable', 'string', 'max:255'],
-            'furnished' => ['required', 'string'],
-            'availability_date' => ['required'] // Validate user type
-        ]);
-
-        $property = $request->all();
-        $type = implode(', ', $request['type']);
-        $property['type'] = $type;
-        $property['slug'] = Str::slug($request->get('accomodation') . '-' . time());
-        $property['user_id'] = auth()->id();
-        // dd($property);
-        Property::create($property);
-        return redirect()->route('landlord.index');
+        //
     }
 
     /**
@@ -112,14 +92,7 @@ class LandlordController extends Controller
      */
     public function edit($slug)
     {
-        $property = Property::where('slug', $slug)->first();
-        if (!$property) {
-            abort(404);
-        }
-
-        $property->type = explode(', ', $property->type);
-        // dd($property->type);
-        return view('landlord.edit_accom', compact('property'));
+       //
     }
 
     /**
@@ -131,36 +104,7 @@ class LandlordController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'accomodation' => ['required', 'string', 'max:255'],
-            'type' => ['required'],
-            'description' => ['nullable', 'string', 'max:255'],
-            'location' => ['required', 'string', 'max:255'],
-            'number_of_rooms' => ['required', 'string'],
-            // Validate user type
-            'need_tenant' => ['required', 'string'],
-            'monthly_rent_price' => ['required', 'string', 'max:255'],
-            'approx_surface_area' => ['nullable', 'string', 'max:255'],
-            'furnished' => ['required', 'string'],
-            'availability_date' => ['required'] // Validate user type
-        ]);
-
-        $property = Property::findOrFail($id);
-        $type = implode(', ', $request->get('type'));
-        $property->accomodation = $request->get('accomodation');
-        $property->type = $type;
-        $property->description = $request->get('description');
-        $property->location = $request->get('location');
-        $property->number_of_rooms = $request->get('number_of_rooms');
-        $property->need_tenant = $request->get('need_tenant');
-        $property->monthly_rent_price = $request->get('monthly_rent_price');
-        $property->approx_surface_area = $request->get('approx_surface_area');
-        $property->furnished = $request->get('furnished');
-        $property->availability_date = $request->get('availability_date');
-
-        $property->save();
-
-        return redirect()->route('landlord.index');
+       //
     }
 
     /**
@@ -187,9 +131,6 @@ class LandlordController extends Controller
     }
     public function destroy($id)
     {
-        $property = Property::findOrFail($id);
-        $property->delete();
-
-        return redirect()->route('landlord.index');
+        //
     }
 }

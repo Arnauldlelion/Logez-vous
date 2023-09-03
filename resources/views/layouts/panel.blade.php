@@ -15,11 +15,16 @@
     <link rel="stylesheet" href="/admin/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="/admin/assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="/admin/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    
+    <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('admin_assets/css/app.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('admin_assets/css/datatables.min.css') }}" rel="stylesheet"/>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="/admin/assets/css/style.css">
+    <link rel="stylesheet" href="/admin/assets/css/panel.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
 </head>
@@ -107,9 +112,7 @@
 
 
                 <li class="nav-item menu-items" style="padding-top: 100%">
-                    <a class="nav-link"
-                        href="{{ route('landlord.profile') }}"
-                        >
+                    <a class="nav-link" href="{{ route('landlord.profile') }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-settings text-danger"></i>
                         </span>
@@ -270,7 +273,34 @@
                     @yield('content')
                     <div class="row">
 
-
+                        {{-- start modal --}}
+                        <div class="modal fade" id="deleteLandlordModal" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this item?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cancel</button>
+                                        <form id="deleteForm" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- end modal  --}}
 
                         <!-- content-wrapper ends -->
                         <!-- partial:partials/_footer.html -->
@@ -305,9 +335,23 @@
             <script src="/admin/assets/js/misc.js"></script>
             <script src="/admin/assets/js/settings.js"></script>
             <script src="/admin/assets/js/todolist.js"></script>
+
+            <script src="{{ asset('admin_assets/js/vendor.min.js') }}"></script>
+            <script src="{{ asset('admin_assets/libs/readmore.min.js') }}"></script>
+
+            <!-- App js -->
+            <script src="{{ asset('admin_assets/js/app.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>
+            <script src="{{ asset('admin_assets/libs/tinymce/js/tinymce.min.js') }}"></script>
+            <script src="{{ asset('admin_assets/js/datatables.min.js') }}"></script>
+            <script src="{{ asset('assets/js/common.js') }}"></script>
+            <script src="{{ asset('admin_assets/js/admin.js') }}"></script>
             <!-- endinject -->
             <!-- Custom js for this page -->
             <script src="/admin/assets/js/dashboard.js"></script>
+            @yield('footer_script')
+
             <!-- End custom js for this page -->
 </body>
 

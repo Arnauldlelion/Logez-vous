@@ -23,9 +23,9 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        // if (Auth('landlord')->check()) {
-        //     return redirect()->route('landlord.index');
-        // }
+        if (Auth('landlord')->check()) {
+            return redirect()->route('landlord.index');
+        }
 
         return view('auth.login'); // Update this to match your view location
     }

@@ -9,8 +9,8 @@ use App\Models\User;
 // use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Cookie;
 
 class RegisterController extends Controller
 {
@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::EMAILVERIFY;
+    protected $redirectTo = RouteServiceProvider::LANDLORD;
 
     /**
      * Create a new controller instance.
@@ -69,18 +69,37 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
 
-        // Dispatch the Registered event
-        Cookie::forget('laravel_session');
-        Cookie::forget('XSRF-TOKEN');
-
-        return $user;
+     public function index() {
+        return view('auth.register', ['route' => route('register-view')]);
     }
+
+    public function createBizUser(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = User::create([
+            'email' => $request['email'],
+            'name' => $request['name'],
+            'phone' => $request['phone'],
+            'type' => $request['type'],
+            'password' => Hash::make($request['password']),
+        ]);
+        
+        return redirect()->intended('/login');
+    }
+    //  protected function create(array $data)
+    // {
+    //     $user = User::create([
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //     ]);
+
+    //     // Dispatch the Registered event
+    //     // Cookie::forget('laravel_session');
+    //     // Cookie::forget('XSRF-TOKEN');
+
+    //     return $user;
+    // }
 }

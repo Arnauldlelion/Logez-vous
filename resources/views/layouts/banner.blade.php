@@ -1,3 +1,4 @@
+
 <div class="banner w-100 d-flex justify-content-center align-items-end">
     <video id="videoBG" poster="{{ asset('storage/images/home/img.jpg') }}" autoplay muted loop>
         <source src="{{ asset('storage/images/video/video.mp4') }}" type="video/mp4">
@@ -20,7 +21,7 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane show fade active" id="tab1">
                             <div class="container">
-                                <form method="GET" enctype="multipart/form-data" action="/appartements">
+                                <form method="GET" enctype="multipart/form-data" action="/properties">
                                     @csrf
                                     <div class="row mb-3">
                                         <div class="col-lg-12 col-md-6 col-sm-12">

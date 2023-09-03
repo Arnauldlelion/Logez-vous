@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Appartment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,22 +13,21 @@ class Property extends Model
     protected $fillable = [
         'user_id',
         'slug',
-        'accomodation',
-        'type',
-        'description',
+        'name',
         'location',
-        'number_of_rooms',
-        'need_tenant',
-        'monthly_rent_price',
-        'approx_surface_area',
-        'furnished',
-        'availability_date'
+        'appartmentType',
     ];
 
     public function images()
     {
         return $this->hasMany(Image::class);
     }
+
+    public function appartments()
+    {
+        return $this->hasMany(Appartment::class, 'property_id');
+    }
+
 
     public function landlord()
     {

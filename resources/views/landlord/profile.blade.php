@@ -2,19 +2,20 @@
 
 @section('content')
     <div>
+
+        @if (session('success'))
+            <div class="col-12 pt-4 pb-3 px-0">
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="row mx-0">
                         <div class="col-12 pt-4 pb-3 px-0">
                             <h5 class="font-900">Profile</h5>
-                        </div>
-                        <div class="col-12 pt-4 pb-3 px-0">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
                         </div>
                         <form method="POST" action="{{ route('landlord.profile') }}" enctype="multipart/form-data">
                             @csrf
@@ -64,13 +65,6 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="row mx-0">
-                        <div class="col-12 pt-4 pb-3 px-0">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                        </div>
                         <form method="POST" action="{{ route('landlord.change_password') }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
