@@ -17,7 +17,7 @@
                             <div>
                                 <input class="form-control me-2 " type="search" placeholder="Reference"
                                     aria-label="Search">
-                                <button type="submit"><i class="bi bi-search"></i></button>
+                                <button type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
                     </div>
