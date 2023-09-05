@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAppartmentsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('appartments', function (Blueprint $table) {
@@ -22,10 +17,11 @@ class CreateAppartmentsTable extends Migration
             $table->integer('number_of_appartments');
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('apt_type_id');
+            $table->bigInteger('cover_image_id')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

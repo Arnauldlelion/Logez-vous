@@ -4,31 +4,32 @@
     <div class="container my-5" style="padding-top: 6rem; padding-bottom: 2rem;">
         <div id="house-images" class="house-images" onclick="alert('Hello, world!')">
             <div class="row">
-                <div class="col-lg-6 mb-3 d-none d-lg-block">
-                    <img src="/storage/images/room-2.jpg" alt="{{ config('app.name') }}" class="img-fluid h-100">
+                <div class="col-lg-6 mb-3 position-relative">
+                    <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="{{ config('app.name') }}"
+                        class="img-fluid h-100">
+                        <div class="position-absolute bottom-50 end-50 border rounded bg-success  text-white bg-opacity-50 p-2 d-block d-md-none ">
+                            +{{ count($apartment->images) - 1 }} photos
+                        </div>
                 </div>
-                <div class="col-lg-3 d-none d-lg-block">
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            <img src="/storage/images/room-2.jpg" alt="{{ config('app.name') }}" class="img-fluid h-100">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <img src="/storage/images/room-2.jpg" alt="{{ config('app.name') }}" class="img-fluid h-100">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            <div class="last">
-                                <img src="/storage/images/room-2.jpg" alt="{{ config('app.name') }}"
-                                    class="img-fluid h-100">
-                                <div class="plus-photos py-2 px-3">+13 photos</div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 d-none d-lg-block">
-                            <img src="/storage/images/room-2.jpg" alt="{{ config('app.name') }}" class="img-fluid h-100">
-                        </div>
+                <div class="col-lg-6 d-none d-lg-block ">
+                        <div class="row">
+                            @foreach ($apartment->images as $key => $image)
+                                @if ($key < 3)
+                                    <div class="col-12 col-md-6 mb-3">
+                                        <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}" class="img-fluid h-100">
+                                    </div>
+                                @endif
+                                @if ($key === 3 && count($apartment->images) > 4)
+                                    <div class="col-12 col-md-6 mb-3">
+                                        <div class="position-relative">
+                                            <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}" class="img-fluid h-100">
+                                            <div class="position-absolute top-50 start-50 translate-middle border rounded bg-success  text-white bg-opacity-50 p-2 ">
+                                                +{{ count($apartment->images) - 3 }} photos
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                     </div>
                 </div>
             </div>
@@ -114,12 +115,12 @@
                     </div>
                     <hr>
                     <div class="others">
-                        <h4>Autres hébergements proches de Guyancourt - Rue Youri Gagarine</h4>
+                        <h4>Autres hébergements proches {{ $apartment->property->location }}</h4>
                         <div class="row flex-nowrap overflow-auto">
-                            @foreach ([1, 2, 3, 4, 5] as $item)
+                            @foreach ($otherApartments as $apartment)
                                 <div class="col-md-4 mb-3">
                                     @include('components.card', [
-                                        'index' => $item,
+                                        'index' => $apartment,
                                         'showBanner' => false,
                                         'isSlider' => false,
                                         'showBorder' => true,

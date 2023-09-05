@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
+       protected $fillable = [
         'property_id',
         'url',
+        'isCover'
     ];
 
     public function property()

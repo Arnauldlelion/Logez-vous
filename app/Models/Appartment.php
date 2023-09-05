@@ -56,4 +56,8 @@ public function images()
     return $this->hasMany(Image::class, "appartment_id");
 }
 
+public function coverImage()
+{
+    return $this->hasOne(Image::class, "appartment_id")->where('isCover', true);
+}
 }

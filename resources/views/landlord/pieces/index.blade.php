@@ -49,6 +49,10 @@
                                                 <a data-toggle="modal" data-target="#deleteModal{{ $piece->id }}"
                                                     href="#" class="btn btn-danger btn-sm"><i
                                                         class="mdi mdi-delete"></i></a>
+                                                        <a href="{{ route('landlord.pieces.show', $piece->id) }}"
+                                                            class="btn btn-secondary btn-sm ml-4">
+                                                            <i class="mdi mdi-eye"></i> Pieces</a>
+                                                        <br><br>
                                             </div>
                                         </td>
                                         <x-delete-modal :id="$piece->id" :url="route('landlord.pieces.destroy', $piece->id)" :content="'Are you sure you want to delete this Piece <strong>' .
@@ -68,10 +72,21 @@
             </div>
         </div>
 
+
         <form action="{{ route('landlord.apartments.storeImages') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="post-form-images-bottom row mx-0">
                 <div class="col-6 d-flex align-items-center justify-content-start border-2-3xl">
+                    <span class="text-16 text-black-medium font-500">
+                        <input type="file" class="" id="cover_image" accept="image/*" style="display: none;"
+                            name="cover_image">
+                        @error('cover_image')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                        <img src="{{ asset('business_assets/icons/icon-upload-photos.svg') }}" alt=""
+                            class="mr-1 mr-md-2">
+                        <label for="cover_image"> Photo de couverture</label>
+                    </span>
                     <span class="text-16 text-black-medium font-500">
                         <input type="file" class="" id="apt-image" accept="image/*" style="display: none;"
                             name="images[]" multiple>
@@ -104,6 +119,11 @@
                         <br>
                         <a data-toggle="modal" data-target="#deleteModal{{ $aptImage->id }}" href="#"
                             class="btn btn-danger btn-sm mx-auto"><i class="mdi mdi-delete"></i></a>
+                            {{-- <form method="POST" action="{{ route('changeCoverImage') }}">
+                                @csrf
+                                <input type="hidden" name="new_cover_image_id" value="CHANGE_TO_THE_DESIRED_IMAGE_ID">
+                                <button type="submit" onclick="return confirm('Are you sure you want to change the cover image?')">Change Cover Image</button>
+                            </form> --}}
                     </div>
                     <x-delete-modal :id="$aptImage->id" :url="route('landlord.pieces.destroyImage', $aptImage->id)" :content="'Are you sure you want to delete this Image: ?</br> This action is irreversible'" />
                 @endforeach

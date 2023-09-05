@@ -18,6 +18,7 @@ class PropertyController extends Controller
     public function index()
     {
         //
+        return view('landlord.dashboard.index');
     }
 
     /**
@@ -50,7 +51,7 @@ class PropertyController extends Controller
         $property['slug'] = Str::slug($request->get('name') . '-' . time());
         // dd($property);
         Property::create($property);
-        return redirect()->route('landlord.index');
+        return redirect()->route('landlord.apartments.create');
     }
 
     /**

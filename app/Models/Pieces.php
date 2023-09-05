@@ -26,4 +26,8 @@ public function pieceType()
 {
     return $this->belongsTo(PiecesType::class, 'pieces_types_id');
 }
+
+public function pieceImage(){
+    return $this->belongsTo(Pieces::class, 'pieces_id');
+}
 }
