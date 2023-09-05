@@ -1,19 +1,10 @@
 <?php
 
 
-use App\Http\Controllers\Landlord\ApartmentController;
-use App\Http\Controllers\PropertiesController;
-use App\Http\Controllers\AideController;
-use App\Http\Controllers\EmailController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\PanelController;
-use App\Http\Controllers\Landlord\LandlordController;
-use App\Http\Controllers\Landlord\PropertyController;
-use App\Http\Controllers\locatairesPanelController;
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\Landlord\LandlordController;
 use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 
 /*
@@ -27,18 +18,9 @@ use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 |
 */
 
-Route::controller(MainController::class)->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('/appartements/{name}', 'singleAppartment')->name('single-appartment');
-});
-
-Route::controller(HomeController::class)->group(function () {
-    Route::get('/home', 'index')->name('home');
-    Route::get('/user/premiere-connexion', 'landlordInfo')->name('landlord-info');
-});
 
 // My routes 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins', 'as' => 'admins.'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admins', 'as' => 'admins.'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
         Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
@@ -67,20 +49,22 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admins',
 });
 
 // Auth::routes();
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@index')->name('register-view');
-Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@createBizUser')->name('register');
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::group(['namespace' => 'App\Http\Controllers\Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
+Route::group(['namespace' =>'Auth'], function() {
+    Route::post('/register', 'RegisterController@createBizUser')->name('register');
+    Route::post('/login', 'LoginController@login')->name('login.submit');
+    Route::post('/logout', 'LoginController@logout')->name('logout');
+});
+Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
     Route::group(['middleware' => ['auth:landlord']], function () {
         Route::get('/', [LandlordController::class, 'index'])->name('index');
+        Route::get('/dashboard', [LandlordController::class, 'dashboard'])->name('dashboard');
         Route::get('/tenants', [LandlordController::class, 'tenants'])->name('tenants');
         // Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
         // Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
         Route::resource('property', 'PropertyController');
         Route::resource('apartments', 'ApartmentController');
         Route::post('/apartments/storeImages', 'ApartmentController@storeImages')->name('apartments.storeImages');
+        Route::post('/change-cover-image', 'AppartmentController@changeCoverImage')->name('changeCoverImage');
         Route::get('/apartments/showRapports/{id}', 'ApartmentController@showRapports')->name('apartments.showRapports');
         Route::get('/apartments/showPayments/{id}', 'ApartmentController@showPayments')->name('apartments.showPayments');
         Route::resource('pieces', 'PiecesController');
@@ -98,64 +82,21 @@ Route::group(['namespace' => 'App\Http\Controllers\Landlord', 'prefix' => 'landl
     });
 });
 
-// Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Controllers\Admin'], function() {
-
-// Route::group(['namespace' => 'App\Http\Controllers\Admin\Auth'], function () {
-
-// });
-
-// My routes 
-
-Route::get('/properties', [PropertiesController::class, 'properties'])->name('properties');
-
-// Route to display the create property form
-Route::get('/properties/create', [PropertiesController::class, 'create'])->name('create-property');
-
-// Route to handle property creation
-Route::post('/properties', [PropertiesController::class, 'store'])->name('properties.store');
-Route::get('/properties/recent', [PropertiesController::class, 'recent'])->name('properties.recent');
-
-// Route::get('/aide', [AideController::class, 'aide'])->name('aide');
-
-/*routes for locataires panel*/
 
 
-// Route::get('/layouts/locatairespanel', [locatairesPanelController::class, 'locatairespanel'])->name('locataires');
 
-// Route::get('/help', function () {
-//     return view('help');
-// });
-// Route::get('/candidate', function () {
-//     return view('components.candidate');
-// });
-
-// Route::get('/landloard', function () {
-//     return view('components.landlord');
-// });
-
-// Route::get('/nos-partenaires', function () {
-//     return view('components.nos-partenaires');
-// });
-
-// Route::get('/mon-compte', function () {
-//     return view('components.mon-compte');
-// });
-
-// Route::get('/dossier', function () {
-//     return view('components.dossier-locatif');
-// });
-
-// /*routes for proprietaires panel*/
-
-// Route::get('/layouts/panel', [PanelController::class, 'panel'])->name('panel');
-
-// Route::get('/confirmaton', function () {
-//     return view('components.confirmation');
-// });
+//Web routes
+Route::group(['namespace' => 'Web'], function () {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/search-appartment', 'HomeController@searchForm')->name('search-appartment');
+    Route::get('/apartments/single-appartment/{id}', 'HomeController@show')->name('single-appartment');
+    Route::get('/single-appartment/{id}', 'HomeController@showSingleAppartment')->name('single-appartment');
+    Route::get('/help', 'HomeController@help')->name('help');
+});
 
 
 Route::get('/prop', function () {
-    return view('landlord.create_property');
+    return view('aide');
 });
 
 Route::get('/prop', function () {

@@ -7,18 +7,30 @@
             </div>
             <div class="modal-body">
                 <div class="login-text">Connectez-vous afin d'accéder à votre compte</div>
-                <form action="/mon-compte">
+                <form method="POST" action="{{ route('login.submit') }}">
+                    @csrf
+
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-text">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <input type="email" name="email" class="form-control" placeholder="Adresse e-mail" required>
+                        <input type="email" name="email" class="form-control form-control-sm  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Adresse e-mail" required autocomplete="email" autofocus>
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-text">
                             <i class="fas fa-lock"></i>
                         </div>
-                        <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
+                        <input type="password" name="password" class="form-control form-control-sm  @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Mot de passe">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                     <button type="submit" class="btn btn-main btn-lg mt-3 w-100">Connexion</button>
                 </form>

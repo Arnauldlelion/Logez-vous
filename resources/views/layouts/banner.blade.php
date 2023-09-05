@@ -21,7 +21,7 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane show fade active" id="tab1">
                             <div class="container mb-4">
-                                <form method="GET" enctype="multipart/form-data" action="/appartements" class="px-2">
+                                <form method="GET" enctype="multipart/form-data" action="{{ route('search-appartment')}}" class="px-2">
                                     @csrf
                                     <div class="row mb-3">
                                         <div class="col-12">

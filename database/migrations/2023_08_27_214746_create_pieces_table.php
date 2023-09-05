@@ -17,6 +17,7 @@ class CreatePiecesTable extends Migration
             $table->id();
             $table->integer('nombre_of_pieces');
             $table->string('size');
+            // $table->string('piece_images');
             $table->unsignedBigInteger('appartment_id');
             $table->unsignedBigInteger('pieces_types_id');
             $table->timestamps();

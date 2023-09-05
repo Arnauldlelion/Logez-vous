@@ -1,22 +1,18 @@
 <div id="card-carousel-{{ $index }}" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#card-carousel-{{ $index }}" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#card-carousel-{{ $index }}" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#card-carousel-{{ $index }}" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+        @foreach ($apartment->images as $key => $image)
+            <button type="button" data-bs-target="#card-carousel-{{ $index }}"
+                data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}"
+                aria-current="{{ $key === 0 ? 'true' : 'false' }}"
+                aria-label="Slide {{ $key + 1 }}"></button>
+        @endforeach
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="/storage/images/room.jpeg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="/storage/images/room-2.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="/storage/images/room-3.jpg" class="d-block w-100" alt="...">
-        </div>
+        @foreach ($apartment->images as $key => $image)
+            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                <img src="{{ asset('storage/' . $image->url) }}" class="d-block w-100" alt="Image">
+            </div>
+        @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#card-carousel-{{ $index }}"
         data-bs-slide="prev">

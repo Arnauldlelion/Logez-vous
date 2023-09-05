@@ -14,4 +14,5 @@ class Faq extends Model
         'description',
         'type',
     ];
+
 }

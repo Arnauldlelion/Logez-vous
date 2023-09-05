@@ -18,6 +18,10 @@ class LandlordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function dashboard(){
+        return view('landlord.dashboard.index');
+     }
     public function index()
     {
         $properties = Property::where('user_id', auth()->id())->orderBy('created_at', 'DESC')->get();

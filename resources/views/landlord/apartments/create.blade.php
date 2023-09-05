@@ -70,13 +70,13 @@
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                          <div class="d-flex gap-5">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault2" value="no">
+                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault2" value="Non meublé">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Non meublé
                                 </label>
                               </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault1" value="yes">
+                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault1" value="Meublé">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Meublé
                                 </label>

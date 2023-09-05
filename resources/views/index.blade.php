@@ -15,25 +15,27 @@
             <h1 class="text-center mb-4 pb-2">Nos logements à la une</h1>
             <div class="container">
                 <div class="row gy-3 my-3">
-                    @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
+                    @foreach ($apartments as $apartment)
+                    <a href="{{ route('single-appartment', $apartment->id) }}">
                         <div class="col-6 col-lg-3 d-none d-md-block">
                             @include('components.card', [
-                                'index' => $item,
+                                'index' => $apartment,
                                 'showBanner' => true,
                                 'isSlider' => false,
                                 'showBorder' => true,
                             ])
                         </div>
-                    @endforeach
+                    </a>
+                @endforeach
                 </div>
 
                
                 <div class="carousel-indicators d-lg-none">
                 <div class="owl-carousel owl-theme featured_carousel d-block d-md-none">
-                    @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
+                    @foreach ($apartments as $apartment)
                         <div class="item">
                             @include('components.card', [
-                                'index' => $item,
+                                'index' => $apartment,
                                 'showBanner' => true,
                                 'isSlider' => false,
                                 'showBorder' => true,
@@ -100,7 +102,7 @@
                                                     class="text-danger">en moins de 3 minutes.</span>
                                             </small>
                                         </div>
-                                        <div class="bottom-0 start-50 translate-middle-x" >
+                                        <div class="" >
                                             <img src="{{ asset('storage/images/logos/board.png') }}" class="mx-auto"
                                                 alt="">
                                         </div>
@@ -291,10 +293,10 @@
                                         <h5 class="text-danger my-4">Ces logements pourraient vous intéresser</h5>
                                         <div class="container col-8 col-md-10 mx-auto">
                                             <div class="owl-carousel owl-theme solution_carousels">
-                                                @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
+                                                @foreach ($apartments as $apartment)
                                                     <div class="item">
                                                         @include('components.card', [
-                                                            'index' => $item,
+                                                            'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
                                                             'showBorder' => true,
@@ -322,10 +324,10 @@
                                     <h5 class="text-danger mt-4">Ces logements pourraient vous intéresser</h5>
                                     <div class="container col-8 col-md-10 mx-auto">
                                         <div class="owl-carousel owl-theme solution_carousels">
-                                            @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
+                                            @foreach ($apartments as $apartment)
                                                 <div class="item">
                                                     @include('components.card', [
-                                                        'index' => $item,
+                                                        'index' => $apartment,
                                                         'showBanner' => false,
                                                         'isSlider' => false,
                                                         'showBorder' => true,
@@ -353,10 +355,10 @@
                                     <h5 class="text-danger mt-4">Ces logements pourraient vous intéresser</h5>
                                     <div class="container col-8 col-md-10 mx-auto">
                                         <div class="owl-carousel owl-theme solution_carousels">
-                                            @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
+                                            @foreach ($apartments as $apartment)
                                                 <div class="item">
                                                     @include('components.card', [
-                                                        'index' => $item,
+                                                        'index' => $apartment,
                                                         'showBanner' => false,
                                                         'isSlider' => false,
                                                         'showBorder' => true,
@@ -388,10 +390,10 @@
                                     <h5 class="text-danger mb-3 mt-5">Ces logements pourraient vous intéresser</h5>
                                     <div class="container col-8 col-md-10 mx-auto">
                                         <div class="owl-carousel owl-theme solution_carousels">
-                                            @foreach ([1, 2, 3, 4, 5, 6, 7, 8] as $item)
+                                            @foreach ($apartments as $apartment)
                                                 <div class="item">
                                                     @include('components.card', [
-                                                        'index' => $item,
+                                                        'index' => $apartment,
                                                         'showBanner' => true,
                                                         'isSlider' => false,
                                                         'showBorder' => true,

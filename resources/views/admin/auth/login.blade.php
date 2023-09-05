@@ -16,16 +16,16 @@
 
 </head>
 
-<body class="auth-fluid-pages pb-0">
+<body class="auth-fluid-pages pb-0 my-5">
 
-<div class="auth-fluid justify-content-center">
+<div class="auth-fluid justify-content-center mt-5">
     <!--Auth fluid left content -->
     <div class="auth-fluid-form-box">
         <div class="align-items-center d-flex h-100">
             <div class="card-body">
 
                 <!-- Logo -->
-                <div class="auth-brand text-center text-lg-left">
+                <div class="auth-brand text-center text-lg-left mt-5">
                     <div class="auth-logo">
                         <a href="#" class="logo text-center">
                             <span class="logo-lg">

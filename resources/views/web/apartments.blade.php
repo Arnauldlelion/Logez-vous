@@ -239,16 +239,17 @@
                     </h5>
                     <h5 style="color: gray;">sur 3138</h5>
                     <div class="row">
-
-                        @foreach ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] as $item)
+                        @foreach ($apartments as $apartment)
+                        <a href="{{ route('single-appartment', $apartment->id) }}">
                             <div class="col-md-6 col-xl-4 mb-3">
                                 @include('components.card', [
-                                    'index' => $item,
+                                    'index' => $apartment,
                                     'showBanner' => false,
                                     'isSlider' => true,
                                     'showBorder' => true,
                                 ])
                             </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>

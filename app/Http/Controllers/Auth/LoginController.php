@@ -21,15 +21,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
-    {
-        if (Auth('landlord')->check()) {
-            return redirect()->route('landlord.index');
-        }
-
-        return view('auth.login'); // Update this to match your view location
-    }
-
     public function login(Request $request)
     {
         $request->validate([
@@ -52,6 +43,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth('landlord')->logout();
-        return redirect()->route('login'); // Update the route name as needed
+        return redirect()->route('index'); // Update the route name as needed
     }
 }

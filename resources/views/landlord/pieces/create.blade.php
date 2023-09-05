@@ -14,7 +14,7 @@
                         </div>
 
                         <!-- form -->
-                        <form action="{{ route('landlord.pieces.store') }}" method="POST">
+                        <form action="{{ route('landlord.pieces.store',) }}" method="POST">
                             @csrf
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">

@@ -16,6 +16,7 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('url');
+            $table->boolean('isCover')->default(false);
             $table->unsignedBigInteger('appartment_id');
             $table->timestamps();
         });

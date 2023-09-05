@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ '/aide' }}">Aide</a>
+                        <a class="nav-link" href="{{ route('help') }}">Aide</a>
                     </li>
                     @auth
                         <li class="nav-item">

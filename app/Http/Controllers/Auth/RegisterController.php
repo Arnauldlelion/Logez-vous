@@ -71,7 +71,6 @@ class RegisterController extends Controller
      */
 
      public function index() {
-        return view('auth.register', ['route' => route('register-view')]);
     }
 
     public function createBizUser(Request $request)

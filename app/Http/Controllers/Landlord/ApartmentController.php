@@ -18,6 +18,7 @@ class ApartmentController extends Controller
     public function index()
     {
         //
+        return view('landlord.apartment.index');
     }
 
     /**
@@ -53,7 +54,7 @@ class ApartmentController extends Controller
         $apartment['apt_type_id'] = 6;
         $apartment['property_id'] = $new_prop_id;
         Appartment::create($apartment);
-        return redirect()->route('landlord.property.show', $new_prop_id);
+        return redirect()->route('landlord.pieces.create', $new_prop_id);
     }
 
     /**
@@ -127,22 +128,45 @@ class ApartmentController extends Controller
         return redirect()->route('landlord.property.show', $new_prop_id);
     }
 
+  
+
     public function storeImages(Request $request)
     {
         $request->validate([
             'images.*' => 'nullable|image',
+            'cover_image.*' => 'nullable|image',
         ]);
-
-        if($request->images) {
-            foreach ($request->file('images') as $imagefile) {
-                $apt = new Image();
-                $apt->appartment_id = session('new_apt_id');
-                $apt->url = $imagefile->store('appartments', 'public');
-                $apt->save();
+    
+        if ($request->hasFile('cover_image')) {
+            $coverImageFile = $request->file('cover_image');
+    
+            // Check if a cover image was uploaded
+            if ($coverImageFile->isValid()) {
+                $coverImage = new Image();
+                $coverImage->appartment_id = session('new_apt_id');
+                $coverImage->isCover = true;
+                $coverImage->url = $coverImageFile->store('appartments', 'public');
+                $coverImage->save();
             }
-        } 
+        }
+    
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+    
+            // Check if any images were uploaded
+            foreach ($images as $image) {
+                if ($image->isValid()) {
+                    $apt = new Image();
+                    $apt->appartment_id = session('new_apt_id');
+                    $apt->url = $image->store('appartments', 'public');
+                    $apt->save();
+                }
+            }
+        }
+    
         return back()->with('success', 'Images Uploaded Successfully!');
     }
+ 
 
     /**
      * Remove the specified resource from storage.

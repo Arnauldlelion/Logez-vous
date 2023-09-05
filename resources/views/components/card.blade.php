@@ -1,4 +1,4 @@
-<a href="/appartements/name" class="house-card h-100 shadow-lg">
+<div class="house-card h-100 shadow-lg">
     @if ($showBanner)
         <div class="img-container">
             <img src="/storage/images/premium.png" class="img-fluid premium" alt="{{ config('app.name') }}">
@@ -12,13 +12,22 @@
                 ])
             </div>
         @else
-            <img src="/storage/images/room.jpeg" alt="Room" class="card-img-top">
+            <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Room" class="card-img-top">
         @endif
-        <div class="card-body">
-            <div class="num-text">toulon (83200)</div>
-            <div class="price">8,000 XAF cc - 57.0 m<sup>2</sup></div>
-            <div class="rooms">3 pièces * non meublé * 1er étage</div>
-            <div class="published">Publié le 11 juillet 2023</div>
-        </div>
-    </div>
+<div class="card-body">
+    <div class="num-text">{{$apartment->property->location}} (83200)</div>
+    <div class="price">{{ $apartment->monthly_price}} XAF cc - 57.0 m<sup>2</sup></div>
+    <div class="rooms">{{ $apartment->number_of_appartnents}} * {{ $apartment->furnished}} * {{ $apartment->floor}}</div>
+    <div class="published">Publié le 11 juillet 2023</div>
+</div>
+</div>
+</div>
+{{-- <div class="card-body">
+    <div class="num-text">toulon (83200)</div>
+    <div class="price">8,000 XAF cc - 57.0 m<sup>2</sup></div>
+    <div class="rooms">3 pièces * non meublé * 1er étage</div>
+    <div class="published">Publié le 11 juillet 2023</div>
+</div>
+</div>
 </a>
+pièces --}}

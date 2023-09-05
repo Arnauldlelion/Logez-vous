@@ -56,8 +56,8 @@
             <ul class="nav" style="padding-top: 8rem">
 
 
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="{{ route('landlord.index') }}">
+                <li class="nav-item menu-items ">
+                    <a class="nav-link" href="{{ route('landlord.property.index') }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-home"></i>
                         </span>
@@ -100,8 +100,8 @@
                         <span class="menu-title">Vos locataires</span>
                     </a>
                 </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/tables/basic-table.html">
+                <li class="nav-item menu-items ">
+                    <a class="nav-link" href="{{ route('landlord.index') }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-home-city"></i>
                         </span>
