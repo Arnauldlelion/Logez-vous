@@ -10,7 +10,7 @@
                         <!-- title-->
                         <div class="d-flex align-items-center my-5">
                             <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                            <h1 class="text-danger">Piece</h1>
+                            <h1 class="text-danger">Pièce</h1>
                         </div>
 
                         <!-- form -->
@@ -33,7 +33,7 @@
                                             <label for="">{{ $piece_type->name }}</label>
                                         </div>
                                     @empty
-                                        <div>No Piece type has been added. Please Contact the admin</div>
+                                        <div>Auncune Pièce n'a été ajouter. Veuillez contacter l'admin</div>
                                     @endforelse
                                     @error('pieces_types_id')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -70,7 +70,7 @@
                                 <div class="text-black float-start">
                                     <a href="{{ route('landlord.apartments.show', session('new_apt_id')) }}"
                                         class="text-secondary">
-                                        Back
+                                        Retour
                                     </a>
                                 </div>
                                 <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

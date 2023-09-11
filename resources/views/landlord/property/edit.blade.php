@@ -11,7 +11,7 @@
                  <!-- title-->
                  <div class="d-flex align-items-center mb-5 mt-5">
                     <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                    <h1 class="text-danger">Modifier un bien</h1>
+                    <h1 class="text-danger">Modifier {{$property->name}}</h1>
                 </div>
 
                  <!-- form -->
@@ -68,7 +68,7 @@
                         <div class="text-black float-start">
                             <a href="{{ route('landlord.index') }}" class="text-secondary">
                                 <i class="mdi mdi-chevron-left text-secondary"></i>
-                                Back
+                                Retour
                             </a>
                         </div>
                         <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

@@ -12,11 +12,11 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="p-4">
-                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartment {{ $apartment->id }} >
+                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartement {{ $apartment->id }} >
                             Rapports De Gestion - {{ $apartment->property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
-                        <a href="{{ route('landlord.rapports.create') }}" class="btn btn-secondary">Add New Rapport De
+                        <a href="{{ route('landlord.rapports.create') }}" class="btn btn-secondary">Ajouter un Rapport De
                             Gestion</a>
                     </div>
                     <div class="table-responsive">
@@ -26,7 +26,7 @@
                                     <th>S/N</th>
                                     <th>Annee Construction</th>
                                     <th>Nombre des Locataire</th>
-                                    <th>Duree du Locataire</th>
+                                    <th>Durée du Locataire</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -53,7 +53,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="100%">No Rapport Found</td>
+                                        <td colspan="100%">Aucun Rapport Trouver</td>
                                     </tr>
                                 @endforelse
                             </tbody>

@@ -14,7 +14,7 @@ class Appartment extends Model
         'furnished',
         'description',
         'monthly_price',
-        'number_of_appartments',
+        'number_of_pieces',
         'apt_type_id',
         'property_id',
     ];

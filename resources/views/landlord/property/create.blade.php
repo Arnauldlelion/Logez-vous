@@ -40,12 +40,12 @@
 
                                     @forelse (\App\Models\AppartmentType::all() as $apt_type)
                                         <div class="d-flex gap-3">
-                                            <input type="checkbox" name="appartmentType[]" value={{ $apt_type->id }}
+                                            <input type="checkbox" class="form-check-input" name="appartmentType[]" value={{ $apt_type->id }}
                                                 id="">
-                                            <label for="">{{ $apt_type->name }}</label>
+                                            <label for="form-check-input">{{ $apt_type->name }}</label>
                                         </div>
                                     @empty
-                                        <div>No Appartment type has been added. Please Contact the admin</div>
+                                        <div>Auncun Apartement n'a été ajouter. Veuillez contacter l'admin</div>
                                     @endforelse
                                     @error('appartmentType')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -69,7 +69,7 @@
                                 <div class="text-black float-start">
                                     <a href="{{ route('landlord.index') }}" class="text-secondary">
                                         <i class="mdi mdi-chevron-left text-secondary"></i>
-                                        Back
+                                        Retour
                                     </a>
                                 </div>
                                 <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

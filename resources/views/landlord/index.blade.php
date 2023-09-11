@@ -13,9 +13,9 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Name</th>
+                                    <th>Nom</th>
                                     <th>Location</th>
-                                    <th>Apartment Types</th>
+                                    <th>Types d'Apartment </th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

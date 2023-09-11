@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="p-4">
-                        <h4 class="text-capitalize">{{ $property->name }} Apartments - {{ $property->location }}</h4>
+                        <h4 class="text-capitalize">{{ $property->name }} Apartements - {{ $property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
                         <a href="{{ route('landlord.apartments.create') }}" class="btn btn-secondary">Add New apartments</a>
@@ -22,10 +22,10 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Monthly Price</th>
-                                    <th>Furnished</th>
-                                    <th>Number of Apartments</th>
-                                    <th>Floor Level</th>
+                                    <th>Prix</th>
+                                    <th>Meublé</th>
+                                    <th>Nombre de Pièce</th>
+                                    <th>étage</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,7 +35,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $apartment->monthly_price }}</td>
                                         <td>{{ $apartment->furnished }}</td>
-                                        <td>{{ $apartment->number_of_appartments }}</td>
+                                        <td>{{ $apartment->number_of_pieces }}</td>
                                         <td>{{ $apartment->floor }}</td>
                                         <td>
                                             <div class="btn-group">
@@ -48,7 +48,7 @@
                                                 <div>
                                                     <a href="{{ route('landlord.apartments.show', $apartment->id) }}"
                                                         class="btn btn-secondary btn-sm ml-4">
-                                                        <i class="mdi mdi-eye"></i> Pieces</a>
+                                                        <i class="mdi mdi-eye"></i> Pièce</a>
                                                     <br><br>
                                                     <a href="{{ route('landlord.apartments.showRapports', $apartment->id) }}"
                                                         class="btn btn-secondary btn-sm ml-4">
@@ -56,7 +56,7 @@
                                                     <br><br>
                                                     <a href="{{ route('landlord.apartments.showPayments', $apartment->id) }}"
                                                         class="btn btn-secondary btn-sm ml-4">
-                                                        <i class="mdi mdi-eye"></i> Payments</a>
+                                                        <i class="mdi mdi-eye"></i> Payements</a>
                                                 </div>
                                             </div>
 
@@ -69,7 +69,7 @@
 
                                 @empty
                                     <tr>
-                                        <td colspan="100%">No Appartment Found</td>
+                                        <td colspan="100%">Aucun Apartement trouver</td>
                                     </tr>
                                 @endforelse
                             </tbody>

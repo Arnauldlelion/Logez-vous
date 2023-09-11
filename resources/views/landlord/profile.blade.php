@@ -23,7 +23,7 @@
 
                             <div class="col-12 py-5 px-2 px-md-4 main-box">
                                 <div class="col-12 form-group">
-                                    <label for="name">Name *</label>
+                                    <label for="name">Nom *</label>
                                     <input type="text" name="name"
                                         class="form-control @error('name') is-invalid @enderror"
                                         value="{{ old('name', $user->name) }}">
@@ -41,7 +41,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 form-group">
-                                    <label for="phone">Phone Number *</label>
+                                    <label for="phone">Numero de telephone *</label>
                                     <input type="text" name="phone"
                                         class="form-control @error('phone') is-invalid @enderror"
                                         value="{{ old('phone', $user->phone) }}">
@@ -50,7 +50,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 pt-2 d-flex">
-                                    <button class="btn btn-primary mt-2">Save Changes</button>
+                                    <button class="btn btn-primary mt-2">Enregistré</button>
                                 </div>
                             </div>
                         </form>

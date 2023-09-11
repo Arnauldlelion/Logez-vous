@@ -32,10 +32,10 @@
                     </li>
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ '/mon-compte' }}">Mon compte</a>
+                            <a class="nav-link" href="{{ route('landlord.dashboard') }}">Mon compte</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Deconnexion</a>
+                            <a class="nav-link" href="{{ route('logout') }}">Deconnexion</a>
                         </li>
                     @endauth
                     @guest
