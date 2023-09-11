@@ -54,6 +54,9 @@ Route::group(['namespace' =>'Auth'], function() {
     Route::post('/login', 'LoginController@login')->name('login.submit');
     Route::post('/logout', 'LoginController@logout')->name('logout');
 });
+// Route::post('/filter-apartments', 'ApartmentController@filter')->name('filter-apartments');
+
+Route::post('/filter-apartments', [ApartmentController::class, 'filter'])->name('apartments.filter');
 Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
     Route::group(['middleware' => ['auth:landlord']], function () {
         Route::get('/', [LandlordController::class, 'index'])->name('index');
@@ -64,7 +67,7 @@ Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlo
         Route::resource('property', 'PropertyController');
         Route::resource('apartments', 'ApartmentController');
         Route::post('/apartments/storeImages', 'ApartmentController@storeImages')->name('apartments.storeImages');
-        Route::post('/change-cover-image', 'AppartmentController@changeCoverImage')->name('changeCoverImage');
+        Route::put('/change-cover-image', 'ApartmentController@changeCoverImage')->name('changeCoverImage');
         Route::get('/apartments/showRapports/{id}', 'ApartmentController@showRapports')->name('apartments.showRapports');
         Route::get('/apartments/showPayments/{id}', 'ApartmentController@showPayments')->name('apartments.showPayments');
         Route::resource('pieces', 'PiecesController');
@@ -104,7 +107,6 @@ Route::get('/prop', function () {
 });
 
 Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
-
 
 
 

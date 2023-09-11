@@ -123,6 +123,7 @@
   --bs-form-valid-border-color: #198754;
   --bs-form-invalid-color: #dc3545;
   --bs-form-invalid-border-color: #dc3545;
+  --main-color: #ff040c;
 }
 
 [data-bs-theme=dark] {
@@ -267,6 +268,10 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+.text-main{
+  color: var(--main-color);
 }
 
 abbr[title] {

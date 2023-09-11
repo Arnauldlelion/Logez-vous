@@ -59,7 +59,7 @@
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror"
                                         type="text" id="floor" value="{{ old('floor', $apt->floor) }}" name="floor"
-                                        placeholder="Idris">
+                                        placeholder="8">
                                     @error('floor')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -93,7 +93,7 @@
                                         class="form-control rounded-pill form-control-sm @error('monthly_price') is-invalid @enderror"
                                         type="text" id="monthly_price"
                                         value="{{ old('monthly_price', $apt->monthly_price) }}" name="monthly_price"
-                                        placeholder="50000frs/month">
+                                        placeholder="100,000">
                                     @error('monthly_price')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -103,14 +103,14 @@
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                                 <div class="col-12 col-lg-7">
-                                    <label for="number_of_appartments" class=" col-form-label-sm">Number of
-                                        appartment</label>
+                                    <label for="number_of_pieces" class=" col-form-label-sm">Nombre de pièces</label>
                                     <input
-                                        class="form-control rounded-pill form-control-sm @error('number_of_appartments') is-invalid @enderror"
-                                        type="number" id="number_of_appartments"
-                                        value="{{ old('number_of_appartments', $apt->number_of_appartments) }}"
-                                        name="number_of_appartments">
-                                    @error('number_of_appartments')
+                                        class="form-control rounded-pill form-control-sm @error('number_of_pieces') is-invalid @enderror"
+                                        type="number" id="number_of_pieces"
+                                        value="{{ old('number_of_pieces', $apt->number_of_pieces) }}"
+                                        name="number_of_pieces"
+                                        placeholder="2">
+                                    @error('number_of_pieces')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -120,7 +120,7 @@
                                 <div class="col-12 col-lg-7">
                                     <label for="description">Description <em>*</em></label>
                                     <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"
-                                        name="description" placeholder="2 parlor,1 kitchen">{{ old('description', $apt->description) }}</textarea>
+                                        name="description" >{{ old('description', $apt->description) }}</textarea>
 
                                     @error('description')
                                         <span class="text-danger"> {{ $message }} </span>

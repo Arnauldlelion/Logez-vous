@@ -61,7 +61,7 @@
                             id="floor"
                             value="{{ old('floor') }}"
                             name="floor"
-                            placeholder="Idris">
+                            placeholder="8">
                             @error('floor')
                             <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
@@ -91,7 +91,7 @@
                                id="monthly_price"
                                value="{{ old('monthly_price') }}"
                                name="monthly_price"
-                               placeholder="50000frs/month">
+                               placeholder="100,000">
                         @error('monthly_price')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -101,12 +101,13 @@
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                           <div class="col-12 col-lg-7">
-                            <label for="number_of_appartments" class=" col-form-label-sm">Number of appartment</label>
-                            <input class="form-control rounded-pill form-control-sm @error('number_of_appartments') is-invalid @enderror" type="number"
-                               id="number_of_appartments"
-                               value="{{ old('number_of_appartments') }}"
-                               name="number_of_appartments">
-                        @error('number_of_appartments')
+                            <label for="number_of_pieces" class=" col-form-label-sm">Nombre de pièces</label>
+                            <input class="form-control rounded-pill form-control-sm @error('number_of_pieces') is-invalid @enderror" type="number"
+                               id="number_of_pieces"
+                               value="{{ old('number_of_pieces') }}"
+                               name="number_of_pieces"
+                               placeholder="2">
+                        @error('number_of_pieces')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                         </div>
@@ -114,11 +115,10 @@
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                         <div class="col-12 col-lg-7">
-                        <label for="description">Description <em>*</em></label>
+                        <label for="description">Dèscription  <em>*</em></label>
                         <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}"
                                   rows="5"
                                   name="description"
-                                  placeholder="2 parlor,1 kitchen"
                                   >{{ old('description') }}</textarea>
     
                         @error('description')
@@ -130,7 +130,7 @@
                       <div class="w-100 mb-5">
                         <div class="text-black float-start">
                             <a href="{{ route('landlord.property.show', session('new_prop_id')) }}" class="text-secondary">
-                                Back
+                                Retour
                             </a>
                         </div>
                         <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

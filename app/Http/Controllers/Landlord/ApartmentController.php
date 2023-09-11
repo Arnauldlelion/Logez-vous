@@ -47,7 +47,7 @@ class ApartmentController extends Controller
             'floor' => ['required'],
             'furnished' => ['nullable', 'string', 'max:255'],
             'monthly_price' => ['required', 'string'],
-            'number_of_appartments' => ['required', 'integer'],
+            'number_of_pieces' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
         ]);
         $apartment = $request->all();
@@ -114,14 +114,14 @@ class ApartmentController extends Controller
             'floor' => ['required'],
             'furnished' => ['nullable', 'string', 'max:255'],
             'monthly_price' => ['required', 'string'],
-            'number_of_appartments' => ['required', 'integer'],
+            'number_of_pieces' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
         ]);
         $apartment = Appartment::findOrFail($id);
         $apartment->floor = $request->get('floor');
         $apartment->furnished = $request->get('furnished');
         $apartment->monthly_price = $request->get('monthly_price');
-        $apartment->number_of_appartments = $request->get('number_of_appartments');
+        $apartment->number_of_pieces = $request->get('number_of_pieces');
         $apartment->description = $request->get('description');
 
         $apartment->save();
@@ -166,7 +166,59 @@ class ApartmentController extends Controller
     
         return back()->with('success', 'Images Uploaded Successfully!');
     }
+
+    public function changeCoverImage(Request $request)
+    {
+        $request->validate([
+            'image_id' => 'required|exists:images,id',
+        ]);
+    
+        $imageId = $request->input('image_id');
+    
+        // Find the existing cover image
+        $existingCoverImage = Image::where('appartment_id', session('new_apt_id'))
+            ->where('iscover', true)
+            ->first();
+    
+        // Update the existing cover image to remove the "is_cover" flag
+        if ($existingCoverImage) {
+            $existingCoverImage->iscover = false;
+            $existingCoverImage->save();
+        }
+    
+        // Find the new cover image
+        $newCoverImage = Image::where('id', $imageId)
+            ->where('appartment_id', session('new_apt_id'))
+            ->first();
+    
+        // Update the new cover image to set the "is_cover" flag
+        if ($newCoverImage) {
+            $newCoverImage->iscover = true;
+            $newCoverImage->save();
+        }
+    
+        
+        return back()->with('success', 'Images Uploaded Successfully!');
+    }
  
+    public function filter(Request $request)
+{
+    try {
+        $minPrice = $request->input('minPrice');
+        $maxPrice = $request->input('maxPrice');
+
+        // Perform the filtering logic using the minPrice and maxPrice values
+        $filteredApartments = Apartment::whereBetween('price', [$minPrice, $maxPrice])->get();
+
+        return response()->json($filteredApartments);
+    } catch (\Exception $e) {
+        // Log the error for debugging purposes
+        \Log::error('Filtering apartments failed: ' . $e->getMessage());
+
+        // Return an error response
+        return response()->json(['error' => 'An error occurred while filtering apartments. Please try again.'], 500);
+    }
+}
 
     /**
      * Remove the specified resource from storage.
