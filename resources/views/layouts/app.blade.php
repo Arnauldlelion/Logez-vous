@@ -41,17 +41,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="footer-slogan">
-                        &copy; {{ config('app.name') }} {{ \Carbon\Carbon::now()->format('Y') }}
-                    </div>
+                     
                     <img src="/storage/images/logos/logez-vous.png" alt="{{ config('app.name') }} Logo"
                         class="img-fluid footer-logo">
-                    <a href="/" class="apple">
+                    <!--<a href="/" class="apple">
                         <img src="/storage/images/apple.png" alt="Apple" class="img-fluid">
                     </a>
                     <a href="#" class="playstore">
                         <img src="/storage/images/playstore.png" alt="Play Store" class="img-fluid">
-                    </a>
+                    </a>-->
                 </div>
                 <div class="col-md-6 col-lg-3 mb-3">
                     <h5>Services</h5>

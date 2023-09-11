@@ -38,7 +38,7 @@
         <section class="house-section">
             <div class="row">
                 <div class="col-lg-9">
-                    <h1>Location d'un T3 non meublé au Rue Simone Veil, 92220, Bagneux</h1>
+                    <h1>Location d'un T3 non meublé Makepe , bloc 6</h1>
                     <div class="small">FLTK38060</div>
                     <div class="small-main">Les atouts du bien</div>
                     <div class="row g-0">
@@ -83,34 +83,22 @@
                     <hr>
                     <div class="p-text">
                         <h4>Description de l'appartement</h4>
-                        <p>
-                            Situé à Guyancourt, ce T5 meublé en colocation de 94m2 se trouve Rue Youri Gagarine. Non loin de
-                            l'arrêt de bus Mendès France, le logement est proche de toutes les commodités et dispose d'un
-                            parking. L'électricité, le chauffage et internet sont inclus dans les charges.
-                        </p>
-                        <p>
-                            Cet appartement lumineux est composé d'un salon, d'une cuisine ouverte, de 4 chambres doubles,
-                            de 2 salles de bain avec douches et de WC séparés.
-                            La cuisine est équipée d'un lave-linge, d'un lave-vaisselle, d'un micro-ondes, d'un four, de
-                            plaques de cuisson, d'un grand réfrigérateur et d'un congélateur. Le salon dispose d'un canapé,
-                            d'une table basse, d'une table à manger et de 6 chaises. Les chambres sont entièrement meublées
-                            avec lit double et armoire.
-                        </p>
+                        <p>{{ $apartment->description}} </p>
                         <hr>
                     </div>
                     <div class="expert mt-4 d-lg-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center mb-3 mb-lg-0">
                             <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
                             <div class="ms-2 content">
-                                <h5>Présenté par votre expert.e en location Flatlooker</h5>
-                                <div>Lucas</div>
+                                <h5>Présenté par votre expert.e en location Logez-vous</h5>
+                                <div>Arnauld</div>
                             </div>
                         </div>
                         <div class="contact">
                             <span>
                                 <i class="fas fa-phone"></i>
                             </span>
-                            <span class="ms-2">+237 678-098-098</span>
+                            <span class="ms-2">+237 657170133</span>
                         </div>
                     </div>
                     <hr>
@@ -148,15 +136,15 @@
                                     <div class="icon">
                                         <i class="fas fa-map-marker"></i>
                                     </div>
-                                    <div class="ms-2">6 Rue Arthur Neibecker, 93440, Dugny</div>
+                                    <div class="ms-2">Douala ,Bonamoussadi,</div>
                                 </div>
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="text-main icon">
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <div class="ms-2">
-                                        <div class="text-main">1285,0 XAF/mois</div>
-                                        <div class="text-sec">Dont 200 € de charges</div>
+                                        <div class="text-main">200 000 XAF/mois</div>
+                                        <div class="text-sec">Dont 200 000 xaf de charges</div>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">

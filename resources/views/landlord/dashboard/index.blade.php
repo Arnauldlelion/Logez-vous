@@ -11,10 +11,10 @@
                             <div class="page-title-box">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Panneau d'administration</a></li>
                                     </ol>
                                 </div>
-                                <h3 class="page-title text-white">Tableau de board</h3>
+                                <h3 class="page-title text-white">Tableau de bord</h3>
                             </div>
                         </div>
                     </div>

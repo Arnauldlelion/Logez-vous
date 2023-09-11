@@ -47,11 +47,11 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <p class="mt-5">Accomodation type(s)?</p>
+                                <p class="mt-5"> type(s) d'accomodation?</p>
                                 <div class="form-check">
                                     <input class="form-check-input" {{ in_array('room', $property->type) ? 'checked' : ''}} type="checkbox" name="type[]"
                                         value="{{ old('type', 'room') }}">
-                                    <label class="form-check-label">Room</label>
+                                    <label class="form-check-label">Chambre</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" {{ in_array('studio', $property->type) ? 'checked' : ''}} type="checkbox" name="type[]"
@@ -61,7 +61,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" {{ in_array('apartment', $property->type) ? 'checked' : ''}} type="checkbox" name="type[]"
                                         value="{{ old('type', 'apartment') }}">
-                                    <label class="form-check-label">Apartment</label>
+                                    <label class="form-check-label">Appartement</label>
                                 </div>
                                 @error('type')
                                     <span class="invalid-feedback">{{ $message }}</span>

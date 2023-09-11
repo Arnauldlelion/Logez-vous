@@ -11,7 +11,7 @@
                         <!-- title-->
                         <div class="d-flex align-items-center mb-5 mt-5">
                             <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                            <h1 class="text-danger">Detail de votre appartment</h1>
+                            <h1 class="text-danger">Detail de votre appartement</h1>
                         </div>
 
                         <!-- form -->
@@ -55,7 +55,7 @@
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                                 <div class="col-12 col-lg-7">
-                                    <label for="floor" class="col-sm-2 col-form-label-sm">Niveau</label>
+                                    <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror"
                                         type="text" id="floor" value="{{ old('floor', $apt->floor) }}" name="floor"
@@ -103,8 +103,7 @@
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                                 <div class="col-12 col-lg-7">
-                                    <label for="number_of_appartments" class=" col-form-label-sm">Number of
-                                        appartment</label>
+                                    <label for="number_of_appartments" class=" col-form-label-sm">Nombre de pieces</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('number_of_appartments') is-invalid @enderror"
                                         type="number" id="number_of_appartments"
@@ -120,7 +119,7 @@
                                 <div class="col-12 col-lg-7">
                                     <label for="description">Description <em>*</em></label>
                                     <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"
-                                        name="description" placeholder="2 parlor,1 kitchen">{{ old('description', $apt->description) }}</textarea>
+                                        name="description" placeholder="">{{ old('description', $apt->description) }}</textarea>
 
                                     @error('description')
                                         <span class="text-danger"> {{ $message }} </span>
@@ -131,7 +130,7 @@
                             <div class="w-100 mb-5">
                                 <div class="text-black float-start">
                                     <a href="{{ route('landlord.property.show', session('new_prop_id')) }}" class="text-secondary">
-                                        Back
+                                       Retour
                                     </a>
                                 </div>
                                 <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

@@ -20,7 +20,7 @@
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                                 <div class="col-12 col-lg-7">
-                                    <label for="annee_construction" class="col-sm-2 col-form-label-sm">Annee Construction</label>
+                                    <label for="annee_construction" class="col-sm-2 col-form-label-sm">Annee de Construction</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('annee_construction') is-invalid @enderror"
                                         type="date" id="annee_construction" value="{{ old('annee_construction') }}" name="annee_construction"
@@ -32,8 +32,8 @@
                             </div>
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre des
-                                    Locataire</label>
+                                <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre de
+                                    Locataire depuis la construction</label>
                                 <div class="col-12 col-lg-7">
                                     <input name="nombreDeLocataire"
                                         class="form-control rounded-pill form-control-sm @error('nombreDeLocataire') is-invalid @enderror"
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="dureeDuLocataire" class="col-sm-2 col-form-label-sm">Duree du Locataire</label>
+                                <label for="dureeDuLocataire" class="col-sm-2 col-form-label-sm">Duree des Locataire</label>
                                 <div class="col-12 col-lg-7">
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('dureeDuLocataire') is-invalid @enderror"
@@ -61,7 +61,7 @@
                             <div class="w-100 mb-5">
                               <div class="text-black float-start">
                                   <a href="{{ route('landlord.apartments.showRapports', session('new_apt_id')) }}" class="text-secondary">
-                                      Back
+                                     Retour
                                   </a>
                               </div>
                               <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

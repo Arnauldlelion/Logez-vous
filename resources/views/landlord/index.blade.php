@@ -6,16 +6,16 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="text-right p-2">
-                        <a href="{{ route('landlord.property.create') }}" class="btn btn-secondary">Add New Property</a>
+                        <a href="{{ route('landlord.property.create') }}" class="btn btn-secondary">Ajouter une nouvelle Propriete</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm text-white">
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Name</th>
-                                    <th>Location</th>
-                                    <th>Apartment Types</th>
+                                    <th>Nom</th>
+                                    <th>Localisation</th>
+                                    <th>Types d'Appartement </th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -49,7 +49,7 @@
                                                         class="mdi mdi-delete"></i></a>
                                                 <a href="{{ route('landlord.property.show', $property->id) }}"
                                                     class="btn btn-secondary btn-sm ml-4">
-                                                    <i class="mdi mdi-eye"></i> Apartments</a>
+                                                    <i class="mdi mdi-eye"></i> Appartements</a>
                                             </div>
 
                                         </td>
@@ -62,7 +62,7 @@
 
                                 @empty
                                     <tr>
-                                        <td colspan="100%">No Property Found</td>
+                                        <td colspan="100%">Aucune propriete trouve.</td>
                                     </tr>
                                 @endforelse
 

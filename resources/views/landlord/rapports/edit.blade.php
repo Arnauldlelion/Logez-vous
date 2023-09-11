@@ -33,7 +33,7 @@
                     </div>
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                        <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre des Locataire</label>
+                        <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre de Locataires depuis la construction</label>
                         <div class="col-12 col-lg-7">
                             <input class="form-control rounded-pill form-control-sm @error('nombreDeLocataire') is-invalid @enderror" type="number"
                             id="nombreDeLocataire"
@@ -46,7 +46,7 @@
                       </div>
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                        <label for="dureeDuLocataire" class="col-sm-2 col-form-label-sm">Duree du Locataire</label>
+                        <label for="dureeDuLocataire" class="col-sm-2 col-form-label-sm">Duree des Locataires</label>
                         <div class="col-12 col-lg-7">
                             <input class="form-control rounded-pill form-control-sm @error('dureeDuLocataire') is-invalid @enderror" type="text"
                                id="dureeDuLocataire" required=""
@@ -62,7 +62,7 @@
                       <div class="w-100 mb-5">
                         <div class="text-black float-start">
                             <a href="{{ route('landlord.apartments.showRapports', session('new_apt_id')) }}" class="text-secondary">
-                                Back
+                                Retour
                             </a>
                         </div>
                         <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

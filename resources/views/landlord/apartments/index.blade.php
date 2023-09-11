@@ -15,17 +15,17 @@
                         <h4 class="text-capitalize">{{ $property->name }} Apartments - {{ $property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
-                        <a href="{{ route('landlord.apartments.create') }}" class="btn btn-secondary">Add New apartments</a>
+                        <a href="{{ route('landlord.apartments.create') }}" class="btn btn-secondary">Ajouter un appartement</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm text-white">
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Monthly Price</th>
-                                    <th>Furnished</th>
-                                    <th>Number of Apartments</th>
-                                    <th>Floor Level</th>
+                                    <th>Loyer mensuel</th>
+                                    <th>Meublé</th>
+                                    <th>Numbre d'appartements</th>
+                                    <th>Niveau d'etage</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -56,7 +56,7 @@
                                                     <br><br>
                                                     <a href="{{ route('landlord.apartments.showPayments', $apartment->id) }}"
                                                         class="btn btn-secondary btn-sm ml-4">
-                                                        <i class="mdi mdi-eye"></i> Payments</a>
+                                                        <i class="mdi mdi-eye"></i> Paiements</a>
                                                 </div>
                                             </div>
 
@@ -69,7 +69,7 @@
 
                                 @empty
                                     <tr>
-                                        <td colspan="100%">No Appartment Found</td>
+                                        <td colspan="100%">Aucun appartement trouvé</td>
                                     </tr>
                                 @endforelse
                             </tbody>

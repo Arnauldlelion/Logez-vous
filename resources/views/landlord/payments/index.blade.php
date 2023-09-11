@@ -5,7 +5,7 @@
         <div class="text-white">
             <a href="{{route("landlord.property.show", session('new_prop_id'))}}" class="text-white">
                 <i class="mdi mdi-chevron-left"></i>
-                Appartments
+                Appartements
             </a>
         </div>
         <div class="row">
@@ -16,15 +16,15 @@
                             Payments - {{ $apartment->property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
-                        <a href="{{ route('landlord.payments.create') }}" class="btn btn-secondary">Add New payment</a>
+                        <a href="{{ route('landlord.payments.create') }}" class="btn btn-secondary">Ajouter un appartement</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm text-white">
                             <thead>
                                 <tr>
                                     <th>S/N</th>
+                                    <th>Prix</th>
                                     <th>Commission</th>
-                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -50,7 +50,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="100%">No Payment Found</td>
+                                        <td colspan="100%">Aucun appartement trouve.</td>
                                     </tr>
                                 @endforelse
                             </tbody>

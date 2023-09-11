@@ -5,7 +5,7 @@
         <div class="text-white">
             <a href="{{ route('landlord.property.show', session('new_prop_id')) }}" class="text-white">
                 <i class="mdi mdi-chevron-left"></i>
-                Appartments
+                Appartements
             </a>
         </div>
         <div class="row">
@@ -16,15 +16,15 @@
                             Pieces - {{ $apartment->property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
-                        <a href="{{ route('landlord.pieces.create') }}" class="btn btn-secondary">Add New Piece</a>
+                        <a href="{{ route('landlord.pieces.create') }}" class="btn btn-secondary">Ajouter une nouvelle piece</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm text-white">
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Number of Pieces</th>
-                                    <th>Size</th>
+                                    <th>Nombre de pieces</th>
+                                    <th>Taille</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -61,7 +61,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="100%">No Piece Found</td>
+                                        <td colspan="100%">Aucune piece trouver</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -95,12 +95,12 @@
                         @enderror
                         <img src="{{ asset('business_assets/icons/icon-upload-photos.svg') }}" alt=""
                             class="mr-1 mr-md-2">
-                        <label for="apt-image"> Upload Photos</label>
+                        <label for="apt-image"> Uploader les Photos</label>
                     </span>
                 </div>
                 <div class=" col-6 d-flex justify-content-end">
                     <button type="submit" class="post-btn bg-primary">
-                        Save Images
+                        Sauvegarder les Images
                     </button>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                 @endforeach
             @else
                 <div class="text-center pt-5">
-                    <h3 class="text-primary">No Appartment Image has been uploaded.</h3>
+                    <h3 class="text-primary">Aucune image d'appartement n'a ete uploader.</h3>
                 </div>
             @endif
         </div>

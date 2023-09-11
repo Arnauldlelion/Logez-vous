@@ -5,7 +5,7 @@
         <div class="text-white">
             <a href="{{route("landlord.property.show", session('new_prop_id'))}}" class="text-white">
                 <i class="mdi mdi-chevron-left"></i>
-                Appartments
+                Appartements
             </a>
         </div>
         <div class="row">
@@ -16,7 +16,7 @@
                             Rapports De Gestion - {{ $apartment->property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
-                        <a href="{{ route('landlord.rapports.create') }}" class="btn btn-secondary">Add New Rapport De
+                        <a href="{{ route('landlord.rapports.create') }}" class="btn btn-secondary">Ajouter un nouveau Rapport De
                             Gestion</a>
                     </div>
                     <div class="table-responsive">
@@ -24,9 +24,9 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Annee Construction</th>
-                                    <th>Nombre des Locataire</th>
-                                    <th>Duree du Locataire</th>
+                                    <th>Annee de Construction</th>
+                                    <th>Nombre de Locataires depuis la construction</th>
+                                    <th>Duree des Locataires</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -53,7 +53,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="100%">No Rapport Found</td>
+                                        <td colspan="100%">Aucun rapport trouve</td>
                                     </tr>
                                 @endforelse
                             </tbody>

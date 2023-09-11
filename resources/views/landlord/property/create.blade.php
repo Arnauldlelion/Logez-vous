@@ -45,7 +45,7 @@
                                             <label for="">{{ $apt_type->name }}</label>
                                         </div>
                                     @empty
-                                        <div>No Appartment type has been added. Please Contact the admin</div>
+                                        <div>Aucun type d'appartement n'a ete ajoute. Contacter l'administrateur svp.</div>
                                     @endforelse
                                     @error('appartmentType')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -69,7 +69,7 @@
                                 <div class="text-black float-start">
                                     <a href="{{ route('landlord.index') }}" class="text-secondary">
                                         <i class="mdi mdi-chevron-left text-secondary"></i>
-                                        Back
+                                       Retour
                                     </a>
                                 </div>
                                 <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

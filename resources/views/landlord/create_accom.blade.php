@@ -35,10 +35,10 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <p class="mt-5">Accomodation type(s)?</p>
+                                <p class="mt-5">type(s) d'accomodation?</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="type[]" value="{{ old('type', 'room') }}">
-                                    <label class="form-check-label">Room</label>
+                                    <label class="form-check-label">Chambre</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="type[]" value="{{ old('type', 'studio') }}">
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="type[]" value="{{ old('type', 'apartment') }}">
-                                    <label class="form-check-label">Apartment</label>
+                                    <label class="form-check-label">Appartement</label>
                                 </div>
                                 @error("type") <span class="invalid-feedback">{{ $message }}</span> @enderror
                             </div>
@@ -60,7 +60,7 @@
                             </div> --}}
 
                             <div class="mt-5 d-lg-flex align-items-center justify-content-between">
-                                <p class="mb-3 mb-lg-0">Combien de piece possede t'il</p>
+                                <p class="mb-3 mb-lg-0">Combien de pieces possede t'il</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div style="margin-right: 10px; font-weight: bold">Studio</div>
                                     @foreach ([1, 2, 3, 4, '5+'] as $item)

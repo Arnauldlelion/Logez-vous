@@ -18,7 +18,7 @@
     <div class="num-text">{{$apartment->property->location}} (83200)</div>
     <div class="price">{{ $apartment->monthly_price}} XAF cc - 57.0 m<sup>2</sup></div>
     <div class="rooms">{{ $apartment->number_of_appartnents}} * {{ $apartment->furnished}} * {{ $apartment->floor}}</div>
-    <div class="published">Publié le 11 juillet 2023</div>
+    <!--<div class="published">Publié le 11 juillet 2023</div>-->
 </div>
 </div>
 </div>

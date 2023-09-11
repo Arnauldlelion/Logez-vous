@@ -23,7 +23,7 @@
 
                             <div class="col-12 py-5 px-2 px-md-4 main-box">
                                 <div class="col-12 form-group">
-                                    <label for="name">Name *</label>
+                                    <label for="name">Nom *</label>
                                     <input type="text" name="name"
                                         class="form-control @error('name') is-invalid @enderror"
                                         value="{{ old('name', $user->name) }}">
@@ -41,7 +41,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 form-group">
-                                    <label for="phone">Phone Number *</label>
+                                    <label for="phone">Numero de telephone *</label>
                                     <input type="text" name="phone"
                                         class="form-control @error('phone') is-invalid @enderror"
                                         value="{{ old('phone', $user->phone) }}">
@@ -50,7 +50,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 pt-2 d-flex">
-                                    <button class="btn btn-primary mt-2">Save Changes</button>
+                                    <button class="btn btn-primary mt-2">Sauvegarder les modifications</button>
                                 </div>
                             </div>
                         </form>
@@ -71,11 +71,11 @@
                             <div class="row right-box mx-0 px-2 px-md-3 pt-2 pb-3 mt-4 mt-md-0">
                                 <div class="col-12 py-3">
                                     <h6 class="font-weight-bold">
-                                        Change Password
+                                        Changer le mot de passe
                                     </h6>
                                 </div>
                                 <div class="col-12 form-group">
-                                    <label for="current_password">Current Password</label>
+                                    <label for="current_password">Mot de passe actuel</label>
                                     <input type="password" name="current_password"
                                         class="form-control @error('current_password') is-invalid @enderror">
                                     @error('current_password')
@@ -83,7 +83,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 form-group">
-                                    <label for="new_password">New Password</label>
+                                    <label for="new_password">Nouveau mot de passe</label>
                                     <input type="password" name="new_password"
                                         class="form-control @error('new_password') is-invalid @enderror">
                                     @error('new_password')
@@ -91,7 +91,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 form-group">
-                                    <label for="conform_password">Confirm Password</label>
+                                    <label for="conform_password">Confirmer le mot de passe</label>
                                     <input type="password" name="new_confirm_password"
                                         class="form-control @error('new_confirm_password') is-invalid @enderror">
                                     @error('new_confirm_password')
@@ -100,7 +100,7 @@
                                 </div>
 
                                 <div class="col-12 pt-2 d-flex">
-                                    <button class="btn btn-primary mt-2">Update Password</button>
+                                    <button class="btn btn-primary mt-2">Mettre à jour le mot de passe</button>
                                 </div>
                             </div>
                         </form>
