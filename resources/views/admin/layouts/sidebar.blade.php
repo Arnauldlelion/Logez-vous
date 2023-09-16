@@ -31,7 +31,29 @@
                                 <span> Types d’appartements </span>
                             </a>
                         </li>
+                        @endif
+                        @endauth
+                        <li class="{{ Route::is('admin.property.*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.property.index') }}">
+                                <i data-feather="home"></i>
+                                <span> Propriété </span>
+                            </a>
+                        </li>
+                        <li class="{{ Route::is('admin.apartments.*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.apartments.index') }}">
+                                <i data-feather="layout"></i>
+                                <span> Appartement </span>
+                            </a>
+                        </li>
+                        <li class="{{ Route::is('admin.pieces.*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.pieces.index') }}">
+                                <i data-feather="layers"></i>
+                                <span> Pièce  </span>
+                            </a>
+                        </li>
 
+                        @auth('admin')
+                        @if (auth('admin')->user()->super_admin)
                         <li class="menu-title mt-2">Admin</li>
                         <li class="{{ Request::is('admin/administrator*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.administrator.index') }}">
@@ -47,24 +69,6 @@
                         </li>
                     @endif
                 @endauth
-                <li class="{{ Route::is('admin.property.*') ? 'menuitem-active' : '' }}">
-                    <a href="{{ route('admin.property.index') }}">
-                        <i data-feather="home"></i>
-                        <span> Propriété </span>
-                    </a>
-                </li>
-                <li class="{{ Route::is('admin.apartments.*') ? 'menuitem-active' : '' }}">
-                    <a href="{{ route('admin.apartments.index') }}">
-                        <i data-feather="layout"></i>
-                        <span> Appartement </span>
-                    </a>
-                </li>
-                <li class="{{ Route::is('admin.pieces.*') ? 'menuitem-active' : '' }}">
-                    <a href="{{ route('admin.pieces.index') }}">
-                        <i data-feather="layers"></i>
-                        <span> Pièce  </span>
-                    </a>
-                </li>
 
                 @auth('admin')
                 @if (auth('admin')->user()->super_admin)

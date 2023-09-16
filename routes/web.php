@@ -57,16 +57,16 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::post('administrator/roles/{id}', 'Administrator\AdminController@assignRoles')->name('admin.roles');
         });
 
-        Route::resource('property', 'PropertyController');
-        Route::resource('apartments', 'ApartmentController');
-        Route::post('/apartments/storeImages', 'ApartmentController@storeImages')->name('apartments.storeImages');
-        Route::put('/change-cover-image', 'ApartmentController@changeCoverImage')->name('changeCoverImage');
-        Route::get('/apartments/showRapports/{id}', 'ApartmentController@showRapports')->name('apartments.showRapports');
-        Route::get('/apartments/showPayments/{id}', 'ApartmentController@showPayments')->name('apartments.showPayments');
-        Route::resource('pieces', 'PiecesController');
-        Route::delete('/pieces/destroyImage/{id}', 'PiecesController@destroyImage')->name('pieces.destroyImage');
-        Route::resource('rapports', 'RapportController');
-        Route::resource('payments', 'PaymentsController');
+        Route::resource('property', 'Property\PropertyController');
+        Route::resource('apartments', 'Apartment\ApartmentController');
+        Route::post('/apartments/storeImages', 'Apartment\ApartmentController@storeImages')->name('apartments.storeImages');
+        Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
+        Route::get('/apartments/showRapports/{id}', 'Apartment\ApartmentController@showRapports')->name('apartments.showRapports');
+        Route::get('/apartments/showPayments/{id}', 'Apartment\ApartmentController@showPayments')->name('apartments.showPayments');
+        Route::resource('pieces', 'Pieces\PiecesController');
+        Route::delete('/pieces/destroyImage/{id}', 'Pieces\PiecesController@destroyImage')->name('pieces.destroyImage');
+        Route::resource('rapports', 'Rapport\RapportController');
+        Route::resource('payments', 'Payments\PaymentsController');
 
         // PROFILE
         Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
