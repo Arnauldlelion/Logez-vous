@@ -1,79 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta charset="utf-8"/>
+    <title>@yield('title') | Admin Back-office | Genie Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" sizes="16x16" type="image/png">
-    
-    <meta name="tcss" content="{{ asset('css/tiny.css') }}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- App favicon -->
+    <link rel="icon" href="{{ asset('admin_assets/images/favicon.png') }}" sizes="16x16" type="image/png">
 
-    <title>@yield('title') | Admin Back-office | autocomplete</title>
+    <!-- Plugins css -->
+    <link href="{{ asset('admin_assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet"/>
 
-     <!-- App css -->
+    <!-- App css -->
     <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('admin_assets/libs/owl-carousel/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/libs/owl-carousel/dist/assets/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/libs/magnific-popup/magnific-popup.css') }}"/>
+
     <link href="{{ asset('admin_assets/css/app.min.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('admin_assets/css/datatables.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('admin_assets/css/user.css') }}" rel="stylesheet"/>
 
     <!-- icons -->
     <link href="{{ asset('admin_assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
 
+
     @yield('header-style')
-    
-    <style>
-        .readmore {
-            overflow: hidden;
-        }
-        
-        label > em {
-            color: #ff5555;
-        }
-    </style>
 </head>
-<body>
-    <div id="wrapper">
 
-         <!-- Topbar Start -->
-        @include('admin.layouts.header')
-        <!-- end Topbar -->
+<body data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+@include('admin.layouts.header')
+<!-- end Topbar -->
 
 
-        <!-- ========== Left Sidebar Start ========== -->
-        @include('admin.layouts.sidebar')
-        <!-- Left Sidebar End -->
+    <!-- ========== Left Sidebar Start ========== -->
+@include('admin.layouts.sidebar')
+<!-- Left Sidebar End -->
 
-        <div class="content-page">
-            <div class="content">
 
-                <!-- Start Content-->
-                <div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
 
-                    @include('admin.layouts.alerts')
+    <div class="content-page">
+        <div class="content">
 
-                    @yield('content')
+            <!-- Start Content-->
+            <div class="container-fluid">
 
-                </div> <!-- container -->
+                @include('admin.layouts.alerts')
 
-            </div> <!-- content -->
+                @yield('content')
 
-        </div>
-    
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <script>document.write(new Date().getFullYear())</script> &copy; Genie Capital Admin
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-right footer-links d-none d-sm-block">
+                            <a href="{{ route('index') }}" target="_blank">Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+
     </div>
 
-    <!-- Vendor js -->
-    <script src="{{ asset('admin_assets/js/vendor.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/libs/readmore.min.js') }}"></script>
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
 
-    <!-- App js -->
-    <script src="{{ asset('admin_assets/js/app.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>
-     <script src="{{ asset('admin_assets/libs/tinymce/js/tinymce.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/common.js') }}"></script>
-    <script src="{{ asset('admin_assets/js/admin.js') }}"></script>
-    
-    @yield('footer_script')
-    
+
+</div>
+<!-- END wrapper -->
+
+<!-- Vendor js -->
+<script src="{{ asset('admin_assets/js/vendor.min.js') }}"></script>
+
+<!-- Plugins js-->
+<script src="{{ asset('admin_assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/html5sortable/html5sortable.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/readmorejs/dist/readmore.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/owl-carousel/dist/owl.carousel.min.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/magnific-popup/magnific-popup.js') }}"></script>
+
+<script src="{{ asset('admin_assets/libs/clipboard/dist/clipboard.min.js') }}"></script>
+
+<!-- App js-->
+<script src="{{ asset('admin_assets/js/app.min.js') }}"></script>
+
+<script src="{{ asset('admin_assets/js/user.js') }}"></script>
+
+<script>
+    /*new Readmore('.read-more', {
+        lessLink: '<a href="#">read less</a>',
+        moreLink: '<a href="#">read more...</a>',
+        collapsedHeight: 190
+    });*/
+</script>
+
+@yield('footer_script')
 </body>
 </html>

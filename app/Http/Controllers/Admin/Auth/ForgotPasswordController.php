@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Controller
+    | Admin Password Reset Controller
     |--------------------------------------------------------------------------
     |
     | This controller is responsible for handling password reset emails and
@@ -18,5 +18,44 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    use SendsPasswordResetEmails;
+    private function sendResetEmail($email, $token)
+    {
+        $link = route('admin.password.reset', [$token, urlencode($email)]);
+        try {
+            $data['email'] = $email;
+            $data['link'] = $link;
+            Mail::to($email)->send(new ResetEmail($data));
+        } catch (\Exception $e) { }
+
+        return true;
+    }
+
+    public function sendResetLinkEmail(Request $request)
+    {
+        $email = $request->email;
+        $admin = \App\Admin::where('email', $email)->get();
+        if ($admin->count() == 0) {
+            return redirect()->back()->with('error', 'No user exists with this email.');
+        }
+
+        \DB::table('password_resets')->insert([
+            'email'      => $email,
+            'token'      => Str::random(64),
+            'created_at' => Carbon::now(),
+            'admin'      => 1
+        ]);
+        $tokenData = \DB::table('password_resets')->where('email', $email)->first();
+
+        if ($this->sendResetEmail($email, $tokenData->token)) {
+            return redirect()->back()->with('success', 'Your password reset link has been sent to your email.');
+        } else {
+            return redirect()->back()->with('error', 'An unexpected error has occurred. Please try again later');
+        }
+    }
+
+
+    public function showLinkRequestForm()
+    {
+        return view('admin.auth.forgot-password');
+    }
 }

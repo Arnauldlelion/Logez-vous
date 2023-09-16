@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -26,5 +26,44 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/admin/dashboard';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+
+    public function reset(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'token' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+        $password = $request->password;// Validate the token
+        $tokenData = \DB::table('password_resets')
+            ->where('token', $request->token)->where('email', $request->email)->first();// Redirect the user back to the password reset request form if the token is invalid
+        if (!$tokenData){
+            $request->session()->flash('error', 'Invalid Password Reset Link');
+            return redirect(route('admin.login'));
+        }
+
+        $user = \App\Admin::where('email', $tokenData->email)->first();
+        if (!$user) return redirect()->back()->withErrors(['email' => 'Email not found']);//Hash and update the new password
+        $user->password = \Hash::make($password);
+        $user->save();
+        \Auth::guard('admin')->login($user);
+        \DB::table('password_resets')->where('email', $user->email)->delete();
+        return redirect()->to(route('admin.dashboard'));
+
+    }
+
+    public function showLinkRequestForm($token){
+        $data['token'] = $token;
+        return view('admin.auth.reset')->with($data);
+    }
+
 }

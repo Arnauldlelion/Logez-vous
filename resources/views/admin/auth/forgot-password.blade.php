@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Login | Admin | Logez-Vous</title>
+    <title>Se connecter | Back-office Administrateur | NKB Logistics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
 
     <!-- App css -->
     <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
@@ -31,19 +31,20 @@
                     <div class="auth-logo">
                         <a href="{{ route('index') }}" class="logo text-center">
                             <span class="logo-lg">
-                                <img src="{{ asset('admin_assets/images/logo.png') }}" alt="" height="64">
+                                <img src="{{ asset('assets/img/logo.png') }}" alt="" height="32">
                             </span>
                         </a>
                     </div>
                 </div>
 
                 <!-- title-->
-                <h4 class="mt-0">Admin Back-office</h4>
+                <h4 class="mt-0">Mot de passe oublié</h4>
                 @include('admin.layouts.alerts')
-                <p class="text-muted mb-4">Fill in you email and password to access the admin back-office.</p>
+                <p class="text-muted mb-4">Entrez votre e-mail / nom d'utilisateur /
+                    téléphone pour réinitialiser votre mot de passe .</p>
 
                 <!-- form -->
-                <form action="{{ route('admin.login') }}" method="POST">
+                <form action="{{ route('admin.password.request') }}" method="POST">
                     @csrf
 
                     <div class="form-group">
@@ -53,51 +54,22 @@
                                value="{{ old('email') }}"
                                name="email"
                                autofocus
-                               placeholder="Enter email">
+                               placeholder="Entrer votre Email">
                         @error('email')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                        <a href="{{route('admin.password.request')}}" class="text-muted float-right">
-                            <small>Forgot Password?</small>
-                        </a>
-
-                        <label for="password">Password</label>
-                        <div class="input-group input-group-merge">
-                            <input type="password" id="password"
-                                   name="password"
-                                   class="form-control @error('password') is-invalid @enderror"
-                                   placeholder="Enter password">
-                            <div class="input-group-append" data-password="false">
-                                <div class="input-group-text">
-                                    <span class="password-eye"></span>
-                                </div>
-                            </div>
-                        </div>
-                        @error('password')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                            <label class="custom-control-label" for="checkbox-signin">Remember me</label>
-                        </div>
-                    </div>
                     <div class="form-group mb-0 text-center">
-                        <button class="btn btn-success btn-block" type="submit">Submit</button>
+                        <button class="btn btn-primary btn-block" type="submit">Soumettre</button>
                     </div>
                 </form>
                 <!-- end form-->
 
                 <!-- Footer-->
                 <footer class="footer footer-alt">
-                    <p class="text-muted">Not an administrator?
-                        <a href="{{ route('index') }}" class="text-muted ml-1"><b>return Home</b></a></p>
+                    <p class="text-muted">Pas un administrateur?
+                        <a href="{{ route('index') }}" class="text-muted ml-1"><b>retour d'accueil</b></a></p>
                 </footer>
 
             </div> <!-- end .card-body -->
@@ -108,7 +80,7 @@
     <!-- Auth fluid right content -->
     <div class="auth-fluid-right text-center">
         <div class="auth-user-testimonial">
-            <h2 class="mb-3 text-white">Admin Back-office</h2>
+            <h2 class="mb-3 text-white">Back-office Administrateur</h2>
             <p class="lead"><i class="mdi mdi-format-quote-open"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                 nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in

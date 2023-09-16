@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone')->nullable();
@@ -29,6 +30,7 @@ class CreateUsersTable extends Migration
                 'admin',
                 'team'
             ]);
+            $table->foreignId('agent_id')->constrained('agents');
             $table->boolean('subscribed')->default(0);
             $table->string('password');
             $table->rememberToken();

@@ -1,111 +1,120 @@
-<div class="modal auth-modal" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Inscription</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-text">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <input type="text" name="name" value="{{ old('name') }}"
-                            class="form-control @error('name') is-invalid @enderror" placeholder="Votre nom complet">
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-text">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <input type="email" name="email" value="{{ old('email') }}"
-                            class="form-control  @error('email') is-invalid @enderror" placeholder="Adresse e-mail">
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <input type="number" name="phone" value="{{ old('phone') }}"
-                            class="form-control @error('phone') is-invalid @enderror" placeholder="692890987">
-                        @error('phone')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
- 
-                    <input name="type" value="landlord" hidden>
- 
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Mot de passe">
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <input type="password" name="password_confirmation" class="form-control"
-                            placeholder="Confirmation du mot de passe" required>
-                    </div>
-                    {{-- <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="type">
-                        <label class="form-check-label" for="type">
-                            Je suis propriétaire d'un bien à louer
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="subscribed">
-                        <label class="form-check-label" for="subscribed">
-                            Je m'abonne aux alertes de nouveaux appartements
-                        </label>
-                    </div> --}}
-                    <button type="submit" class="btn btn-main btn-lg mt-3 w-100">S'enregistrer</button>
-                </form>
-                <div class="text-center">
-                    <div class="terms">
-                        <span class="text-sec">En cliquant sur le "S'enregistrer" je confirme que j'accepte les</span>
-                        <a href="#" class="btn-link">conditions d'utilisation.</a>
-                    </div>
-                    <div class="google">
-                        <div class="text-center d-flex my-3">
-                            <hr class="w-25 mx-auto">
-                            <span class="text-sec">OU</span>
-                            <hr class="w-25 mx-auto">
-                        </div>
-                        <form action="#">
-                            <button type="submit" class="btn btn-google w-75 shadow-lg">
-                                <img src="/storage/images/google-sm.png" alt="Google" class="img-fluid">
-                                <span>Continuer avec Google</span>
-                            </button>
-                        </form>
-                    </div>
+              <div class="d-flex justify-content-end gap-5 text-center">
+                <h6 class="modal-title text-main">Inscription</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+                <div class="btn-group d-block d-md-flex justify-content-md-between gap-3 mt-2">
+                    <button class="btn btn-lg btn-outline rounded-pill p-2 "> <img src="{{ asset('storage/images/facebook.jpeg') }}" class="float-start m-1" width="25px"> Facebook</button>
+                    <button class="btn btn-lg btn-outline rounded-pill p-2"> <img src="{{ asset('storage/images/google.jpeg') }}" class="float-start m-1" width="25px"> Google</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <div class="text-end">
-                    <span class="text-sec">Déjà inscrit?</span>
-                    <button class="btn btn-link" data-bs-toggle="modal"
-                        data-bs-target="#login-modal">Connectez-vous</button>
+                <div class="text-center d-flex align-items-center my-3">
+                    <hr class="w-50 mx-auto">
+                    <small class="text-sec mx-2">OU</small>
+                    <hr class="w-50 mx-auto">
+                </div>
+                <form action="" method="post"> 
+                    @csrf
+                   
+                        <div class="form-group mb-3">
+                            <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text"
+                                   value="{{old('first_name')}}" name="first_name" placeholder="Prénom">
+                            @error('first_name')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <input class="form-control rounded-pill @error('last_name') is-invalid @enderror" type="text"
+                                   value="{{old('last_name')}}" name="last_name" placeholder="Nom">
+                            @error('last_name')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="form-group mb-3 ">
+                            <input class="form-control rounded-pill @error('email') is-invalid @enderror" type="email"
+                                   value="{{old('email')}}" name="email"
+                                   placeholder="Adresse email">
+                            @error('email')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-sm-6"></div>
+                        {{-- <div class="col-sm-6"></div>
+                        <div class="form-group mb-3">
+                            <input class="form-control rounded-pill @error('telephone') is-invalid @enderror" type="number"
+                                   value="{{old('telephone')}}" name="telephone"
+                                   placeholder="Numéro de téléphone">
+                            @error('telephone')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div> --}}
+                        <div class="intl-tel-input form-group mb-3 rounded-pill">
+                          <div class="selected-flag rounded-start-pill"></div>
+                          <input type="tel" class="form-control rounded-pill w-100" id="phoneNumber" placeholder="Enter phone number">
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="form-group mb-3 ">
+                            <input class="form-control rounded-pill @error('password') is-invalid @enderror" type="password"
+                                   id="password" name="password" placeholder="Mot de passe" style="width: 100% !important">
+                            @error('password')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-4 ">
+                            <input class="form-control rounded-pill" type="password" id="password" name="password_confirmation"
+                                   placeholder="Confirmation du mot de passe">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
+                            <label class="form-check-label" for="checkbox-signin">Je suis propriétaire d'un bien à louer me</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
+                            <label class="form-check-label" for="checkbox-signin">Je m'abonne aux alertes de nouveaux appartements</label>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
+                            <label class="form-check-label" for="checkbox-signin">je m'abonne aux bons plans de nos partenaires</label>
+                        </div>
+                    <div class="">
+                        <button type="submit" onclick="validatePhoneNumber()" class="btn btn-main btn-lg rounded-pill p-2 w-100 text-main mb-4">S'enregistrer</button>
+                    </div>
+                </form>
+                <div>
+                    <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les
+                    <a href="#" class="text-main">conditions d'utilisation.</a></small>
+                </div>
+                <div class="float-end">
+                    <small>J'ai déjà un compte <a href="" class="text-main">Se connecter</a></small>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    // Initialize the intlTelInput plugin
+    const input = document.querySelector("#phoneNumber");
+    const iti = window.intlTelInput(input, {
+      initialCountry: "auto",
+      separateDialCode: true,
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    });
+
+    // Phone number validation function
+    function validatePhoneNumber() {
+      const phoneNumber = iti.getNumber();
+
+      if (iti.isValidNumber()) {
+        const selectedCountryData = iti.getSelectedCountryData();
+        const countryFlagElement = document.querySelector(".selected-flag");
+        countryFlagElement.innerHTML = `<img src="${selectedCountryData.flag}" alt="${selectedCountryData.name}">`;
+
+        alert('Phone number is valid.');
+      } else {
+        alert('Phone number is invalid.');
+      }
+    }
+  </script>

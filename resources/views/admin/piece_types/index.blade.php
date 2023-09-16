@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Piece Types')
+@section('title', 'Types de pièces')
 
 @section('content')
 	
@@ -10,10 +10,10 @@
 				<div class="page-title-right">
 					<ol class="breadcrumb m-0">
 						<li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-						<li class="breadcrumb-item active">Piece Types</li>
+						<li class="breadcrumb-item active">Types de pièces</li>
 					</ol>
 				</div>
-				<h4 class="page-title">Piece Types</h4>
+				<h4 class="page-title">Types de pièces</h4>
 			</div>
 		</div>
 	</div>
@@ -27,7 +27,7 @@
 						<thead>
 						<tr>
 							<th>S/N</th>
-							<th>Category</th>
+							<th>Catégorie</th>
 							<th>Action</th>
 						</tr>
 						</thead>
@@ -38,7 +38,7 @@
 								<td>{{ $piece_type->name }}</td>
 								<td>
 									<div class="btn-group">
-										<a href="{{ route('admins.piece_types.edit', $piece_type->id) }}"
+										<a href="{{ route('admin.piece_types.edit', $piece_type->id) }}"
 										   class="btn btn-secondary btn-sm"><i class="fa fa-edit"></i></a>
 										<a href="#"
 										   data-toggle="modal"
@@ -50,13 +50,13 @@
 							
 							<x-delete-modal
 									:id="$piece_type->id"
-									:url="route('admins.piece_types.destroy', $piece_type->id)"
+									:url="route('admin.piece_types.destroy', $piece_type->id)"
 									:content="'Are you sure you want to delete this Piece type <strong>'.$piece_type->name.'</strong>? This action is irreversible'"/>
 
 							
 						@empty
 							<tr>
-								<td colspan="100%">No Records Found</td>
+								<td colspan="100%">Aucun enregistrement trouvé</td>
 							</tr>
 						@endforelse
 						</tbody>
@@ -66,11 +66,11 @@
 		</div>
 		<div class="col-md-4">
 			<div class="card card-body">
-				<form action="{{ route('admins.piece_types.store') }}" method="POST" enctype="multipart/form-data">
+				<form action="{{ route('admin.piece_types.store') }}" method="POST" enctype="multipart/form-data">
 					@csrf
 					
 					<div class="form-group">
-						<label>Name <em>*</em></label>
+						<label>Nom <em>*</em></label>
 						<input type="text"
 						       class="form-control @error('name') is-invalid @enderror"
 						       name="name"
@@ -79,7 +79,7 @@
 						@error("name") <span class="invalid-feedback">{{ $message }}</span> @enderror
 					</div>
 					<div class="text-right">
-						<button type="submit" class="btn btn-secondary">Save</button>
+						<button type="submit" class="btn btn-secondary">Sauvegarder</button>
 					</div>
 				
 				</form>

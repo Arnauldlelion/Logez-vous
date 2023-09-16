@@ -201,24 +201,6 @@ class ApartmentController extends Controller
         return back()->with('success', 'Images Uploaded Successfully!');
     }
  
-    public function filter(Request $request)
-{
-    try {
-        $minPrice = $request->input('minPrice');
-        $maxPrice = $request->input('maxPrice');
-
-        // Perform the filtering logic using the minPrice and maxPrice values
-        $filteredApartments = Apartment::whereBetween('price', [$minPrice, $maxPrice])->get();
-
-        return response()->json($filteredApartments);
-    } catch (\Exception $e) {
-        // Log the error for debugging purposes
-        \Log::error('Filtering apartments failed: ' . $e->getMessage());
-
-        // Return an error response
-        return response()->json(['error' => 'An error occurred while filtering apartments. Please try again.'], 500);
-    }
-}
 
     /**
      * Remove the specified resource from storage.
