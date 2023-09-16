@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Appartmen Types')
+@section('title', 'Type d’appartement')
 
 @section('content')
 	
@@ -10,11 +10,11 @@
 				<div class="page-title-right">
 					<ol class="breadcrumb m-0">
 						<li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-						<li class="breadcrumb-item"><a href="{{ route('admins.apartment_types.index') }}">Appartmen Types</a></li>
-						<li class="breadcrumb-item active">Edit</li>
+						<li class="breadcrumb-item"><a href="{{ route('admin.apartment_types.index') }}">Type d’appartement</a></li>
+						<li class="breadcrumb-item active">Éditer</li>
 					</ol>
 				</div>
-				<h4 class="page-title">Appartment Type: {{ $apt_type->name }}</h4>
+				<h4 class="page-title">Type d’appartement: {{ $apt_type->name }}</h4>
 			</div>
 		</div>
 	</div>
@@ -23,14 +23,14 @@
 	<div class="">
 		<div class="card card-body">
 			
-			<form action="{{ route('admins.apartment_types.update', $apt_type->id) }}"
+			<form action="{{ route('admin.apartment_types.update', $apt_type->id) }}"
 			      method="POST" enctype="multipart/form-data">
 				@csrf
 				@method('PUT')
 				
 				
 				<div class="form-group">
-					<label>Name <em>*</em></label>
+					<label>Nom <em>*</em></label>
 					<input type="text"
 					       class="form-control @error('name') is-invalid @enderror"
 					       name="name"
@@ -40,7 +40,7 @@
 				</div>
 				
 				<div class="text-right">
-					<button type="submit" class="btn btn-secondary">Save</button>
+					<button type="submit" class="btn btn-secondary">Sauvegarder</button>
 				</div>
 			
 			</form>

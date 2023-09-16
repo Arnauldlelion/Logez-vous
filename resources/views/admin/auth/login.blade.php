@@ -2,34 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Login | Admin | ATTM</title>
+    <title>Connectez-vous | Admin | Logez-Vous</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" sizes="16x16" type="image/png">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/favicon.png') }}">
 
     <!-- App css -->
     <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('admin_assets/css/app.min.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{asset('css/common.css')}}">
 
     <!-- icons -->
     <link href="{{ asset('admin_assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
 
 </head>
 
-<body class="auth-fluid-pages pb-0 my-5">
+<body class="auth-fluid-pages pb-0">
 
-<div class="auth-fluid justify-content-center mt-5">
+<div class="auth-fluid">
     <!--Auth fluid left content -->
     <div class="auth-fluid-form-box">
         <div class="align-items-center d-flex h-100">
             <div class="card-body">
 
                 <!-- Logo -->
-                <div class="auth-brand text-center text-lg-left mt-5">
+                <div class="auth-brand text-center text-lg-left">
                     <div class="auth-logo">
-                        <a href="#" class="logo text-center">
+                        <a href="{{ route('index') }}" class="logo text-center">
                             <span class="logo-lg">
-                                <img src="{{ asset('assets/images/att-m--logo.png') }}" alt="" height="64">
+                                <img src="{{ asset('admin_assets/images/logo.png') }}" alt="" height="64">
                             </span>
                         </a>
                     </div>
@@ -37,11 +40,11 @@
 
                 <!-- title-->
                 <h4 class="mt-0">Admin Back-office</h4>
-                <p class="text-muted mb-4">
-                    Fill in you email and password to access the admin back-office.</p>
+                @include('admin.layouts.alerts')
+                <p class="text-muted mb-4">Remplissez votre email et votre mot de passe pour accéder au back-office administratif.</p>
 
                 <!-- form -->
-                <form action="{{ route('admins.login') }}" method="POST">
+                <form action="{{ route('admin.login') }}" method="POST">
                     @csrf
 
                     <div class="form-group">
@@ -51,20 +54,23 @@
                                value="{{ old('email') }}"
                                name="email"
                                autofocus
-                               placeholder="Enter email">
+                               placeholder="Entrez votre adresse e-mail">
                         @error('email')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="form-group">
+                        <a href="{{route('admin.password.request')}}" class="text-muted float-right">
+                            <small>Mot de passe oublié?</small>
+                        </a>
 
-                        <label for="password">Password</label>
+                        <label for="password">Mot de passe</label>
                         <div class="input-group input-group-merge">
                             <input type="password" id="password"
                                    name="password"
                                    class="form-control @error('password') is-invalid @enderror"
-                                   placeholder="Enter password">
+                                   placeholder="Entrez votre mot de passe">
                             <div class="input-group-append" data-password="false">
                                 <div class="input-group-text">
                                     <span class="password-eye"></span>
@@ -80,21 +86,38 @@
                     <div class="form-group mb-3">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                            <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                            <label class="custom-control-label" for="checkbox-signin">Rester Connecter</label>
                         </div>
                     </div>
                     <div class="form-group mb-0 text-center">
-                        <button class="btn btn-danger btn-block" type="submit">Submit</button>
+                        <button class="btn btn-danger btn-block" type="submit">Connecter</button>
                     </div>
                 </form>
                 <!-- end form-->
 
+                <!-- Footer-->
+                <footer class="footer footer-alt">
+                    <p class="text-muted">Vous n’êtes pas administrateur ?
+                        <a href="{{ route('index') }}" class="text-muted ml-1"><b>retour à l’accueil</b></a></p>
+                </footer>
 
             </div> <!-- end .card-body -->
         </div> <!-- end .align-items-center.d-flex.h-100-->
     </div>
     <!-- end auth-fluid-form-box-->
 
+    <!-- Auth fluid right content -->
+    <div class="auth-fluid-right text-center">
+        <div class="auth-user-testimonial">
+            <h2 class="mb-3 text-white">Admin Back-office</h2>
+            <p class="lead"><i class="mdi mdi-format-quote-open"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+        </div> <!-- end auth-user-testimonial-->
+    </div>
+    <!-- end Auth fluid right content -->
 </div>
 <!-- end auth-fluid-->
 
@@ -106,4 +129,3 @@
 
 </body>
 </html>
-

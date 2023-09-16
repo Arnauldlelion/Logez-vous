@@ -4,8 +4,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Landlord\LandlordController;
-use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
+// use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,21 +19,31 @@ use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 |
 */
 
+/*======================
+  ADMIN ROUTES
+========================*/
+Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
 
-// My routes 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admins', 'as' => 'admins.'], function () {
     Route::group(['namespace' => 'Auth'], function () {
-        Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
-        Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
-        Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
+        Route::post('/login', 'LoginController@login')->name('login');
+
+        Route::get('/forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        Route::post('/forgot-password', 'ForgotPasswordController@sendResetLinkEmail')->name('password.request');
+
+        Route::get('/reset-password/{token}', 'ResetPasswordController@showLinkRequestForm')->name('password.reset');
+        Route::post('/reset-password/{token}', 'ResetPasswordController@reset')->name('password.reset');
     });
 
-    Route::group(['middleware' => ['auth:admins']], function () {
-        Route::get('/', function () {
-            return redirect()->route('admins.dashboard');
-        });
+    Route::group(['middleware' => ['admin']], function () {
 
-        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+        //Dashboard
+        Route::get('/', function () {
+            return redirect()->route('admin.dashboard');
+        })->name('index');
+
+        Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
+
         Route::resource('pages', 'PageContentController');
         Route::resource('apartment_types', 'ApartmentTypesController');
         Route::resource('piece_types', 'PiecesTypeController');
@@ -40,23 +51,35 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admins', 'as' => 'admins.'], 
         Route::resource('news', 'NewsController');
         Route::resource('faqs', 'FaqsController');
 
-        Route::get('/profile', 'DashboardController@profile')->name('profile');
-        Route::put('/profile/edit', 'DashboardController@editProfile')->name('profile.edit');
-        Route::put('/profile/change-password', 'DashboardController@changePassword')->name('profile.change_password');
+        // super Administrators
+        Route::group(['middleware' => ['auth:admin', 'admin.super']], function () {
+        Route::resource('administrator', 'Administrator\AdminController');
+        Route::post('administrator/roles/{id}', 'Administrator\AdminController@assignRoles')->name('admin.roles');
+        });
+
+        Route::resource('property', 'Property\PropertyController');
+        Route::resource('apartments', 'Apartment\ApartmentController');
+        Route::post('/apartments/storeImages', 'Apartment\ApartmentController@storeImages')->name('apartments.storeImages');
+        Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
+        Route::get('/apartments/showRapports/{id}', 'Apartment\ApartmentController@showRapports')->name('apartments.showRapports');
+        Route::get('/apartments/showPayments/{id}', 'Apartment\ApartmentController@showPayments')->name('apartments.showPayments');
+        Route::resource('pieces', 'Pieces\PiecesController');
+        Route::delete('/pieces/destroyImage/{id}', 'Pieces\PiecesController@destroyImage')->name('pieces.destroyImage');
+        Route::resource('rapports', 'Rapport\RapportController');
+        Route::resource('payments', 'Payments\PaymentsController');
+
+        // PROFILE
+        Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
+        Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
+        Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
 
         Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
     });
+
 });
 
-// Auth::routes();
-Route::group(['namespace' =>'Auth'], function() {
-    Route::post('/register', 'RegisterController@createBizUser')->name('register');
-    Route::post('/login', 'LoginController@login')->name('login.submit');
-    Route::post('/logout', 'LoginController@logout')->name('logout');
-});
-// Route::post('/filter-apartments', 'ApartmentController@filter')->name('filter-apartments');
 
-Route::post('/filter-apartments', [ApartmentController::class, 'filter'])->name('apartments.filter');
 Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
     Route::group(['middleware' => ['auth:landlord']], function () {
         Route::get('/', [LandlordController::class, 'index'])->name('index');
@@ -90,11 +113,13 @@ Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlo
 
 //Web routes
 Route::group(['namespace' => 'Web'], function () {
-    Route::get('/', 'HomeController@index')->name('index');
-    Route::get('/search-appartment', 'HomeController@searchForm')->name('search-appartment');
-    Route::get('/apartments/single-appartment/{id}', 'HomeController@show')->name('single-appartment');
-    Route::get('/single-appartment/{id}', 'HomeController@showSingleAppartment')->name('single-appartment');
-    Route::get('/help', 'HomeController@help')->name('help');
+    Route::get('/', 'PageController@index')->name('index');
+    Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');
+    Route::get('/apartments/single-appartment/{id}', 'PageController@show')->name('single-appartment');
+    Route::get('/single-appartment/{id}', 'PageController@showSingleAppartment')->name('single-appartment');
+    Route::post('/apartments/filter', 'ApartmentController@filterApartments')->name('apartments.filter');
+    Route::get('/apartments/count', 'ApartmentController@countApartments')->name('apartments.count');
+    Route::get('/help', 'PageController@help')->name('help');
 });
 
 
@@ -106,8 +131,5 @@ Route::get('/prop', function () {
     return view('landlord.create_property');
 });
 
-Route::get('/filter', 'App\Http\Controllers\FilterController@filterResults');
 
 
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

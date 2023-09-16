@@ -7,14 +7,18 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class PageController extends Controller
 {
     //
-   public function index(){
-    $apartments = Appartment::orderBy('created_at', 'desc')->with('images')->get();
-     
-    return view('index', compact('apartments'));
-   }
+   public function index()
+    {
+        $apartments = Appartment::orderBy('created_at', 'desc')
+            ->with('images')
+            ->take(8)
+            ->get();
+        
+        return view('index', compact('apartments'));
+    }
 
   
    public function searchForm(){
