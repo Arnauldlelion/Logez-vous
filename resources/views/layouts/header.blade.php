@@ -24,7 +24,7 @@
                     </div>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <button class="btn fw-bold text-white">Vous etes proprietaire ?</button>
+                            <button class="btn btn-main rounded-pill">Vous etes proprietaire ?</button>
                         </a>
                     </li>
                     <li class="nav-item">

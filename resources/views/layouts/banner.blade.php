@@ -42,7 +42,7 @@
                                                 <input type="text" placeholder="Surface m2 min" class="form-control form-control-lg">
                                             </div>
                                             <div class="col-12 col-md-6 mb-4">
-                                                <button class="btn btn-lg btn-danger rounded-pill w-100"
+                                                <button class="btn btn-lg btn-main rounded-pill w-100"
                                                     type="submit">Rechercher</button>
                                             </div>
                                         </div>
@@ -65,11 +65,11 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-12 col-md-6 mb-3">
-                                                <button class="btn btn-outline-danger btn-lg rounded-pill w-100">Estimer mon
+                                                <button class="btn btn-outline-main btn-lg rounded-pill w-100">Estimer mon
                                                     loyer</button>
                                             </div>
                                             <div class="col-12 col-md-6">
-                                                <button class="btn btn-danger rounded-pill btn-lg w-100">Obtenir un
+                                                <button class="btn btn-main rounded-pill btn-lg w-100">Obtenir un
                                                     devis</button>
                                             </div>
                                         </div>

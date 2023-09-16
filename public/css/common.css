@@ -1,0 +1,74 @@
+:root {
+    --main-color: #ff040c;
+    --text-color: #646464;
+    --header-size: 28px;
+    --secondary: #28a745;
+    --grey: #6c757d;
+    --orangered: rgb(218, 74, 22);
+    --white: #fff;
+    --black: #000000;
+    --light-bleu: #F0FAF8;
+
+}
+
+* {
+    font-family: "Varela Round", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.text-main {
+    color: var(--main-color) !important;
+}
+
+.bg-main {
+    background-color: var(--main-color) !important;
+}
+
+
+.btn-main {
+    background-color: var(--main-color) !important;
+    color: white !important;
+    border-radius: 50px !important;
+}
+
+.btn-main:hover {
+    background-color: var(--main-color) !important;
+    color: white !important;
+    opacity: 0.8 !important;
+}
+
+.btn-outline{
+    border: 1px solid var(--text-color) !important;
+    color: var(--text-color) !important;
+    opacity: 0.8 !important;
+}
+
+.btn-outline:hover {
+    color: 2px var(--text-color) !important;
+    opacity: 1 !important;
+}
+
+.btn-outline-main {
+    border-radius: 999px !important;
+    border: 1px solid var(--main-color) !important;
+    color: var(--main-color) !important;
+}
+
+.btn-outline-main:hover {
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
+
+.text-sec {
+    color: var(--text-color);
+}
+
+.form-control,
+.form-select {
+    color: var(--text-color);
+}
+
+.btn-link,
+.btn-link:hover {
+    color: var(--main-color);
+    text-decoration-color: var(--main-color);
+}

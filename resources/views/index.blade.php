@@ -16,16 +16,16 @@
             <div class="container">
                 <div class="row gy-3 my-3">
                     @foreach ($apartments as $apartment)
+                    <div class="col-6 col-lg-3 d-none d-md-block">
                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                        <div class="col-6 col-lg-3 d-none d-md-block">
                             @include('components.card', [
                                 'index' => $apartment,
                                 'showBanner' => true,
                                 'isSlider' => false,
                                 'showBorder' => true,
                             ])
-                        </div>
                     </a>
+                </div>
                 @endforeach
                 </div>
    

@@ -12,7 +12,9 @@
                 ])
             </div>
         @else
-            <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Room" class="card-img-top object-fit-cover" width="150px" height="150px">
+           @if($apartment->coverImage)
+           <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Room" class="card-img-top object-fit-cover" width="150px" height="150px">
+           @endif
         @endif
 <div class="card-body">
     <div class="num-text">{{$apartment->property->location}} (83200)</div>

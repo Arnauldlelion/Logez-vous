@@ -1,32 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="" style="padding-top: 8rem; padding-bottom: .5rem;">
+    <section class="search-section" style="padding-top: 8rem; padding-bottom: .5rem;">
         <div class="container-fluid mx-1 d-flex justify-content-between align-items-center">
-            <div class="d-flex gap-1">
+            <div class="d-flex gap-2">
                 <form action="" method="post">
                     <input type="search" class="form-control rounded-pill" style="width: 300px">
                 </form>
-                <button class="btn border rounded-pill trigger-btn filter-btn d-flex align-items-center gap-2"
-                    data-popup-number="1">
+                <button class="trigger-btn filter-btn" data-popup-number="1" id="popupTriggerButton">
                     <i class="fa-solid fa-euro-sign"></i> Loyer
                 </button>
-                <button class="btn border rounded-pill trigger-btn filter-btn d-flex align-items-center gap-2"
-                    data-popup-number="2"><i class="fa-regular fa-square"></i>Surface
+                
                 </button>
-                <button class="btn border rounded-pill trigger-btn filter-btn d-flex align-items-center gap-2"
-                    data-popup-number="3"><i class="fa-solid fa-couch"></i>Meubles?
+                <button class=" trigger-btn filter-btn gap-2" data-popup-number="2"><i
+                        class="fa-regular fa-square"></i>Surface
                 </button>
-                <button class="btn border rounded-pill trigger-btn filter-btn d-flex align-items-center gap-2"
-                    data-popup-number="4"><i class="fa-brands fa-windows"></i>Nombre de pièces
+                <button class="trigger-btn filter-btn" data-popup-number="3"><i class="fa-solid fa-couch"></i>Meubles?
                 </button>
-                <button class="btn border rounded-4 trigger-btn filter-btn d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Plus de filtres</button>
-                {{-- <button class="btn border rounded-4 trigger-btn filter-btn d-flex align-items-center gap-2 offcanvasOpenBtn"
-                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Plus de filtres
-                </button> --}}
-
-                <button class="btn btn-outline-danger border rounded-pill" type="button" class="btn btn-primary"
+                <button class="trigger-btn filter-btn" data-popup-number="4"><i class="fa-brands fa-windows"></i>Nombre de
+                    pièces
+                </button>
+                <button class="trigger-btn filter-btn" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Plus
+                    de filtres</button>
+                <button class="btn btn-outline-main rounded-pill" type="button" class="btn btn-primary"
                     data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Créer une alerte
                 </button>
@@ -45,36 +42,39 @@
                         <h5 class="text-danger">Quel est votre budget?</h5>
                         <button class="btn-close" onclick="closePopup()"></button>
                     </div>
+                    <form action="{{ route('apartments.filter') }}" method="POST" id="filterForm">
+                        @csrf
+                        <div class="d-flex justify-content-between price-input mb-1">
+                            <div class="field col-5 input-group-sm d-flex mb-3">
+                                <input type="number" class="input-min form-control rounded-start-pill" name="min_price" id="minPriceInput" value="0" oninput="updatePopupTrigger()">
+                                <span class="input-group-text rounded-end-pill">CFA min</span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class="field col-5 input-group-sm d-flex mb-3">
+                                <input type="number" class="form-control rounded-start-pill input-max" name="max_price" id="maxPriceInput" value="10000" oninput="updatePopupTrigger()">
+                                <span class="input-group-text rounded-end-pill">CFA max</span>
+                            </div>
+                        </div>
+                        <div class="slider">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="range-input mb-4">
+                            <input type="range" class="range-min" name="range_min" id="rangeMinInput" min="0" max="10000" value="0" oninput="updatePopupTrigger()">
+                            <input type="range" class="range-max" name="range_max" id="rangeMaxInput" min="0" max="10000" value="10000" oninput="updatePopupTrigger()">
+                        </div>
                 
-                    <div class="d-flex justify-content-between price-input mb-1">
-                        <div class="field col-5 input-group-sm d-flex mb-3">
-                            <input type="number" class="input-min form-control rounded-start-pill" value="0">
-                            <span class="input-group-text rounded-end-pill">CFA min</span>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fa fa-chevron-right"></i>
+                                <span>Effacer</span>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-danger rounded-pill" onclick="setPopupTriggerText()">Afficher les logements</button>
+                                <span id="apartmentCount" class="ms-2"></span>
+                            </div>
                         </div>
-                        <div class="separator">-</div>
-                        <div class="field col-5 input-group-sm d-flex mb-3">
-                            <input type="number" class="form-control rounded-start-pill input-max" value="10000">
-                            <span class="input-group-text rounded-end-pill">CFA max</span>
-                        </div>
-                    </div>
-                    <div class="slider">
-                        <div class="progress"></div>
-                    </div>
-                    <div class="range-input mb-4">
-                        <input type="range" class="range-min" name="range_min" min="0" max="10000" value="0">
-                        <input type="range" class="range-max" name="range_max" min="0" max="10000" value="10000">
-                    </div>
-                
-                    <hr>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center gap-2">
-                            <i class="fa fa-chevron-right"></i>
-                            <span>Effacer</span>
-                        </div>
-                        <div>
-                            <button class="btn btn-danger rounded-pill" onclick="filterApartments()">Afficher les logements</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="popup popup-2">
@@ -195,28 +195,65 @@
                 </div>
             </div>
             <div class="popup-5">
-
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-                    aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                    <div class="offcanvas-header d-flex justify-content-end">
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <div>
-                            Some text as placeholder. In real life you can have the elements you have chosen. Like, text,
-                            images, lists, etc.
+                        <div class="d-flex justify-content-sm-center justify-content-lg-start gap-3">
+                            <i class="fa-solid fa-map-location-dot"></i></i>
+                            <h4>Rayon de <br> Recherche</h4>
                         </div>
-                        <div class="dropdown mt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                Dropdown button
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                        <hr>
+                        <div class="d-block d-md-flex gap-5 my-5">
+                            <div class="d-flex gap-3">
+                                <i class="fas fa-users"></i>
+                                <h4>colocation</h4>
+                            </div>
+                            <div class="d-flex gap-2 col-md-10">
+                                <button class="filter-btn"><i class="fas fa-bed"></i> Chambre dans une colocation</button>
+                                <button class="filter-btn"><i class="fas fa-user-friends"></i> Colocation
+                                    acceptée</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-block d-md-flex gap-5 my-5">
+                            <div class="d-flex gap-3">
+                                <i class="fas fa-building"></i>
+                                <h4>Étage</h4>
+                            </div>
+                            <div class="d-flex gap-2 col-md-8">
+                                <button class="filter-btn"><i class="fa-solid fa-arrow-down"></i> Rez-de-chaussée</button>
+                                <button class="filter-btn"><i class="fas fa-caret-square"></i> Étage
+                                    intermédiaire</button>
+                                <button class="filter-btn"><i class="fa-solid fa-arrow-up"></i> Étage élevé</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-block d-md-flex gap-5 my-5">
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-gem"></i>
+                                <h4>Commodité</h4>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="filter-btn"><i class="fas fa-parking"></i> Parking</button>
+                                <button class="filter-btn"><i class="fas fa-caret-square"></i> Ascenseur</button>
+                                <button class="filter-btn"><i class="fa-solid fa-arrow-up"></i> Gardien.ne</button>
+                                <button class="filter-btn"><i class="fa-solid fa-arrow-up"></i> Cave</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-block d-md-flex gap-5 mt-5">
+                            <div class="d-flex gap-3">
+                                <i class="fas fa-plug"></i>
+                                <h4>Équipement</h4>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="filter-btn">Lave-linge</button>
+                                <button class="filter-btn"> Cuisine équipée</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -248,20 +285,9 @@
             </div>
         </div>
     </section>
-    <section >
+    <section>
         <div class="row ">
             <div class="col-lg-7 ps-3">
-               
-
-                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <p>Try scrolling the rest of the page to see this option in action.</p>
-                </div>
-                </div>
                 <div class="d-flex justify-content-between  mb-1">
                     <div>
                         <h4> 95 logements disponible <span class="text-muted" style="font-size: 16px">sur
@@ -270,150 +296,105 @@
                     <div class="dropdown ">
                         <span>Trier par </span>
                         <span class="text-main" style="cursor:pointer" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-paper-plane me-1"></i>distance du lieu choisi <i class="fa fa-chevron-down"></i>
+                            <i class="fas fa-paper-plane me-1"></i>distance du lieu choisi <i
+                                class="fa fa-chevron-down"></i>
                         </span>
                         <ul class="dropdown-menu shadow-lg rounded-4 px-2 py-3 border border-0">
                             <small class="dropdown-item mb-4 text-main "><i class="fas fa-paper-plane"></i>
                                 distance du lieu choisi </small>
-                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-down"></i> Loyer croissant</small>
-                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-up"></i> Loyer décroissant</small>
-                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-down"></i> Surface croissante</small>
-                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-up"></i> Surface décroissant</small>
-                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-up"></i> Prix au m<sup>2</sup> croissant</small>
-                            <small class="dropdown-item"><i class="fa-solid fa-arrow-down"></i> Prix au m<sup>2</sup> décroissant</small>
+                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-down"></i> Loyer
+                                croissant</small>
+                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-up"></i> Loyer
+                                décroissant</small>
+                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-down"></i> Surface
+                                croissante</small>
+                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-up"></i> Surface
+                                décroissant</small>
+                            <small class="dropdown-item mb-4"><i class="fa-solid fa-arrow-up"></i> Prix au m<sup>2</sup>
+                                croissant</small>
+                            <small class="dropdown-item"><i class="fa-solid fa-arrow-down"></i> Prix au m<sup>2</sup>
+                                décroissant</small>
                         </ul>
                     </div>
                 </div>
-    
                 <div class="ms-2">
                     <div class="row ">
                         @foreach ($apartments as $apartment)
-                        <div class="col-6 col-md-4 col-xl-4 mb-3 ">
-                            <a href="{{ route('single-appartment', $apartment->id) }}">
+                            <div class="col-6 col-md-4 col-xl-4 mb-3 ">
+                                <a href="{{ route('single-appartment', $apartment->id) }}">
                                     @include('components.card', [
                                         'index' => $apartment,
                                         'showBanner' => false,
                                         'isSlider' => true,
                                         'showBorder' => true,
                                     ])
-                            </a>
-                        </div>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                 </div>
-    
+
             </div>
             <div class="col-lg-5 d-none d-lg-block">
                 <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127357.54623182249!2d9.659401863784996!3d4.0360708364783475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1061128be2e1fe6d%3A0x92daa1444781c48b!2sDouala!5e0!3m2!1sfr!2scm!4v1690188289806!5m2!1sfr!2scm"
-                width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127357.54623182249!2d9.659401863784996!3d4.0360708364783475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1061128be2e1fe6d%3A0x92daa1444781c48b!2sDouala!5e0!3m2!1sfr!2scm!4v1690188289806!5m2!1sfr!2scm"
+                    width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
-</section>
+    </section>
 
     <script>
+function updatePopupTrigger() {
+    const minPriceInput = document.getElementById('minPriceInput');
+    const maxPriceInput = document.getElementById('maxPriceInput');
+    const apartmentCount = document.getElementById('apartmentCount');
 
+    const minPrice = parseInt(minPriceInput.value);
+    const maxPrice = parseInt(maxPriceInput.value);
 
-        function updateTriggerButtonText(triggerBtn) {
-            const popup = triggerBtn.nextElementSibling;
-            const rangeMinInput = popup.querySelector('.range-min');
-            const rangeMaxInput = popup.querySelector('.range-max');
+    // Update the apartment count based on the selected price range
+    const count = calculateApartmentCount(minPrice, maxPrice);
+    apartmentCount.textContent = `(${count} apartments)`;
 
-            if (!rangeMinInput) {
-                console.error('Required elements not found');
-                return;
-            }
+    // Update the popup trigger button text with the selected price range
+    setPopupTriggerText();
 
-            const rangeMinValue = rangeMinInput.value;
-            const rangeMaxValue = rangeMaxInput.value;
+    // Store the updated text in localStorage
+    localStorage.setItem('popupTriggerText', popupTriggerButton.textContent);
+}
 
-            triggerBtn.innerHTML = `<i class="fa-solid fa-euro-sign"></i> ${rangeMinValue} - ${rangeMaxValue}`;
-        }
+function setPopupTriggerText() {
+    const minPriceInput = document.getElementById('minPriceInput');
+    const maxPriceInput = document.getElementById('maxPriceInput');
+    const popupTriggerButton = document.getElementById('popupTriggerButton');
 
+    const minPrice = parseInt(minPriceInput.value);
+    const maxPrice = parseInt(maxPriceInput.value);
 
+    // Update the popup trigger button text with the selected price range
+    popupTriggerButton.textContent = `${minPrice} - ${maxPrice} CFA`;
+}
 
-  
+function calculateApartmentCount(minPrice, maxPrice) {
+    // Perform the necessary calculation to get the number of apartments in the given price range
+    // Replace the following line with your actual logic to calculate the count
+    const count = Math.floor(Math.random() * 100); // Example: random count between 0 and 100
 
-        const openOffcanvasBtn = document.querySelector('.offcanvasOpenBtn');
-        const closeOffcanvasBtn = document.querySelector('.offcanvascloseBtn');
-        const offcanvasContent = document.querySelector('.offcanvas-content');
+    return count;
+}
 
-        openOffcanvasBtn.addEventListener('click', function(e) {
-            offcanvasContent.classList.add('active');
-        });
-
-        closeOffcanvasBtn.addEventListener('click', function(e) {
-            offcanvasContent.classList.remove('active');
-        });
-
-        $(document).ready(function(e) {
-            $('popup-1 .range-min').on('change', function() {
-                alert('hello');
-            })
-        })
-
-        // function applyFilter() {
-        //     const priceMin = document.querySelector('.input-min').value;
-        //     const priceMax = document.querySelector('.input-max').value;
-
-            // Perform an AJAX request with the filter parameters
-
-            // Example using jQuery AJAX
-            // $.ajax({
-            //     type: 'GET',
-            //     url: '/filter',
-            //     data: {
-            //         price_min: priceMin,
-            //         price_max: priceMax
-            //     },
-            //     success: function(response) {
-                    // Handle the response and update the results accordingly
-        //         },
-        //         error: function(xhr, status, error) {
-        //             console.error(error);
-        //         }
-        //     });
-        // }
-
-        function filterApartments() {
-        var minPrice = parseInt($('.range-min').val());
-        var maxPrice = parseInt($('.range-max').val());
-
-        // Send an AJAX POST request to the server
-        $.ajax({
-            url: '/filter-apartments',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                minPrice: minPrice,
-                maxPrice: maxPrice
-            },
-            success: function(response) {
-                // Handle the response and update the UI accordingly
-                $('.apartment').hide(); // Hide all apartments
-                $.each(response, function(index, apartment) {
-                    $('.apartment[data-price="' + apartment.price + '"]').show(); // Show filtered apartments
-                });
-            },
-            error: function(xhr, status, error) {
-                // Handle the error
-                console.error(error);
-            }
-        });
+// Retrieve the stored popup trigger text on page load
+window.addEventListener('DOMContentLoaded', function() {
+    const popupTriggerButton = document.getElementById('popupTriggerButton');
+    const storedText = localStorage.getItem('popupTriggerText');
+    if (storedText) {
+        popupTriggerButton.textContent = storedText ;
+        popupTriggerButton.style.color = 'red';
+        popupTriggerButton.style.border = '1px dashed red';
     }
+});
 
-    // Trigger the filter function when the range sliders change
-    $('.range-min, .range-max').on('input', function() {
-        filterApartments();
-        console.log('working')
-    });
-
-    // Trigger the filter function on page load
-    $(document).ready(function() {
-        filterApartments();
-    });
-    
     </script>
 @endsection

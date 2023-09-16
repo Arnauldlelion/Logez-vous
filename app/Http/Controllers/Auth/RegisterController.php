@@ -56,12 +56,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['nullable', 'string'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'type' => ['required', 'in:landlord,admin'], // Validate user type
         ]);
+
     }
 
     /**
@@ -94,8 +96,9 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         $user = User::create([
+            'first_name' => $request['name'],
+            'last_name' => $request['name'],
             'email' => $request['email'],
-            'name' => $request['name'],
             'phone' => $request['phone'],
             'type' => $request['type'],
             'password' => Hash::make($request['password']),
