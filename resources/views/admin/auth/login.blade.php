@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Login | Admin | Logez-Vous</title>
+    <title>Connectez-vous | Admin | Logez-Vous</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
@@ -12,6 +12,7 @@
     <!-- App css -->
     <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('admin_assets/css/app.min.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{asset('css/common.css')}}">
 
     <!-- icons -->
     <link href="{{ asset('admin_assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -40,7 +41,7 @@
                 <!-- title-->
                 <h4 class="mt-0">Admin Back-office</h4>
                 @include('admin.layouts.alerts')
-                <p class="text-muted mb-4">Fill in you email and password to access the admin back-office.</p>
+                <p class="text-muted mb-4">Remplissez votre email et votre mot de passe pour accéder au back-office administratif.</p>
 
                 <!-- form -->
                 <form action="{{ route('admin.login') }}" method="POST">
@@ -53,7 +54,7 @@
                                value="{{ old('email') }}"
                                name="email"
                                autofocus
-                               placeholder="Enter email">
+                               placeholder="Entrez votre adresse e-mail">
                         @error('email')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -61,15 +62,15 @@
 
                     <div class="form-group">
                         <a href="{{route('admin.password.request')}}" class="text-muted float-right">
-                            <small>Forgot Password?</small>
+                            <small>Mot de passe oublié?</small>
                         </a>
 
-                        <label for="password">Password</label>
+                        <label for="password">Mot de passe</label>
                         <div class="input-group input-group-merge">
                             <input type="password" id="password"
                                    name="password"
                                    class="form-control @error('password') is-invalid @enderror"
-                                   placeholder="Enter password">
+                                   placeholder="Entrez votre mot de passe">
                             <div class="input-group-append" data-password="false">
                                 <div class="input-group-text">
                                     <span class="password-eye"></span>
@@ -85,19 +86,19 @@
                     <div class="form-group mb-3">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                            <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                            <label class="custom-control-label" for="checkbox-signin">Rester Connecter</label>
                         </div>
                     </div>
                     <div class="form-group mb-0 text-center">
-                        <button class="btn btn-success btn-block" type="submit">Submit</button>
+                        <button class="btn btn-danger btn-block" type="submit">Connecter</button>
                     </div>
                 </form>
                 <!-- end form-->
 
                 <!-- Footer-->
                 <footer class="footer footer-alt">
-                    <p class="text-muted">Not an administrator?
-                        <a href="{{ route('index') }}" class="text-muted ml-1"><b>return Home</b></a></p>
+                    <p class="text-muted">Vous n’êtes pas administrateur ?
+                        <a href="{{ route('index') }}" class="text-muted ml-1"><b>retour à l’accueil</b></a></p>
                 </footer>
 
             </div> <!-- end .card-body -->

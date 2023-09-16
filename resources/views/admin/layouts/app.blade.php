@@ -67,11 +67,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <script>document.write(new Date().getFullYear())</script> &copy; Genie Capital Admin
+                        <script>document.write(new Date().getFullYear())</script> &copy; Logez-vous Admin
                     </div>
                     <div class="col-md-6">
                         <div class="text-md-right footer-links d-none d-sm-block">
-                            <a href="{{ route('index') }}" target="_blank">Home</a>
+                            <a href="{{ route('index') }}" target="_blank">Accueil</a>
                         </div>
                     </div>
                 </div>
