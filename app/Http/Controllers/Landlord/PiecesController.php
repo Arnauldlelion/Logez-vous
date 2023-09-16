@@ -114,6 +114,14 @@ class PiecesController extends Controller
         $image = Image::findOrFail($id);
         Storage::delete($image->photo);
         $image->delete();
+             // Find the existing cover image
+             $existingCoverImage = Image::where('appartment_id', session('new_apt_id'))
+             ->where('id', '1')
+             ->first();
+     
+         // Update the existing cover image to remove the "is_cover" flag
+             $existingCoverImage->iscover = true;
+             $existingCoverImage->save();
 
         return redirect()->route('landlord.apartments.show', session('new_apt_id'));
     }

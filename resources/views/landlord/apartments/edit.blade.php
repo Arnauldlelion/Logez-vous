@@ -59,7 +59,7 @@
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror"
                                         type="text" id="floor" value="{{ old('floor', $apt->floor) }}" name="floor"
-                                        placeholder="Idris">
+                                        placeholder="8">
                                     @error('floor')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -93,7 +93,7 @@
                                         class="form-control rounded-pill form-control-sm @error('monthly_price') is-invalid @enderror"
                                         type="text" id="monthly_price"
                                         value="{{ old('monthly_price', $apt->monthly_price) }}" name="monthly_price"
-                                        placeholder="50000frs/month">
+                                        placeholder="100,000">
                                     @error('monthly_price')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -105,11 +105,12 @@
                                 <div class="col-12 col-lg-7">
                                     <label for="number_of_appartments" class=" col-form-label-sm">Nombre de pieces</label>
                                     <input
-                                        class="form-control rounded-pill form-control-sm @error('number_of_appartments') is-invalid @enderror"
-                                        type="number" id="number_of_appartments"
-                                        value="{{ old('number_of_appartments', $apt->number_of_appartments) }}"
-                                        name="number_of_appartments">
-                                    @error('number_of_appartments')
+                                        class="form-control rounded-pill form-control-sm @error('number_of_pieces') is-invalid @enderror"
+                                        type="number" id="number_of_pieces"
+                                        value="{{ old('number_of_pieces', $apt->number_of_pieces) }}"
+                                        name="number_of_pieces"
+                                        placeholder="2">
+                                    @error('number_of_pieces')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>

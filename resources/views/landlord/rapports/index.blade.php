@@ -12,11 +12,15 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="p-4">
-                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartment {{ $apartment->id }} >
+                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartement {{ $apartment->id }} >
                             Rapports De Gestion - {{ $apartment->property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
+<<<<<<< HEAD
                         <a href="{{ route('landlord.rapports.create') }}" class="btn btn-secondary">Ajouter un nouveau Rapport De
+=======
+                        <a href="{{ route('landlord.rapports.create') }}" class="btn btn-secondary">Ajouter un Rapport De
+>>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                             Gestion</a>
                     </div>
                     <div class="table-responsive">
@@ -24,9 +28,15 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
+<<<<<<< HEAD
                                     <th>Annee de Construction</th>
                                     <th>Nombre de Locataires depuis la construction</th>
                                     <th>Duree des Locataires</th>
+=======
+                                    <th>Annee Construction</th>
+                                    <th>Nombre des Locataire</th>
+                                    <th>Durée du Locataire</th>
+>>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                                     <th>Action</th>
                                 </tr>
                             </thead>

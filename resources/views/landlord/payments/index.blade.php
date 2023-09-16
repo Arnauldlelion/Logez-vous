@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="p-4">
-                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartment {{ $apartment->id }} >
+                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartement {{ $apartment->id }} >
                             Payments - {{ $apartment->property->location }}</h4>
                     </div>
                     <div class="text-end p-2">

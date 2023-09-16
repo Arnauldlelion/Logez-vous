@@ -43,6 +43,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth('landlord')->logout();
-        return redirect()->route('index'); // Update the route name as needed
+        return redirect()->route('landlord.index'); // Update the route name as needed
     }
 }

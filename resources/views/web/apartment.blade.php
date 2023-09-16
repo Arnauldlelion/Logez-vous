@@ -14,12 +14,12 @@
                 <div class="col-lg-6 d-none d-lg-block ">
                         <div class="row">
                             @foreach ($apartment->images as $key => $image)
-                                @if ($key < 3)
+                                @if ($key < 4)
                                     <div class="col-12 col-md-6 mb-3">
                                         <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}" class="img-fluid h-100">
                                     </div>
                                 @endif
-                                @if ($key === 3 && count($apartment->images) > 4)
+                                @if ($key === 4 && count($apartment->images) > 4)
                                     <div class="col-12 col-md-6 mb-3">
                                         <div class="position-relative">
                                             <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}" class="img-fluid h-100">
@@ -38,7 +38,11 @@
         <section class="house-section">
             <div class="row">
                 <div class="col-lg-9">
+<<<<<<< HEAD
                     <h1>Location d'un T3 non meublé Makepe , bloc 6</h1>
+=======
+                <h1>Location d'un T3 {{$apartment->furnished}} au Rue Simone Veil, 92220, Bagneux</h1>
+>>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                     <div class="small">FLTK38060</div>
                     <div class="small-main">Les atouts du bien</div>
                     <div class="row g-0">
@@ -83,7 +87,14 @@
                     <hr>
                     <div class="p-text">
                         <h4>Description de l'appartement</h4>
+<<<<<<< HEAD
                         <p>{{ $apartment->description}} </p>
+=======
+                        <p>
+                        {{ $apartment->description}}
+                        </p>
+        
+>>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                         <hr>
                     </div>
                     <div class="expert mt-4 d-lg-flex align-items-center justify-content-between">
@@ -91,7 +102,11 @@
                             <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
                             <div class="ms-2 content">
                                 <h5>Présenté par votre expert.e en location Logez-vous</h5>
+<<<<<<< HEAD
                                 <div>Arnauld</div>
+=======
+                                <div>Lucas</div>
+>>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                             </div>
                         </div>
                         <div class="contact">
@@ -130,7 +145,7 @@
                                     <div class="text-main icon">
                                         <i class="fas fa-home"></i>
                                     </div>
-                                    <div class="ms-2 text-sec">T4 ● Non meublé</div>
+                                    <div class="ms-2 text-sec">T4 ● {{$apartment->furnished}}</div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">
                                     <div class="icon">
@@ -143,15 +158,20 @@
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <div class="ms-2">
+<<<<<<< HEAD
                                         <div class="text-main">200 000 XAF/mois</div>
                                         <div class="text-sec">Dont 200 000 xaf de charges</div>
+=======
+                                        <div class="text-main">{{$apartment->monthly_price}} XAF/mois</div>
+                                        <div class="text-sec">Dont 200 € de charges</div>
+>>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">
                                     <div class="icon">
                                         <i class="fas fa-landmark"></i>
                                     </div>
-                                    <div class="ms-2">66 m<sup>2</sup></div>
+                                    <div class="ms-2">{{66}} m<sup>2</sup></div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">
                                     <div class="icon">

@@ -50,7 +50,11 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 pt-2 d-flex">
+
                                     <button class="btn btn-primary mt-2">Sauvegarder les modifications</button>
+
+                                   
+
                                 </div>
                             </div>
                         </form>

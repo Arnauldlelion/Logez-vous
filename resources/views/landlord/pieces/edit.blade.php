@@ -11,16 +11,15 @@
                  <!-- title-->
                  <div class="d-flex align-items-center my-5">
                     <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                    <h1 class="text-danger">Piece</h1>
+                    <h1 class="text-danger">Pièce</h1>
                 </div>
-
                  <!-- form -->
                  <form action="{{route('landlord.pieces.update', $piece->id)}}" method="POST">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                      <label for="pieces_types_id" class="col-sm-2 col-form-label-sm">Type de piece</label>
+                      <label for="pieces_types_id" class="col-sm-2 col-form-label-sm">Type de pièce</label>
                       <div class="col-12 col-lg-7">
                           {{-- <input class="form-control rounded-pill form-control-sm @error('pieces_types_id') is-invalid @enderror" type="text"
                              id="pieces_types_id"
@@ -69,7 +68,7 @@
                       <div class="w-100 mb-5">
                         <div class="text-black float-start">
                             <a href="{{ route('landlord.apartments.show', session('new_apt_id')) }}" class="text-secondary">
-                                Back
+                               Retour
                             </a>
                         </div>
                         <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

@@ -61,7 +61,7 @@
                             id="floor"
                             value="{{ old('floor') }}"
                             name="floor"
-                            placeholder="Idris">
+                            placeholder="8">
                             @error('floor')
                             <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
@@ -91,7 +91,7 @@
                                id="monthly_price"
                                value="{{ old('monthly_price') }}"
                                name="monthly_price"
-                               placeholder="50000frs/month">
+                               placeholder="100,000">
                         @error('monthly_price')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -114,7 +114,7 @@
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                         <div class="col-12 col-lg-7">
-                        <label for="description">Description <em>*</em></label>
+                        <label for="description">Dèscription  <em>*</em></label>
                         <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}"
                                   rows="5"
                                   name="description"

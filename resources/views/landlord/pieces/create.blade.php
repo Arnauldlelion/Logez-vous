@@ -10,7 +10,7 @@
                         <!-- title-->
                         <div class="d-flex align-items-center my-5">
                             <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                            <h1 class="text-danger">Piece</h1>
+                            <h1 class="text-danger">Pièce</h1>
                         </div>
 
                         <!-- form -->

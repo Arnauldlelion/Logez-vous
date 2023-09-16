@@ -12,8 +12,8 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="p-4">
-                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartment {{ $apartment->id }} >
-                            Pieces - {{ $apartment->property->location }}</h4>
+                        <h4 class="text-capitalize">{{ $apartment->property->name }} > Apartement {{ $apartment->id }} >
+                            Pièces - {{ $apartment->property->location }}</h4>
                     </div>
                     <div class="text-end p-2">
                         <a href="{{ route('landlord.pieces.create') }}" class="btn btn-secondary">Ajouter une nouvelle piece</a>
@@ -49,10 +49,10 @@
                                                 <a data-toggle="modal" data-target="#deleteModal{{ $piece->id }}"
                                                     href="#" class="btn btn-danger btn-sm"><i
                                                         class="mdi mdi-delete"></i></a>
-                                                        <a href="{{ route('landlord.pieces.show', $piece->id) }}"
-                                                            class="btn btn-secondary btn-sm ml-4">
-                                                            <i class="mdi mdi-eye"></i> Pieces</a>
-                                                        <br><br>
+                                                <a href="{{ route('landlord.pieces.show', $piece->id) }}"
+                                                    class="btn btn-secondary btn-sm ml-4">
+                                                    <i class="mdi mdi-eye"></i> Pieces</a>
+                                                <br><br>
                                             </div>
                                         </td>
                                         <x-delete-modal :id="$piece->id" :url="route('landlord.pieces.destroy', $piece->id)" :content="'Are you sure you want to delete this Piece <strong>' .
@@ -107,23 +107,35 @@
         </form>
 
         <div class="previewImages px-2 py-3 d-none"></div>
-        <br>
+        <div>
+            @if($apartment->coverImage)
+            <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="{{ config('app.name') }}" width="150px"
+                id="coverImage">
+            @endif
+        </div>
         <hr>
-        <br>
-        <div class="col-12 row py-3 mx-0">
+        <div class="col-12 row mx-0 py-4">
             @if (count($aptImages) > 0)
                 @foreach ($aptImages as $aptImage)
-                    <div class="col-6 col-md-4 col-lg-2 py-3 px-1">
+                    <div class="col-6 col-md-4 col-lg-2">
                         <img src="{{ $aptImage->getImageUrl() }}" alt=""
                             class="img-fluid db-images image-thumbnail" data-image="{{ $aptImage->getImageUrl() }}">
-                        <br>
-                        <a data-toggle="modal" data-target="#deleteModal{{ $aptImage->id }}" href="#"
-                            class="btn btn-danger btn-sm mx-auto"><i class="mdi mdi-delete"></i></a>
-                            {{-- <form method="POST" action="{{ route('changeCoverImage') }}">
-                                @csrf
-                                <input type="hidden" name="new_cover_image_id" value="CHANGE_TO_THE_DESIRED_IMAGE_ID">
-                                <button type="submit" onclick="return confirm('Are you sure you want to change the cover image?')">Change Cover Image</button>
-                            </form> --}}
+                        
+                       <div class="d-flex">
+                        <form action="{{ route('landlord.changeCoverImage') }}" method="POST"
+                        enctype="multipart/form-data" id="changeCoverForm">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="image_id" value="{{ $aptImage->id }}">
+                        <!-- Add any additional input fields or styling as needed -->
+                        <button type="submit" class="btn btn-success btn-sm mx-auto change-cover-link">
+                            <i class="mdi mdi-upload"></i>
+                        </button>
+                    </form>
+                    <a data-toggle="modal" data-target="#deleteModal{{ $aptImage->id }}" href="#"
+                        class="btn btn-danger btn-sm mx-auto"><i class="mdi mdi-delete"></i></a>
+                       </div>
+
                     </div>
                     <x-delete-modal :id="$aptImage->id" :url="route('landlord.pieces.destroyImage', $aptImage->id)" :content="'Are you sure you want to delete this Image: ?</br> This action is irreversible'" />
                 @endforeach
@@ -167,6 +179,7 @@
                 }
 
             };
+
 
             $('#apt-image').on('change', function() {
                 $('.previewImages').removeClass('d-none');

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 // use Auth;
 // use Illuminate\Auth\Events\Registered;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -73,6 +74,21 @@ class RegisterController extends Controller
      public function index() {
     }
 
+    // public function createBizUser(Request $request)
+    // {
+    //     $this->validator($request->all())->validate();
+
+    //     $user = User::create([
+    //         'email' => $request['email'],
+    //         'name' => $request['name'],
+    //         'phone' => $request['phone'],
+    //         'type' => $request['type'],
+    //         'password' => Hash::make($request['password']),
+    //     ]);
+        
+    //     return redirect()->intended('/login');
+    // }
+
     public function createBizUser(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -84,8 +100,10 @@ class RegisterController extends Controller
             'type' => $request['type'],
             'password' => Hash::make($request['password']),
         ]);
-        
-        return redirect()->intended('/login');
+
+        Auth::login($user); // Log in the newly created user
+
+        return redirect()->intended('landlord/dashboard'); // Redirect to the dashboard or any other desired page after login
     }
     //  protected function create(array $data)
     // {

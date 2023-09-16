@@ -40,9 +40,9 @@
 
                                     @forelse (\App\Models\AppartmentType::all() as $apt_type)
                                         <div class="d-flex gap-3">
-                                            <input type="checkbox" name="appartmentType[]" value={{ $apt_type->id }}
+                                            <input type="checkbox" class="form-check-input" name="appartmentType[]" value={{ $apt_type->id }}
                                                 id="">
-                                            <label for="">{{ $apt_type->name }}</label>
+                                            <label for="form-check-input">{{ $apt_type->name }}</label>
                                         </div>
                                     @empty
                                         <div>Aucun type d'appartement n'a ete ajoute. Contacter l'administrateur svp.</div>
