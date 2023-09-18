@@ -9,7 +9,7 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.administrator.index') }}">Administrators</a>
+                        <li class="breadcrumb-item active"><a href="{{ route('admin.administrator.index') }}">Gestionnaire</a>
                         </li>
                         <li class="breadcrumb-item active">{{ $user->name }}</li>
                     </ol>
@@ -43,7 +43,7 @@
                         @method('DELETE')
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger btn-xs btn-block  waves-effect mb-2 waves-light">
-                            Delete <span class="fa fa-trash"></span>
+                            Supprimer <span class="fa fa-trash"></span>
                         </button>
                     </form>
                 @endif
@@ -51,7 +51,7 @@
         </div>
         <div class="col-lg-8">
             <div class="card-box">
-                <h4>About</h4>
+                <h4>A propos</h4>
                 {!! $user->about ?: '--' !!}
             </div>
         </div>

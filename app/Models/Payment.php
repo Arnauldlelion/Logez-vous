@@ -13,11 +13,11 @@ class Payment extends Model
         'paiement_id',
         'commission',
         'price',
-        'appartment_id',
+        'apartment_id',
     ];
 
-    public function appartment()
+    public function apartment()
 {
-    return $this->belongsTo(Appartment::class);
+    return $this->belongsTo(Apartment::class);
 }
 }

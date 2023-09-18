@@ -16,10 +16,10 @@ class RapportDeGestion extends Model
         'nombreDeLocataire',
         'dureeDuLocataire',
         'requete des locataires',
-        'appartment_id',
+        'apartment_id',
     ];
-    public function appartment()
+    public function apartment()
 {
-    return $this->belongsTo(Appartment::class);
+    return $this->belongsTo(Apartment::class);
 }
 }

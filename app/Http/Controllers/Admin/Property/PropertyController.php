@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Property;
 
+use App\Models\User;
 use App\Models\Property;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -16,10 +17,10 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
-        return view('landlord.dashboard.index');
+        $properties = Property::where('admin_id', auth('admin')->id())->get();
+    
+        return view('admin.property.index', compact('properties'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +28,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('landlord.property.create');
+        return view('admin.property.create');
     }
 
     /**
@@ -36,21 +37,26 @@ class PropertyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+  
     public function store(Request $request)
     {
         $request->validate([
-            'appartmentType' => ['required'],
+            'apartmentType' => ['required'],
             'location' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string']
         ]);
-        $types = implode(', ', $request['appartmentType']);
+    
+        $types = implode(', ', $request['apartmentType']);
         $property = $request->all();
-        $property['appartmentType'] = $types;
-        $property['user_id'] = auth()->id();
+        $property['apartmentType'] = $types;
+        $property['admin_id'] = auth('admin')->id();
         $property['slug'] = Str::slug($request->get('name') . '-' . time());
-        // dd($property);
-        Property::create($property);
-        return redirect()->route('landlord.apartments.create');
+    
+        $createdProperty = Property::create($property);
+    
+        session(['new_prop_id' => $createdProperty->id]);
+    
+        return redirect()->route('admin.apartments.create');
     }
 
     /**
@@ -63,9 +69,9 @@ class PropertyController extends Controller
     {
         $property = Property::findOrfail($id);
         session()->put('new_prop_id', $id);
-        $apartments = $property->appartments;
+        $apartments = $property->apartments;
         // dd($apartments);
-        return view('landlord.apartments.index', compact('apartments', 'property'));
+        return view('admin.apartments.index', compact('apartments', 'property'));
     }
 
     /**
@@ -116,7 +122,7 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         $property = Property::findOrFail($id);
-        foreach($property->appartments as $apt) {
+        foreach($property->apartments as $apt) {
             foreach($apt->pieces as $piece) {
                 $piece->delete();
             }
@@ -124,6 +130,6 @@ class PropertyController extends Controller
         }
         $property->delete();
 
-        return redirect()->route('landlord.index');
+        return redirect()->route('admin.property.index');
     }
 }

@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Testimonials')
+@section('title', 'Témoignages')
 
 @section('content')
 	
@@ -10,11 +10,11 @@
 				<div class="page-title-right">
 					<ol class="breadcrumb m-0">
 						<li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-						<li class="breadcrumb-item"><a href="{{ route('admins.testimonials.index') }}">Testimonials</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('admins.testimonials.index') }}">témoignages</a></li>
 						<li class="breadcrumb-item active">Edit</li>
 					</ol>
 				</div>
-				<h4 class="page-title">Edit Testimony</h4>
+				<h4 class="page-title">Modifier le témoignage</h4>
 			</div>
 		</div>
 	</div>
@@ -30,7 +30,7 @@
 				
 				
 				<div class="form-group">
-					<label>Name <em>*</em></label>
+					<label>Nom <em>*</em></label>
 					<input type="text"
 					       class="form-control @error('name') is-invalid @enderror"
 					       name="name"
@@ -40,7 +40,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label>Video Id <em></em></label>
+					<label>ID vidéo <em></em></label>
 					<input type="text"
 					       class="form-control @error('video') is-invalid @enderror"
 					       name="video"
@@ -63,16 +63,16 @@
 				
 				
 				<div class="form-group">
-					<label>Testimony Title <em>*</em></label>
+					<label>Titre du témoignage <em>*</em></label>
 					<input type="text"
 					       class="form-control @error('title') is-invalid @enderror"
 					       name="title"
-					       placeholder="e.g. Great Customer Experience"
+					       placeholder="e.g. Excellente expérience client"
 					       value="{{ old('title', $testimony->title) }}"/>
 					@error("title") <span class="invalid-feedback">{{ $message }}</span> @enderror
 				</div>
 				<div class="form-group">
-					<label>Testimony <em>*</em></label>
+					<label>Témoignage <em>*</em></label>
 					<textarea
 							rows="5"
 							class="form-control @error('description') is-invalid @enderror"
@@ -81,7 +81,7 @@
 				</div>
 				
 				<div class="text-right">
-					<button type="submit" class="btn btn-secondary">Save</button>
+					<button type="submit" class="btn btn-secondary">Sauvegarder</button>
 				</div>
 			
 			</form>

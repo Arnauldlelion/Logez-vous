@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('url');
             $table->boolean('isCover')->default(false);
-            $table->unsignedBigInteger('appartment_id');
+            $table->unsignedBigInteger('apartment_id');
             $table->timestamps();
         });
     }

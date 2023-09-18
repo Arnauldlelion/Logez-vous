@@ -17,8 +17,6 @@
 
                 <li class="menu-title  mt-2">Gestion immobilière</li>
 
-                @auth('admin')
-                    @if (auth('admin')->user()->super_admin)
                         <li class="{{ Route::is('admin.piece_types*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.piece_types.index') }}">
                                 <i data-feather="layers"></i>
@@ -31,15 +29,13 @@
                                 <span> Types d’appartements </span>
                             </a>
                         </li>
-                        @endif
-                        @endauth
                         <li class="{{ Route::is('admin.property.*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.property.index') }}">
                                 <i data-feather="home"></i>
                                 <span> Propriété </span>
                             </a>
                         </li>
-                        <li class="{{ Route::is('admin.apartments.*') ? 'menuitem-active' : '' }}">
+                        {{-- <li class="{{ Route::is('admin.apartments.*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.apartments.index') }}">
                                 <i data-feather="layout"></i>
                                 <span> Appartement </span>
@@ -50,21 +46,23 @@
                                 <i data-feather="layers"></i>
                                 <span> Pièce  </span>
                             </a>
+                        </li> --}}
+
+                        <li class="menu-title  mt-2">Propriétaire</li>
+                        <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.approuved-landlords.index') }}">
+                                <i data-feather="users"></i>
+                                <span>Propriétaire</span>
+                            </a>
                         </li>
 
                         @auth('admin')
                         @if (auth('admin')->user()->super_admin)
-                        <li class="menu-title mt-2">Admin</li>
+                        <li class="menu-title mt-2">Gestionnaire</li>
                         <li class="{{ Request::is('admin/administrator*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.administrator.index') }}">
                                 <i data-feather="users"></i>
-                                <span>administrateurs</span>
-                            </a>
-                        </li>
-                        <li class="{{ Request::is('admin/administrator*') ? 'menuitem-active' : '' }}">
-                            <a href="{{ route('admin.administrator.index') }}">
-                                <i data-feather="users"></i>
-                                <span>Propriétaire</span>
+                                <span>Gestionnaire</span>
                             </a>
                         </li>
                     @endif
@@ -96,13 +94,6 @@
                 @endauth
 
                 <li class="menu-title  mt-2">COMPTE</li>
-                <li class="{{ Request::is('admin/settings*') ? 'menuitem-active' : '' }}">
-                    <a href="">
-                        <i data-feather="user"></i>
-                        <span>Paramètres</span>
-                    </a>
-                </li>
-
                 <li class="{{ Request::is('admin/profile*') ? 'menuitem-active' : '' }}">
                     <a href="{{ route('admin.profile') }}">
                         <i data-feather="user"></i>

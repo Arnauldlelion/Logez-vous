@@ -10,11 +10,11 @@
 				<div class="page-title-right">
 					<ol class="breadcrumb m-0">
 						<li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-						<li class="breadcrumb-item"><a href="{{ route('admins.news.index') }}">News</a></li>
-						<li class="breadcrumb-item active">Create</li>
+						<li class="breadcrumb-item"><a href="{{ route('admins.news.index') }}">Nouvelles</a></li>
+						<li class="breadcrumb-item active">Créer</li>
 					</ol>
 				</div>
-				<h4 class="page-title">News</h4>
+				<h4 class="page-title">Nouvelles</h4>
 			</div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 				@csrf
 				
 				<div class="form-group">
-					<label>Name <em>*</em></label>
+					<label>Nom <em>*</em></label>
 					<input type="text"
 					       class="form-control @error('name') is-invalid @enderror"
 					       name="name"
@@ -49,11 +49,11 @@
 				
 				
 				<div class="form-group">
-					<label>Title <em>*</em></label>
+					<label>Titre <em>*</em></label>
 					<input type="text"
 					       class="form-control @error('title') is-invalid @enderror"
 					       name="title"
-					       placeholder="e.g. Great Customer Experience"
+					       placeholder="e.g. Excellente expérience client"
 					       value="{{ old('title') }}"/>
 					@error("title") <span class="invalid-feedback">{{ $message }}</span> @enderror
 				</div>
@@ -67,7 +67,7 @@
 				</div>
 				
 				<div class="text-right">
-					<button type="submit" class="btn btn-secondary">Save</button>
+					<button type="submit" class="btn btn-secondary">Sauvegarder</button>
 				</div>
 			
 			</form>

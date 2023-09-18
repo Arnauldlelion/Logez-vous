@@ -32,7 +32,7 @@
 					<input type="text"
 					       class="form-control @error('name') is-invalid @enderror"
 					       name="name"
-					       placeholder="e.g. John Doe"
+					       placeholder="e.g. Chambre"
 					       value="{{ old('name', $piece_type->name) }}"/>
 					@error("name") <span class="invalid-feedback">{{ $message }}</span> @enderror
 				</div>

@@ -18,7 +18,7 @@ class CreateRapportDeGestionsTable extends Migration
             $table->dateTime('annee_construction');
             $table->integer('nombreDeLocataire');
             $table->string('dureeDuLocataire');
-            $table->unsignedBigInteger('appartment_id');
+            $table->unsignedBigInteger('apartment_id');
             $table->timestamps();
         });
     }

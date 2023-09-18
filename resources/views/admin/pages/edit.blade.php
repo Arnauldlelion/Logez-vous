@@ -13,7 +13,7 @@
                               <li class="breadcrumb-item active">Pages</li>
                          </ol>
                     </div>
-                    <h4 class="page-title">Edit {{$page->title}} Page</h4>
+                    <h4 class="page-title">Modifier {{$page->title}} Page</h4>
                </div>
           </div>
      </div>
@@ -25,12 +25,12 @@
 
                     @csrf
                     <div class="form-group">
-                        <label for="content">Content</label>
+                        <label for="content">Contenu</label>
                         <textarea name="content" class="form-control tiny-textarea" id="" rows="5">{{ old('content', $page->content)}}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="content_fr">Content Fr</label>
+                        <label for="content_fr">Contenu Fr</label>
                         <textarea name="content_fr" class="form-control tiny-textarea" id="" rows="5">{{ old('content_fr', $page->content_fr)}}</textarea>
                     </div>
 

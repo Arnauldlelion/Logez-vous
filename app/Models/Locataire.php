@@ -16,10 +16,12 @@ class Locataire extends Model
         'phone number',
         'email',
         'id card',
-        'appartment_id',
+        'apartment_id',
     ];
-    public function appartment()
-{
-    return $this->belongsTo(Appartment::class);
+    public function apartment()
+    {
+        return $this->belongsTo(Apartment::class);
+    }
 }
-}
+
+

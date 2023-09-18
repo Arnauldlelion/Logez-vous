@@ -23,15 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone')->nullable();
-            $table->enum('type', [
-                'normal',
-                'agent',
-                'landlord',
-                'admin',
-                'team'
-            ]);
-            $table->foreignId('agent_id')->constrained('agents');
-            $table->boolean('subscribed')->default(0);
+            $table->string('location')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('is_approved')->default(false);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

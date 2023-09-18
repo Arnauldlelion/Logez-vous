@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Profile')
+@section('title', 'Profil')
 
 @section('content')
     <!-- start page title -->
@@ -9,10 +9,10 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item active">Profil</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Profile</h4>
+                <h4 class="page-title">Profil</h4>
             </div>
         </div>
     </div>
@@ -23,12 +23,12 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Account Details</h5>
+                    <h5 class="card-title">Détails du compte</h5>
                     <form method="post" action="{{ route('admin.profile.edit') }}">
                         @csrf
 
                         <div class="form-group">
-                            <label>Name <em>*</em></label>
+                            <label>Nom<em>*</em></label>
                             <input type="text"
                                    name="name" value="{{ old('name', $user->name) }}"
                                    class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group text-right">
-                            <button class="btn btn-primary" type="submit">Update</button>
+                            <button class="btn btn-primary" type="submit">Mettre à jour</button>
                         </div>
                     </form>
                 </div>
@@ -72,13 +72,13 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Change Password</h5>
+                    <h5 class="card-title">Modifier le mot de passe</h5>
 
                     <form method="post" action="{{ route('admin.profile.password') }}">
                         @csrf
 
                         <div class="form-group">
-                            <label>Current Password <em>*</em></label>
+                            <label>Mot de passe actuel <em>*</em></label>
                             <input type="password"
                                    class="form-control {{ $errors->has('current_password') ? "is-invalid" : "" }}"
                                    name="current_password">
@@ -92,7 +92,7 @@
 
                         <!-- New Password -->
                         <div class="form-group">
-                            <label>New Password</label>
+                            <label>Nouveau mot de passe</label>
                             <input type="password"
                                    class="form-control {{ $errors->has('password') ? "is-invalid" : "" }}"
                                    name="password">
@@ -107,7 +107,7 @@
                         <!-- Retype New Password -->
                         <div class="form-group">
 
-                            <label>Retype New Password</label>
+                            <label>Retaper le nouveau mot de passe</label>
 
                             <input type="password" class="form-control"
                                    name="password_confirmation">
@@ -115,7 +115,7 @@
                         </div>
 
                         <div class="form-group text-right">
-                            <button class="btn btn-primary" type="submit">Change Password</button>
+                            <button class="btn btn-primary" type="submit">Modifier le mot de passe</button>
                         </div>
                     </form>
                 </div>
