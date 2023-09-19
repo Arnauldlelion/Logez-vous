@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
                 'admin',
                 'team'
             ]);
-            $table->foreignId('agent_id')->constrained('agents');
+           
             $table->boolean('subscribed')->default(0);
             $table->string('password');
             $table->rememberToken();

@@ -9,10 +9,10 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Administrators</li>
+                        <li class="breadcrumb-item active">Gestionnaires</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Administrators</h4>
+                <h4 class="page-title">Gestionnaires</h4>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
                     <div class="d-flex flex-nowrap align-items-center">
                         <small class="mx-2">page {{ $admins->currentPage() }} of {{ $admins->total() }} results</small>
                         <a href="{{route('admin.administrator.create')}}" class="btn btn-success text-white btn-sm">New
-                            Administrator</a>
+                            Gestionnaire</a>
                     </div>
                 </div>
 

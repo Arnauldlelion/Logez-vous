@@ -87,14 +87,7 @@
                     <hr>
                     <div class="p-text">
                         <h4>Description de l'appartement</h4>
-<<<<<<< HEAD
                         <p>{{ $apartment->description}} </p>
-=======
-                        <p>
-                        {{ $apartment->description}}
-                        </p>
-        
->>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                         <hr>
                     </div>
                     <div class="expert mt-4 d-lg-flex align-items-center justify-content-between">
@@ -102,11 +95,7 @@
                             <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
                             <div class="ms-2 content">
                                 <h5>Présenté par votre expert.e en location Logez-vous</h5>
-<<<<<<< HEAD
                                 <div>Arnauld</div>
-=======
-                                <div>Lucas</div>
->>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                             </div>
                         </div>
                         <div class="contact">
@@ -136,9 +125,11 @@
                 <div class="col-lg-3 mb-3">
                     <div class="card shadow house-sidebar">
                         <div class="card-body bg-white">
-                            <button class="btn btn-main w-100 btn-lg">
+                            
+                            <button data-bs-toggle="modal" class="btn btn-main w-100 btn-lg"  data-bs-target="#register-modal">
                                 Déposer ma candidature
                             </button>
+                            
                             <hr>
                             <div class="mt-3">
                                 <div class="d-flex align-items-center mb-3">
@@ -158,13 +149,8 @@
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <div class="ms-2">
-<<<<<<< HEAD
                                         <div class="text-main">200 000 XAF/mois</div>
                                         <div class="text-sec">Dont 200 000 xaf de charges</div>
-=======
-                                        <div class="text-main">{{$apartment->monthly_price}} XAF/mois</div>
-                                        <div class="text-sec">Dont 200 € de charges</div>
->>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">
@@ -186,4 +172,9 @@
             </div>
         </section>
     </div>
+    <script>
+        document.getElementById('candidaterButton').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'block';
+        });
+    </script>
 @endsection

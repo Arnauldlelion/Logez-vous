@@ -131,5 +131,7 @@ Route::get('/prop', function () {
     return view('landlord.create_property');
 });
 
-
+Route::get('/proprietaires', function () {
+    return view('proprietaires.index');
+});
 
