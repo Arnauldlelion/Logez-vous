@@ -112,7 +112,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-    Route::group(['middleware' => ['auth:landlord']], function () {
+    Route::group(['middleware' => ['auth']], function () { 
+       
     });
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');
@@ -121,6 +122,7 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/apartments/filter', 'ApartmentController@filterApartments')->name('apartments.filter');
     Route::get('/apartments/count', 'ApartmentController@countApartments')->name('apartments.count');
     Route::get('/help', 'PageController@help')->name('help');
+    Route::get('/proprietaires', 'PageController@proprietaire')->name('proprietaires.index');
 });
 
 

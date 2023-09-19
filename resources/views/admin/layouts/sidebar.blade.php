@@ -29,10 +29,6 @@
                                 <span> Types d’appartements </span>
                             </a>
                         </li>
-<<<<<<< HEAD
-                       
-=======
->>>>>>> 26edef75c445918cf1230e3b64e3136e2351a057
                         <li class="{{ Route::is('admin.property.*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.property.index') }}">
                                 <i data-feather="home"></i>
@@ -60,13 +56,7 @@
                             </a>
                         </li>
                        
-                <li class="menu-title  mt-2">Mes Propriétaires</li>
-                <li class="{{ Request::is('admin/administrator*') ? 'menuitem-active' : '' }}">
-                    <a href="{{ route('admin.administrator.index') }}">
-                        <i data-feather="users"></i>
-                        <span>Propriétaire</span>
-                    </a>
-                </li>
+                
                         @auth('admin')
                         @if (auth('admin')->user()->super_admin)
                         <li class="menu-title mt-2">Gestionnaires</li>

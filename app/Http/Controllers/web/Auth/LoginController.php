@@ -17,7 +17,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed, redirect to the intended page
-            return redirect()->intended('/help');
+            return redirect()->intended('/proprietaires');
         } else {
             // Authentication failed
             return redirect()->back()->withErrors(['email' => 'Invalid credentials or user not approved.']);
