@@ -29,14 +29,17 @@
                                 <span> Types d’appartements </span>
                             </a>
                         </li>
+<<<<<<< HEAD
                        
+=======
+>>>>>>> 26edef75c445918cf1230e3b64e3136e2351a057
                         <li class="{{ Route::is('admin.property.*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.property.index') }}">
                                 <i data-feather="home"></i>
                                 <span> Propriété </span>
                             </a>
                         </li>
-                        <li class="{{ Route::is('admin.apartments.*') ? 'menuitem-active' : '' }}">
+                        {{-- <li class="{{ Route::is('admin.apartments.*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.apartments.index') }}">
                                 <i data-feather="layout"></i>
                                 <span> Appartement </span>
@@ -46,6 +49,14 @@
                             <a href="{{ route('admin.pieces.index') }}">
                                 <i data-feather="layers"></i>
                                 <span> Pièce  </span>
+                            </a>
+                        </li> --}}
+
+                        <li class="menu-title  mt-2">Propriétaire</li>
+                        <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.approuved-landlords.index') }}">
+                                <i data-feather="users"></i>
+                                <span>Propriétaire</span>
                             </a>
                         </li>
                        

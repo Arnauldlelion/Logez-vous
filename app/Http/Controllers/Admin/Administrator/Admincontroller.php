@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Administrator;
 
+use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Role;
 
 class Admincontroller extends Controller
 {
@@ -104,5 +105,20 @@ class Admincontroller extends Controller
             }
         }
         return redirect()->to(route('admin.administrator.index'));
+    }
+
+        public function approve(User $user)
+    {
+        $user->is_approved = true;
+        $user->save();
+
+        return redirect()->back()->with('message', 'Approuvé avec succès.');
+    }
+
+    public function reject(User $user)
+    {
+        $user->delete();
+
+        return redirect()->back()->with('message', 'Utilisateur rejeté et supprimé avec succès.');
     }
 }

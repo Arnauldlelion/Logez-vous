@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin\Apartment;
 
 use App\Models\Image;
-use App\Models\Appartment;
+use App\Models\Apartment;
 use Illuminate\Http\Request;
+use App\Models\ApartmentType;
 use App\Http\Controllers\Controller;
 
 class ApartmentController extends Controller
@@ -17,7 +18,7 @@ class ApartmentController extends Controller
     public function index()
     {
         //
-        return view('landlord.apartment.index');
+        return view('admin.apartments.index');
     }
 
     /**
@@ -27,21 +28,23 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        if (session()->has('new_prop_id')) {
-            return view('landlord.apartments.create');
+        $new_prop_id = session('new_prop_id');
+    
+        if ($new_prop_id) {
+            return view('admin.apartments.create', compact('new_prop_id'));
         }
-        return redirect()->route('landlord.index');
+    
+        return redirect()->route('admin.property.index')->with('error', 'Invalid access');
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        $new_prop_id = session('new_prop_id');
         $request->validate([
             'floor' => ['required'],
             'furnished' => ['nullable', 'string', 'max:255'],
@@ -49,13 +52,25 @@ class ApartmentController extends Controller
             'number_of_pieces' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
         ]);
+    
+        $new_prop_id = session('new_prop_id');
+    
+        if (!$new_prop_id) {
+            return redirect()->route('admin.property.index')->with('error', 'Invalid access');
+        }
+    
         $apartment = $request->all();
-        $apartment['apt_type_id'] = 6;
+        $apartment['apt_type_id'] = 1; // Set the appropriate apartment type ID here
         $apartment['property_id'] = $new_prop_id;
-        Appartment::create($apartment);
-        return redirect()->route('landlord.pieces.create', $new_prop_id);
-    }
+        
+        $createdApartment = Apartment::create($apartment);
 
+        session(['new_apt_id' => $createdApartment->id]);
+    
+        return redirect()->route('admin.pieces.create', ['new_prop_id' => $new_prop_id]);
+    }
+    
+    
     /**
      * Display the specified resource.
      *
@@ -64,27 +79,27 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        $apartment = Appartment::findOrfail($id);
+        $apartment = Apartment::findOrfail($id);
         session()->put('new_apt_id', $id);
         $pieces = $apartment->pieces;
         $aptImages = $apartment->images;
-        return view('landlord.pieces.index', compact('pieces', 'apartment', 'aptImages'));
+        return view('admin.pieces.index', compact('pieces', 'apartment', 'aptImages'));
     }
 
     public function showRapports($id)
     {
-        $apartment = Appartment::findOrfail($id);
+        $apartment = Apartment::findOrfail($id);
         session()->put('new_apt_id', $id);
         $rapports = $apartment->rapportDeGestions;
-        return view('landlord.rapports.index', compact('rapports', 'apartment'));
+        return view('admin.rapports.index', compact('rapports', 'apartment'));
     }
 
     public function showPayments($id)
     {
-        $apartment = Appartment::findOrfail($id);
+        $apartment = Apartment::findOrfail($id);
         session()->put('new_apt_id', $id);
         $payments = $apartment->payments;
-        return view('landlord.payments.index', compact('payments', 'apartment'));
+        return view('admin.payments.index', compact('payments', 'apartment'));
     }
 
     /**
@@ -95,8 +110,8 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        $apt = Appartment::findOrFail($id);
-        return view('landlord.apartments.edit', compact('apt'));
+        $apt = Apartment::findOrFail($id);
+        return view('admin.apartments.edit', compact('apt'));
     }
 
     /**
@@ -116,7 +131,7 @@ class ApartmentController extends Controller
             'number_of_pieces' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
         ]);
-        $apartment = Appartment::findOrFail($id);
+        $apartment = Apartment::findOrFail($id);
         $apartment->floor = $request->get('floor');
         $apartment->furnished = $request->get('furnished');
         $apartment->monthly_price = $request->get('monthly_price');
@@ -124,7 +139,7 @@ class ApartmentController extends Controller
         $apartment->description = $request->get('description');
 
         $apartment->save();
-        return redirect()->route('landlord.property.show', $new_prop_id);
+        return redirect()->route('admin.property.show', $new_prop_id);
     }
 
   
@@ -142,9 +157,9 @@ class ApartmentController extends Controller
             // Check if a cover image was uploaded
             if ($coverImageFile->isValid()) {
                 $coverImage = new Image();
-                $coverImage->appartment_id = session('new_apt_id');
+                $coverImage->apartment_id = session('new_apt_id');
                 $coverImage->isCover = true;
-                $coverImage->url = $coverImageFile->store('appartments', 'public');
+                $coverImage->url = $coverImageFile->store('apartimages', 'public');
                 $coverImage->save();
             }
         }
@@ -156,14 +171,14 @@ class ApartmentController extends Controller
             foreach ($images as $image) {
                 if ($image->isValid()) {
                     $apt = new Image();
-                    $apt->appartment_id = session('new_apt_id');
-                    $apt->url = $image->store('appartments', 'public');
+                    $apt->apartment_id = session('new_apt_id');
+                    $apt->url = $image->store('apartimages', 'public');
                     $apt->save();
                 }
             }
         }
     
-        return back()->with('success', 'Images Uploaded Successfully!');
+        return back()->with('success', 'Images téléchargées avec succès!');
     }
 
     public function changeCoverImage(Request $request)
@@ -175,7 +190,7 @@ class ApartmentController extends Controller
         $imageId = $request->input('image_id');
     
         // Find the existing cover image
-        $existingCoverImage = Image::where('appartment_id', session('new_apt_id'))
+        $existingCoverImage = Image::where('apartment_id', session('new_apt_id'))
             ->where('iscover', true)
             ->first();
     
@@ -187,7 +202,7 @@ class ApartmentController extends Controller
     
         // Find the new cover image
         $newCoverImage = Image::where('id', $imageId)
-            ->where('appartment_id', session('new_apt_id'))
+            ->where('apartment_id', session('new_apt_id'))
             ->first();
     
         // Update the new cover image to set the "is_cover" flag
@@ -197,7 +212,7 @@ class ApartmentController extends Controller
         }
     
         
-        return back()->with('success', 'Images Uploaded Successfully!');
+        return back()->with('success', 'Images téléchargées avec succès!');
     }
  
 
@@ -207,15 +222,20 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $new_prop_id = session('new_prop_id');
-        $apt = Appartment::findOrFail($id);
-        foreach ($apt->pieces as $piece) {
-            $piece->delete();
-        }
-        $apt->delete();
 
-        return redirect()->route('landlord.property.show', $new_prop_id);
-    }
+    public function destroy($id)
+        {
+            $new_prop_id = session('new_prop_id');
+            $apt = Apartment::with('pieces')->findOrFail($id);
+
+            if ($apt->pieces) {
+                foreach ($apt->pieces as $piece) {
+                    $piece->delete();
+                }
+            }
+
+            $apt->delete();
+
+            return redirect()->route('admin.property.show', $new_prop_id);
+        }
 }

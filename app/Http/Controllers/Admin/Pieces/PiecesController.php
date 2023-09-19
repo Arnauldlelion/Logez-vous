@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Pieces;
 
 use App\Models\Image;
-use App\Models\Pieces;
+use App\Models\Piece;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -27,10 +27,13 @@ class PiecesController extends Controller
      */
     public function create()
     {
-        if (session()->has('new_apt_id')) {
-            return view('landlord.pieces.create');
+        $new_apt_id = session('new_apt_id');
+    
+        if ($new_apt_id) {
+            return view('admin.pieces.create', compact('new_apt_id'));
         }
-        return redirect()->route('landlord.index');
+    
+        return redirect()->route('admin.property.index')->with('error', 'Invalid access');
     }
 
     /**
@@ -43,17 +46,17 @@ class PiecesController extends Controller
     {
         $new_apt_id = session('new_apt_id');
         $request->validate([
-            'pieces_types_id' => ['required'],
+            'piece_types_id' => ['required'],
             'nombre_of_pieces' => ['required', 'integer'],
             'size' => ['required', 'string', 'max:255'],
         ]);
-        $piece = new Pieces();
+        $piece = new Piece();
         $piece->nombre_of_pieces = $request->get('nombre_of_pieces');
         $piece->size = $request->get('size');
-        $piece->pieces_types_id = $request->get('pieces_types_id');
-        $piece->appartment_id = $new_apt_id;
+        $piece->piece_types_id = $request->get('piece_types_id');
+        $piece->apartment_id = $new_apt_id;
         $piece->save();
-        return redirect()->route('landlord.apartments.show', $new_apt_id);
+        return redirect()->route('admin.apartments.show', $new_apt_id);
     }
 
     /**
@@ -75,8 +78,8 @@ class PiecesController extends Controller
      */
     public function edit($id)
     {
-        $piece = Pieces::findOrFail($id);
-        return view('landlord.pieces.edit', compact('piece'));
+        $piece = Piece::findOrFail($id);
+        return view('admin.pieces.edit', compact('piece'));
     }
 
     /**
@@ -90,16 +93,16 @@ class PiecesController extends Controller
     {
         $new_apt_id = session('new_apt_id');
         $request->validate([
-            'pieces_types_id' => ['required'],
+            'piece_types_id' => ['required'],
             'nombre_of_pieces' => ['required', 'integer'],
             'size' => ['required', 'string', 'max:255'],
         ]);
-        $piece = Pieces::findOrFail($id);
+        $piece = Piece::findOrFail($id);
         $piece->nombre_of_pieces = $request->get('nombre_of_pieces');
         $piece->size = $request->get('size');
-        $piece->pieces_types_id = $request->get('pieces_types_id');
+        $piece->piece_types_id = $request->get('piece_types_id');
         $piece->save();
-        return redirect()->route('landlord.apartments.show', $new_apt_id);
+        return redirect()->route('admin.apartments.show', $new_apt_id);
     }
 
     /**
@@ -112,10 +115,11 @@ class PiecesController extends Controller
      public function destroyImage($id)
     {
         $image = Image::findOrFail($id);
+        
         Storage::delete($image->photo);
         $image->delete();
              // Find the existing cover image
-             $existingCoverImage = Image::where('appartment_id', session('new_apt_id'))
+             $existingCoverImage = Image::where('apartment_id', session('new_apt_id'))
              ->where('id', '1')
              ->first();
      
@@ -123,15 +127,32 @@ class PiecesController extends Controller
              $existingCoverImage->iscover = true;
              $existingCoverImage->save();
 
-        return redirect()->route('landlord.apartments.show', session('new_apt_id'));
+        return redirect()->route('admin.apartments.show', session('new_apt_id'));
     }
+    // public function destroy($id)
+    // {
+    //     $new_apt_id = session('new_apt_id');
+    //     $piece = Piece::findOrFail($id);
+    //     $piece->delete();
+
+    //     return redirect()->route('admin.apartments.show', $new_apt_id);
+    // }
     public function destroy($id)
     {
         $new_apt_id = session('new_apt_id');
-        $piece = Pieces::findOrFail($id);
+        $piece = Piece::findOrFail($id);
+
+        // Delete the image file from the folder
+        if ($piece->image) {
+            $imagePath = public_path($piece->image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
         $piece->delete();
 
-        return redirect()->route('landlord.apartments.show', $new_apt_id);
+        return redirect()->route('admin.apartments.show', $new_apt_id);
     }
 }
 

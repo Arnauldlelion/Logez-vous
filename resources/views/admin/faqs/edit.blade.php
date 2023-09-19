@@ -11,10 +11,10 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('admins.faqs.index') }}">FAQs</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item active">Modifier</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Edit FAQ</h4>
+                <h4 class="page-title">Modifier FAQ</h4>
             </div>
         </div>
     </div>
@@ -32,9 +32,9 @@
                 <div class="mb-4"></div>
 
                 <div class="form-group">
-                    <label>Title <em>*</em></label>
+                    <label>Titre <em>*</em></label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                        placeholder="e.g. Great Customer Experience" value="{{ old('title', $faq->title) }}" />
+                        placeholder="e.g. Excellente expérience client" value="{{ old('title', $faq->title) }}" />
                     @error('title')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="text-right">
-                    <button type="submit" class="btn btn-secondary">Save</button>
+                    <button type="submit" class="btn btn-secondary">Sauvegarder</button>
                 </div>
 
             </form>

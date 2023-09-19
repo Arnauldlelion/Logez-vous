@@ -22,15 +22,15 @@
 	<div class="">
 		<div class="card card-body">
 			<div class="text-right mb-3">
-				<a href="{{ route('admins.faqs.create') }}" class="btn btn-secondary">Add FAQ</a>
+				<a href="{{ route('admins.faqs.create') }}" class="btn btn-secondary">Ajouter FAQ</a>
 			</div>
 			<div class="table-responsive">
 				<table class="table table-bordered table-sm">
 					<thead>
 					<tr>
 						<th>S/N</th>
-						<th>Name</th>
-						<th>Title</th>
+						<th>Nom</th>
+						<th>Titre</th>
 						<th>Action</th>
 					</tr>
 					</thead>
@@ -59,7 +59,7 @@
 					
 					@empty
 						<tr>
-							<td colspan="100%">No Records Found</td>
+							<td colspan="100%">Aucun enregistrement trouvé</td>
 						</tr>
 					@endforelse
 					</tbody>

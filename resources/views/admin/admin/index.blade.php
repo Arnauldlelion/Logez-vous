@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Administrators')
+@section('title', 'Gestionnaire')
 
 @section('content')
     <!-- start page title -->
@@ -21,8 +21,6 @@
 
     <div class="card">
         <div class="card-body">
-
-
             <div class="filter">
                 <div class="d-flex justify-content-between mb-3">
                     <div class="d-flex">
@@ -48,8 +46,8 @@
                         </div>
                     </div>
                     <div class="d-flex flex-nowrap align-items-center">
-                        <small class="mx-2">page {{ $admins->currentPage() }} of {{ $admins->total() }} results</small>
-                        <a href="{{route('admin.administrator.create')}}" class="btn btn-success text-white btn-sm">New
+                        <small class="mx-2">page {{ $admins->currentPage() }} de {{ $admins->total() }} résultats</small>
+                        <a href="{{route('admin.administrator.create')}}" class="btn btn-success text-white btn-sm">Nouveau
                             Gestionnaire</a>
                     </div>
                 </div>
@@ -64,7 +62,7 @@
                                        placeholder="Enter user name">
                             </div>
                             <div class="col-md-2 text-right d-flex align-items-end justify-content-end mt-3 mt-md-0">
-                                <button class="btn btn-success btn-sm" type="submit">Filter</button>
+                                <button class="btn btn-success btn-sm" type="submit">Filtre</button>
                             </div>
                         </div>
                     </form>
@@ -77,7 +75,7 @@
                     <thead>
                     <tr role="row">
                         <th>#</th>
-                        <th>Client</th>
+                        <th>Gestionnaire</th>
                         <th>Email</th>
                         <th>Action</th>
                     </tr>
@@ -118,7 +116,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center">No Records Found</td>
+                            <td colspan="4" class="text-center">Aucun enregistrement trouvé</td>
                         </tr>
                     @endforelse
                     </tbody>

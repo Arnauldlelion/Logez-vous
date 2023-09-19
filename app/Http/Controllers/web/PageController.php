@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\web;
 
-use App\Models\Appartment;
+use App\Models\Apartment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class PageController extends Controller
     //
    public function index()
     {
-        $apartments = Appartment::orderBy('created_at', 'desc')
+        $apartments = Apartment::orderBy('created_at', 'desc')
             ->with('images')
             ->take(8)
             ->get();
@@ -22,15 +22,15 @@ class PageController extends Controller
 
   
    public function searchForm(){
-    $apartments = Appartment::with('images')->get();
+    $apartments = Apartment::with('images')->get();
 
     return view('web.apartments', compact('apartments'));
    }
 
     public function showSingleAppartment($id)
     {
-        $apartment = Appartment::with('images')->findOrFail($id);
-        $otherApartments = Appartment::where('id', '!=', $apartment->id)->with('images')->limit(3)->get();
+        $apartment = Apartment::with('images')->findOrFail($id);
+        $otherApartments = Apartment::where('id', '!=', $apartment->id)->with('images')->limit(3)->get();
 
         return view('web.apartment', compact('apartment','otherApartments'));
     }

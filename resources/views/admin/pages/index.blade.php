@@ -30,9 +30,9 @@
                               <thead>
                               <tr>
                                    <th>S/N</th>
-                                   <th>Title</th>
-                                   <th>Content</th>
-                                   <th>Edit</th>
+                                   <th>Titre</th>
+                                   <th>Contenu</th>
+                                   <th>Modifier</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -49,7 +49,7 @@
                                         </tr>
                                    @empty
                                         <tr>
-                                             <td colspan="100%" class="text-center">No Page Content Found</td>
+                                             <td colspan="100%" class="text-center">Aucun contenu de page trouvé</td>
                                         </tr>
                                    @endforelse
                               </tbody>

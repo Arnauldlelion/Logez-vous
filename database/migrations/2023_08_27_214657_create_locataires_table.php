@@ -20,7 +20,7 @@ class CreateLocatairesTable extends Migration
             $table->string('phone_number');
             $table->string('email');
             $table->string('image')->nullable(); // Add id card image column (nullable)
-            $table->unsignedBigInteger('appartment_id');
+            $table->unsignedBigInteger('apartment_id');
             $table->timestamps();
         });
     }

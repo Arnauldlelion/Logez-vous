@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('web.layouts.app')
 
 @section('content')
     {{-- Please put your navbar code inside the layouts.app file --}}
 
     {{-- logement --}}
 
-    @include('layouts.banner')
+    @include('web.layouts.banner')
     <a href="#featured" class="text-decoration-none d-flex justify-content-center fw-lighter mt-5">
         <i class="fa fa-chevron-down" style="font-size: 70px; color:gray"></i>
     </a>

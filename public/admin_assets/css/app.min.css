@@ -7446,3 +7446,23 @@ table[data-toggle=table] {
 .auth-logo .logo-dark {
     display: block
 }
+
+
+
+
+
+.previewImages img {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.db-images {
+    height: 120px;
+    width: 120px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
