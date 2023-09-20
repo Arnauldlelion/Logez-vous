@@ -28,7 +28,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('admin.property.create');
+        $landlords = User::where('is_approved', true)->get();
+
+        return view('admin.property.create', compact('landlords'));
     }
 
     /**
@@ -38,26 +40,28 @@ class PropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
   
-    public function store(Request $request)
-    {
-        $request->validate([
-            'apartmentType' => ['required'],
-            'location' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string']
-        ]);
-    
-        $types = implode(', ', $request['apartmentType']);
-        $property = $request->all();
-        $property['apartmentType'] = $types;
-        $property['admin_id'] = auth('admin')->id();
-        $property['slug'] = Str::slug($request->get('name') . '-' . time());
-    
-        $createdProperty = Property::create($property);
-    
-        session(['new_prop_id' => $createdProperty->id]);
-    
-        return redirect()->route('admin.apartments.create');
-    }
+     public function store(Request $request)
+     {
+         $request->validate([
+             'apartmentType' => ['required'],
+             'location' => ['required', 'string', 'max:255'],
+             'name' => ['required', 'string'],
+             'landlord' => ['required', 'exists:users,id']
+         ]);
+     
+         $types = implode(', ', $request['apartmentType']);
+         $property = $request->all();
+         $property['apartmentType'] = $types;
+         $property['admin_id'] = auth('admin')->id();
+         $property['slug'] = Str::slug($request->get('name') . '-' . time());
+         $property['landlord_id'] = $request->input('landlord');
+     
+         $createdProperty = Property::create($property);
+     
+         session(['new_prop_id' => $createdProperty->id]);
+     
+         return redirect()->route('admin.apartments.create');
+     }
 
     /**
      * Display the specified resource.

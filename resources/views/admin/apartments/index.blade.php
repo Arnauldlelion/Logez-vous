@@ -22,11 +22,7 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="text-end p-2">
-<<<<<<< HEAD:resources/views/landlord/apartments/index.blade.php
-                        <a href="{{ route('landlord.apartments.create') }}" class="btn btn-secondary">Ajouter un appartement</a>
-=======
                         <a href="{{ route('admin.apartments.create') }}" class="btn btn-secondary float-right">Ajouter de nouveaux appartements</a>
->>>>>>> 26edef75c445918cf1230e3b64e3136e2351a057:resources/views/admin/apartments/index.blade.php
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm ">
@@ -80,11 +76,7 @@
 
                                 @empty
                                     <tr>
-<<<<<<< HEAD:resources/views/landlord/apartments/index.blade.php
-                                        <td colspan="100%">Aucun appartement trouvé</td>
-=======
                                         <td colspan="6">Aucun Appartement trouvé</td>
->>>>>>> 26edef75c445918cf1230e3b64e3136e2351a057:resources/views/admin/apartments/index.blade.php
                                     </tr>
                                 @endforelse
                             </tbody>

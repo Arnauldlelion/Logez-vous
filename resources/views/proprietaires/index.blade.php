@@ -376,7 +376,7 @@
                   <div class="card card-tale">
                     <div class="card-body">
                       <p class="mb-4">Nombre de Logements</p>
-                      <p class="fs-30 mb-2">2</p>
+                      <p class="fs-30 mb-2">{{ \App\Models\Property::where('landlord_id', auth()->user()->id)->count() }}</p>
                       <p>10.00% (30 jours)</p>
                     </div>
                   </div>
@@ -385,7 +385,7 @@
                   <div class="card card-dark-blue">
                     <div class="card-body">
                       <p class="mb-4">Nombre d'appartements</p>
-                      <p class="fs-30 mb-2">6</p>
+                      <p class="fs-30 mb-2"></p>
                       <p>22.00% (30 jours)</p>
                     </div>
                   </div>
