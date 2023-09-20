@@ -65,6 +65,22 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <label for="landlord" class="col-sm-2 col-form-label-sm">Landlord</label>
+                                <div class="col-12 col-lg-7">
+                                    <select class="form-control rounded-pill form-control-sm @error('landlord') is-invalid @enderror"
+                                        id="landlord" name="landlord">
+                                        <option value="">
+                                            propriétaire</option>
+                                        @foreach ($landlords as $landlord)
+                                            <option value="{{ $landlord->id }}">{{ $landlord->first_name }} {{ $landlord->last_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('landlord')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="w-100 mb-5">
                                 <div class="text-black float-start">
                                     <a href="{{ route('admin.property.index') }}" class="text-secondary">

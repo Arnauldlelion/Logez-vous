@@ -15,7 +15,7 @@
                         </div>
 
                         <!-- form -->
-                        <form action="{{ route('landlord.apartments.update', $apt->id) }}" method="POST">
+                        <form action="{{ route('admin.apartments.update', $apt->id) }}" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -130,7 +130,7 @@
 
                             <div class="w-100 mb-5">
                                 <div class="text-black float-start">
-                                    <a href="{{ route('landlord.property.show', session('new_prop_id')) }}" class="text-secondary">
+                                    <a href="{{ route('admin.property.show', session('new_prop_id')) }}" class="text-secondary">
                                         Retour
                                     </a>
                                 </div>

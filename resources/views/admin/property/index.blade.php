@@ -51,7 +51,7 @@
                                         <td>{{ $property->location }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.apartments.edit', $property->id) }}"
+                                                <a href="{{ route('admin.property.edit', $property->id) }}"
                                                     style="height: fit-content;" class="btn btn-success  btn-sm">
                                                     <i class="mdi mdi-pencil"></i>
                                                 </a>

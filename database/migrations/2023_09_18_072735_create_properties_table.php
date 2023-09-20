@@ -19,6 +19,7 @@ class CreatePropertiesTable extends Migration
             $table->string('slug');
             $table->string('location');   
             $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('landlord_id');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->string('apartmentType')->default('Appartement');
             $table->timestamps();

@@ -62,7 +62,7 @@ class ApartmentController extends Controller
         $apartment = $request->all();
         $apartment['apt_type_id'] = 1; // Set the appropriate apartment type ID here
         $apartment['property_id'] = $new_prop_id;
-        dd($apartment);
+        // dd($apartment);
         $createdApartment = Apartment::create($apartment);
 
         session(['new_apt_id' => $createdApartment->id]);
@@ -133,7 +133,8 @@ class ApartmentController extends Controller
         ]);
         $apartment = Apartment::findOrFail($id);
         $apartment->floor = $request->get('floor');
-        $apartment->furnished = $request->get('furnished');
+        // $apartment->furnished = $request->get('furnished');
+        $apartment->furnished = $request->input('furnished', 'no');
         $apartment->monthly_price = $request->get('monthly_price');
         $apartment->number_of_pieces = $request->get('number_of_pieces');
         $apartment->description = $request->get('description');

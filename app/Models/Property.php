@@ -16,6 +16,7 @@ class Property extends Model
         'name',
         'location',
         'apartmentType',
+        'landlord_id',
     ];
 
     public function images()
