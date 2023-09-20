@@ -53,6 +53,6 @@ class User extends Authenticatable
 
     public function agent()
     {
-        return $this->belongsTo(Agent::class);
+        return $this->belongsTo(Admin::class);
     }
 }

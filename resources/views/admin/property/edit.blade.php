@@ -15,7 +15,7 @@
                 </div>
 
                  <!-- form -->
-                 <form action="{{ route('landlord.property.update', $property->id) }}" method="POST">
+                 <form action="{{ route('admin.property.update', $property->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
@@ -39,9 +39,9 @@
                                value="{{ old('appartmentType', $property->appartmentType) }}"
                                name="appartmentType"
                                placeholder="chambre,studio,apartment 2chambre"> --}}
-                               @foreach(\App\Models\AppartmentType::all() as $apt_type)
+                               @foreach(\App\Models\ApartmentType::all() as $apt_type)
                                  <div class="d-flex gap-3">
-                                  <input type="checkbox" {{ in_array(strval($apt_type->id), $apt_types) ? 'checked' : ''}} name="appartmentType[]" value={{$apt_type->id}} id="">
+                                  <input type="checkbox" {{ in_array(strval($apt_type->id), $apt_types) ? 'checked' : ''}} name="apartmentType[]" value={{$apt_type->id}} id="">
                                   <label for="">{{$apt_type->name}}</label>
                                  </div>
                               @endforeach

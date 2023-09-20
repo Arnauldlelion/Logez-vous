@@ -133,7 +133,8 @@ class ApartmentController extends Controller
         ]);
         $apartment = Apartment::findOrFail($id);
         $apartment->floor = $request->get('floor');
-        $apartment->furnished = $request->get('furnished');
+        // $apartment->furnished = $request->get('furnished');
+        $apartment->furnished = $request->input('furnished', 'no');
         $apartment->monthly_price = $request->get('monthly_price');
         $apartment->number_of_pieces = $request->get('number_of_pieces');
         $apartment->description = $request->get('description');
