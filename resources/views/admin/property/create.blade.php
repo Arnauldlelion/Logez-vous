@@ -45,7 +45,7 @@
                                             <label for="form-check-input">{{ $apt_type->name }}</label>
                                         </div>
                                     @empty
-                                        <div>Auncun Apartement n'a été ajouter. Veuillez contacter l'admin</div>
+                                        <div>Aucun type d'appartement n'a ete ajoute. Contacter l'administrateur svp.</div>
                                     @endforelse
                                     @error('apartmentType')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -69,7 +69,7 @@
                                 <div class="text-black float-start">
                                     <a href="{{ route('admin.property.index') }}" class="text-secondary">
                                         <i class="mdi mdi-chevron-left text-secondary"></i>
-                                        Retour
+                                       Retour
                                     </a>
                                 </div>
                                 <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

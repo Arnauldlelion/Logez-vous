@@ -55,16 +55,18 @@
                                 <span>Propriétaire</span>
                             </a>
                         </li>
-
+                       
+                
                         @auth('admin')
                         @if (auth('admin')->user()->super_admin)
-                        <li class="menu-title mt-2">Gestionnaire</li>
+                        <li class="menu-title mt-2">Gestionnaires</li>
                         <li class="{{ Request::is('admin/administrator*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.administrator.index') }}">
                                 <i data-feather="users"></i>
-                                <span>Gestionnaire</span>
+                                <span>Gestionnaires</span>
                             </a>
                         </li>
+                        
                     @endif
                 @endauth
 

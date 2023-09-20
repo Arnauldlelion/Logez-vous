@@ -29,7 +29,6 @@ class LandlordController extends Controller
             $search['limit'] = $request->get('limit');
         }
         $landlords = $landlords->where('is_approved', true)->paginate($search['limit']);
-
         return view('admin.landlords.index', compact('landlords', 'search'));
     }
 

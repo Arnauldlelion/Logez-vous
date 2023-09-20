@@ -32,7 +32,7 @@
                       </div>
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                        <label for="appartmentType" class="col-sm-2 col-form-label-sm">Type d'Appartment</label>
+                        <label for="appartmentType" class="col-sm-2 col-form-label-sm">Type d'Appartement</label>
                         <div class="col-12 col-lg-7">
                             {{-- <input class="form-control rounded-pill form-control-sm @error('appartmentType') is-invalid @enderror" type="text"
                                id="appartmentType"

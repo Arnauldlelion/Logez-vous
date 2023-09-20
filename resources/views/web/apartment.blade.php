@@ -38,7 +38,11 @@
         <section class="house-section">
             <div class="row">
                 <div class="col-lg-9">
+<<<<<<< HEAD
+                    <h1>Location d'un T3 non meublé Makepe , bloc 6</h1>
+=======
                 <h1>Location d'un T3 {{$apartment->furnished}} au Rue Simone Veil, 92220, Bagneux</h1>
+>>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                     <div class="small">FLTK38060</div>
                     <div class="small-main">Les atouts du bien</div>
                     <div class="row g-0">
@@ -83,10 +87,7 @@
                     <hr>
                     <div class="p-text">
                         <h4>Description de l'appartement</h4>
-                        <p>
-                        {{ $apartment->description}}
-                        </p>
-        
+                        <p>{{ $apartment->description}} </p>
                         <hr>
                     </div>
                     <div class="expert mt-4 d-lg-flex align-items-center justify-content-between">
@@ -94,14 +95,14 @@
                             <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
                             <div class="ms-2 content">
                                 <h5>Présenté par votre expert.e en location Logez-vous</h5>
-                                <div>Lucas</div>
+                                <div>Arnauld</div>
                             </div>
                         </div>
                         <div class="contact">
                             <span>
                                 <i class="fas fa-phone"></i>
                             </span>
-                            <span class="ms-2">+237 678-098-098</span>
+                            <span class="ms-2">+237 657170133</span>
                         </div>
                     </div>
                     <hr>
@@ -124,9 +125,11 @@
                 <div class="col-lg-3 mb-3">
                     <div class="card shadow house-sidebar">
                         <div class="card-body bg-white">
-                            <button class="btn btn-main w-100 btn-lg">
+                            
+                            <button data-bs-toggle="modal" class="btn btn-main w-100 btn-lg"  data-bs-target="#register-modal">
                                 Déposer ma candidature
                             </button>
+                            
                             <hr>
                             <div class="mt-3">
                                 <div class="d-flex align-items-center mb-3">
@@ -139,15 +142,15 @@
                                     <div class="icon">
                                         <i class="fas fa-map-marker"></i>
                                     </div>
-                                    <div class="ms-2">6 Rue Arthur Neibecker, 93440, Dugny</div>
+                                    <div class="ms-2">Douala ,Bonamoussadi,</div>
                                 </div>
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="text-main icon">
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <div class="ms-2">
-                                        <div class="text-main">{{$apartment->monthly_price}} XAF/mois</div>
-                                        <div class="text-sec">Dont 200 € de charges</div>
+                                        <div class="text-main">200 000 XAF/mois</div>
+                                        <div class="text-sec">Dont 200 000 xaf de charges</div>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">
@@ -169,4 +172,9 @@
             </div>
         </section>
     </div>
+    <script>
+        document.getElementById('candidaterButton').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'block';
+        });
+    </script>
 @endsection

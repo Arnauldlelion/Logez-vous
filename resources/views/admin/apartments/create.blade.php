@@ -56,7 +56,7 @@
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                           <div class="col-12 col-lg-7">
-                            <label for="floor" class="col-sm-2 col-form-label-sm">Niveau</label>
+                            <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
                             <input class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror" type="text"
                             id="floor"
                             value="{{ old('floor') }}"
@@ -101,13 +101,12 @@
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                           <div class="col-12 col-lg-7">
-                            <label for="number_of_pieces" class=" col-form-label-sm">Nombre de pièces</label>
-                            <input class="form-control rounded-pill form-control-sm @error('number_of_pieces') is-invalid @enderror" type="number"
-                               id="number_of_pieces"
-                               value="{{ old('number_of_pieces') }}"
-                               name="number_of_pieces"
-                               placeholder="2">
-                        @error('number_of_pieces')
+                            <label for="number_of_appartments" class=" col-form-label-sm">Nombre de pieces</label>
+                            <input class="form-control rounded-pill form-control-sm @error('number_of_appartments') is-invalid @enderror" type="number"
+                               id="number_of_appartments"
+                               value="{{ old('number_of_appartments') }}"
+                               name="number_of_appartments">
+                        @error('number_of_appartments')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                         </div>
@@ -119,6 +118,7 @@
                         <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}"
                                   rows="5"
                                   name="description"
+                                  placeholder=""
                                   >{{ old('description') }}</textarea>
     
                         @error('description')

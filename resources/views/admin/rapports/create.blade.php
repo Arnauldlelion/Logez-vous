@@ -32,7 +32,8 @@
                             </div>
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre de locataires</label>
+                                <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre de
+                                    Locataire depuis la construction</label>
                                 <div class="col-12 col-lg-7">
                                     <input name="nombreDeLocataire"
                                         class="form-control rounded-pill form-control-sm @error('nombreDeLocataire') is-invalid @enderror"

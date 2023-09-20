@@ -20,7 +20,7 @@
                     @method('PUT')
 
                     <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                      <label for="prices" class="col-sm-2 col-form-label-sm">Montant</label>
+                      <label for="prices" class="col-sm-2 col-form-label-sm">Commission</label>
                       <div class="col-12 col-lg-7">
                           <input
                               class="form-control rounded-pill form-control-sm @error('prices') is-invalid @enderror"
@@ -33,7 +33,7 @@
                   </div>
 
                     <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                        <label for="commission" class="col-sm-2 col-form-label-sm">Commission</label>
+                        <label for="commission" class="col-sm-2 col-form-label-sm">Prix</label>
                         <div class="col-12 col-lg-7">
                             <input
                                 class="form-control rounded-pill form-control-sm @error('commission') is-invalid @enderror"

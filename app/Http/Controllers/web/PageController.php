@@ -39,7 +39,9 @@ class PageController extends Controller
 
         return view('web.aide');
     }
-
+   public function proprietaire(){
+    return view('proprietaires.index');
+   }
 
     // public function search(Request $request)
     // {

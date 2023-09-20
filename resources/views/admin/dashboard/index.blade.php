@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-6">
                             <div class="text-right">
-                                <h3 class="mt-1">Nombre de propriétaire</h3>
+                                <h3 class="mt-1">Nombre de propriétaires</h3>
                                 {{-- <p class="text-muted mb-1 text-truncate">Total ({{ \App\Testimony::count() }}) </p> --}}
                             </div>
                         </div>

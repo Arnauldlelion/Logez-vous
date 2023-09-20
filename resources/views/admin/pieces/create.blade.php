@@ -33,7 +33,7 @@
                                             <label for="">{{ $piece_type->name }}</label>
                                         </div>
                                     @empty
-                                        <div>Auncune Pièce n'a été ajouter. Veuillez contacter l'admin</div>
+                                        <div>Aucun type de pieces n'a ete ajoute. Contacter l'administrateur svp.</div>
                                     @endforelse
                                     @error('piece_types_id')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="nombre_of_pieces" class="col-sm-2 col-form-label-sm">Nombre de pièce</label>
+                                <label for="nombre_of_pieces" class="col-sm-2 col-form-label-sm">Nombre </label>
                                 <div class="col-12 col-lg-7">
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('nombre_of_pieces') is-invalid @enderror"
@@ -70,7 +70,7 @@
                                 <div class="text-black float-start">
                                     <a href="{{ route('admin.apartments.show', session('new_apt_id')) }}"
                                         class="text-secondary">
-                                        Retour
+                                       Retour
                                     </a>
                                 </div>
                                 <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>

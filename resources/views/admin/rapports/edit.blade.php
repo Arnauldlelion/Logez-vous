@@ -33,7 +33,7 @@
                     </div>
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                        <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre des Locataires</label>
+                        <label for="nombreDeLocataire" class="col-sm-2 col-form-label-sm">Nombre de Locataires depuis la construction</label>
                         <div class="col-12 col-lg-7">
                             <input class="form-control rounded-pill form-control-sm @error('nombreDeLocataire') is-invalid @enderror" type="number"
                             id="nombreDeLocataire"
@@ -46,7 +46,7 @@
                       </div>
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                        <label for="dureeDuLocataire" class="col-sm-2 col-form-label-sm">Durée du Locataire</label>
+                        <label for="dureeDuLocataire" class="col-sm-2 col-form-label-sm">Duree des Locataires</label>
                         <div class="col-12 col-lg-7">
                             <input class="form-control rounded-pill form-control-sm @error('dureeDuLocataire') is-invalid @enderror" type="text"
                                id="dureeDuLocataire" required=""

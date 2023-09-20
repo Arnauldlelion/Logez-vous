@@ -112,6 +112,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::group(['middleware' => ['auth']], function () { 
+       
     Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/', 'PageController@index')->name('index');
@@ -121,8 +123,20 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/apartments/filter', 'ApartmentController@filterApartments')->name('apartments.filter');
     Route::get('/apartments/count', 'ApartmentController@countApartments')->name('apartments.count');
     Route::get('/help', 'PageController@help')->name('help');
+    Route::get('/proprietaires', 'PageController@proprietaire')->name('proprietaires.index');
 });
 
 
+Route::get('/prop', function () {
+    return view('aide');
+});
+
+Route::get('/prop', function () {
+    return view('landlord.create_property');
+});
+
+Route::get('/proprietaires', function () {
+    return view('proprietaires.index');
+});
 
 

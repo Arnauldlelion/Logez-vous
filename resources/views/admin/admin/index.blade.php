@@ -9,10 +9,10 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Gestionnaire</li>
+                        <li class="breadcrumb-item active">Gestionnaires</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Gestionnaire</h4>
+                <h4 class="page-title">Gestionnaires</h4>
             </div>
         </div>
     </div>

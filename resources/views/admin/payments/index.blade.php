@@ -23,8 +23,8 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
+                                    <th>Prix</th>
                                     <th>Commission</th>
-                                    <th>Somme</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
