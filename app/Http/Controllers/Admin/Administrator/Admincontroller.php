@@ -60,12 +60,12 @@ class Admincontroller extends Controller
         $input = $request->all();
         $input['password'] = \Hash::make($request->password);
         $admin = Admin::create($input);
-        return redirect()->to(route('admin.administrator.index'))->with('success', "Admin created successfully");
+        return redirect()->to(route('admin.administrator.index'))->with('success', "Gestionnaires créé avec succès");
     }
 
     public function show($id)
     {
-        $user = Admin::findOrFail($id);
+        $user = Admin::with('landlords')->findOrFail($id);
         return view('admin.admin.show',
             compact('user'));
     }
