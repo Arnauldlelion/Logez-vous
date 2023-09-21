@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Property;
 
 use App\Models\User;
+use App\Models\Landlord;
 use App\Models\Property;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        $landlords = User::where('is_approved', true)->get();
+        $landlords = Landlord::get();
 
         return view('admin.property.create', compact('landlords'));
     }
@@ -46,7 +47,8 @@ class PropertyController extends Controller
              'apartmentType' => ['required'],
              'location' => ['required', 'string', 'max:255'],
              'name' => ['required', 'string'],
-             'landlord' => ['required', 'exists:users,id']
+            //  'landlord' => ['required', 'exists:users,id']
+             'landlord' => ['required', 'exists:landlords,id'], 
          ]);
      
          $types = implode(', ', $request['apartmentType']);

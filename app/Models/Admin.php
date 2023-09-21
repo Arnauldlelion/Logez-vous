@@ -25,7 +25,12 @@ class Admin extends Authenticatable
 
     public function landlords()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Landlord::class);
+    }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
     }
 
     // Helper functions

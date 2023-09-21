@@ -26,15 +26,12 @@
             <div class="card-box text-center">
                 {{-- <img src="{{ $user->profileURL() }}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image"> --}}
 
-                <h4 class="mb-0">{{ $landlord->first_name }} {{ $landlord->last_name }}</h4>
+                <h4 class="mb-0">{{ $landlord->name }}</h4>
                 <p class="text-muted">{{ $landlord->email }}</p>
                 <hr>
                 <div class="text-left mt-3">
                     <p class="text-muted mb-2 font-13">
-                        <strong>Nom :</strong> <span class="ml-2">{{ $landlord->first_name }}</span>
-                    </p>
-                    <p class="text-muted mb-2 font-13">
-                        <strong>Prénom :</strong> <span class="ml-2">{{ $landlord->last_name }}</span>
+                        <strong>Nom :</strong> <span class="ml-2">{{ $landlord->name }}</span>
                     </p>
                     <p class="text-muted mb-2 font-13">
                         <strong>Email :</strong> <span class="ml-2 ">{{ $landlord->email }}</span></p>
@@ -47,10 +44,19 @@
         </div>
         <div class="col-lg-8">
             <div class="card-box">
-                <h4>Emplacement</h4>
-                {!! $landlord->location ?: '--' !!}
-                <h4  class="mt-4">Description</h4>
+                <h4  class="my-4">Description</h4>
                 {!! $landlord->description ?: '--' !!}
+                <h3>Bien Immobillier</h3>
+                @if ($landlord->properties->count() > 0)
+                    <ul>
+                        @foreach ($landlord->properties as $property)
+                            <li>{{ $property->name }} ({{$property->location}})</li>
+                            <!-- Display other property details -->
+                        @endforeach
+                    </ul>
+                @else
+                    <p>Aucune bien immobillier trouvée.</p>
+                @endif
             </div>
         </div>
     </div>

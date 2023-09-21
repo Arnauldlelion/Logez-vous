@@ -47,8 +47,11 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div class="d-flex flex-nowrap align-items-center">
                         <small class="mx-2">page {{ $landlords->currentPage() }} de {{ $landlords->total() }} résultats</small>
+                        <a href="{{route('admin.landlords.create')}}" class="btn btn-success text-white btn-sm">Nouveau
+                            Propriétaire</a>
                     </div>
                 </div>
 
@@ -89,7 +92,7 @@
                                     {{-- <img src="{{ $admin->profileURL() }}" class="mr-2 rounded-circle"> --}}
                                     <a href="{{ route('admin.administrator.show', $landlord->id) }}"
 
-                                       class="text-body font-weight-semibold">{{ $landlord->first_name }}</a>
+                                       class="text-body font-weight-semibold">{{ $landlord->name }}</a>
                                 </div>
                             </td>
                             <td>

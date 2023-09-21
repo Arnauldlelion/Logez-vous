@@ -53,6 +53,17 @@
             <div class="card-box">
                 <h4>A propos</h4>
                 {!! $user->about ?: '--' !!}
+                <h3>Propriétaire</h3>
+                @if ($user->landlords->count() > 0)
+                    <ul>
+                        @foreach ($user->landlords as $landlords)
+                            <li>{{ $landlords->name }}</li>
+                            <!-- Display other property details -->
+                        @endforeach
+                    </ul>
+                @else
+                    <p>No properties found.</p>
+                @endif
             </div>
         </div>
     </div>
