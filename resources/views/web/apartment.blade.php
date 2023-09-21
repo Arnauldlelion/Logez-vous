@@ -38,11 +38,7 @@
         <section class="house-section">
             <div class="row">
                 <div class="col-lg-9">
-<<<<<<< HEAD
-                    <h1>Location d'un T3 non meublé Makepe , bloc 6</h1>
-=======
                 <h1>Location d'un T3 {{$apartment->furnished}} au Rue Simone Veil, 92220, Bagneux</h1>
->>>>>>> f6430b596c30cc99d69e92e6d7317911f6c06183
                     <div class="small">FLTK38060</div>
                     <div class="small-main">Les atouts du bien</div>
                     <div class="row g-0">
