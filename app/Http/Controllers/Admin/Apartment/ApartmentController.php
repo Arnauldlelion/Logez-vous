@@ -62,7 +62,7 @@ class ApartmentController extends Controller
         $apartment = $request->all();
         $apartment['apt_type_id'] = 1; // Set the appropriate apartment type ID here
         $apartment['property_id'] = $new_prop_id;
-        // dd($apartment);
+        dd($apartment);
         $createdApartment = Apartment::create($apartment);
 
         session(['new_apt_id' => $createdApartment->id]);
