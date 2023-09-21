@@ -73,7 +73,7 @@
                                         <option value="">
                                             propriétaire</option>
                                         @foreach ($landlords as $landlord)
-                                            <option value="{{ $landlord->id }}">{{ $landlord->first_name }} {{ $landlord->last_name }}</option>
+                                            <option value="{{ $landlord->id }}">{{ $landlord->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('landlord')

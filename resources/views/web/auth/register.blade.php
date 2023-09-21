@@ -55,18 +55,6 @@
                           <div class="selected-flag rounded-start-pill"></div>
                           <input type="tel" class="form-control rounded-pill w-100" name="phone" id="phoneNumber" placeholder="Enter phone number">
                         </div>
-                        <div class="col-sm-6"></div>
-                        <div class="form-group mb-3 ">
-                            <input class="form-control rounded-pill @error('password') is-invalid @enderror" type="password"
-                                   id="password" name="password" placeholder="Mot de passe" style="width: 100% !important">
-                            @error('password')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group mb-4 ">
-                            <input class="form-control rounded-pill" type="password" id="password" name="password_confirmation"
-                                   placeholder="Confirmation du mot de passe">
-                        </div>
                         <div class="form-group mb-3 ">
                             <input class="form-control rounded-pill @error('location') is-invalid @enderror" type="text"
                                    id="location" name="location" placeholder="emplacement de votre propriété e.g Douala,Bonajo" style="width: 100% !important">
