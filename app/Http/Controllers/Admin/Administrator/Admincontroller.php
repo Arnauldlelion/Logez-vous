@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Administrator;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Landlord;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
@@ -68,6 +70,7 @@ class Admincontroller extends Controller
         $user = Admin::with('landlords')->findOrFail($id);
         return view('admin.admin.show',
             compact('user'));
+            
     }
 
     public function edit($id)
@@ -85,25 +88,38 @@ class Admincontroller extends Controller
     public function destroy($id)
     {
         $user = Admin::findOrFail($id);
-        if ($user->super_admin) {
-            session()->flash('error', 'The action cannot be performed on the super administrator');
-        }
-        else {
-            if ($user->id == Auth::guard('admin')->user()->id) {
-                session()->flash('error', 'Cannot perform this action on yourself');
-            }
-            else {
-                $sudo = Admin::where('super_admin', true)->first();
-                if ($sudo) {
-                    $user->posts()->update([
-                        'user_id' => $sudo->id
-                    ]);
+    
+        $loggedInUser = Auth::guard('admin')->user();
+    
+        if (!$loggedInUser->super_admin) {
+            // If the logged-in user is not a super admin, display an error message
+            session()->flash('error', 'You do not have permission to perform this action');
+        } elseif ($user->super_admin) {
+            // If the user to be deleted is a super admin, display an error message
+            session()->flash('error', 'You cannot delete a super administrator');
+        } else {
+            $superAdmin = Admin::where('super_admin', true)->first();
+    
+            if ($superAdmin) {
+                // Assign landlords associated with the admin to the super admin
+                $landlords = Landlord::where('admin_id', $user->id)->get();
+                foreach ($landlords as $landlord) {
+                    $landlord->admin_id = $superAdmin->id;
+                    $landlord->save();
                 }
-
-                $user->delete();
-                session()->flash('success', 'Admin successfully deleted');
+    
+                // Assign properties associated with the admin to the super admin
+                $properties = Property::where('admin_id', $user->id)->get();
+                foreach ($properties as $property) {
+                    $property->admin_id = $superAdmin->id;
+                    $property->save();
+                }
             }
+    
+            $user->delete();
+            session()->flash('success', 'Gestionnaires supprimé avec succès');
         }
+    
         return redirect()->to(route('admin.administrator.index'));
     }
 

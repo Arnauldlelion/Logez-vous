@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="landlord" class="col-sm-2 col-form-label-sm">Landlord</label>
+                                <label for="landlord" class="col-sm-2 col-form-label-sm">Propriétaire</label>
                                 <div class="col-12 col-lg-7">
                                     <select class="form-control rounded-pill form-control-sm @error('landlord') is-invalid @enderror"
                                         id="landlord" name="landlord">

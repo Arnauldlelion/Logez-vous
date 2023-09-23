@@ -64,13 +64,24 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         });
 
         Route::resource('property', 'Property\PropertyController');
+        Route::get('/property/{propertyId}/images', 'Property\PropertyController@showPropertyImagesform')->name('showPropertyImagesform');
+        Route::post('/property/{propertyId}/images', 'Property\PropertyController@storePropertyImages')->name('property-images');
+        Route::delete('/property/destroyImage/{propertyId}', 'Property\PropertyController@deletePropertyImage')->name('delete-property-image');
+        
         Route::resource('apartments', 'Apartment\ApartmentController');
+        Route::get('/apartment/{id}/images', 'Apartment\ApartmentController@showApartmentImagesform')->name('showApartmentImagesform');
+        Route::post('/apartment/{id}/images', 'Apartment\ApartmentController@storeApartmentImages')->name('apartment-images');
+        Route::delete('/apartment/destroyImage/{id}', 'Apartment\ApartmentController@deleteApartmentImage')->name('delete-apartment-image');
+
         Route::post('/apartments/storeImages', 'Apartment\ApartmentController@storeImages')->name('apartments.storeImages');
         Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
         Route::get('/apartments/showRapports/{id}', 'Apartment\ApartmentController@showRapports')->name('apartments.showRapports');
         Route::get('/apartments/showPayments/{id}', 'Apartment\ApartmentController@showPayments')->name('apartments.showPayments');
         Route::resource('pieces', 'Pieces\PiecesController');
-        Route::delete('/pieces/destroyImage/{id}', 'Pieces\PiecesController@destroyImage')->name('pieces.destroyImage');
+        Route::get('/piece/{id}/images', 'Pieces\PiecesController@showPieceImagesform')->name('showPieceImagesform');
+        Route::post('/piece/{id}/images', 'Pieces\PiecesController@storePieceImages')->name('piece-images');
+        Route::delete('/piece/destroyImage/{id}', 'Pieces\PiecesController@deletePieceImage')->name('piece.destroyImage');
+        // Route::delete('/pieces/destroyImage/{id}', 'Pieces\PiecesController@destroyImage')->name('pieces.destroyImage');
         Route::resource('rapports', 'Rapport\RapportController');
         Route::resource('payments', 'Payments\PaymentsController');
 

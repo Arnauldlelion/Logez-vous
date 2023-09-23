@@ -7,6 +7,7 @@ use App\Models\Apartment;
 use Illuminate\Http\Request;
 use App\Models\ApartmentType;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -62,7 +63,7 @@ class ApartmentController extends Controller
         $apartment = $request->all();
         $apartment['apt_type_id'] = 1; // Set the appropriate apartment type ID here
         $apartment['property_id'] = $new_prop_id;
-        dd($apartment);
+        // dd($apartment);
         $createdApartment = Apartment::create($apartment);
 
         session(['new_apt_id' => $createdApartment->id]);
@@ -126,14 +127,14 @@ class ApartmentController extends Controller
         $new_prop_id = session('new_prop_id');
         $request->validate([
             'floor' => ['required'],
-            'furnished' => ['nullable', 'string', 'max:255'],
+            'furnished' => ['nullable', 'string'],
             'monthly_price' => ['required', 'string'],
             'number_of_pieces' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
         ]);
         $apartment = Apartment::findOrFail($id);
         $apartment->floor = $request->get('floor');
-        $apartment->furnished = $request->get('furnished');
+        $apartment->furnished = $request->input('furnished');
         $apartment->monthly_price = $request->get('monthly_price');
         $apartment->number_of_pieces = $request->get('number_of_pieces');
         $apartment->description = $request->get('description');
@@ -142,7 +143,80 @@ class ApartmentController extends Controller
         return redirect()->route('admin.property.show', $new_prop_id);
     }
 
-  
+    public function showApartmentImagesform($id)
+    {
+        $apartment = Apartment::findOrFail($id);
+        $images = $apartment->images;
+    
+        return view('admin.apartments.show', compact('apartment', 'images'));
+    }
+    
+    public function storeApartmentImages(Request $request, $id)
+    {
+        // Retrieve the apartment
+        $apartment = Apartment::findOrFail($id);
+    
+        // Validate the uploaded images
+        $request->validate([
+            'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
+        ]);
+    
+        // Store the uploaded images
+        $uploadedImages = [];
+        foreach ($request->file('images') as $uploadedImage) {
+            $imagePath = $uploadedImage->store('Apartment_images', 'public');
+            $originalImageName = $uploadedImage->getClientOriginalName();
+            $uniqueImageName = time() . '_' . $originalImageName;
+    
+            $image = new Image();
+            $image->url = $imagePath;
+            // $image->original_name = $originalImageName;
+            $image->imageable_id = $apartment->id;
+            $image->imageable_type = Apartment::class;
+            $uploadedImages[] = $image;
+        }
+    
+        // Save the images using the morph relationship
+        $apartment->images()->saveMany($uploadedImages);
+    
+        // Return a response or redirect as needed
+        return redirect()->back()->with('success', 'Les images de appartement sont stockées avec succès.');
+    }
+    
+    // public function deleteApartmentImage(Request $request, $id)
+    // {
+    //     // Retrieve the apartment
+    //     $apartment = Apartment::findOrFail($id);
+    
+    //     // Get the image ID to delete from the request
+    //     $imageId = $request->input('image_id');
+    
+    //     // Retrieve the image associated with the apartment
+    //     $image = $apartment->images()->findOrFail($imageId);
+    
+    //     // Delete the image file from storage
+    //     Storage::disk('public')->delete($image->url);
+    
+    //     // Delete the image record from the database
+    //     $image->delete();
+    
+    //     // Return a response or redirect as needed
+    //     return redirect()->back()->with('success', 'L’image de propriété a été supprimée avec succès.');
+    // }
+    public function deleteApartmentImage(Request $request, $id)
+{
+    // Retrieve the image
+    $image = Image::findOrFail($id);
+    
+    // Delete the image file from storage
+    Storage::disk('public')->delete($image->url);
+
+    // Delete the image record from the database
+    $image->delete();
+
+    // Return a response or redirect as needed
+    return redirect()->back()->with('success', 'L’image de l’appartement a été supprimée avec succès.');
+}
 
     public function storeImages(Request $request)
     {
@@ -223,19 +297,37 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
-        {
-            $new_prop_id = session('new_prop_id');
-            $apt = Apartment::with('pieces')->findOrFail($id);
-
-            if ($apt->pieces) {
-                foreach ($apt->pieces as $piece) {
-                    $piece->delete();
-                }
-            }
-
-            $apt->delete();
-
-            return redirect()->route('admin.property.show', $new_prop_id);
-        }
+     public function destroy($id)
+     {
+         $new_prop_id = session('new_prop_id');
+         $apt = Apartment::with('pieces.images')->findOrFail($id);
+     
+         // Delete the images associated with the apartment's pieces
+         foreach ($apt->pieces as $piece) {
+             foreach ($piece->images as $image) {
+                 // Delete the image file from storage
+                 Storage::disk('public')->delete($image->url);
+                 
+                 // Delete the image record from the database
+                 $image->delete();
+             }
+         }
+     
+         // Delete the pieces associated with the apartment
+         $apt->pieces()->delete();
+     
+         // Delete the images associated with the apartment
+         foreach ($apt->images as $image) {
+             // Delete the image file from storage
+             Storage::disk('public')->delete($image->url);
+             
+             // Delete the image record from the database
+             $image->delete();
+         }
+     
+         // Delete the apartment
+         $apt->delete();
+     
+         return redirect()->route('admin.property.show', $new_prop_id);
+     }
 }

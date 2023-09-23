@@ -46,25 +46,31 @@
                                         <td>{{ $apartment->floor }}</td>
                                         <td>
                                             <div class="btn-group">
+                                                <div>
+                                                    <a href="{{ route('admin.showApartmentImagesform', $apartment->id) }}"
+                                                        class="btn btn-secondary btn-sm">
+                                                        <i class="mdi mdi-eye"></i> Images
+                                                    </a>
+
+                                                    <a href="{{ route('admin.apartments.show', $apartment->id) }}"
+                                                        class="btn btn-secondary btn-sm">
+                                                        <i class="mdi mdi-eye"></i> Pièce</a>
+                                                    
+                                                    <a href="{{ route('admin.apartments.showRapports', $apartment->id) }}"
+                                                        class="btn btn-secondary btn-sm ">
+                                                        <i class="mdi mdi-eye"></i> Rapports de Gestion</a>
+                                                   
+                                                    <a href="{{ route('admin.apartments.showPayments', $apartment->id) }}"
+                                                        class="btn btn-secondary btn-sm">
+                                                        <i class="mdi mdi-eye"></i> Paiements</a>
+                                                        </div>
+                                                </div>
                                                 <a href="{{ route('admin.apartments.edit', $apartment->id) }}"
-                                                    style="height: fit-content;" class="btn btn-success  btn-sm">
+                                                    style="height: fit-content;" class="btn btn-success  btn-sm ml-4">
                                                     <i class="mdi mdi-pencil"></i></a>
                                                 <a data-toggle="modal" data-target="#deleteModal{{ $apartment->id }}"
                                                     href="#" style="height: fit-content;" class="btn btn-danger btn-sm"><i
                                                         class="mdi mdi-delete"></i></a>
-                                                <div>
-                                                    <a href="{{ route('admin.apartments.show', $apartment->id) }}"
-                                                        class="btn btn-secondary btn-sm ml-4">
-                                                        <i class="mdi mdi-eye"></i> Pièce</a>
-                                                    
-                                                    <a href="{{ route('admin.apartments.showRapports', $apartment->id) }}"
-                                                        class="btn btn-secondary btn-sm ml-4">
-                                                        <i class="mdi mdi-eye"></i> Rapports de Gestion</a>
-                                                   
-                                                    <a href="{{ route('admin.apartments.showPayments', $apartment->id) }}"
-                                                        class="btn btn-secondary btn-sm ml-4">
-                                                        <i class="mdi mdi-eye"></i> Paiements</a>
-                                                </div>
                                             </div>
 
                                         </td>

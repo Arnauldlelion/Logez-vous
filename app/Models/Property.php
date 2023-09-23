@@ -19,9 +19,13 @@ class Property extends Model
         'landlord_id',
     ];
 
+    // public function images()
+    // {
+    //     return $this->hasMany(Image::class);
+    // }
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function apartments()
@@ -41,8 +45,9 @@ class Property extends Model
         return $this->belongsTo(Admin::class);
     }
 
+   
     public function apartmentTypes()
     {
-        return $this->belongsToMany(ApartmentType::class);
+        return $this->belongsToMany(ApartmentType::class)->withTimestamps();
     }
 }
