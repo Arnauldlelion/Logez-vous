@@ -84,7 +84,14 @@
                             <label class="form-check-label" for="checkbox-signin">je m'abonne aux bons plans de nos partenaires</label>
                         </div> --}}
                     <div class="">
-                        <button type="submit" onclick="validatePhoneNumber()" class="btn btn-main btn-lg rounded-pill p-2 w-100 text-main mb-4">S'enregistrer</button>
+                      <div class="container4">
+                        <button type="submit" onclick="openPopup4()" class="btn">S'enregistrer</button>
+                        <div class="popup4" id="popup4">
+                            <h2>Merci</h2>
+                            <p>Vos informations ont ete recues avec succes. Un Agent vous recontactera.</p>
+                            <button type="button" onclick="closePopup4()">OK</button>
+                        </div>
+                      </div>
                     </div>
                 </form>
                 <div>
@@ -106,6 +113,18 @@
       separateDialCode: true,
       utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
     });
+
+    //function open and close popup
+    let popup4 = document.getElementById("popup4");
+    function openPopup4(){
+        popup4.classList.add("open-popup4");
+
+    }
+
+    function closePopup4(){
+        popup4.classList.remove("open-popup4");
+
+    }
 
     // Phone number validation function
     function validatePhoneNumber() {
