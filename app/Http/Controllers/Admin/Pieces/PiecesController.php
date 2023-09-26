@@ -49,12 +49,14 @@ class PiecesController extends Controller
             'piece_types_id' => ['required'],
             'nombre_of_pieces' => ['required', 'integer'],
             'size' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
         ]);
         $piece = new Piece();
         $piece->nombre_of_pieces = $request->get('nombre_of_pieces');
         $piece->size = $request->get('size');
         $piece->piece_types_id = $request->get('piece_types_id');
         $piece->apartment_id = $new_apt_id;
+        $piece->description = $request->get('description');
         $piece->save();
         return redirect()->route('admin.apartments.show', $new_apt_id);
     }
@@ -101,6 +103,7 @@ class PiecesController extends Controller
         $piece->nombre_of_pieces = $request->get('nombre_of_pieces');
         $piece->size = $request->get('size');
         $piece->piece_types_id = $request->get('piece_types_id');
+        $piece->description = $request->get('description');
         $piece->save();
         return redirect()->route('admin.apartments.show', $new_apt_id);
     }

@@ -66,6 +66,20 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="col-12 col-lg-7">
+                                <label for="description">Dèscription</label>
+                                <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}"
+                                          rows="5"
+                                          name="description"
+                                          placeholder=""
+                                          >{{ old('description') }}</textarea>
+            
+                                @error('description')
+                                <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                                </div>
+                              </div>
                             <div class="w-100 mb-5">
                                 <div class="text-black float-start">
                                     <a href="{{ route('admin.apartments.show', session('new_apt_id')) }}"

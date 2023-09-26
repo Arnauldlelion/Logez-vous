@@ -9,12 +9,13 @@ class Piece extends Model
 {
     use HasFactory;
 
-        protected $fillable = [
-        'pieces_id',
-        'number_of_pieces',
-        'size',
-        'apartment_id',
-    ];
+    protected $fillable = [
+    'pieces_id',
+    'number_of_pieces',
+    'size',
+    'apartment_id',
+    'description',
+];
 
 
     public function apartment()
