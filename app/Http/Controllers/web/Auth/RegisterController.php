@@ -21,7 +21,6 @@ class RegisterController extends Controller
             'phone' => 'required',
             'location' => 'required',
             'description' => 'required',
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         if ($validator->fails()) {
@@ -31,7 +30,6 @@ class RegisterController extends Controller
         }
 
         $input = $request->all();
-        $input['password'] = \Hash::make($request->password);
         $admin = User::create($input);
 
          // Redirect to a thank you page or display a success message

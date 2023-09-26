@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertiesTable extends Migration
+class CreateLandlordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
-            $table->id();   
+        Schema::create('landlords', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->string('slug');
-            $table->string('location');   
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('password');
             $table->unsignedBigInteger('admin_id');
-            $table->unsignedBigInteger('landlord_id');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
-            $table->string('apartmentType')->default('Appartement');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties');
+        Schema::dropIfExists('landlords');
     }
 }

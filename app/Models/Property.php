@@ -16,6 +16,7 @@ class Property extends Model
         'name',
         'location',
         'apartmentType',
+        'landlord_id',
     ];
 
     public function images()
@@ -31,7 +32,13 @@ class Property extends Model
 
     public function landlord()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Landlord::class);
+    }
+
+    
+    public function gestionnaire()
+    {
+        return $this->belongsTo(Admin::class);
     }
 
     public function apartmentTypes()

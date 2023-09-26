@@ -47,15 +47,16 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div class="d-flex flex-nowrap align-items-center">
                         <small class="mx-2">page {{ $landlords->currentPage() }} de {{ $landlords->total() }} résultats</small>
-                        <a href="{{route('admin.administrator.create')}}" class="btn btn-success text-white btn-sm">Nouveau
+                        <a href="{{route('admin.landlords.create')}}" class="btn btn-success text-white btn-sm">Nouveau
                             Propriétaire</a>
                     </div>
                 </div>
 
                 <div class="collapse {{ $search['q'] ? 'show' : ''}}" id="collapseFilter">
-                    <form action="{{ route('admin.administrator.index') }}">
+                    <form action="{{ route('admin.landlords.index') }}">
                         <input type="hidden" name="limit" value="{{ $search['limit'] }}">
                         <div class="row">
                             <div class="col-md-10">
@@ -91,7 +92,7 @@
                                     {{-- <img src="{{ $admin->profileURL() }}" class="mr-2 rounded-circle"> --}}
                                     <a href="{{ route('admin.administrator.show', $landlord->id) }}"
 
-                                       class="text-body font-weight-semibold">{{ $landlord->first_name }}</a>
+                                       class="text-body font-weight-semibold">{{ $landlord->name }}</a>
                                 </div>
                             </td>
                             <td>

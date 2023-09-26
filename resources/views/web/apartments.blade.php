@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('web.layouts.app')
 
 @section('content')
     <section class="search-section" style="padding-top: 8rem; padding-bottom: .5rem;">

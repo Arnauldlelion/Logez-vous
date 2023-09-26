@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Property;
 
 use App\Models\User;
+use App\Models\Landlord;
 use App\Models\Property;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -28,7 +29,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('admin.property.create');
+        $landlords = Landlord::get();
+
+        return view('admin.property.create', compact('landlords'));
     }
 
     /**
@@ -38,26 +41,29 @@ class PropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
   
-    public function store(Request $request)
-    {
-        $request->validate([
-            'apartmentType' => ['required'],
-            'location' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string']
-        ]);
-    
-        $types = implode(', ', $request['apartmentType']);
-        $property = $request->all();
-        $property['apartmentType'] = $types;
-        $property['admin_id'] = auth('admin')->id();
-        $property['slug'] = Str::slug($request->get('name') . '-' . time());
-    
-        $createdProperty = Property::create($property);
-    
-        session(['new_prop_id' => $createdProperty->id]);
-    
-        return redirect()->route('admin.apartments.create');
-    }
+     public function store(Request $request)
+     {
+         $request->validate([
+             'apartmentType' => ['required'],
+             'location' => ['required', 'string', 'max:255'],
+             'name' => ['required', 'string'],
+            //  'landlord' => ['required', 'exists:users,id']
+             'landlord' => ['required', 'exists:landlords,id'], 
+         ]);
+     
+         $types = implode(', ', $request['apartmentType']);
+         $property = $request->all();
+         $property['apartmentType'] = $types;
+         $property['admin_id'] = auth('admin')->id();
+         $property['slug'] = Str::slug($request->get('name') . '-' . time());
+         $property['landlord_id'] = $request->input('landlord');
+     
+         $createdProperty = Property::create($property);
+     
+         session(['new_prop_id' => $createdProperty->id]);
+     
+         return redirect()->route('admin.apartments.create');
+     }
 
     /**
      * Display the specified resource.
@@ -80,12 +86,25 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function edit($slug)
+    // {
+    //     $property = Property::where('slug', $slug)->first();
+    //     $apt_types = explode(', ', $property->apartmentTypes);
+    //     return view('admin.property.edit', compact('property', 'apt_types'));
+    // }
     public function edit($slug)
-    {
-        $property = Property::where('slug', $slug)->first();
-        $apt_types = explode(', ', $property->appartmentType);
-        return view('landlord.property.edit', compact('property', 'apt_types'));
+{
+    $property = Property::where('slug', $slug)->first();
+
+    // Check if the logged-in user owns the property
+    if ($property->user_id !== auth('admin')->user()->id) {
+        // Redirect or display an error message indicating unauthorized access
+        return redirect()->back()->with('error', 'You are not authorized to edit this property.');
     }
+
+    $apt_types = explode(', ', $property->apartmentTypes);
+    return view('admin.property.edit', compact('property', 'apt_types'));
+}
 
     /**
      * Update the specified resource in storage.
@@ -97,12 +116,12 @@ class PropertyController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'appartmentType' => ['required'],
+            'apartmentType' => ['required'],
             'location' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string']
         ]);
 
-        $types = implode(', ', $request['appartmentType']);
+        $types = implode(', ', $request['apartmentType']);
         $property = Property::findOrFail($id);
         $property->name = $request->get('name');
         $property->location = $request->get('location');
@@ -110,7 +129,7 @@ class PropertyController extends Controller
 
         $property->save();
 
-        return redirect()->route('landlord.index');
+        return redirect()->route('admin.property.index');
     }
 
     /**

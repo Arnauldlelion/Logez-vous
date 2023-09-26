@@ -28,6 +28,11 @@ class Admin extends Authenticatable
         return $this->hasMany(Landlord::class);
     }
 
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
+
     // Helper functions
     public function profileURL() {
         return asset($this->profile ? '/storage/images/profile/'.$this->profile : 'admin_assets/images/no_user.png');

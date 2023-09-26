@@ -47,6 +47,8 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
                 // Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
                 // Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
 
+        // Route::resource('approuved-landlords', 'Landlord\LandlordController');
+        Route::resource('landlords', 'Landlord\LandlordController');
         Route::resource('approuved-landlords', 'Landlord\LandlordController');
         Route::resource('pages', 'PageContentController');
         Route::resource('apartment_types', 'ApartmentTypes\ApartmentTypesController');
@@ -57,8 +59,8 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
         // super Administrators
         Route::group(['middleware' => ['auth:admin', 'admin.super']], function () {
-        Route::resource('administrator', 'Administrator\AdminController');
-        Route::post('administrator/roles/{id}', 'Administrator\AdminController@assignRoles')->name('admin.roles');
+         Route::resource('administrator', 'Administrator\AdminController');
+         Route::post('administrator/roles/{id}', 'Administrator\AdminController@assignRoles')->name('admin.roles');
         });
 
         Route::resource('property', 'Property\PropertyController');
@@ -112,8 +114,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-    Route::group(['middleware' => ['auth']], function () { 
        
+    Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');

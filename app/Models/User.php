@@ -21,7 +21,6 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
-        'password',
         'phone',
         'location',
         'description',
@@ -48,11 +47,11 @@ class User extends Authenticatable
 
     public function properties()
     {
-        return $this->hasMany(Property::class);
+        return $this->hasMany(Property::class, 'landlord_id');
     }
 
     public function agent()
     {
-        return $this->belongsTo(Agent::class);
+        return $this->belongsTo(Admin::class);
     }
 }
