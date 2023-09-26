@@ -17,7 +17,7 @@ class CreatePiecesTable extends Migration
             $table->id();
             $table->integer('nombre_of_pieces');
             $table->string('size');
-            // $table->string('piece_images');
+            $table->string('description');
             $table->unsignedBigInteger('apartment_id');
             $table->unsignedBigInteger('piece_types_id');
             $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('cascade');

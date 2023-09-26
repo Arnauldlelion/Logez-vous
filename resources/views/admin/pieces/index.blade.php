@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Propriétaire')
+@section('title', 'Pièce')
 
 @section('content')
     <!-- start page title -->
@@ -59,6 +59,10 @@
                                             <a data-toggle="modal" data-target="#deleteModal{{ $piece->id }}"
                                                 href="#" class="btn btn-danger btn-sm"><i
                                                     class="mdi mdi-delete"></i></a>
+                                                    <a href="{{ route('admin.showPieceImagesform', $piece->id) }}"
+                                                        class="btn btn-secondary btn-sm ml-4">
+                                                        <i class="mdi mdi-eye"></i> Images
+                                                    </a>
                                         </div>
                                         {{-- <a href="{{ route('admin.pieces.show', $piece->id) }}"
                                             class="btn btn-secondary btn-sm ml-4">
@@ -82,7 +86,7 @@
         </div>
     </div>
 
-
+{{-- 
     <form action="{{ route('admin.apartments.storeImages') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row mx-0">
@@ -154,7 +158,7 @@
                 <h3 class="text-primary">Aucune image n’a été ajoutée.</h3>
             </div>
         @endif
-    </div>
+    </div> --}}
 
 @endsection
 

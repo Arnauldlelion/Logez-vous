@@ -39,13 +39,19 @@
                                value="{{ old('appartmentType', $property->appartmentType) }}"
                                name="appartmentType"
                                placeholder="chambre,studio,apartment 2chambre"> --}}
-                               @foreach(\App\Models\ApartmentType::all() as $apt_type)
+                               {{-- @foreach(\App\Models\ApartmentType::all() as $apt_type)
                                  <div class="d-flex gap-3">
                                   <input type="checkbox" {{ in_array(strval($apt_type->id), $apt_types) ? 'checked' : ''}} name="apartmentType[]" value={{$apt_type->id}} id="">
                                   <label for="">{{$apt_type->name}}</label>
                                  </div>
-                              @endforeach
-                        @error('appartmentType')
+                              @endforeach --}}
+                              @foreach ($apt_types as $apt_type)
+                              <div class="d-flex gap-3">
+                                  <input type="checkbox" {{ in_array($apt_type->id, $selectedAptTypes) ? 'checked' : '' }} name="apartmentType[]" value="{{ $apt_type->id }}" id="apartmentType_{{ $apt_type->id }}">
+                                  <label for="apartmentType_{{ $apt_type->id }}">{{ $apt_type->name }}</label>
+                              </div>
+                          @endforeach
+                        @error('apartmentType')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                         </div>
@@ -64,9 +70,25 @@
                         @enderror
                         </div>
                       </div>
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                        <label for="landlord" class="col-sm-2 col-form-label-sm">Propriétaire</label>
+                        <div class="col-12 col-lg-7">
+                            <select class="form-control rounded-pill form-control-sm @error('landlord') is-invalid @enderror" id="landlord" name="landlord">
+                                <option value="">Propriétaire</option>
+                                @foreach ($landlords as $landlord)
+                                    <option value="{{ $landlord->id }}" {{ $landlord->id == $property->landlord_id ? 'selected' : '' }}>
+                                        {{ $landlord->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('landlord')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
                       <div class="w-100 mb-5">
                         <div class="text-black float-start">
-                            <a href="{{ route('landlord.index') }}" class="text-secondary">
+                            <a href="{{ route('admin.property.index') }}" class="text-secondary">
                                 <i class="mdi mdi-chevron-left text-secondary"></i>
                                 Retour
                             </a>

@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="collapse {{ $search['q'] ? 'show' : ''}}" id="collapseFilter">
-                    <form action="{{ route('admin.administrator.index') }}">
+                    <form action="{{ route('admin.landlords.index') }}">
                         <input type="hidden" name="limit" value="{{ $search['limit'] }}">
                         <div class="row">
                             <div class="col-md-10">

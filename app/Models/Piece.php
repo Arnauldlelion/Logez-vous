@@ -9,12 +9,13 @@ class Piece extends Model
 {
     use HasFactory;
 
-        protected $fillable = [
-        'pieces_id',
-        'number_of_pieces',
-        'size',
-        'apartment_id',
-    ];
+    protected $fillable = [
+    'pieces_id',
+    'number_of_pieces',
+    'size',
+    'apartment_id',
+    'description',
+];
 
 
     public function apartment()
@@ -27,7 +28,11 @@ class Piece extends Model
     return $this->belongsTo(PieceType::class, 'piece_types_id');
     }
 
-    public function pieceImage(){
-    return $this->belongsTo(Piece::class, 'piece_id');
+    // public function pieceImage(){
+    // return $this->belongsTo(Piece::class, 'piece_id');
+    // }
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

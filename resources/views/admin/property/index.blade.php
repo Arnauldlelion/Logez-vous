@@ -18,18 +18,9 @@
 	</div>
 	<!-- end page title -->
     <div>
-        <div class="text-white">
-            <a href="{{route("admin.property.index")}}" class="text-white">
-                <i class="mdi mdi-chevron-left"></i>
-                Properties
-            </a>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-body">
-                    <div class="p-4">
-                        {{-- <h4 class="text-capitalize">{{ $property->name }} Apartements - {{ $property->location }}</h4> --}}
-                    </div>
                     <div class="text-end p-2">
                         <a href="{{ route('admin.property.create') }}" class="btn btn-secondary float-right">Ajouter de nouveaux logements</a>
                     </div>
@@ -40,6 +31,7 @@
                                     <th>S/N</th>
                                     <th>Nom</th>
                                     <th>Emplacement</th>
+                                    <th>Propriétaire</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -49,23 +41,30 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $property->name }}</td>
                                         <td>{{ $property->location }}</td>
+                                        <td>{{ $property->landlord->name }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.property.edit', $property->id) }}"
-                                                    style="height: fit-content;" class="btn btn-success  btn-sm">
-                                                    <i class="mdi mdi-pencil"></i>
-                                                </a>
-                                                <a data-toggle="modal" data-target="#deleteModal{{ $property->id }}"
-                                                    href="#" style="height: fit-content;" class="btn btn-danger btn-sm">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </a>
                                                 <div>
                                                     <a href="{{ route('admin.property.show', $property->id) }}"
-                                                        class="btn btn-secondary btn-sm ml-4">
+                                                        class="btn btn-secondary btn-sm">
                                                         <i class="mdi mdi-eye"></i> Appartements
                                                     </a>
                                                 </div>
+                                                <div>
+                                                    <a href="{{ route('admin.showPropertyImagesform', $property->id) }}"
+                                                        class="btn btn-secondary btn-sm ml-1">
+                                                        <i class="mdi mdi-eye"></i> Images
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <a href="{{ route('admin.property.edit', $property->id) }}"
+                                                style="height: fit-content;" class="btn btn-success  btn-sm ml-5">
+                                                <i class="mdi mdi-pencil"></i>
+                                            </a>
+                                            <a data-toggle="modal" data-target="#deleteModal{{ $property->id }}"
+                                                href="#" style="height: fit-content;" class="btn btn-danger btn-sm">
+                                                <i class="mdi mdi-delete"></i>
+                                            </a>
                                         </td>
                                         <x-delete-modal :id="$property->id"
                                             :url="route('admin.property.destroy', $property->id)"
