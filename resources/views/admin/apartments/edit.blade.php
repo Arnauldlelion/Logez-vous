@@ -69,16 +69,16 @@
                                 <div class="d-flex gap-5">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="furnished"
-                                            id="flexRadioDefault2" {{ $apt->furnished == 'no' ? 'checked' : '' }}
-                                            value="no">
+                                            id="flexRadioDefault2" {{ $apt->furnished == 'Non meublé' ? 'checked' : '' }}
+                                            value="Non meublé">
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Non meublé
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="furnished"
-                                            id="flexRadioDefault1" {{ $apt->furnished == 'yes' ? 'checked' : '' }}
-                                            value="yes">
+                                            id="flexRadioDefault1" {{ $apt->furnished == 'Meublé' ? 'checked' : '' }}
+                                            value="Meublé">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Meublé
                                         </label>

@@ -30,7 +30,7 @@
                             <div class="form-group col-sm-6">
                                 <label for="firstname">Nom</label>
                                 <input class="form-control @error('name') is-invalid @enderror" type="text"
-                                       value="{{old('name')}}" name="name" placeholder="Enter name of administrator">
+                                       value="{{old('name')}}" name="name" placeholder="Entrez le nom complète du propriétaire ">
                                 @error('name')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -40,7 +40,7 @@
                                 <label>Email</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="email"
                                        value="{{old('email')}}" name="email"
-                                       placeholder="Enter email address of administrator">
+                                       placeholder="Entrez l’adresse e-mail du propriétaire">
                                 @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -50,7 +50,7 @@
                                 <label>Phone</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" type="phone"
                                        value="{{old('phone')}}" name="phone"
-                                       placeholder="Enter phone address of administrator">
+                                       placeholder="Entrez numero de téléphone du propriétaire">
                                 @error('phone')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -59,7 +59,7 @@
                             <div class="form-group col-sm-6">
                                 <label for="password">Mot de passe</label>
                                 <input class="form-control @error('password') is-invalid @enderror" type="password"
-                                       id="password" name="password" placeholder="Enter password">
+                                       id="password" name="password" placeholder="Entrez le mot de passe">
                                 @error('password')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -67,7 +67,7 @@
                             <div class="form-group col-sm-6">
                                 <label for="password">Confirmer le mot de passe</label>
                                 <input class="form-control" type="password" id="password" name="password_confirmation"
-                                       placeholder="Confirm Password">
+                                       placeholder="Confirmer le mot de passe">
                             </div>
                         </div>
 

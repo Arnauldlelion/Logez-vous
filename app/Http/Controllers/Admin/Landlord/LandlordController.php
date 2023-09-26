@@ -139,10 +139,36 @@ class LandlordController extends Controller
     public function destroy($id)
     {
         $landlord = Landlord::findOrFail($id);
-         $landlord->delete();
-
-                session()->flash('success', 'Propriétaire supprimé avec succès');
-        
+    
+        // Retrieve properties associated with the landlord
+        $properties = $landlord->properties;
+    
+        foreach ($properties as $property) {
+            // Retrieve apartments associated with the property
+            $apartments = $property->apartments;
+    
+            foreach ($apartments as $apartment) {
+                // Retrieve prices associated with the apartment
+                $pieces = $apartment->pieces;
+    
+                foreach ($pieces as $piece) {
+                    // Delete each price
+                    $piece->delete();
+                }
+    
+                // Delete the apartment
+                $apartment->delete();
+            }
+    
+            // Delete the property
+            $property->delete();
+        }
+    
+        // Delete the landlord
+        $landlord->delete();
+    
+        session()->flash('success', 'Propriétaire supprimé avec succès');
+    
         return redirect()->to(route('admin.approuved-landlords.index'));
     }
 }

@@ -24,6 +24,11 @@ class Image extends Model
         return $this->belongsToMany(Piece::class, 'images');
     }
 
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
+
     public function getImageUrl()
     {
         return asset($this->url ? 'storage/' . $this->url : 'no_user.png');

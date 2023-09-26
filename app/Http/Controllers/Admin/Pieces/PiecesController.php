@@ -108,53 +108,104 @@ class PiecesController extends Controller
         return redirect()->route('admin.apartments.show', $new_apt_id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-     public function destroyImage($id)
+    public function showPieceImagesform($id)
     {
+        $piece = Piece::findOrFail($id);
+        $images = $piece->images;
+    
+        return view('admin.pieces.show', compact('piece', 'images'));
+    }
+    
+    public function storePieceImages(Request $request, $id)
+    {
+        // Retrieve the piece
+        $piece = Piece::findOrFail($id);
+    
+        // Validate the uploaded images
+        $request->validate([
+            'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
+        ]);
+    
+        // Store the uploaded images
+        $uploadedImages = [];
+        foreach ($request->file('images') as $uploadedImage) {
+            $imagePath = $uploadedImage->store('Piece_images', 'public');
+            $originalImageName = $uploadedImage->getClientOriginalName();
+            $uniqueImageName = time() . '_' . $originalImageName;
+    
+            $image = new Image();
+            $image->url = $imagePath;
+            // $image->original_name = $originalImageName;
+            $image->imageable_id = $piece->id;
+            $image->imageable_type = Piece::class;
+            $uploadedImages[] = $image;
+        }
+    
+        // Save the images using the morph relationship
+        $piece->images()->saveMany($uploadedImages);
+    
+        // Return a response or redirect as needed
+        return redirect()->back()->with('success', 'Les images de cette pièce sont stockées avec succès.');
+    }
+    public function deletePieceImage(Request $request, $id)
+    {
+        // Retrieve the image
         $image = Image::findOrFail($id);
         
-        Storage::delete($image->photo);
+        // Delete the image file from storage
+        Storage::disk('public')->delete($image->url);
+    
+        // Delete the image record from the database
         $image->delete();
-             // Find the existing cover image
-             $existingCoverImage = Image::where('apartment_id', session('new_apt_id'))
-             ->where('id', '1')
-             ->first();
-     
-         // Update the existing cover image to remove the "is_cover" flag
-             $existingCoverImage->iscover = true;
-             $existingCoverImage->save();
-
-        return redirect()->route('admin.apartments.show', session('new_apt_id'));
+    
+        // Return a response or redirect as needed
+        return redirect()->back()->with('success', 'L’image de la pièce a été supprimée avec succès.');
     }
-    // public function destroy($id)
-    // {
-    //     $new_apt_id = session('new_apt_id');
-    //     $piece = Piece::findOrFail($id);
-    //     $piece->delete();
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
 
-    //     return redirect()->route('admin.apartments.show', $new_apt_id);
+    //  public function destroyImage($id)
+    // {
+    //     $image = Image::findOrFail($id);
+        
+    //     Storage::delete($image->photo);
+    //     $image->delete();
+    //          // Find the existing cover image
+    //          $existingCoverImage = Image::where('apartment_id', session('new_apt_id'))
+    //          ->where('id', '1')
+    //          ->first();
+     
+    //      // Update the existing cover image to remove the "is_cover" flag
+    //          $existingCoverImage->iscover = true;
+    //          $existingCoverImage->save();
+
+    //     return redirect()->route('admin.apartments.show', session('new_apt_id'));
     // }
+ 
     public function destroy($id)
     {
         $new_apt_id = session('new_apt_id');
         $piece = Piece::findOrFail($id);
-
-        // Delete the image file from the folder
-        if ($piece->image) {
-            $imagePath = public_path($piece->image);
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
+    
+        // Delete the images associated with the piece
+        $images = $piece->images;
+        foreach ($images as $image) {
+            // Delete the image file from storage
+            if (Storage::disk('public')->exists($image->url)) {
+                Storage::disk('public')->delete($image->url);
             }
+    
+            // Delete the image record from the database
+            $image->delete();
         }
-
+    
+        // Delete the piece
         $piece->delete();
-
+    
         return redirect()->route('admin.apartments.show', $new_apt_id);
     }
 }

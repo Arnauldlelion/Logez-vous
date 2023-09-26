@@ -28,7 +28,11 @@ class Piece extends Model
     return $this->belongsTo(PieceType::class, 'piece_types_id');
     }
 
-    public function pieceImage(){
-    return $this->belongsTo(Piece::class, 'piece_id');
+    // public function pieceImage(){
+    // return $this->belongsTo(Piece::class, 'piece_id');
+    // }
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
