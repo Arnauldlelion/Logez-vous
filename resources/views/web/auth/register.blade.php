@@ -83,16 +83,16 @@
                             <input type="checkbox" class="form-check-input" id="checkbox-signin">
                             <label class="form-check-label" for="checkbox-signin">je m'abonne aux bons plans de nos partenaires</label>
                         </div> --}}
-                    <div class="">
-                      <div class="container4">
-                        <button type="submit" onclick="openPopup4()" class="btn">S'enregistrer</button>
-                        <div class="popup4" id="popup4">
+                  
+                        <button id="registerButton">S'enregistrer</button>
+
+                        <div id="popupContainer">
+                          <div id="popupContent">
                             <h2>Merci</h2>
-                            <p>Vos informations ont ete recues avec succes. Un Agent vous recontactera.</p>
-                            <button type="button" onclick="closePopup4()">OK</button>
+                            <p>Vos informations ont été reçues avec succès. Un agent vous recontactera.</p>
+                            <button id="closeButton">OK</button>
+                          </div>
                         </div>
-                      </div>
-                    </div>
                 </form>
                 <div>
                     <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les
@@ -114,17 +114,27 @@
       utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
     });
 
-    //function open and close popup
-    let popup4 = document.getElementById("popup4");
-    function openPopup4(){
-        popup4.classList.add("open-popup4");
+  // Get the necessary elements
+const registerButton = document.getElementById('registerButton');
+const popupContainer = document.getElementById('popupContainer');
+const closeButton = document.getElementById('closeButton');
 
-    }
+// Function to show the pop-up
+function showPopup(event) {
+  event.preventDefault(); // Prevent form submission
+  popupContainer.style.display = 'flex';
+}
 
-    function closePopup4(){
-        popup4.classList.remove("open-popup4");
+// Function to close the pop-up
+function closePopup() {
+  popupContainer.style.display = 'none';
+}
 
-    }
+// Event listener for the register button
+registerButton.addEventListener('click', showPopup);
+
+// Event listener for the close button
+closeButton.addEventListener('click', closePopup);
 
     // Phone number validation function
     function validatePhoneNumber() {
