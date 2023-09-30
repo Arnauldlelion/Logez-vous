@@ -9,17 +9,15 @@ class RapportDeGestion extends Model
 {
     use HasFactory;
 
-    protected $dates = ['annee_construction'];
     protected $fillable = [
-        'Rapport_id',
-        'annee_construction',
-        'nombreDeLocataire',
-        'dureeDuLocataire',
-        'requete des locataires',
         'apartment_id',
+        'property_id',
+        'path',
+        'rapport',
     ];
+
     public function apartment()
-{
-    return $this->belongsTo(Apartment::class);
-}
+    {
+        return $this->belongsTo(Apartment::class);
+    }
 }

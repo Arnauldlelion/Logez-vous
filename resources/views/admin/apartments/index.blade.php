@@ -33,6 +33,7 @@
                                     <th>Meublé</th>
                                     <th>Numbre d'appartements</th>
                                     <th>Niveau d'etage</th>
+                                    <th>Rapports de Gestion</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,16 @@
                                         <td>{{ $apartment->number_of_pieces }}</td>
                                         <td>{{ $apartment->floor }}</td>
                                         <td>
+                                            <div>
+                                                <a href="{{ route('admin.generalrapportIndex', $apartment->id) }}"
+                                                    class="btn btn-secondary btn-sm mb-1">
+                                                    <i class="mdi mdi-eye"></i> Rapport Général</a>
+                                                    <a href="{{ route('admin.rapportIndex', $apartment->id) }}"
+                                                        class="btn btn-secondary btn-sm ">
+                                                        <i class="mdi mdi-eye"></i> Rapport Hebdomadaire</a>
+                                            </div>
+                                        </td>
+                                        <td>
                                             <div class="btn-group">
                                                 <div>
                                                     <a href="{{ route('admin.showApartmentImagesform', $apartment->id) }}"
@@ -56,9 +67,6 @@
                                                         class="btn btn-secondary btn-sm">
                                                         <i class="mdi mdi-eye"></i> Pièce</a>
                                                     
-                                                    <a href="{{ route('admin.apartments.showRapports', $apartment->id) }}"
-                                                        class="btn btn-secondary btn-sm ">
-                                                        <i class="mdi mdi-eye"></i> Rapports de Gestion</a>
                                                    
                                                     <a href="{{ route('admin.apartments.showPayments', $apartment->id) }}"
                                                         class="btn btn-secondary btn-sm">

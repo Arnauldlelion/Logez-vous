@@ -123,37 +123,51 @@ public function edit(Property $property)
     return view('admin.property.show', compact('property', 'images'));
 }
 
-    public function storePropertyImages(Request $request, $propertyId)
-    {
-        // Retrieve the property
-        $property = Property::findOrFail($propertyId);
+public function storePropertyImages(Request $request, $propertyId)
+{
+    // Retrieve the property
+    $property = Property::findOrFail($propertyId);
+    
+    // Validate the uploaded images
+    $request->validate([
+        'images.*' => 'required|image|max:2048',
+        'cover_image' => 'required|image|max:2048',
+    ]);
 
-        // Validate the uploaded images
-        $request->validate([
-            'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
-        ]);
+    // Store the uploaded images
+    $uploadedImages = [];
+    foreach ($request->file('images') as $uploadedImage) {
+        $imagePath = $uploadedImage->store('property_images', 'public');
+        $originalImageName = $uploadedImage->getClientOriginalName();
+        $uniqueImageName = time() . '_' . $originalImageName;
 
-        // Store the uploaded images
-        $uploadedImages = [];
-        foreach ($request->file('images') as $uploadedImage) {
-            $imagePath = $uploadedImage->store('property_images', 'public');
-            $originalImageName = $uploadedImage->getClientOriginalName();
-            $uniqueImageName = time() . '_' . $originalImageName;
-
-            $image = new Image();
-            $image->url = $imagePath;
-            // $image->original_name = $originalImageName;
-            $image->imageable_id = $property->id;
-            $image->imageable_type = Property::class;
-            $uploadedImages[] = $image;
-        }
-
-        // Save the images using the morph relationship
-        $property->images()->saveMany($uploadedImages);
-
-        // Return a response or redirect as needed
-        return redirect()->back()->with('success', 'Les images de propriété sont stockées avec succès.');
+        $image = new Image();
+        $image->url = $imagePath;
+        $image->imageable_id = $property->id;
+        $image->imageable_type = Property::class;
+        $uploadedImages[] = $image;
     }
+
+    // Handle the cover image
+    if ($request->hasFile('cover_image')) {
+        $coverImage = $request->file('cover_image');
+        $coverImagePath = $coverImage->store('cover_images', 'public');
+        $coverImageName = time() . '_' . $coverImage->getClientOriginalName();
+
+        $coverImageModel = new Image();
+        $coverImageModel->url = $coverImagePath;
+        $coverImageModel->imageable_id = $property->id;
+        $coverImageModel->imageable_type = Property::class;
+        $coverImageModel->isCover = true;
+        $coverImageModel->save();
+    }
+
+    // Save the images using the morph relationship
+    $property->images()->saveMany($uploadedImages);
+
+    // Return a response or redirect as needed
+    return redirect()->back()->with('success', 'Les images de propriété sont stockées avec succès.');
+}
 
     public function deletePropertyImage(Request $request, $propertyId)
     {
@@ -169,6 +183,10 @@ public function edit(Property $property)
         // Return a response or redirect as needed
         return redirect()->back()->with('success', 'L’image de la propriété a été supprimée avec succès.');
     }
+
+
+
+   
 
 
     /**

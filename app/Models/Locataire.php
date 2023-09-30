@@ -24,4 +24,3 @@ class Locataire extends Model
     }
 }
 
-
