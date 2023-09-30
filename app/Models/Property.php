@@ -50,4 +50,6 @@ class Property extends Model
     {
         return $this->belongsToMany(ApartmentType::class)->withTimestamps();
     }
+
+  
 }

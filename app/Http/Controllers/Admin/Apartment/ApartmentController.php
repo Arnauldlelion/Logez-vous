@@ -87,13 +87,13 @@ class ApartmentController extends Controller
         return view('admin.pieces.index', compact('pieces', 'apartment', 'aptImages'));
     }
 
-    public function showRapports($id)
-    {
-        $apartment = Apartment::findOrfail($id);
-        session()->put('new_apt_id', $id);
-        $rapports = $apartment->rapportDeGestions;
-        return view('admin.rapports.index', compact('rapports', 'apartment'));
-    }
+    // public function showRapports($id)
+    // {
+    //     $apartment = Apartment::findOrfail($id);
+    //     session()->put('new_apt_id', $id);
+    //     $rapports = $apartment->rapportDeGestions;
+    //     return view('admin.rapports.index', compact('rapports', 'apartment'));
+    // }
 
     public function showPayments($id)
     {

@@ -126,7 +126,7 @@ class Admincontroller extends Controller
         public function approve(User $user)
     {
         $user->is_approved = true;
-        $user->save();
+        $user->delete();
 
         return redirect()->back()->with('message', 'Approuvé avec succès.');
     }
