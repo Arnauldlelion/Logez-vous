@@ -1,35 +1,49 @@
 @extends('web.layouts.app')
 
 @section('content')
-    <div class="container my-5" style="padding-top: 6rem; padding-bottom: 2rem;">
-        <div id="house-images" class="house-images" onclick="alert('Hello, world!')">
-            <div class="row">
-                <div class="col-lg-6 mb-3 position-relative">
+<div class="container my-5" style="padding-top: 6rem; padding-bottom: 2rem;">
+    <div id="house-images" class="house-images">
+        <div class="row">
+            <div class="col-lg-6 mb-3 position-relative" id="main-gallery-item">
+                <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" data-sub-html="hellwefwergjpwer">
                     <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="{{ config('app.name') }}"
                         class="img-fluid h-100">
-                        <div class="position-absolute bottom-50 end-50 border rounded bg-success  text-white bg-opacity-50 p-2 d-block d-md-none ">
-                            +{{ count($apartment->images) - 1 }} photos
-                        </div>
+                </a>
+                <div class="position-absolute bottom-50 end-50 border rounded bg-success  text-white bg-opacity-50 p-2 d-block d-md-none ">
+                    +{{ count($images) - 1 }} photos
                 </div>
-                <div class="col-lg-6 d-none d-lg-block ">
-                        <div class="row">
-                            @foreach ($apartment->images as $key => $image)
-                                @if ($key < 4)
-                                    <div class="col-12 col-md-6 mb-3">
-                                        <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}" class="img-fluid h-100">
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="row">
+                    @foreach ($images as $key => $image)
+                        @if ($key < 4)
+                            <div class="col-12 col-md-6 mb-3" id="gallery-item-{{ $key }}">
+                                <a href="{{ $image->getImageUrl() }}" data-sub-html=".caption{{ $key }}">
+                                    <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}"
+                                        class="img-fluid h-100">
+                                </a>
+                            </div>
+                        @endif
+                        @if ($key === 4 && count($images) > 4)
+                            <div class="col-12 col-md-6 mb-3">
+                                <div class="position-relative" id="gallery-item-{{ $key }}">
+                                    <a href="{{ $image->getImageUrl() }}" data-sub-html=".caption{{ $key }}">
+                                        <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}"
+                                            class="img-fluid h-100">
+                                    </a>
+                                    <div class="position-absolute top-50 start-50 translate-middle border rounded bg-success text-white bg-opacity-50 p-2">
+                                        +{{ count($images) - 3 }} photos
                                     </div>
-                                @endif
-                                @if ($key === 4 && count($apartment->images) > 4)
-                                    <div class="col-12 col-md-6 mb-3">
-                                        <div class="position-relative">
-                                            <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}" class="img-fluid h-100">
-                                            <div class="position-absolute top-50 start-50 translate-middle border rounded bg-success  text-white bg-opacity-50 p-2 ">
-                                                +{{ count($apartment->images) - 3 }} photos
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                     </div>
                 </div>
             </div>
@@ -169,6 +183,10 @@
         </section>
     </div>
     <script>
+        lightGallery(document.getElementById('animated-thumbnails-gallery'), {
+            thumbnail: true,
+        });
+
         document.getElementById('candidaterButton').addEventListener('click', function() {
             document.getElementById('loginModal').style.display = 'block';
         });

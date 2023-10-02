@@ -1604,9 +1604,10 @@ body.popup-open {
   
   #closeButton {
     padding: 5px 15px;
-    background-color: #007bff;
+    background-color: #ff3300ee;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
+

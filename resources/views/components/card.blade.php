@@ -12,6 +12,7 @@
                 ])
             </div>
         @else
+        
            @if($apartment->coverImage)
            <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Room" class="card-img-top object-fit-cover" width="150px" height="150px">
            @endif

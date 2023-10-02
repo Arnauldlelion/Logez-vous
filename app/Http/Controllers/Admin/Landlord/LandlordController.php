@@ -72,8 +72,8 @@ class LandlordController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'phone' => 'required',
-            'email' => ['required', 'string', 'email', 'unique:users'],
+            'phone' => ['required', 'unique:landlords'],
+            'email' => ['required', 'string', 'email', 'unique:landlords'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 

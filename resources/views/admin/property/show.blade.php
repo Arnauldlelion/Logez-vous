@@ -32,6 +32,9 @@
                     <p class="text-muted mb-2 font-13">
                         <strong>Nom :</strong> <span class="ml-2">{{ $property->name }}</span>
                     </p>
+                    <p class="text-muted mb-2 font-13">
+                        <strong>Emplacement :</strong> <span class="ml-2">{{ $property->location }}</span>
+                    </p>
 
                 </div>
             </div>
@@ -43,26 +46,25 @@
                     
                     <div class="form-group">
                         <label>Images</label>
-                        <input type="file" class="form-control" id="apt-image" accept="image/*" 
-                        name="images[]" multiple>
-                    @error('images')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+                        <input type="file" class="form-control" id="apt-image" accept="image/*" name="images[]" multiple>
+                        @error('images')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
                     </div>
+                    
                     <div class="text-right">
                         <button type="submit" class="btn btn-secondary">Sauvegarder</button>
                     </div>
-                
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-12">
         <div class="card card-body">
             @if ($images->isNotEmpty())
     <div class="row">
         @foreach ($images as $image)
-        <div class="col-md-2">
+        <div class="col-6 col-md-2">
             <div class="card">
                 <img class="card-img-top" src="{{ Storage::url($image->url) }}" alt="piece Image">
                 <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">

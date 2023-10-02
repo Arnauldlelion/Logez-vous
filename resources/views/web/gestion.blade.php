@@ -1,108 +1,168 @@
-<!-- form du proprietaire -->
-
 
 @extends('web.layouts.app')
 
 @section('content')
 
-    <div class="auth-fluid">
-        <!--Auth fluid left content -->
-        <div class=" auth-fluid-form-box">
-            <div class="align-items-center d-flex h-100">
-                <div class="container col-lg-10">
-                    <div class="card-body">
-                        <!-- title-->
-                        <div class="d-flex align-items-center mb-5 mt-5">
-                            <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                            <h1 class="text-danger">Ajouter vos informations</h1>
-                        </div>
+<div class="auth-fluid" >
+    <!--Auth fluid left content -->
+    <div class=" auth-fluid-form-box" >
+        <div class="align-items-center d-flex h-100" >
+            <div class="container col-lg-10">
+            <div class="card-body">
+                 <!-- title-->
+                 <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 15%">
+                    <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
+                    <h1 class="text-danger" >Votre devis</h1>
+                </div>
 
-                        <!-- form -->
-                        <form action="{{ route('admin.property.store') }}" method="POST">
-                            @csrf
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="name" class="col-sm-2 col-form-label-sm">Votre Nom</label>
-                                <div class="col-12 col-lg-7">
-                                    <input
-                                        class="form-control rounded-pill form-control-sm @error('name') is-invalid @enderror"
-                                        type="text" id="name" value="{{ old('name') }}" name="name">
-                                    @error('name')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="apartmentType" class="col-sm-2 col-form-label-sm">Type d'Appartment</label>
-                                <div class="col-12 col-lg-7">
-                                    {{-- <input class="form-control rounded-pill form-control-sm @error('appartmentType') is-invalid @enderror" type="text"
-                               id="appartmentType"
-                               value="{{ old('appartmentType') }}"
-                               name="appartmentType"
-                               placeholder="chambre,studio,apartment 2chambre"> --}}
-
-                                    @forelse (\App\Models\ApartmentType::all() as $apt_type)
-                                        <div class="d-flex gap-3">
-                                            <input type="checkbox" class="form-check-input" name="apartmentType[]" value={{ $apt_type->id }}
-                                                id="">
-                                            <label for="form-check-input">{{ $apt_type->name }}</label>
-                                        </div>
-                                    @empty
-                                        <div>Aucun type d'appartement n'a ete ajoute. Contacter l'administrateur svp.</div>
-                                    @endforelse
-                                    @error('apartmentType')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="location" class="col-sm-2 col-form-label-sm">Emplacement</label>
-                                <div class="col-12 col-lg-7">
-                                    <input
-                                        class="form-control rounded-pill form-control-sm @error('location') is-invalid @enderror"
-                                        type="text" id="location" value="{{ old('location') }}" name="location"
-                                        placeholder="Douala,Bonanjo">
-                                    @error('location')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <label for="landlord" class="col-sm-2 col-form-label-sm">Landlord</label>
-                                <div class="col-12 col-lg-7">
-                                    <select class="form-control rounded-pill form-control-sm @error('landlord') is-invalid @enderror"
-                                        id="landlord" name="landlord">
-                                        <option value="">
-                                            propriétaire</option>
-                                        @foreach ($landlords as $landlord)
-                                            <option value="{{ $landlord->id }}">{{ $landlord->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('landlord')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="w-100 mb-5">
-                                <div class="text-black float-start">
-                                    <a href="{{ route('admin.property.index') }}" class="text-secondary">
-                                        <i class="mdi mdi-chevron-left text-secondary"></i>
-                                       Retour
-                                    </a>
-                                </div>
-                                <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>
-                            </div>
-                        </form>
-                        <!-- end form-->
+                 <!-- form -->
+                 <form action="{{ route('register') }}" method="POST">
+                    @csrf   
+                    <div class="form-group mb-3">
+                        <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text"
+                               value="{{old('first_name')}}" name="first_name" placeholder="Prénom">
+                        @error('first_name')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div> 
+                    <div class="form-group mb-3">
+                        <input class="form-control rounded-pill @error('last_name') is-invalid @enderror" type="text"
+                               value="{{old('last_name')}}" name="last_name" placeholder="Nom">
+                        @error('last_name')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3 ">
+                        <input class="form-control rounded-pill @error('email') is-invalid @enderror" type="email"
+                               value="{{old('email')}}" name="email"
+                               placeholder="Adresse email">
+                        @error('email')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="intl-tel-input form-group mb-3 rounded-pill">
+                        <div class="selected-flag rounded-start-pill"></div>
+                        <input type="tel" class="form-control rounded-pill w-100" name="phone" id="phoneNumber" placeholder="Enter phone number">
                     </div>
 
-                </div> <!-- end .card-body -->
-            </div> <!-- end .align-items-center.d-flex.h-100-->
+                    <div class="form-group mb-3 ">
+                        <input class="form-control rounded-pill @error('location') is-invalid @enderror" type="text"
+                               id="location" name="location" placeholder="emplacement de votre propriété e.g Douala,Bonajo" style="width: 100% !important">
+                        @error('location')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-        </div>
-        <!-- end auth-fluid-form-box-->
-    </div>
-    <!-- end auth-fluid-->
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                         <div class="d-flex gap-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault2" value="Non meublé">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Non meublé
+                                </label>
+                              </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault1" value="Meublé">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Meublé
+                                </label>
+                              </div>
+                         </div>
+                         @error('furnished')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                         <div class="col-12 col-lg-7">
+                            <label for="monthly_price" class="col-sm-2 col-form-label-sm">Loyer experer</label>
+                            <input class="form-control rounded-pill form-control-sm @error('monthly_price') is-invalid @enderror" type="text"
+                               id="monthly_price"
+                               value="{{ old('monthly_price') }}"
+                               name="monthly_price"
+                               placeholder="100,000">
+                        @error('monthly_price')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                        </div>
+                      </div>
 
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                        <div class="col-12 col-lg-7">
+                        <label for="description">Dèscription de votre bien <em>*</em></label>
+                        <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}"
+                                  rows="5"
+                                  name="description"
+                                  placeholder=""
+                                  >{{ old('description') }}</textarea>
+    
+                        @error('description')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                        </div>
+                      </div>
+
+                      <div class="w-100 mb-5" style="padding-bottom: 15%">
+                        <div class="text-black float-start">
+                            <a href="{{ route('index') }}" class="text-secondary">
+                                Retour
+                            </a>
+                        </div>
+                        <button type="submit" class="btn btn-danger rounded-pill float-end" >s'enregistrer</button>
+                        <div id="popupContainer" class="hidden">
+                            <div id="popupContent">
+                                <h2>Merci</h2>
+                                <p>Vos informations ont été reçues avec succès. Un agent vous recontactera.</p>
+                                <button id="closeButton">OK</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- end form-->
+               </div>
+
+            </div> <!-- end .card-body -->
+        </div> <!-- end .align-items-center.d-flex.h-100-->
+        
     </div>
+    <!-- end auth-fluid-form-box-->
+</div>
+<!-- end auth-fluid-->
+
+</div >
+
+<script>
+ // Function to show the pop-up
+function showPopup() {
+  document.getElementById('popupContainer').style.display = 'flex';
+}
+
+// Event listener for the form submission
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  showPopup();
+});
+
+// Function to close the pop-up
+function closePopup() {
+  var confirmation = confirm("Are you sure you want to close the pop-up?");
+  if (confirmation) {
+    document.getElementById('popupContainer').style.display = 'none';
+  }
+}
+
+// Event listener for the close button
+document.getElementById('closeButton').addEventListener('click', closePopup);
+
+    // Phone number validation function
+    function validatePhoneNumber() {
+      const phoneNumber = iti.getNumber();
+
+      if (iti.isValidNumber()) {
+        const selectedCountryData = iti.getSelectedCountryData();
+        const countryFlagElement = document.querySelector(".selected-flag");
+        countryFlagElement.innerHTML = `<img src="${selectedCountryData.flag}" alt="${selectedCountryData.name}">`;
+
+      } else {
+        alert('Le numéro de téléphone n’est pas valide.');
+      }
+    }
+</script>

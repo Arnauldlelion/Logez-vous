@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller
 {
     //
+    public function showRegistrationForm()
+    {
+       return view('web.gestion');
+      }
     public function store(Request $request)
     {
 

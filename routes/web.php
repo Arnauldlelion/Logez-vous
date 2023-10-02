@@ -72,17 +72,24 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::get('/apartment/{id}/images', 'Apartment\ApartmentController@showApartmentImagesform')->name('showApartmentImagesform');
         Route::post('/apartment/{id}/images', 'Apartment\ApartmentController@storeApartmentImages')->name('apartment-images');
         Route::delete('/apartment/destroyImage/{id}', 'Apartment\ApartmentController@deleteApartmentImage')->name('delete-apartment-image');
+        Route::put('/apartment/change-cover', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
 
         Route::post('/apartments/storeImages', 'Apartment\ApartmentController@storeImages')->name('apartments.storeImages');
-        Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
-        Route::get('/apartments/showRapports/{id}', 'Apartment\ApartmentController@showRapports')->name('apartments.showRapports');
+        // Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
         Route::get('/apartments/showPayments/{id}', 'Apartment\ApartmentController@showPayments')->name('apartments.showPayments');
         Route::resource('pieces', 'Pieces\PiecesController');
         Route::get('/piece/{id}/images', 'Pieces\PiecesController@showPieceImagesform')->name('showPieceImagesform');
         Route::post('/piece/{id}/images', 'Pieces\PiecesController@storePieceImages')->name('piece-images');
         Route::delete('/piece/destroyImage/{id}', 'Pieces\PiecesController@deletePieceImage')->name('piece.destroyImage');
-        // Route::delete('/pieces/destroyImage/{id}', 'Pieces\PiecesController@destroyImage')->name('pieces.destroyImage');
+        Route::get('/rapport/{id}/index', 'Rapport\RapportController@index')->name('rapportIndex');
+        Route::post('/upload/pdf/{id}', 'Rapport\RapportController@store')->name('upload.pdf');
         Route::resource('rapports', 'Rapport\RapportController');
+        // General Rapport
+        Route::get('/rapport-general/{id}/index', 'GeneralRapport\GeneralRapportController@index')->name('generalrapportIndex');
+        Route::post('/upload/general-rapport/{id}', 'GeneralRapport\GeneralRapportController@store')->name('general-rapport.upload');
+        // Route::resource('rapport-general', 'GeneralRapport\GeneralRapportController');
+        Route::resource('rapport-general', 'GeneralRapport\GeneralRapportController');
+     
         Route::resource('payments', 'Payments\PaymentsController');
 
         // APPROUVE LANDLORD ACCOUNT
@@ -125,6 +132,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('/gestion', 'Auth\RegisterController@showRegistrationForm')->name('gestion');
+    Route::post('/gestion', 'Auth\RegisterController@store')->name('register');
        
     Route::group(['middleware' => ['auth']], function () {
     });

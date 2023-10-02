@@ -87,13 +87,13 @@ class ApartmentController extends Controller
         return view('admin.pieces.index', compact('pieces', 'apartment', 'aptImages'));
     }
 
-    public function showRapports($id)
-    {
-        $apartment = Apartment::findOrfail($id);
-        session()->put('new_apt_id', $id);
-        $rapports = $apartment->rapportDeGestions;
-        return view('admin.rapports.index', compact('rapports', 'apartment'));
-    }
+    // public function showRapports($id)
+    // {
+    //     $apartment = Apartment::findOrfail($id);
+    //     session()->put('new_apt_id', $id);
+    //     $rapports = $apartment->rapportDeGestions;
+    //     return view('admin.rapports.index', compact('rapports', 'apartment'));
+    // }
 
     public function showPayments($id)
     {
@@ -175,6 +175,21 @@ class ApartmentController extends Controller
             $image->imageable_type = Apartment::class;
             $uploadedImages[] = $image;
         }
+
+
+         // Handle the cover image
+        if ($request->hasFile('cover_image')) {
+            $coverImage = $request->file('cover_image');
+            $coverImagePath = $coverImage->store('cover_images', 'public');
+            $coverImageName = time() . '_' . $coverImage->getClientOriginalName();
+
+            $coverImage = new Image();
+            $coverImage->url = $coverImagePath;
+            $coverImage->imageable_id = $apartment->id;
+            $coverImage->imageable_type = Apartment::class;
+            $coverImage->isCover = true;
+            $coverImage->save();
+        }
     
         // Save the images using the morph relationship
         $apartment->images()->saveMany($uploadedImages);
@@ -183,113 +198,43 @@ class ApartmentController extends Controller
         return redirect()->back()->with('success', 'Les images de appartement sont stockées avec succès.');
     }
     
-    // public function deleteApartmentImage(Request $request, $id)
-    // {
-    //     // Retrieve the apartment
-    //     $apartment = Apartment::findOrFail($id);
-    
-    //     // Get the image ID to delete from the request
-    //     $imageId = $request->input('image_id');
-    
-    //     // Retrieve the image associated with the apartment
-    //     $image = $apartment->images()->findOrFail($imageId);
-    
-    //     // Delete the image file from storage
-    //     Storage::disk('public')->delete($image->url);
-    
-    //     // Delete the image record from the database
-    //     $image->delete();
-    
-    //     // Return a response or redirect as needed
-    //     return redirect()->back()->with('success', 'L’image de propriété a été supprimée avec succès.');
-    // }
-    public function deleteApartmentImage(Request $request, $id)
-{
-    // Retrieve the image
-    $image = Image::findOrFail($id);
-    
-    // Delete the image file from storage
-    Storage::disk('public')->delete($image->url);
-
-    // Delete the image record from the database
-    $image->delete();
-
-    // Return a response or redirect as needed
-    return redirect()->back()->with('success', 'L’image de l’appartement a été supprimée avec succès.');
-}
-
-    public function storeImages(Request $request)
-    {
-        $request->validate([
-            'images.*' => 'nullable|image',
-            'cover_image.*' => 'nullable|image',
-        ]);
-    
-        if ($request->hasFile('cover_image')) {
-            $coverImageFile = $request->file('cover_image');
-    
-            // Check if a cover image was uploaded
-            if ($coverImageFile->isValid()) {
-                $coverImage = new Image();
-                $coverImage->apartment_id = session('new_apt_id');
-                $coverImage->isCover = true;
-                $coverImage->url = $coverImageFile->store('apartimages', 'public');
-                $coverImage->save();
-            }
-        }
-    
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
-    
-            // Check if any images were uploaded
-            foreach ($images as $image) {
-                if ($image->isValid()) {
-                    $apt = new Image();
-                    $apt->apartment_id = session('new_apt_id');
-                    $apt->url = $image->store('apartimages', 'public');
-                    $apt->save();
-                }
-            }
-        }
-    
-        return back()->with('success', 'Images téléchargées avec succès!');
-    }
-
     public function changeCoverImage(Request $request)
     {
         $request->validate([
             'image_id' => 'required|exists:images,id',
         ]);
-    
+
+        // dd('123');
+
         $imageId = $request->input('image_id');
-    
+        $apartmentId = session('new_apt_id');
+
         // Find the existing cover image
-        $existingCoverImage = Image::where('apartment_id', session('new_apt_id'))
-            ->where('iscover', true)
+        $existingCoverImage = Image::where('imageable_id', $apartmentId)
+            ->where('imageable_type', Apartment::class)
+            ->where('isCover', true)
             ->first();
-    
-        // Update the existing cover image to remove the "is_cover" flag
+
+        // Update the existing cover image to remove the "isCover" flag
         if ($existingCoverImage) {
-            $existingCoverImage->iscover = false;
+            $existingCoverImage->isCover = false;
             $existingCoverImage->save();
         }
-    
+
         // Find the new cover image
         $newCoverImage = Image::where('id', $imageId)
-            ->where('apartment_id', session('new_apt_id'))
+            ->where('imageable_id', $apartmentId)
+            ->where('imageable_type', Apartment::class)
             ->first();
-    
-        // Update the new cover image to set the "is_cover" flag
+
+        // Update the new cover image to set the "isCover" flag
         if ($newCoverImage) {
-            $newCoverImage->iscover = true;
+            $newCoverImage->isCover = true;
             $newCoverImage->save();
         }
-    
-        
-        return back()->with('success', 'Images téléchargées avec succès!');
-    }
- 
 
+        return back()->with('success', 'Image de couverture a été mise à jour avec succès!');
+    }
     /**
      * Remove the specified resource from storage.
      *

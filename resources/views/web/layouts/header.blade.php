@@ -15,7 +15,6 @@
                     <div class="search-box">
                         <form class="d-flex" role="search">
                             <div>
-                               
                                 <input class="form-control me-2 " type="search" placeholder="Reference"
                                     aria-label="Search" action="/properties">
                                <button type="submit"><a class="nav-link" href="{{ '/properties' }}"><i class="bi bi-search"></i></a></button>
@@ -23,38 +22,42 @@
                         </form>
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <button class="btn btn-main rounded-pill"  >Vous etes proprietaire ?</button>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('help') }}">Aide</a>
                     </li>
-                    @auth
+                    @if (!request()->is('gestion'))
                         <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ route('landlord.dashboard') }}">Mon compte</a> --}}
+                            <a class="nav-link" href="{{ route('gestion') }}">
+                                <button class="btn btn-main rounded-pill">Vous etes proprietaire ?</button>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ route('logout') }}">Deconnexion</a> --}}
-                        </li>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn ">Logout</button>
-                        </form>
-                    @endauth
+                    @endif
                     @guest
-                        <li class="nav-item">
-                            <button data-bs-toggle="modal" class="nav-link"
-                                data-bs-target="#register-modal">Inscription</button>
-                        </li>
                         <li class="nav-item">
                             <button data-bs-toggle="modal" class="nav-link" data-bs-target="#login-modal">Connexion</button>
                         </li>
                     @endguest
+                    @if(Request::is('gestion'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('gestion') }}">
+                                <button class="btn btn-main rounded-pill">Mettre en gestion</button>
+                            </a>
+                        </li>
+                    @endif
+                   
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('landlord.dashboard') }}">Mon compte</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn">Déconnexion</button>
+                            </form>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
     </nav>
 </header>
-
 <!-- main header end -->

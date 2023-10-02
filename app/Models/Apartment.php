@@ -40,6 +40,11 @@ class Apartment extends Model
     return $this->belongsTo(Locataire::class);
     }
 
+    public function AnnualRapportDeGestions()
+    {
+    return $this->hasMany(AnnualRapport::class);
+    }
+
     public function rapportDeGestions()
     {
     return $this->hasMany(RapportDeGestion::class);
@@ -62,6 +67,6 @@ class Apartment extends Model
 
     public function coverImage()
     {
-    return $this->hasOne(Image::class, "apartment_id")->where('isCover', true);
+        return $this->hasOne(Image::class, 'imageable_id')->where('isCover', true);
     }
 }
