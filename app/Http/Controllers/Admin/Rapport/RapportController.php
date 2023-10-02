@@ -55,7 +55,7 @@ class RapportController extends Controller
         // Retrieve the apartment
         $apartment = Apartment::findOrFail($id);
     
-        // Check if a report has been uploaded for the apartment within the last week
+       /* // Check if a report has been uploaded for the apartment within the last week
         $lastWeek = now()->subWeek();
         $existingReport = RapportDeGestion::where('apartment_id', $id)
             ->where('created_at', '>', $lastWeek)
@@ -64,7 +64,7 @@ class RapportController extends Controller
         if ($existingReport) {
             return redirect()->route('admin.rapportIndex', ['id' => $id])
                 ->with('error', 'Un seul téléchargement de document autorisé par semaine.');
-        }
+        } */
     
         // Validate the uploaded PDF document
         $request->validate([

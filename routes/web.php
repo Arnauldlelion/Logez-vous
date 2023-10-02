@@ -131,6 +131,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('/gestion', 'Auth\RegisterController@showRegistrationForm')->name('gestion');
+    Route::post('/gestion', 'Auth\RegisterController@store')->name('register');
        
     Route::group(['middleware' => ['auth']], function () {
     });

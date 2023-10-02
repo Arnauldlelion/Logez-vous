@@ -48,7 +48,7 @@
                             </a>
                         </li> --}}
 
-                        <li class="menu-title  mt-2">Rapport de Gestion</li>
+                        <!-- <li class="menu-title  mt-2">Rapport de Gestion</li>
                         <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.approuved-landlords.index') }}">
                                 <i data-feather="file-text"></i>
@@ -60,7 +60,7 @@
                                 <i data-feather="file"></i>
                                 <span>Rapport Hebdomadaire</span>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="menu-title  mt-2">Propriétaire</li>
                         <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
