@@ -15,7 +15,7 @@ class DeleteModal extends Component
      *
      * @return void
      */
-    public function __construct($id, $url, $content = "Are you sure you want to delete this item?")
+    public function __construct($id, $url, $content = "Voulez-vous vraiment supprimer cet élément ?")
     {
         $this->id = $id;
         $this->url = $url;

@@ -108,12 +108,6 @@ public function edit(Property $property)
 }
 
    
-    // public function showPropertyImagesform($propertyId)
-    // {
-    //     $property = Property::where('admin_id', auth('admin')->id())->findOrFail($propertyId);
-
-    //     return view('admin.property.show', compact('property'));
-    // }
 
     public function showPropertyImagesform($propertyId)
 {
