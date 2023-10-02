@@ -43,6 +43,14 @@
             <div class="card-box">
                 <form action="{{ route('admin.property-images', $property->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+            
+                    <div class="form-group">
+                        <label>Image de couverture</label>
+                        <input type="file" class="" id="cover_image" accept="image/*" name="cover_image">
+                        @error('cover_image')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
                     
                     <div class="form-group">
                         <label>Images</label>
