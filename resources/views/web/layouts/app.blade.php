@@ -169,27 +169,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    
  
-   <script>
-
-document.addEventListener('DOMContentLoaded', function () {
-        // Initialize main gallery item with LightGallery
-        lightGallery(document.getElementById('main-gallery-item'), {
-            thumbnail: true,
-        });
-
-        // Initialize other gallery items with LightGallery
-        @foreach ($images as $key => $image)
-            lightGallery(document.getElementById('gallery-item-{{ $key }}'), {
-                thumbnail: true,
-            });
-        @endforeach
-    });
-
-
-        document.getElementById('candidaterButton').addEventListener('click', function() {
-            document.getElementById('loginModal').style.display = 'block';
-        });
-   </script>
 </body>
 
 </html>
