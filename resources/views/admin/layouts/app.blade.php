@@ -121,10 +121,7 @@
 <script src="{{ asset('admin_assets/js/user.js') }}"></script>
 
 <script>
-      let gallery = document.getElementById('gallery');
-        lightGallery(gallery, {
-            controls:false
-        })
+    
     /*new Readmore('.read-more', {
         lessLink: '<a href="#">read less</a>',
         moreLink: '<a href="#">read more...</a>',

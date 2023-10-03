@@ -313,6 +313,65 @@
     overflow: hidden;
 }
 
+/* test code  */
+.image-grid{
+    --gap: 16px;
+    --num-cols:4;
+    --row-height:230px;
+
+    box-sizing: border-box;
+    padding: var(--gap);
+
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+    gap: var(--gap);
+}
+
+.image-grid span {
+   top: -3rem;
+   bottom: 0;
+}
+.image-grid > a,img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.image-grid-col-2{
+    grid-column: span 2;
+}
+
+.image-grid-row-2{
+    grid-row: span 2;
+}
+@media screen and (max-width:1024px) {
+    .image-grid > img {
+        --num-cols: 2;
+        --row-height: 200px;
+    }
+}
+/* 
+#photoArray{
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-areas: 
+      'photoOne photoTwo photoThree'
+      'photoOne photoTwo photoThree';
+      grid-template-columns: 1fr 20% 20%;
+}
+
+#photoArray >div{
+    border: 2px solid red;
+}
+#photoArray >div:first-child{
+    grid-area: photoOne;
+    height: 150px;
+} */
+
+/* test code  */
+
 /* Sinlge house preview */
 .house-images {
     cursor: pointer;
