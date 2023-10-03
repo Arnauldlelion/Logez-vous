@@ -39,6 +39,12 @@
                     <p class="text-muted mb-2 font-13">
                         <strong>Nom :</strong> <span class="ml-2">{{ $piece->pieceType->name }}</span>
                     </p>
+                    <p class="text-muted mb-2 font-13">
+                        <strong>Description</strong> 
+                    </p>
+                    <p class="text-muted mb-2 font-13">
+                        <span class="ml-2">{{ $piece->description }}</span>
+                    </p>
 
                 </div>
             </div>

@@ -168,23 +168,7 @@ class PiecesController extends Controller
     //  * @return \Illuminate\Http\Response
     //  */
 
-    //  public function destroyImage($id)
-    // {
-    //     $image = Image::findOrFail($id);
-        
-    //     Storage::delete($image->photo);
-    //     $image->delete();
-    //          // Find the existing cover image
-    //          $existingCoverImage = Image::where('apartment_id', session('new_apt_id'))
-    //          ->where('id', '1')
-    //          ->first();
-     
-    //      // Update the existing cover image to remove the "is_cover" flag
-    //          $existingCoverImage->iscover = true;
-    //          $existingCoverImage->save();
-
-    //     return redirect()->route('admin.apartments.show', session('new_apt_id'));
-    // }
+ 
  
     public function destroy($id)
     {

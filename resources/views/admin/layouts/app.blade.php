@@ -12,6 +12,7 @@
     <!-- Plugins css -->
     <link href="{{ asset('admin_assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet"/>
 
+
     <!-- App css -->
     <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('admin_assets/libs/owl-carousel/dist/assets/owl.carousel.min.css') }}">
@@ -111,12 +112,19 @@
 
 <script src="{{ asset('admin_assets/libs/clipboard/dist/clipboard.min.js') }}"></script>
 
+
+
+
 <!-- App js-->
 <script src="{{ asset('admin_assets/js/app.min.js') }}"></script>
 
 <script src="{{ asset('admin_assets/js/user.js') }}"></script>
 
 <script>
+      let gallery = document.getElementById('gallery');
+        lightGallery(gallery, {
+            controls:false
+        })
     /*new Readmore('.read-more', {
         lessLink: '<a href="#">read less</a>',
         moreLink: '<a href="#">read more...</a>',

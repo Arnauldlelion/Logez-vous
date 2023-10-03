@@ -10,7 +10,7 @@
 					<ol class="breadcrumb m-0">
 						<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.property.index')}}">{{ $apartment->property->name}}</a></li>
-						<li class="breadcrumb-item "><a href="">Appartement {{ $apartment->id}}</a></li>
+						<li class="breadcrumb-item "><a href="{{ route('admin.property.show', session('new_prop_id')) }}">Appartement {{ $apartment->id}}</a></li>
 						<li class="breadcrumb-item active"> Images</li>
 					</ol>
 				</div>
@@ -41,6 +41,14 @@
                     @csrf
                     
                     <div class="form-group">
+                        <label>Image de couverture</label>
+                        <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
+                        @error('cover_image')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label>Images</label>
                         <input type="file" class="form-control" id="apt-image" accept="image/*" 
                         name="images[]" multiple>
@@ -64,9 +72,20 @@
         <div class="col-md-2">
             <div class="card">
                 <img class="card-img-top" src="{{ Storage::url($image->url) }}" alt="Apartment Image" class="object-fit-cover" height="100px">
-                <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">
-                    <i class="mdi mdi-delete"></i>
-                </button>
+                <div class="d-flex justify-content-between">
+                    <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">
+                        <i class="mdi mdi-delete"></i>
+                    </button>
+                    <form action="{{ route('admin.changeCoverImage') }}" method="POST" enctype="multipart/form-data" id="changeCoverForm">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="image_id" value="{{ $image->id }}">
+                        <!-- Add any additional input fields or styling as needed -->
+                        <button type="submit" class="btn btn-success btn-sm mx-auto change-cover-link">
+                            <i class="mdi mdi-upload"></i>
+                        </button>
+                    </form>
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $image->original_name }}</h5>
                 </div>

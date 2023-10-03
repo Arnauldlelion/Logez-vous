@@ -65,5 +65,8 @@ class Apartment extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
-   
+    public function coverImage()
+    {
+        return $this->hasOne(Image::class, 'imageable_id')->where('isCover', true);
+    }
 }

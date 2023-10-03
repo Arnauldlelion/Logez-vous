@@ -72,9 +72,10 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::get('/apartment/{id}/images', 'Apartment\ApartmentController@showApartmentImagesform')->name('showApartmentImagesform');
         Route::post('/apartment/{id}/images', 'Apartment\ApartmentController@storeApartmentImages')->name('apartment-images');
         Route::delete('/apartment/destroyImage/{id}', 'Apartment\ApartmentController@deleteApartmentImage')->name('delete-apartment-image');
+        Route::put('/apartment/change-cover', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
 
         Route::post('/apartments/storeImages', 'Apartment\ApartmentController@storeImages')->name('apartments.storeImages');
-        Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
+        // Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
         Route::get('/apartments/showPayments/{id}', 'Apartment\ApartmentController@showPayments')->name('apartments.showPayments');
         Route::resource('pieces', 'Pieces\PiecesController');
         Route::get('/piece/{id}/images', 'Pieces\PiecesController@showPieceImagesform')->name('showPieceImagesform');

@@ -52,12 +52,8 @@
                                             </a>
                                         </td>
                                         <td>
-                                            @php
-                                                setlocale(LC_TIME, 'fr_FR.UTF-8');
-                                            @endphp
-
                                             (Téléchargé le
-                                            {{ Carbon\Carbon::parse($rapport->created_at)->isoFormat('D MMMM YYYY dddd H:mm:ss') }})
+{{ Carbon\Carbon::parse($rapport->created_at)->locale('es')->formatLocalized('%d %B %Y %A H:i:s') }})
                                         </td>
                                         <td>
                                             <div class="btn-group">
@@ -103,6 +99,7 @@
             </div>
         </div>
     </div>
+    
 @endsection
 <script>
     function openPdfModal(url) {

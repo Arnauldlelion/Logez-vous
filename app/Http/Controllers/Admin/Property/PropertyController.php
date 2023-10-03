@@ -108,12 +108,6 @@ public function edit(Property $property)
 }
 
    
-    // public function showPropertyImagesform($propertyId)
-    // {
-    //     $property = Property::where('admin_id', auth('admin')->id())->findOrFail($propertyId);
-
-    //     return view('admin.property.show', compact('property'));
-    // }
 
     public function showPropertyImagesform($propertyId)
 {
@@ -146,20 +140,6 @@ public function storePropertyImages(Request $request, $propertyId)
         $image->imageable_id = $property->id;
         $image->imageable_type = Property::class;
         $uploadedImages[] = $image;
-    }
-
-    // Handle the cover image
-    if ($request->hasFile('cover_image')) {
-        $coverImage = $request->file('cover_image');
-        $coverImagePath = $coverImage->store('cover_images', 'public');
-        $coverImageName = time() . '_' . $coverImage->getClientOriginalName();
-
-        $coverImageModel = new Image();
-        $coverImageModel->url = $coverImagePath;
-        $coverImageModel->imageable_id = $property->id;
-        $coverImageModel->imageable_type = Property::class;
-        $coverImageModel->isCover = true;
-        $coverImageModel->save();
     }
 
     // Save the images using the morph relationship

@@ -12,8 +12,9 @@
                 ])
             </div>
         @else
-           @if($apartment->property->coverImage)
-           <img src="{{ asset('storage/' . $apartment->property->coverImage->url) }}" alt="Room" class="card-img-top object-fit-cover" width="150px" height="150px">
+        
+           @if($apartment->coverImage)
+           <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Room" class="card-img-top object-fit-cover" width="150px" height="150px">
            @endif
         @endif
 <div class="card-body">

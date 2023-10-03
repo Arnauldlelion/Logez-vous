@@ -28,6 +28,8 @@ class Property extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+   
+
     public function apartments()
     {
         return $this->hasMany(Apartment::class, 'property_id');
