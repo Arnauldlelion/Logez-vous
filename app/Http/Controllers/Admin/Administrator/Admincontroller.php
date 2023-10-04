@@ -137,4 +137,6 @@ class Admincontroller extends Controller
 
         return redirect()->back()->with('message', 'Utilisateur rejeté et supprimé avec succès.');
     }
+
+ 
 }

@@ -12,8 +12,8 @@
                 <div class="text-center d-flex align-items-center my-3">
                   
                 </div>
-                <form action="{{ route('register')}}" method="post"> 
-                    @csrf
+                <form action="{{ route('storeLocataire', ['apartment_id' => $apartment->id]) }}" method="POST">
+                  @csrf
                    
                         <div class="form-group mb-3">
                             <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text"
@@ -39,47 +39,11 @@
                             @enderror
                         </div>
                         <div class="col-sm-6"></div>
-                        {{-- <div class="col-sm-6"></div>
-                        <div class="form-group mb-3">
-                            <input class="form-control rounded-pill @error('telephone') is-invalid @enderror" type="number"
-                                   value="{{old('telephone')}}" name="telephone"
-                                   placeholder="Numéro de téléphone">
-                            @error('telephone')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div> --}}
+                    
                         <div class="intl-tel-input form-group mb-3 rounded-pill" style="width: 100%">
                           <div class="selected-flag rounded-start-pill" style="width: 100%"></div>
                           <input type="tel" class="form-control rounded-pill w-100" name="phone" id="phoneNumber" placeholder="Enter phone number">
                         </div>
-                       <!-- <div class="form-group mb-3 ">
-                            <input class="form-control rounded-pill @error('location') is-invalid @enderror" type="text"
-                                   id="location" name="location" placeholder="emplacement de votre propriété e.g Douala,Bonajo" style="width: 100% !important">
-                            @error('location')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div> -->
-                        <!-- <div class="form-group mb-4 ">
-                            <textarea class="form-control @error('description') is-invalid @enderror"
-                                      name="description"
-                                      rows="5"
-                                      placeholder="Décrivez votre propriété">{{old('description')}}</textarea>
-                            @error('description')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div> -->
-                        {{-- <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                            <label class="form-check-label" for="checkbox-signin">Je suis propriétaire d'un bien à louer me</label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                            <label class="form-check-label" for="checkbox-signin">Je m'abonne aux alertes de nouveaux appartements</label>
-                        </div>
-                        <div class="form-check mb-4">
-                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                            <label class="form-check-label" for="checkbox-signin">je m'abonne aux bons plans de nos partenaires</label>
-                        </div> --}}
                   
                         <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
 

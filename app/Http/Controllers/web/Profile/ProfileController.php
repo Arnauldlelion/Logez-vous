@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Profile;
+namespace App\Http\Controllers\web\Profile;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,8 +12,8 @@ class ProfileController extends Controller
     //
     function getProfile()
     {
-        $user = Auth('admin')->user();
-        return view('admin.profile.index', compact('user'));
+        $user = Auth('landlord')->user();
+        return view('landlord.profile.index', compact('user'));
     }
 
     /**
@@ -26,9 +26,8 @@ class ProfileController extends Controller
     {
         $this->validate($request, ['name' => 'required']);
 
-        $user = Auth('admin')->user();
+        $user = Auth('landlord')->user();
         $user->name = $request['name'];
-        $user->about = $request['about'];
         $user->save();
 
         $request->session()->flash('success', __('Profile edited successfully.'));
@@ -49,12 +48,12 @@ class ProfileController extends Controller
 
         $validator = Validator::make($request->all(), [
             'current_password' => 'required',
-            'password'         => 'required|min:6|confirmed',
+            'password'         => 'required|min:8|confirmed',
         ], $messages);
 
         // Ensure that user's password matches password from the form
         $validator->after(function ($validator) use ($request) {
-            $current_password = Auth('admin')->user()->password;
+            $current_password = Auth('landlord')->user()->password;
             if (!Hash::check($request['current_password'], $current_password)) {
                 $validator->errors()->add('current_password',
                     __('Le mot de passe fourni ne correspond pas à votre mot de passe actuel.'));
@@ -67,7 +66,7 @@ class ProfileController extends Controller
                 ->withInput();
         }
 
-        $user = Auth('admin')->user();
+        $user = Auth('landlord')->user();
         $user->password = Hash::make($request['password']);
         $user->update();
 
@@ -76,5 +75,3 @@ class ProfileController extends Controller
 
     }
 }
-
-

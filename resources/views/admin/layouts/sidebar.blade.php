@@ -62,6 +62,19 @@
                             </a>
                         </li> -->
 
+                        <li class="menu-title  mt-2">Locataires</li>
+                        <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.tenant') }}">
+                                <i data-feather="users"></i>
+                                <span>Mes Locataire</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.unApprovedCandidature') }}">
+                                <i data-feather="users"></i>
+                                <span>Locataire</span>
+                            </a>
+                        </li>
                         <li class="menu-title  mt-2">Propriétaire</li>
                         <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.approuved-landlords.index') }}">

@@ -15,6 +15,7 @@ class RegisterController extends Controller
     {
        return view('web.gestion');
       }
+   
     public function store(Request $request)
     {
 

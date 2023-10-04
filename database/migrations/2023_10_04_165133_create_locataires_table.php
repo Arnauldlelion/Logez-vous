@@ -15,11 +15,11 @@ class CreateLocatairesTable extends Migration
     {
         Schema::create('locataires', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->dateTime('date_entree');
-            $table->string('phone_number');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone');
             $table->string('email');
-            $table->string('image')->nullable(); // Add id card image column (nullable)
+            $table->boolean('is_approved')->default(false);
             $table->unsignedBigInteger('apartment_id');
             $table->timestamps();
         });

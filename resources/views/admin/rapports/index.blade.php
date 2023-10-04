@@ -52,8 +52,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            (Téléchargé le
-{{ Carbon\Carbon::parse($rapport->created_at)->locale('es')->formatLocalized('%d %B %Y %A H:i:s') }})
+                                            (Téléchargé le {{ \Carbon\Carbon::parse($rapport->created_at)->locale('fr_FR')->isoFormat('dddd D MMMM YYYY, HH:mm:ss') }})
                                         </td>
                                         <td>
                                             <div class="btn-group">
