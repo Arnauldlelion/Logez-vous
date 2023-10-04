@@ -1,9 +1,9 @@
-@extends('admin.layouts.app')
+@extends('landlord.layouts.app')
 @section('title', 'Profil')
 
 @section('content')
     <!-- start page title -->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
@@ -15,7 +15,7 @@
                 <h4 class="page-title">Profil</h4>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- end page title -->
 
 
@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Détails du compte</h5>
-                    <form method="post" action="{{ route('admin.profile.edit') }}">
+                    <form method="post" action="{{ route('profile.edit') }}">
                         @csrf
 
                         <div class="form-group">
@@ -48,17 +48,6 @@
                                    placeholder="Email" readonly>
                         </div>
 
-
-                        <div class="form-group">
-                            <label>About</label>
-                            <textarea class="form-control @error('about') is-invalid @enderror"
-                                      name="about"
-                                      rows="5"
-                                      placeholder="This will be displayed under articles written by this user.">{{old('about', $user->about)}}</textarea>
-                            @error('about')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div>
 
                         <div class="form-group text-right">
                             <button class="btn btn-primary" type="submit">Mettre à jour</button>

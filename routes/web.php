@@ -96,6 +96,11 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::post('users/{user}/approve', 'Administrator\AdminController@approve')->name('users.approve');
         // REJECT LANDLORD ACCOUNT
         Route::delete('users/{user}/reject', 'Administrator\AdminController@reject')->name('users.reject');
+        // CANDIDATURE
+        Route::get('tenant', 'Locataire\LocataireController@tenants')->name('tenant');
+        Route::get('candidatures/non-approved', 'Locataire\LocataireController@unApprovedCandidature')->name('unApprovedCandidature');
+        Route::post('candidatures/approve/{candidate}', 'Locataire\LocataireController@approveCandidature')->name('candidatures.approve');
+        Route::delete('candidatures/reject/{id}', 'Locataire\LocataireController@rejectCandidature')->name('candidatures.reject');
 
         // PROFILE
         Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
@@ -134,6 +139,7 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/gestion', 'Auth\RegisterController@showRegistrationForm')->name('gestion');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
+    Route::post('/locataires/{apartment_id}', 'Locataire\LocataireController@store')->name('storeLocataire');
        
     Route::group(['middleware' => ['auth']], function () {
     });
@@ -144,7 +150,20 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/apartments/filter', 'ApartmentController@filterApartments')->name('apartments.filter');
     Route::get('/apartments/count', 'ApartmentController@countApartments')->name('apartments.count');
     Route::get('/help', 'PageController@help')->name('help');
-    Route::get('/proprietaires', 'PageController@proprietaire')->name('proprietaires.index');
+    Route::middleware(['auth:landlord'])->group(function () {
+        Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
+        Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
+        Route::get('/mes-logement/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
+        Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
+        Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
+        Route::get('appeartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
+        Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
+        Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
+        Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
+
+        Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+        // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
+});
 });
 
 

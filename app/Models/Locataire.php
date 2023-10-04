@@ -11,11 +11,10 @@ class Locataire extends Model
 
     protected $fillable = [
         'locataire_id',
-        'full name',
-        'dateEntree',
-        'phone number',
+        'first_name',
+        'last_name',
+        'phone',
         'email',
-        'id card',
         'apartment_id',
     ];
     public function apartment()

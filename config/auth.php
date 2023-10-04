@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins'
         ],
+        
+        'landlord' => [
+            'driver' => 'session',
+            'provider' => 'landlords'
+        ],
     ],
 
     /*
@@ -73,6 +78,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'landlords' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Landlord::class,
         ],
 
         // 'users' => [

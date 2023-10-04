@@ -6,9 +6,11 @@
    <section id="gallery-image">
     <div class="container my-5" style="padding-top: 6rem;">
         <div class="image-grid" id="gallery">
+            @if($apartment->coverImage)
             <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="image-grid-col-2 image-grid-row-2">
                 <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="{{ config('app.name') }}">
             </a>
+            @endif
             @php
                 $remainingImages = count($images) - 4;
             @endphp
