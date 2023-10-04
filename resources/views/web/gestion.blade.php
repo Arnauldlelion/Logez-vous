@@ -99,7 +99,7 @@
                         </div>
                       </div>
 
-                      <div class="w-100 mb-5" style="padding-bottom: 15%">
+                      <div class=" mb-5" style="padding-bottom: 15%">
                         <div class="text-black float-start">
                             <a href="{{ route('index') }}" class="text-secondary">
                                 Retour
@@ -137,8 +137,8 @@ function showPopup() {
 
 // Event listener for the form submission
 document.querySelector('form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  showPopup();
+  // event.preventDefault();
+  event.showPopup();
 });
 
 // Function to close the pop-up

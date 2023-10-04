@@ -31,7 +31,7 @@ class GeneralRapportController extends Controller
             return view('admin.general-rapport.create', compact('apartment'));
         }
     
-        return redirect()->route('admin.apartment.index');
+        return redirect()->route('admin.apartments.index');
     }
 
     public function store(Request $request, $id)
@@ -39,17 +39,6 @@ class GeneralRapportController extends Controller
         // Retrieve the apartment
         $apartment = Apartment::findOrFail($id);
         $property_id = $apartment->property->id;
-    
-        // Check if a report has been uploaded within the current year for the apartment
-        $currentYear = Carbon::now()->year;
-    
-        $existingReport = AnnualRapport::where('apartment_id', $id)
-            ->whereYear('created_at', $currentYear)
-            ->count();
-    
-        if ($existingReport > 0) {
-            return redirect()->route('admin.generalrapportIndex', ['id' => $apartment->id])->with('error', 'Un seul téléchargement de document autorisé par an.');
-        }
     
         // Validate the uploaded PDF document
         $request->validate([

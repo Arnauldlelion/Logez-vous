@@ -49,7 +49,7 @@ class Admincontroller extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => ['required', 'string', 'email', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'unique:admins'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -123,13 +123,13 @@ class Admincontroller extends Controller
         return redirect()->to(route('admin.administrator.index'));
     }
 
-        public function approve(User $user)
-    {
-        $user->is_approved = true;
-        $user->delete();
+    public function approve(User $user)
+{
+    $user->is_approved = true;
+    $user->save();
 
-        return redirect()->back()->with('message', 'Approuvé avec succès.');
-    }
+    return redirect()->back()->with('message', 'Approuvé avec succès.')->with('user', $user);
+}
 
     public function reject(User $user)
     {
