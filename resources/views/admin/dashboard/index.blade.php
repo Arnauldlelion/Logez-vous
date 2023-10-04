@@ -65,46 +65,45 @@
                                 <th>S/N</th>
                                 <th>Nom</th>
                                 <th>Numéro de téléphone</th>
-                                <th>Status</th>
+                                <th>Appartement</th>
+                                <th>Propriété</th>
+                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse($candidatures as $candidature)
+                            @forelse($candidatures as $candidature)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $candidature->full_name }}</td>
+                                    <td>{{ $candidature->first_name }} {{ $candidature->last_name }}</td>
                                     <td>{{ $candidature->phone }}</td>
-                                    <td>{{ $candidature->is_approved ? 'Approved' : 'En instance' }}</td>
+                                    <td>{{ $candidature->apartment_id }}</td>
+                                    <td>{{ $candidature->apartment->property->name }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($candidature->created_at)->locale('fr_FR')->isoFormat('dddd D MMMM YYYY, HH:mm:ss') }}</td>
                                     <td>
-                                        <div class="btn-group gap-3">
+                                        <div class="btn-group">
                                             @if (!$candidature->is_approved)
-                                                <form method="POST" action="{{ route('admin.users.approve', $candidature) }}">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary">Approuver</button>
-                                                </form>
+                                            <form method="POST" action="{{ route('admin.candidatures.approve', $candidature->id) }}" class="mr-1">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary btn-sm">Approuver</button>
+                                            </form>
+                                            
+                                            <form action="{{ route('admin.candidatures.reject', $candidature->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Rejecter</button>
+                                            </form>
                                             @endif
-                                            <a href="" class="btn btn-danger ">Rejeter</a>
-                               
-										<a href="#"
-										   data-toggle="modal"
-										   data-target="#deleteModal{{ $piece_type->id }}"
-										   class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
-                                </tr> --}}
-
-                            {{-- <x-delete-modal
-									:id="$piece_type->id"
-									:url="route('admin.piece_types.destroy', $piece_type->id)"
-									:content="'Are you sure you want to delete this Piece type <strong>'.$piece_type->name.'</strong>? This action is irreversible'"/> --}}
+                                </tr>
 
 
-                            {{-- @empty
+                             @empty
                                 <tr>
                                     <td colspan="100%">Aucun enregistrement trouvé</td>
                                 </tr>
-                            @endforelse --}}
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

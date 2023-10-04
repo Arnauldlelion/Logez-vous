@@ -35,6 +35,7 @@
                                 <tr>
                                     <th>S/N</th>
                                     <th>Rapport</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -47,6 +48,7 @@
                                                     <i class="mdi mdi-file-pdf" style="color: red; font-size: 24px;" aria-hidden="true"></i> View PD
                                                 </a>
                                             </td>
+                                            <td>(Téléchargé le {{ \Carbon\Carbon::parse($rapport->created_at)->locale('fr_FR')->isoFormat('dddd D MMMM YYYY, HH:mm:ss') }})</td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="#" data-toggle="modal" data-target="#deleteModal{{ $rapport->id }}" class="btn btn-danger btn-sm">
