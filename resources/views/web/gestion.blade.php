@@ -128,17 +128,11 @@
 
 <script>
 
-
-  // Get the necessary elements
-  const registerButton = document.getElementById('registerButton');
-const popupContainer = document.getElementById('popupContainer');
-const closeButton = document.getElementById('closeButton');
-
-// Function to show the pop-up
-function showPopup(event) {
-  event.preventDefault(); // Prevent form submission
-  popupContainer.style.display = 'flex';
-}
+// Event listener for the form submission
+document.querySelector('form').addEventListener('submit', function(event) {
+  // event.preventDefault();
+  event.showPopup();
+});
 
 // Function to close the pop-up
 function closePopup() {
