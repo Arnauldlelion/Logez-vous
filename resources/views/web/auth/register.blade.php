@@ -3,17 +3,14 @@
         <div class="modal-content">
             <div class="modal-body">
               <div class="d-flex justify-content-end gap-5 text-center">
-                <h6 class="modal-title text-main">Inscription</h6>
+               
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
                 <div class="btn-group d-block d-md-flex justify-content-md-between gap-3 mt-2">
-                    <button class="btn btn-lg btn-outline rounded-pill p-2 "> <img src="{{ asset('storage/images/facebook.jpeg') }}" class="float-start m-1" width="25px"> Facebook</button>
-                    <button class="btn btn-lg btn-outline rounded-pill p-2"> <img src="{{ asset('storage/images/google.jpeg') }}" class="float-start m-1" width="25px"> Google</button>
+                   <b >Candidater</b>
                 </div>
                 <div class="text-center d-flex align-items-center my-3">
-                    <hr class="w-50 mx-auto">
-                    <small class="text-sec mx-2">OU</small>
-                    <hr class="w-50 mx-auto">
+                  
                 </div>
                 <form action="{{ route('register')}}" method="post"> 
                     @csrf
@@ -51,18 +48,18 @@
                             <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div> --}}
-                        <div class="intl-tel-input form-group mb-3 rounded-pill">
-                          <div class="selected-flag rounded-start-pill"></div>
+                        <div class="intl-tel-input form-group mb-3 rounded-pill" style="width: 100%">
+                          <div class="selected-flag rounded-start-pill" style="width: 100%"></div>
                           <input type="tel" class="form-control rounded-pill w-100" name="phone" id="phoneNumber" placeholder="Enter phone number">
                         </div>
-                        <div class="form-group mb-3 ">
+                       <!-- <div class="form-group mb-3 ">
                             <input class="form-control rounded-pill @error('location') is-invalid @enderror" type="text"
                                    id="location" name="location" placeholder="emplacement de votre propriété e.g Douala,Bonajo" style="width: 100% !important">
                             @error('location')
                             <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                        </div>
-                        <div class="form-group mb-4 ">
+                        </div> -->
+                        <!-- <div class="form-group mb-4 ">
                             <textarea class="form-control @error('description') is-invalid @enderror"
                                       name="description"
                                       rows="5"
@@ -70,7 +67,7 @@
                             @error('description')
                             <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                        </div>
+                        </div> -->
                         {{-- <div class="form-check mb-3">
                             <input type="checkbox" class="form-check-input" id="checkbox-signin">
                             <label class="form-check-label" for="checkbox-signin">Je suis propriétaire d'un bien à louer me</label>
@@ -84,7 +81,7 @@
                             <label class="form-check-label" for="checkbox-signin">je m'abonne aux bons plans de nos partenaires</label>
                         </div> --}}
                   
-                        <button id="registerButton">S'enregistrer</button>
+                        <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
 
                         <div id="popupContainer">
                           <div id="popupContent">

@@ -10,13 +10,10 @@
             <div class="container col-lg-10">
             <div class="card-body">
                  <!-- title-->
-                 <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 15%">
-                    <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                    <h1 class="text-danger" >Votre devis</h1>
-                </div>
+                 
 
                  <!-- form -->
-                 <form action="{{ route('register') }}" method="POST">
+                 <form action="{{ route('register') }}" method="POST" style="padding-top: 20%">
                     @csrf   
                     <div class="form-group mb-3">
                         <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text"
@@ -105,13 +102,13 @@
                                 Retour
                             </a>
                         </div>
-                        <button type="submit" class="btn btn-danger rounded-pill float-end" >s'enregistrer</button>
-                        <div id="popupContainer" class="hidden">
-                            <div id="popupContent">
-                                <h2>Merci</h2>
-                                <p>Vos informations ont été reçues avec succès. Un agent vous recontactera.</p>
-                                <button id="closeButton">OK</button>
-                            </div>
+                        <button id="registerButton" type="submit" class="btn btn-danger rounded-pill float-end">s'enregistrer</button>
+                        <div id="popupContainer">
+                          <div id="popupContent">
+                            <h2>Merci</h2>
+                            <p>Vos informations ont été reçues avec succès. Un agent vous recontactera.</p>
+                            <button id="closeButton">OK</button>
+                          </div>
                         </div>
                     </div>
 
@@ -130,27 +127,30 @@
 </div >
 
 <script>
- // Function to show the pop-up
-function showPopup() {
-  document.getElementById('popupContainer').style.display = 'flex';
-}
 
-// Event listener for the form submission
-document.querySelector('form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  showPopup();
-});
+
+  // Get the necessary elements
+  const registerButton = document.getElementById('registerButton');
+const popupContainer = document.getElementById('popupContainer');
+const closeButton = document.getElementById('closeButton');
+
+// Function to show the pop-up
+function showPopup(event) {
+  event.preventDefault(); // Prevent form submission
+  popupContainer.style.display = 'flex';
+}
 
 // Function to close the pop-up
 function closePopup() {
-  var confirmation = confirm("Are you sure you want to close the pop-up?");
-  if (confirmation) {
-    document.getElementById('popupContainer').style.display = 'none';
-  }
+  popupContainer.style.display = 'none';
 }
 
+// Event listener for the register button
+registerButton.addEventListener('click', showPopup);
+
 // Event listener for the close button
-document.getElementById('closeButton').addEventListener('click', closePopup);
+closeButton.addEventListener('click', closePopup);
+
 
     // Phone number validation function
     function validatePhoneNumber() {
