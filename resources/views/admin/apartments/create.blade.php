@@ -11,7 +11,7 @@
             <div class="card-body">
                  <!-- title-->
                  <div class="d-flex align-items-center mb-5 mt-5">
-                    <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
+                    <img src="{{ asset('storage/images/logos/devis.png') }}" class="img-fluid" alt="" >
                     <h1 class="text-danger">Detail de votre appartment</h1>
                 </div>
 

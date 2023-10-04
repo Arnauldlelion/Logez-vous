@@ -124,37 +124,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($landlords as $landlord)
-                                <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $landlord->first_name }}</td>
-                                    <td>{{ $landlord->last_name }}</td>
-                                    <td>{{ $landlord->is_approved ? 'Approved' : 'En instance' }}</td>
-                                    <td>
-                                        <div class="btn-group ">
-                                            <a href="{{ route('admin.approuved-landlords.show', $landlord->id) }}"
-                                                class="btn btn-success btn-sm text-white align-items-center" title="View">
-                                                <i class="fa fa-eye"></i></a>
-                                            @if (!$landlord->is_approved)
-                                                <form method="POST" action="{{ route('admin.users.approve', $landlord) }}">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary btn-sm">Approuver</button>
-                                                </form>
-
-                                                <form action="{{ route('admin.users.reject', $landlord) }}" method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Rejeter</button>
-                                                </form>
-                                            @endif
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="100%">Aucun enregistrement trouvé</td>
-                                </tr>
-                            @endforelse
+                            @forelse ($landlords as $landlord)
+                            <tr>
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{ $landlord->first_name }}</td>
+                                <td>{{ $landlord->last_name }}</td>
+                                <td>{{ $landlord->is_approved ? 'Approved' : 'En instance' }}</td>
+                                <td>
+                                    <div class="btn-group ">
+                                        <a href="{{ route('admin.approuved-landlords.show', $landlord->id) }}"
+                                            class="btn btn-success btn-sm text-white align-items-center" title="View">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        @if (!$landlord->is_approved)
+                                            <form method="POST" action="{{ route('admin.users.approve', $landlord->id) }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary btn-sm">Approuver</button>
+                                            </form>
+                        
+                                            <form action="{{ route('admin.users.reject', $landlord) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Rejeter</button>
+                                            </form>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="100%">Aucun enregistrement trouvé</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>

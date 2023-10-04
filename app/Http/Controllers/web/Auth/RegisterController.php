@@ -22,11 +22,12 @@ class RegisterController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => ['required', 'string', 'email', 'unique:users'],
-            'phone' => 'required',
+            'phone' => ['required', 'unique:users'],
             'location' => 'required',
             'description' => 'required',
         ]);
 
+        
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
