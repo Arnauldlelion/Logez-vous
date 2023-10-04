@@ -108,23 +108,6 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
 });
 
-// Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
-//     Route::group(['middleware' => ['auth:landlord']], function () {
-//     });
-
-
-//     // check
-//     Route::get('/profile', [LandlordController::class, 'profile'])->name('profile');
-//     Route::put('/profile', [LandlordController::class, 'updateProfile'])->name('profile');
-//     Route::get('/create', [LandlordController::class, 'create'])->name('create');
-//     Route::post('/store', [LandlordController::class, 'store'])->name('store');
-//     Route::get('/{id}/edit', [LandlordController::class, 'edit'])->name('edit');
-//     Route::put('/{id}/update', [LandlordController::class, 'update'])->name('update');
-//     Route::delete('/{id}/destroy', [LandlordController::class, 'destroy'])->name('destroy');
-//     Route::put('/change_password', [LandlordController::class, 'postChangePassword'])->name('change_password');
-//     // check
-//     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-// });
 
 
 //Web routes
