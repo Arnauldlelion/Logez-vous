@@ -24,4 +24,5 @@ class Landlord extends Authenticatable
     {
         return $this->hasMany(Property::class);
     }
+
 }

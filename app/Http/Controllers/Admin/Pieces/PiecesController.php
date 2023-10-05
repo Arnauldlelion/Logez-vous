@@ -115,37 +115,49 @@ class PiecesController extends Controller
     
         return view('admin.pieces.show', compact('piece', 'images'));
     }
+
+    
     
     public function storePieceImages(Request $request, $id)
     {
         // Retrieve the piece
         $piece = Piece::findOrFail($id);
-    
+
         // Validate the uploaded images
         $request->validate([
             'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
+        ], [
+            'images.*.required' => 'Veuillez sélectionner au moins une image.',
+            'images.*.image' => 'Le fichier doit être une image.',
+            'images.*.max' => 'L\'image ne doit pas dépasser 2 Mo.',
         ]);
-    
-        // Store the uploaded images
-        $uploadedImages = [];
-        foreach ($request->file('images') as $uploadedImage) {
-            $imagePath = $uploadedImage->store('Piece_images', 'public');
-            $originalImageName = $uploadedImage->getClientOriginalName();
-            $uniqueImageName = time() . '_' . $originalImageName;
-    
-            $image = new Image();
-            $image->url = $imagePath;
-            // $image->original_name = $originalImageName;
-            $image->imageable_id = $piece->id;
-            $image->imageable_type = Piece::class;
-            $uploadedImages[] = $image;
+
+        // Check if any images were uploaded
+        if ($request->hasFile('images')) {
+            // Store the uploaded images
+            $uploadedImages = [];
+            foreach ($request->file('images') as $uploadedImage) {
+                $imagePath = $uploadedImage->store('Piece_images', 'public');
+                $originalImageName = $uploadedImage->getClientOriginalName();
+                $uniqueImageName = time() . '_' . $originalImageName;
+        
+                $image = new Image();
+                $image->url = $imagePath;
+                // $image->original_name = $originalImageName;
+                $image->imageable_id = $piece->id;
+                $image->imageable_type = Piece::class;
+                $uploadedImages[] = $image;
+            }
+        
+            // Save the images using the morph relationship
+            $piece->images()->saveMany($uploadedImages);
+        
+            // Return a response or redirect as needed
+            return redirect()->back()->with('success', 'Les images de cette pièce sont stockées avec succès.');
         }
-    
-        // Save the images using the morph relationship
-        $piece->images()->saveMany($uploadedImages);
-    
-        // Return a response or redirect as needed
-        return redirect()->back()->with('success', 'Les images de cette pièce sont stockées avec succès.');
+        
+        // If no images were uploaded, return a response or redirect with an appropriate message
+        return redirect()->back()->withErrors(['empty_form' => 'Veuillez sélectionner au moins une image.']);
     }
     public function deletePieceImage(Request $request, $id)
     {

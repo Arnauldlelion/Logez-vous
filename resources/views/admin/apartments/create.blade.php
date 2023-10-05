@@ -56,6 +56,19 @@
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                           <div class="col-12 col-lg-7">
+                            <label for="name" class="col-sm-2 col-form-label-sm">Nom de l'Appartement</label>
+                            <input class="form-control rounded-pill form-control-sm @error('name') is-invalid @enderror" type="text"
+                            id="name"
+                            value="{{ old('name') }}"
+                            name="name"
+                            placeholder="T48, chambre 237">
+                            @error('name')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                      </div>
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                          <div class="col-12 col-lg-7">
                             <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
                             <input class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror" type="text"
                             id="floor"

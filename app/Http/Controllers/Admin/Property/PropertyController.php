@@ -117,37 +117,88 @@ public function edit(Property $property)
     return view('admin.property.show', compact('property', 'images'));
 }
 
-public function storePropertyImages(Request $request, $propertyId)
-{
-    // Retrieve the property
-    $property = Property::findOrFail($propertyId);
-    
-    // Validate the uploaded images
-    $request->validate([
-        'images.*' => 'required|image|max:2048',
-        'cover_image' => 'required|image|max:2048',
-    ]);
+    public function storePropertyImage(Request $request, $propertyId)
+    {
+        // Retrieve the property
+        $property = Property::findOrFail($propertyId);
+        
+        // Validate the uploaded images
+        $request->validate([
+            'images.*' => 'required|image|max:2048',
+        ], [
+            'images.*.required' => 'Veuillez sélectionner au moins une image.',
+            'images.*.image' => 'Le fichier doit être une image.',
+            'images.*.max' => 'L\'image ne doit pas dépasser 2 Mo.',
+        ]);
 
-    // Store the uploaded images
-    $uploadedImages = [];
-    foreach ($request->file('images') as $uploadedImage) {
-        $imagePath = $uploadedImage->store('property_images', 'public');
-        $originalImageName = $uploadedImage->getClientOriginalName();
-        $uniqueImageName = time() . '_' . $originalImageName;
+        // Store the uploaded images
+        $uploadedImages = [];
+        $images = $request->file('images');
+        if ($images) {
+            foreach ($images as $uploadedImage) {
+                $imagePath = $uploadedImage->store('property_images', 'public');
+                $originalImageName = $uploadedImage->getClientOriginalName();
+                $uniqueImageName = time() . '_' . $originalImageName;
 
-        $image = new Image();
-        $image->url = $imagePath;
-        $image->imageable_id = $property->id;
-        $image->imageable_type = Property::class;
-        $uploadedImages[] = $image;
+                $image = new Image();
+                $image->url = $imagePath;
+                $image->imageable_id = $property->id;
+                $image->imageable_type = Property::class;
+                $uploadedImages[] = $image;
+            }
+
+            // Save the images using the morph relationship
+            $property->images()->saveMany($uploadedImages);
+
+            // Return a success message
+            return redirect()->back()->with('success', 'Les images de propriété sont stockées avec succès.');
+        }
+
+        // Return to the form with an error message
+        return redirect()->back()->withErrors(['images' => 'Veuillez sélectionner au moins une image.'])->withInput();
     }
+    public function storePropertyImages(Request $request, $propertyId)
+    {
+        // Retrieve the piece
+        $property = Property::findOrFail($propertyId);
 
-    // Save the images using the morph relationship
-    $property->images()->saveMany($uploadedImages);
+        // Validate the uploaded images
+        $request->validate([
+            'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
+        ], [
+            'images.*.required' => 'Veuillez sélectionner au moins une image.',
+            'images.*.image' => 'Le fichier doit être une image.',
+            'images.*.max' => 'L\'image ne doit pas dépasser 2 Mo.',
+        ]);
 
-    // Return a response or redirect as needed
-    return redirect()->back()->with('success', 'Les images de propriété sont stockées avec succès.');
-}
+        // Check if any images were uploaded
+        if ($request->hasFile('images')) {
+            // Store the uploaded images
+            $uploadedImages = [];
+            foreach ($request->file('images') as $uploadedImage) {
+                $imagePath = $uploadedImage->store('Piece_images', 'public');
+                $originalImageName = $uploadedImage->getClientOriginalName();
+                $uniqueImageName = time() . '_' . $originalImageName;
+        
+                $image = new Image();
+                $image->url = $imagePath;
+                // $image->original_name = $originalImageName;
+                $image->imageable_id = $property->id;
+                $image->imageable_type = Property::class;
+                $uploadedImages[] = $image;
+            }
+        
+             // Save the images using the morph relationship
+             $property->images()->saveMany($uploadedImages);
+        
+            // Return a response or redirect as needed
+            return redirect()->back()->with('success', 'Les images de cette propriété sont stockées avec succès.');
+        }
+        
+        // If no images were uploaded, return a response or redirect with an appropriate message
+        return redirect()->back()->withErrors(['empty_form' => 'Veuillez sélectionner au moins une image.'])->withInput();
+    
+    }
 
     public function deletePropertyImage(Request $request, $propertyId)
     {

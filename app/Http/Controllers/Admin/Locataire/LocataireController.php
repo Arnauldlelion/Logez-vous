@@ -21,7 +21,10 @@ class LocataireController extends Controller
 
         if ($request->get('q')) {
             $search['q'] = $request->get('q');
-            $tenants = $tenants->where('name', 'like', '%' . $search['q'] . '%');
+            $tenants = $tenants->where(function ($query) use ($search) {
+                $query->where('first_name', 'like', '%' . $search['q'] . '%')
+                    ->orWhere('last_name', 'like', '%' . $search['q'] . '%');
+            });
         }
 
         if ($request->get('limit')) {

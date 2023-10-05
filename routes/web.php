@@ -43,6 +43,8 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/landlord/{id}', 'Dashboard\DashboardController@landlordDetails')->name('landlord-details');
+        // Route::get('/admin/landlords/{landlord}', 'Admin\LandlordController@show')->name('admin.landlords.show');
+
             
                 // Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
                 // Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
@@ -113,23 +115,6 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
 });
 
-// Route::group(['namespace' => 'Landlord', 'prefix' => 'landlord', 'as' => 'landlord.'], function () {
-//     Route::group(['middleware' => ['auth:landlord']], function () {
-//     });
-
-
-//     // check
-//     Route::get('/profile', [LandlordController::class, 'profile'])->name('profile');
-//     Route::put('/profile', [LandlordController::class, 'updateProfile'])->name('profile');
-//     Route::get('/create', [LandlordController::class, 'create'])->name('create');
-//     Route::post('/store', [LandlordController::class, 'store'])->name('store');
-//     Route::get('/{id}/edit', [LandlordController::class, 'edit'])->name('edit');
-//     Route::put('/{id}/update', [LandlordController::class, 'update'])->name('update');
-//     Route::delete('/{id}/destroy', [LandlordController::class, 'destroy'])->name('destroy');
-//     Route::put('/change_password', [LandlordController::class, 'postChangePassword'])->name('change_password');
-//     // check
-//     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-// });
 
 
 //Web routes
@@ -155,10 +140,13 @@ Route::group(['namespace' => 'web'], function () {
     Route::middleware(['auth:landlord'])->group(function () {
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
-        Route::get('/mes-logement/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
+        Route::get('/appartement', 'Dashboard\DashboardController@apartments')->name('apartments');
+        // Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
+        Route::get('{apartmentId}', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
         Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
         Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
-        Route::get('appeartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
+        Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
+        Route::get('locataire', 'Dashboard\DashboardController@locataire')->name('tenants');
         Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
         Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
