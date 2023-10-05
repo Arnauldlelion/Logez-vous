@@ -1,3 +1,4 @@
+@if (@isset($apartment))
 <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -66,6 +67,11 @@
         </div>
     </div>
 </div>
+@endif
+    
+
+  
+
 <script>
     // Initialize the intlTelInput plugin
     const input = document.querySelector("#phoneNumber");

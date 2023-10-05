@@ -86,15 +86,15 @@
                         <div class="d-flex align-items-center mb-3 mb-lg-0">
                             <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
                             <div class="ms-2 content">
-                                <h5>Présenté par votre expert.e en location Logez-vous</h5>
-                                <div>Arnauld</div>
+                                <h5>Présenté par votre expert(e) en location.</h5>
+                                <div>Logez-vous</div>
                             </div>
                         </div>
                         <div class="contact">
                             <span>
                                 <i class="fas fa-phone"></i>
                             </span>
-                            <span class="ms-2">+237 657170133</span>
+                            <span class="ms-2">+237 (numero)</span>
                         </div>
                     </div>
                     <hr>
@@ -142,15 +142,15 @@
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <div class="ms-2">
-                                        <div class="text-main">200 000 XAF/mois</div>
-                                        <div class="text-sec">Dont 200 000 xaf de charges</div>
+                                        <div class="text-main">{{ $apartment->monthly_price}} XAF/mois</div>
+                                        <div class="text-sec">Dont {{ $apartment->monthly_price }} xaf de charges</div>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">
                                     <div class="icon">
                                         <i class="fas fa-landmark"></i>
                                     </div>
-                                    <div class="ms-2">{{ 66 }} m<sup>2</sup></div>
+                                    <div class="ms-2"> 40  m<sup>2</sup></div>
                                 </div>
                                 <div class="d-flex align-items-center text-main mb-3">
                                     <div class="icon">
