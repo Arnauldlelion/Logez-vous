@@ -8,6 +8,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Rapport de Gestion</th>
                     <th>Property</th>
                 </tr>
             </thead>
@@ -16,7 +17,10 @@
                     @foreach ($property->apartments as $apartment)
                         <tr>
                             <td>{{ $loop->parent->index * 10 + $loop->index + 1 }}</td>
-                            <td>Apartment {{ $apartment->id }}</td>
+                            <td>{{ $apartment->name }}</td>
+                            <td>   <a href="{{ route('apartments.rapport-de-gestions', ['apartmentId' => $apartment->id]) }}"
+                                class="btn btn-success btn-sm align-items-center">
+                                {{ $apartment->rapportDeGestions->count() }} Rapport de Gestion <i class="fas fa-eye eye-icon"></i> </td>
                             <td>{{ $property->name }}</td>
                         </tr>
                     @endforeach

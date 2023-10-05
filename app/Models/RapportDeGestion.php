@@ -9,7 +9,7 @@ class RapportDeGestion extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+        protected $fillable = [
         'apartment_id',
         'property_id',
         'path',

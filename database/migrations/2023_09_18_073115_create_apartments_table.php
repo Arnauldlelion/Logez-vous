@@ -15,6 +15,7 @@ class CreateApartmentsTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();   
+            $table->string('name');
             $table->string('floor');
             $table->enum('furnished', ['Meublé', 'Non meublé'])->default('Non meublé');
             $table->longText('description')->nullable();

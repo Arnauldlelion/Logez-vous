@@ -131,7 +131,7 @@
                                 <td>{{ $landlord->is_approved ? 'Approved' : 'En instance' }}</td>
                                 <td>
                                     <div class="btn-group ">
-                                        <a href="{{ route('admin.approuved-landlords.show', $landlord->id) }}"
+                                        <a href="{{ route('admin.landlord-details', $landlord->id) }}"
                                             class="btn btn-success btn-sm text-white align-items-center" title="View">
                                             <i class="fa fa-eye"></i>
                                         </a>

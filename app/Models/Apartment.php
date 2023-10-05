@@ -10,6 +10,7 @@ class Apartment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'floor',
         'furnished',
         'description',
@@ -35,9 +36,13 @@ class Apartment extends Model
     return $this->hasMany(Payment::class);
     }
 
+    // public function locataire()
+    // {
+    // return $this->belongsTo(Locataire::class);
+    // }
     public function locataire()
     {
-    return $this->belongsTo(Locataire::class);
+        return $this->hasOne(Locataire::class);
     }
 
     public function AnnualRapportDeGestions()

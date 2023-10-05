@@ -29,6 +29,7 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
+                                    <th>Nom</th>
                                     <th>Loyer mensuel</th>
                                     <th>Meublé</th>
                                     <th>Numbre d'appartements</th>
@@ -41,6 +42,7 @@
                                 @forelse($apartments as $apartment)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $apartment->name }}</td>
                                         <td>{{ $apartment->monthly_price }}</td>
                                         <td>{{ $apartment->furnished }}</td>
                                         <td>{{ $apartment->number_of_pieces }}</td>
@@ -49,7 +51,7 @@
                                             <div>
                                                 <a href="{{ route('admin.generalrapportIndex', $apartment->id) }}"
                                                     class="btn btn-secondary btn-sm mb-1">
-                                                    <i class="mdi mdi-eye"></i> Rapport Général</a>
+                                                    <i class="mdi mdi-eye"></i> Rapport Général</a><br>
                                                     <a href="{{ route('admin.rapportIndex', $apartment->id) }}"
                                                         class="btn btn-secondary btn-sm ">
                                                         <i class="mdi mdi-eye"></i> Rapport Hebdomadaire</a>
@@ -68,9 +70,9 @@
                                                         <i class="mdi mdi-eye"></i> Pièce</a>
                                                     
                                                    
-                                                    <a href="{{ route('admin.apartments.showPayments', $apartment->id) }}"
+                                                    {{-- <a href="{{ route('admin.apartments.showPayments', $apartment->id) }}"
                                                         class="btn btn-secondary btn-sm">
-                                                        <i class="mdi mdi-eye"></i> Paiements</a>
+                                                        <i class="mdi mdi-eye"></i> Paiements</a> --}}
                                                         </div>
                                                 </div>
                                                 <a href="{{ route('admin.apartments.edit', $apartment->id) }}"

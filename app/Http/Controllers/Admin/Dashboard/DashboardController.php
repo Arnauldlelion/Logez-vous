@@ -18,6 +18,14 @@ class DashboardController extends Controller
         return view('admin.dashboard.index', compact('landlords', 'candidatures'));
     }
 
+    public function landlordDetails($id)
+    {
+        $landlord = User::findOrFail($id);
+        return view('admin.un-approved-landlord.show',
+            compact('landlord'));
+            
+    }
+
 
 
 }

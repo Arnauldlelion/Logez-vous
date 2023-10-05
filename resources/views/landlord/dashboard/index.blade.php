@@ -67,9 +67,11 @@
               <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                   <div class="card card-light-blue">
                       <div class="card-body">
+                        <a href="{{ route('tenants')}}" class="text-decoration-none text-white">
                           <p class="mb-4">Nombre de Locataires</p>
-                          <p class="fs-30 mb-2">12</p>
+                          <p class="fs-30 mb-2">{{ $approvedTenants->count() }}</p>
                           <p>2.00% (30 jours)</p>
+                        </a>
                       </div>
                   </div>
               </div>
