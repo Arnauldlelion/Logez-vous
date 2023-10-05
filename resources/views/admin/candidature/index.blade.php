@@ -89,7 +89,7 @@
                             <td>{{ $candidature->first_name }} {{ $candidature->last_name }}</td>
                             <td>{{ $candidature->phone }}</td>
                             <td>{{ $candidature->email ?: 'N/A' }}</td>
-                            <td>{{ $tenant->apartment->name  }}</td>
+                            <td>{{ $candidature->apartment->name  }}</td>
                             <td>{{ $candidature->apartment->property->name }}</td>
                             <td>
                                 <div class="btn-group">

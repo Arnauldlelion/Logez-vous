@@ -35,32 +35,6 @@
                                 <span> Propriété </span>
                             </a>
                         </li>
-                        {{-- <li class="{{ Route::is('admin.apartments.*') ? 'menuitem-active' : '' }}">
-                            <a href="{{ route('admin.apartments.index') }}">
-                                <i data-feather="layout"></i>
-                                <span> Appartement </span>
-                            </a>
-                        </li>
-                        <li class="{{ Route::is('admin.pieces.*') ? 'menuitem-active' : '' }}">
-                            <a href="{{ route('admin.pieces.index') }}">
-                                <i data-feather="layers"></i>
-                                <span> Pièce  </span>
-                            </a>
-                        </li> --}}
-
-                        <!-- <li class="menu-title  mt-2">Rapport de Gestion</li>
-                        <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
-                            <a href="{{ route('admin.approuved-landlords.index') }}">
-                                <i data-feather="file-text"></i>
-                                <span>Rapport Général</span>
-                            </a>
-                        </li>
-                        <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
-                            <a href="{{ route('admin.approuved-landlords.index') }}">
-                                <i data-feather="file"></i>
-                                <span>Rapport Hebdomadaire</span>
-                            </a>
-                        </li> -->
 
                         <li class="menu-title  mt-2">Locataires</li>
                         <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
@@ -72,7 +46,7 @@
                         <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.unApprovedCandidature') }}">
                                 <i data-feather="users"></i>
-                                <span>Locataire</span>
+                                <span>Candidature</span>
                             </a>
                         </li>
                         <li class="menu-title  mt-2">Propriétaire</li>

@@ -127,9 +127,11 @@ Route::group(['namespace' => 'web'], function () {
 
     Route::post('/locataires/{apartment_id}', 'Locataire\LocataireController@store')->name('storeLocataire');
 
+
        
     Route::group(['middleware' => ['auth']], function () {
     });
+
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');
     Route::get('/apartments/single-appartment/{id}', 'PageController@show')->name('single-appartment');

@@ -69,7 +69,7 @@
                         <div class="col-12 col-lg-7">
                             <label for="description">Description</label>
                             <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"
-                                name="description" placeholder="">{{ old('description', $apt->description) }}</textarea>
+                                name="description" placeholder="">{{ old('description', $piece->description) }}</textarea>
 
                             @error('description')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -82,7 +82,7 @@
                                Retour
                             </a>
                         </div>
-                        <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>
+                        <button type="submit" class="btn btn-danger rounded-pill float-end">Mettre à jour</button>
                     </div>
                 </form>
                 <!-- end form-->
