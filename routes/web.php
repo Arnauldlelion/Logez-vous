@@ -124,7 +124,13 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/gestion', 'Auth\RegisterController@showRegistrationForm')->name('gestion');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
+
     Route::post('/locataires/{apartment_id}', 'Locataire\LocataireController@store')->name('storeLocataire');
+
+
+       
+    Route::group(['middleware' => ['auth']], function () {
+    });
 
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');
