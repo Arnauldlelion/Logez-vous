@@ -89,7 +89,7 @@
                             <td>{{ $tenant->first_name }} {{ $tenant->last_name }}</td>
                             <td>{{ $tenant->phone }}</td>
                             <td>{{ $tenant->email ?: 'N/A' }}</td>
-                            <td>{{ $tenant->apartment_id }}</td>
+                            <td>{{ $tenant->apartment->name }}</td>
                             <td>{{ $tenant->apartment->property->name }}</td>
                             
                             {{-- <td>

@@ -53,19 +53,23 @@
             <div class="card-box">
                 <form action="{{ route('admin.piece-images', $piece->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    
+                
                     <div class="form-group">
                         <label>Images</label>
-                        <input type="file" class="form-control" id="apt-image" accept="image/*" 
-                        name="images[]" multiple>
-                    @error('images')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+                        <input type="file" class="form-control{{ $errors->has('images.*') || $errors->has('empty_form') ? ' is-invalid' : '' }}" id="apt-image" accept="image/*" name="images[]" multiple>
+                        @if ($errors->has('images.*'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('images.*') }}</strong>
+                            </span>
+                        @elseif ($errors->has('empty_form'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('empty_form') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-secondary">Sauvegarder</button>
                     </div>
-                
                 </form>
             </div>
         </div>

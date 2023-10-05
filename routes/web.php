@@ -43,6 +43,8 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/landlord/{id}', 'Dashboard\DashboardController@landlordDetails')->name('landlord-details');
+        // Route::get('/admin/landlords/{landlord}', 'Admin\LandlordController@show')->name('admin.landlords.show');
+
             
                 // Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
                 // Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
@@ -136,10 +138,13 @@ Route::group(['namespace' => 'web'], function () {
     Route::middleware(['auth:landlord'])->group(function () {
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
-        Route::get('/mes-logement/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
+        Route::get('/appartement', 'Dashboard\DashboardController@apartments')->name('apartments');
+        // Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
+        Route::get('{apartmentId}', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
         Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
         Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
-        Route::get('appeartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
+        Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
+        Route::get('locataire', 'Dashboard\DashboardController@locataire')->name('tenants');
         Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
         Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');

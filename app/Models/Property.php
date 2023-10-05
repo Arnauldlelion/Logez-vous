@@ -32,7 +32,7 @@ class Property extends Model
 
     public function apartments()
     {
-        return $this->hasMany(Apartment::class, 'property_id');
+        return $this->hasMany(Apartment::class);
     }
 
 

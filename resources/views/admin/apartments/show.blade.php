@@ -10,7 +10,7 @@
 					<ol class="breadcrumb m-0">
 						<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.property.index')}}">{{ $apartment->property->name}}</a></li>
-						<li class="breadcrumb-item "><a href="{{ route('admin.property.show', session('new_prop_id')) }}">Appartement {{ $apartment->id}}</a></li>
+						<li class="breadcrumb-item "><a href="{{ route('admin.property.show', session('new_prop_id')) }}"> {{ $apartment->name}}</a></li>
 						<li class="breadcrumb-item active"> Images</li>
 					</ol>
 				</div>
@@ -25,19 +25,22 @@
         <div class="col-lg-4 col-xl-4">
             <div class="card-box text-center">
 
-                <h4 class="mb-0">Appartement{{ $apartment->id }}</h4>
+                <h4 class="mb-0">{{ $apartment->name }}</h4>
                 <hr>
                 <div class="text-left mt-3">
                     <p class="text-muted mb-2 font-13">
-                        <strong>Nom :</strong> <span class="ml-2">{{ $apartment->id }}</span>
+                        <strong>Nom :</strong> <span class="ml-2">{{ $apartment->name }}</span>
                     </p>
+                    {{-- <p class="text-muted mb-2 font-13">
+                        <strong>Type d'Appartement :</strong> <span class="ml-2">{{ $apartment->apartmentType }}</span>
+                    </p> --}}
 
                 </div>
             </div>
         </div>
         <div class="col-lg-8">
             <div class="card-box">
-                <form action="{{ route('admin.apartment-images', $apartment->id) }}" method="POST" enctype="multipart/form-data">
+                {{-- <form action="{{ route('admin.apartment-images', $apartment->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="form-group">
@@ -60,6 +63,33 @@
                         <button type="submit" class="btn btn-secondary">Sauvegarder</button>
                     </div>
                 
+                </form> --}}
+                <form action="{{ route('admin.apartment-images', $apartment->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                
+                    <div class="form-group">
+                        <label>Image de couverture</label>
+                        <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
+                        @error('cover_image')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Images</label>
+                        <input type="file" class="form-control{{ $errors->has('images.*') || $errors->has('empty_form') ? ' is-invalid' : '' }}" id="apt-image" accept="image/*" name="images[]" multiple>
+                        @if ($errors->has('images.*'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('images.*') }}</strong>
+                            </span>
+                        @elseif ($errors->has('empty_form'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('empty_form') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-secondary">Sauvegarder</button>
+                    </div>
                 </form>
             </div>
         </div>

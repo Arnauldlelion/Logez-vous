@@ -40,7 +40,7 @@
                                 @foreach ($candidatures as $candidature)
                                 <p class="notify-details">{{ $candidature->first_name }} {{ $candidature->last_name }}</p>
                                 <p class="text-muted mb-0 user-msg">
-                                    <small>Appartement {{ $candidature->apartment_id }} ({{ $candidature->apartment->property->name }})</small>
+                                    <small>Appartement: {{ $candidature->apartment->name }} ({{ $candidature->apartment->property->name }})</small>
                                     <small>{{ $candidature->created_at->locale('fr')->diffForHumans() }}</small>
                                 </p>
                             @endforeach

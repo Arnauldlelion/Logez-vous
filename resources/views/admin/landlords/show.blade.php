@@ -44,8 +44,6 @@
         </div>
         <div class="col-lg-8">
             <div class="card-box">
-                <h4  class="my-4">Description</h4>
-                {!! $landlord->description ?: '--' !!}
                 <h3>Bien Immobillier</h3>
                 @if ($landlord->properties->count() > 0)
                     <ul>

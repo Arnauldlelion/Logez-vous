@@ -47,6 +47,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name' => ['required'],
             'floor' => ['required'],
             'furnished' => ['nullable', 'string', 'max:255'],
             'monthly_price' => ['required', 'string'],
@@ -126,6 +127,7 @@ class ApartmentController extends Controller
     {
         $new_prop_id = session('new_prop_id');
         $request->validate([
+            'name' => ['required'],
             'floor' => ['required'],
             'furnished' => ['nullable', 'string'],
             'monthly_price' => ['required', 'string'],
@@ -133,6 +135,7 @@ class ApartmentController extends Controller
             'description' => ['nullable', 'string'],
         ]);
         $apartment = Apartment::findOrFail($id);
+        $apartment->name = $request->get('name');
         $apartment->floor = $request->get('floor');
         $apartment->furnished = $request->input('furnished');
         $apartment->monthly_price = $request->get('monthly_price');
@@ -150,52 +153,106 @@ class ApartmentController extends Controller
     
         return view('admin.apartments.show', compact('apartment', 'images'));
     }
+    public function storePropertyImages(Request $request, $propertyId)
+    {
+        // Retrieve the piece
+        $property = Property::findOrFail($propertyId);
+
+        // Validate the uploaded images
+        $request->validate([
+            'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
+        ], [
+            'images.*.required' => 'Veuillez sélectionner au moins une image.',
+            'images.*.image' => 'Le fichier doit être une image.',
+            'images.*.max' => 'L\'image ne doit pas dépasser 2 Mo.',
+        ]);
+
+        // Check if any images were uploaded
+        if ($request->hasFile('images')) {
+            // Store the uploaded images
+            $uploadedImages = [];
+            foreach ($request->file('images') as $uploadedImage) {
+                $imagePath = $uploadedImage->store('Piece_images', 'public');
+                $originalImageName = $uploadedImage->getClientOriginalName();
+                $uniqueImageName = time() . '_' . $originalImageName;
+        
+                $image = new Image();
+                $image->url = $imagePath;
+                // $image->original_name = $originalImageName;
+                $image->imageable_id = $property->id;
+                $image->imageable_type = Property::class;
+                $uploadedImages[] = $image;
+            }
+        
+             // Save the images using the morph relationship
+             $property->images()->saveMany($uploadedImages);
+        
+            // Return a response or redirect as needed
+            return redirect()->back()->with('success', 'Les images de cette propriété sont stockées avec succès.');
+        }
+        
+        // If no images were uploaded, return a response or redirect with an appropriate message
+        return redirect()->back()->withErrors(['empty_form' => 'Veuillez sélectionner au moins une image.'])->withInput();
+    
+    }
     
     public function storeApartmentImages(Request $request, $id)
     {
         // Retrieve the apartment
         $apartment = Apartment::findOrFail($id);
-    
+
         // Validate the uploaded images
         $request->validate([
             'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
+            'cover_image' => 'required|image|max:2048',
+        ], [
+            'images.*.required' => 'Veuillez sélectionner au moins une image.',
+            'images.*.image' => 'Le fichier doit être une image.',
+            'images.*.max' => 'L\'image ne doit pas dépasser 2 Mo.',
+            'cover_image.required' => 'Veuillez sélectionner une image de couverture.',
+            'cover_image.image' => 'Le fichier de couverture doit être une image.',
+            'cover_image.max' => 'L\'image de couverture ne doit pas dépasser 2 Mo.',
         ]);
-    
-        // Store the uploaded images
-        $uploadedImages = [];
-        foreach ($request->file('images') as $uploadedImage) {
-            $imagePath = $uploadedImage->store('Apartment_images', 'public');
-            $originalImageName = $uploadedImage->getClientOriginalName();
-            $uniqueImageName = time() . '_' . $originalImageName;
-    
-            $image = new Image();
-            $image->url = $imagePath;
-            // $image->original_name = $originalImageName;
-            $image->imageable_id = $apartment->id;
-            $image->imageable_type = Apartment::class;
-            $uploadedImages[] = $image;
+
+        // Check if any images were uploaded
+        if ($request->hasFile('images')) {
+            // Store the uploaded images
+            $uploadedImages = [];
+            foreach ($request->file('images') as $uploadedImage) {
+                $imagePath = $uploadedImage->store('Apartment_images', 'public');
+                $originalImageName = $uploadedImage->getClientOriginalName();
+                $uniqueImageName = time() . '_' . $originalImageName;
+
+                $image = new Image();
+                $image->url = $imagePath;
+                $image->imageable_id = $apartment->id;
+                $image->imageable_type = Apartment::class;
+                $uploadedImages[] = $image;
+            }
+
+            // Handle the cover image
+            if ($request->hasFile('cover_image')) {
+                $coverImage = $request->file('cover_image');
+                $coverImagePath = $coverImage->store('cover_images', 'public');
+                $coverImageName = time() . '_' . $coverImage->getClientOriginalName();
+
+                $coverImage = new Image();
+                $coverImage->url = $coverImagePath;
+                $coverImage->imageable_id = $apartment->id;
+                $coverImage->imageable_type = Apartment::class;
+                $coverImage->isCover = true;
+                $coverImage->save();
         }
 
-
-         // Handle the cover image
-        if ($request->hasFile('cover_image')) {
-            $coverImage = $request->file('cover_image');
-            $coverImagePath = $coverImage->store('cover_images', 'public');
-            $coverImageName = time() . '_' . $coverImage->getClientOriginalName();
-
-            $coverImage = new Image();
-            $coverImage->url = $coverImagePath;
-            $coverImage->imageable_id = $apartment->id;
-            $coverImage->imageable_type = Apartment::class;
-            $coverImage->isCover = true;
-            $coverImage->save();
-        }
-    
         // Save the images using the morph relationship
         $apartment->images()->saveMany($uploadedImages);
-    
+
         // Return a response or redirect as needed
-        return redirect()->back()->with('success', 'Les images de appartement sont stockées avec succès.');
+        return redirect()->back()->with('success', 'Les images de cette l\'appartement sont stockées avec succès.');
+    }
+
+            // If no images were uploaded, return a response or redirect with an appropriate message
+            return redirect()->back()->withErrors(['empty_form' => 'Veuillez sélectionner au moins une image.'])->withInput();
     }
     
     public function changeCoverImage(Request $request)

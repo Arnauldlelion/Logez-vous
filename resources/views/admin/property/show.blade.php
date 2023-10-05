@@ -9,7 +9,8 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('admin.property.index') }}">{{ $property->name}}</a>
+                        <li class="breadcrumb-item active"><a
+                                href="{{ route('admin.property.index') }}">{{ $property->name }}</a>
                         </li>
                         <li class="breadcrumb-item active">Images</li>
                     </ol>
@@ -43,78 +44,48 @@
             <div class="card-box">
                 <form action="{{ route('admin.property-images', $property->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-            
-                    <div class="form-group">
-                        <label>Image de couverture</label>
-                        <input type="file" class="" id="cover_image" accept="image/*" name="cover_image">
-                        @error('cover_image')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    
+                
                     <div class="form-group">
                         <label>Images</label>
-                        <input type="file" class="form-control" id="apt-image" accept="image/*" name="images[]" multiple>
-                        @error('images')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
+                        <input type="file" class="form-control{{ $errors->has('images.*') || $errors->has('empty_form') ? ' is-invalid' : '' }}" id="apt-image" accept="image/*" name="images[]" multiple>
+                        @if ($errors->has('images.*'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('images.*') }}</strong>
+                            </span>
+                        @elseif ($errors->has('empty_form'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('empty_form') }}</strong>
+                            </span>
+                        @endif
                     </div>
-                    
                     <div class="text-right">
                         <button type="submit" class="btn btn-secondary">Sauvegarder</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-    <div class="col-12">
-        <div class="card card-body">
-            @if ($images->isNotEmpty())
-    <div class="row">
-        @foreach ($images as $image)
-        <div class="col-6 col-md-2">
-            <div class="card">
-                <img class="card-img-top" src="{{ Storage::url($image->url) }}" alt="piece Image">
-                <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">
-                    <i class="mdi mdi-delete"></i>
-                </button>
-                <div class="card-body">
-                    <h5 class="card-title">{{ $image->original_name }}</h5>
-                </div>
+        </div>
+        <div class="col-12">
+            <div class="card card-body">
+                @if ($images->isNotEmpty())
+                    <div class="row">
+                        @foreach ($images as $image)
+                        <div class="col-6 col-md-2">
+                            <div class="card">
+                                <img class="card-img-top" src="{{ Storage::url($image->url) }}" alt="piece Image">
+                                <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">
+                                    <i class="mdi mdi-delete"></i>
+                                </button>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $image->original_name }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
-    
-        <!-- Delete Modal -->
-        <div class="modal fade" id="deleteModal{{ $image->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $image->id }}" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel{{ $image->id }}">Delete Piece Image</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p><strong>Voulez-vous vraiment supprimer cette image ?</strong></p>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="{{ route('admin.piece.destroyImage', $image->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
-    </div>
-@else
-    <p>Aucune image disponible pour cette propriété.</p>
-@endif
-        </div>
-    </div>
 
 @endsection
 
