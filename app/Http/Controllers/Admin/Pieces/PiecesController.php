@@ -137,17 +137,15 @@ class PiecesController extends Controller
             // Store the uploaded images
             $uploadedImages = [];
             foreach ($request->file('images') as $uploadedImage) {
-                $imagePath = $uploadedImage->store('Piece_images', 'public');
-                $originalImageName = $uploadedImage->getClientOriginalName();
-                $uniqueImageName = time() . '_' . $originalImageName;
+                $imagePath = $uploadedImage->storeAs('Piece_images', time() . '_' . $uploadedImage->getClientOriginalName(), 'public');
         
                 $image = new Image();
                 $image->url = $imagePath;
-                // $image->original_name = $originalImageName;
                 $image->imageable_id = $piece->id;
                 $image->imageable_type = Piece::class;
                 $uploadedImages[] = $image;
             }
+    
         
             // Save the images using the morph relationship
             $piece->images()->saveMany($uploadedImages);

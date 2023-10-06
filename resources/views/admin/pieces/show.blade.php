@@ -81,7 +81,7 @@
         @foreach ($images as $image)
         <div class="col-md-2">
             <div class="card">
-                <img class="card-img-top" src="{{ Storage::url($image->url) }}" alt="piece Image" height="140px">
+                <img class="object-fit-cover" src="{{ Storage::url($image->url) }}" alt="piece Image" height="140px">
                 <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">
                     <i class="mdi mdi-delete"></i>
                 </button>

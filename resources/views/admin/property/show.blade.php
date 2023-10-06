@@ -70,17 +70,43 @@
                 @if ($images->isNotEmpty())
                     <div class="row">
                         @foreach ($images as $image)
-                        <div class="col-6 col-md-2">
-                            <div class="card">
-                                <img class="card-img-top" src="{{ Storage::url($image->url) }}" alt="piece Image">
-                                <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">
-                                    <i class="mdi mdi-delete"></i>
-                                </button>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $image->original_name }}</h5>
+                            <div class="col-6 col-md-2">
+                                <div class="card">
+                                    <img class="object-fit-cover" src="{{ Storage::url($image->url) }}" alt="piece Image">
+                                    <button data-toggle="modal" data-target="#deleteModal-{{ $image->id }}" class="btn btn-danger btn-sm">
+                                        <i class="mdi mdi-delete"></i>
+                                    </button>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $image->original_name }}</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+            
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal-{{ $image->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-{{ $image->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel-{{ $image->id }}">Delete Image</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete this image?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <form action="{{ route('admin.deletePropertyImage', $image->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Delete Modal -->
                         @endforeach
                     </div>
                 @endif
