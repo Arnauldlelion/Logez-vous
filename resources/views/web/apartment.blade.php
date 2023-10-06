@@ -8,18 +8,23 @@
             <div class="image-grid" id="animated-thumbnails">
                 @if ($apartment->coverImage)
                     <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="image-grid-col-2 image-grid-row-2">
-                        <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="{{ config('app.name') }}">
+                        <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
                     </a>
                 @endif
                 @foreach ($images as $index => $image)
                     @if ($index < 3)
-                        <a href="{{ $image->getImageUrl() }}" class="img-link">
-                            <img src="{{ $image->getImageUrl() }}" alt="{{ config('app.name') }}" class="img">
+                        <a href="{{ $image->getImageUrl() }}" class="img-link  d-none d-md-block">
+                            <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
                         </a>
                     @else
                         @if ($index == 3)
-                            <a href="{{ $image->getImageUrl() }}" class="remaining-images">
-                                <span>{{ $remainingImages }} more image(s)</span>
+                            <a href="{{ $image->getImageUrl() }}" class="remaining-images position-relative d-none d-md-block">
+                                <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
+                                <span class="position-absolute top-50 start-50 translate-middle">{{ $remainingImages }} more image(s)</span>
+                            </a>
+                            @else
+                            <a href="{{ $image->getImageUrl() }}" class="remaining-images d-none">
+                                <span >{{ $remainingImages }} more image(s)</span>
                             </a>
                         @endif
                     @endif
@@ -166,7 +171,7 @@
 </section>
 </div>
 <script>
-   lightGallery(document.getElementById('animated-thumbnails-gallery'), {
+   lightGallery(document.getElementById('animated-thumbnails'), {
     thumbnail: true,
 });
 

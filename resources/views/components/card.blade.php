@@ -1,5 +1,4 @@
 
-@endsection
 <div class="house-card h-100 shadow-lg">
     @if ($showBanner)
         <div class="img-container">
