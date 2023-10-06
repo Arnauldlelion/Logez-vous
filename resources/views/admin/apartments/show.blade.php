@@ -40,40 +40,16 @@
         </div>
         <div class="col-lg-8">
             <div class="card-box">
-                {{-- <form action="{{ route('admin.apartment-images', $apartment->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    
-                    <div class="form-group">
-                        <label>Image de couverture</label>
-                        <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
-                        @error('cover_image')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>Images</label>
-                        <input type="file" class="form-control" id="apt-image" accept="image/*" 
-                        name="images[]" multiple>
-                    @error('images')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-secondary">Sauvegarder</button>
-                    </div>
-                
-                </form> --}}
                 <form action="{{ route('admin.apartment-images', $apartment->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Image de couverture</label>
                         <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
                         @error('cover_image')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label>Images</label>
                         <input type="file" class="form-control{{ $errors->has('images.*') || $errors->has('empty_form') ? ' is-invalid' : '' }}" id="apt-image" accept="image/*" name="images[]" multiple>
@@ -101,7 +77,7 @@
         @foreach ($images as $image)
         <div class="col-md-2">
             <div class="card">
-                <img class="card-img-top" src="{{ Storage::url($image->url) }}" alt="Apartment Image" class="object-fit-cover" height="100px">
+                <img src="{{ Storage::url($image->url) }}" alt="Apartment Image" class="object-fit-cover" height="100px">
                 <div class="d-flex justify-content-between">
                     <button data-toggle="modal" data-target="#deleteModal{{ $image->id }}" class="btn btn-danger btn-sm">
                         <i class="mdi mdi-delete"></i>

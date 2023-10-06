@@ -68,7 +68,7 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::resource('property', 'Property\PropertyController');
         Route::get('/property/{propertyId}/images', 'Property\PropertyController@showPropertyImagesform')->name('showPropertyImagesform');
         Route::post('/property/{propertyId}/images', 'Property\PropertyController@storePropertyImages')->name('property-images');
-        Route::delete('/property/destroyImage/{propertyId}', 'Property\PropertyController@deletePropertyImage')->name('delete-property-image');
+        Route::delete('/property/image/{id}', 'Property\PropertyController@deletePropertyImage')->name('deletePropertyImage');
         
         Route::resource('apartments', 'Apartment\ApartmentController');
         Route::get('/apartment/{id}/images', 'Apartment\ApartmentController@showApartmentImagesform')->name('showApartmentImagesform');

@@ -11,6 +11,8 @@
 
     <!-- Plugins css -->
     <link href="{{ asset('admin_assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+
 
 
     <!-- App css -->
@@ -31,7 +33,7 @@
 </head>
 
 <body data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
-
+   
 <!-- Begin page -->
 <div id="wrapper">
 
@@ -94,6 +96,8 @@
 <script src="{{ asset('admin_assets/js/vendor.min.js') }}"></script>
 
 <!-- Plugins js-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script src="{{ asset('admin_assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
 <script src="{{ asset('admin_assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>

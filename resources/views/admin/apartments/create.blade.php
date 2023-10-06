@@ -16,7 +16,7 @@
                 </div>
 
                  <!-- form -->
-                 <form action="{{ route('admin.apartments.store') }}" method="POST">
+                 <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
 
@@ -61,7 +61,7 @@
                             id="name"
                             value="{{ old('name') }}"
                             name="name"
-                            placeholder="T48, chambre 237">
+                            placeholder="T48, Apart 237">
                             @error('name')
                             <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
@@ -70,7 +70,7 @@
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                           <div class="col-12 col-lg-7">
                             <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
-                            <input class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror" type="text"
+                            <input class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror" type="number"
                             id="floor"
                             value="{{ old('floor') }}"
                             name="floor"
@@ -89,7 +89,7 @@
                                 </label>
                               </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault1" value="Meublé">
+                                <input class="form-check-input" type="radio" name="furnished" id="flexRadioDefault1"  value="Meublé">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Meublé
                                 </label>
@@ -100,7 +100,7 @@
                         @enderror
                          <div class="col-12 col-lg-7">
                             <label for="monthly_price" class="col-sm-2 col-form-label-sm">Prix</label>
-                            <input class="form-control rounded-pill form-control-sm @error('monthly_price') is-invalid @enderror" type="text"
+                            <input class="form-control rounded-pill form-control-sm @error('monthly_price') is-invalid @enderror" type="number"
                                id="monthly_price"
                                value="{{ old('monthly_price') }}"
                                name="monthly_price"
@@ -122,6 +122,16 @@
                         @error('number_of_pieces')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
+                        </div>
+                      </div>
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                          <div class="col-12 col-lg-7">
+                            <label>Image de couverture</label>
+                        <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
+                        @error('cover_image')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+
                         </div>
                       </div>
 

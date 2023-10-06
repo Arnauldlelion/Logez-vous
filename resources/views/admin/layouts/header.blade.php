@@ -37,13 +37,13 @@
                                 <div class="notify-icon">
                                     <img src="{{ asset('admin_assets/images/users/user-1.jpg') }}" class="img-fluid rounded-circle" alt=""/>
                                 </div>
-                                @foreach ($candidatures as $candidature)
-                                <p class="notify-details">{{ $candidature->first_name }} {{ $candidature->last_name }}</p>
-                                <p class="text-muted mb-0 user-msg">
-                                    <small>Appartement: {{ $candidature->apartment->name }} ({{ $candidature->apartment->property->name }})</small>
-                                    <small>{{ $candidature->created_at->locale('fr')->diffForHumans() }}</small>
-                                </p>
-                            @endforeach
+                              @foreach ($candidatures as $candidature)
+                              <p class="notify-details">{{ $candidature->first_name }} {{ $candidature->last_name }}</p>
+                              <p class="text-muted mb-0 user-msg">
+                                  <small>Appartement: {{ $candidature->apartment->name }} ({{ $candidature->apartment->property->name }})</small>
+                                  <small>{{ $candidature->created_at->locale('fr')->diffForHumans() }}</small>
+                              </p>
+                          @endforeach
                             </a>
                        
                     </div>

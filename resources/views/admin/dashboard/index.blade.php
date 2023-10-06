@@ -77,7 +77,7 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $candidature->first_name }} {{ $candidature->last_name }}</td>
                                     <td>{{ $candidature->phone }}</td>
-                                    <td>{{ $candidature->apartment_id }}</td>
+                                    <td>{{ $candidature->apartment->name }}</td>
                                     <td>{{ $candidature->apartment->property->name }}</td>
                                     <td>{{ \Carbon\Carbon::parse($candidature->created_at)->locale('fr_FR')->isoFormat('dddd D MMMM YYYY, HH:mm:ss') }}</td>
                                     <td>

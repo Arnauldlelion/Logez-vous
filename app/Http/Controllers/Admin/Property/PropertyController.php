@@ -117,46 +117,6 @@ public function edit(Property $property)
     return view('admin.property.show', compact('property', 'images'));
 }
 
-    public function storePropertyImage(Request $request, $propertyId)
-    {
-        // Retrieve the property
-        $property = Property::findOrFail($propertyId);
-        
-        // Validate the uploaded images
-        $request->validate([
-            'images.*' => 'required|image|max:2048',
-        ], [
-            'images.*.required' => 'Veuillez sélectionner au moins une image.',
-            'images.*.image' => 'Le fichier doit être une image.',
-            'images.*.max' => 'L\'image ne doit pas dépasser 2 Mo.',
-        ]);
-
-        // Store the uploaded images
-        $uploadedImages = [];
-        $images = $request->file('images');
-        if ($images) {
-            foreach ($images as $uploadedImage) {
-                $imagePath = $uploadedImage->store('property_images', 'public');
-                $originalImageName = $uploadedImage->getClientOriginalName();
-                $uniqueImageName = time() . '_' . $originalImageName;
-
-                $image = new Image();
-                $image->url = $imagePath;
-                $image->imageable_id = $property->id;
-                $image->imageable_type = Property::class;
-                $uploadedImages[] = $image;
-            }
-
-            // Save the images using the morph relationship
-            $property->images()->saveMany($uploadedImages);
-
-            // Return a success message
-            return redirect()->back()->with('success', 'Les images de propriété sont stockées avec succès.');
-        }
-
-        // Return to the form with an error message
-        return redirect()->back()->withErrors(['images' => 'Veuillez sélectionner au moins une image.'])->withInput();
-    }
     public function storePropertyImages(Request $request, $propertyId)
     {
         // Retrieve the piece
@@ -176,18 +136,15 @@ public function edit(Property $property)
             // Store the uploaded images
             $uploadedImages = [];
             foreach ($request->file('images') as $uploadedImage) {
-                $imagePath = $uploadedImage->store('Piece_images', 'public');
-                $originalImageName = $uploadedImage->getClientOriginalName();
-                $uniqueImageName = time() . '_' . $originalImageName;
+                $imagePath = $uploadedImage->storeAs('property_images', time() . '_' . $uploadedImage->getClientOriginalName(), 'public');
         
                 $image = new Image();
                 $image->url = $imagePath;
-                // $image->original_name = $originalImageName;
                 $image->imageable_id = $property->id;
                 $image->imageable_type = Property::class;
                 $uploadedImages[] = $image;
             }
-        
+
              // Save the images using the morph relationship
              $property->images()->saveMany($uploadedImages);
         
@@ -200,19 +157,38 @@ public function edit(Property $property)
     
     }
 
-    public function deletePropertyImage(Request $request, $propertyId)
-    {
-    // Retrieve the image
-    $image = Image::findOrFail($id);
+    // public function deletePropertyImage(Request $request, $propertyId)
+    // {
+    // // Retrieve the image
+    // $image = Image::findOrFail($id);
             
-    // Delete the image file from storage
-    Storage::disk('public')->delete($image->url);
+    // // Delete the image file from storage
+    // Storage::disk('public')->delete($image->url);
 
-    // Delete the image record from the database
-    $image->delete();
+    // // Delete the image record from the database
+    // $image->delete();
+
+    //     // Return a response or redirect as needed
+    //     return redirect()->back()->with('success', 'L’image de la propriété a été supprimée avec succès.');
+    // }
+
+
+    public function deletePropertyImage($id)
+    {
+        // Retrieve the image
+        $image = Image::findOrFail($id);
+
+        // Get the image URL
+        $imageUrl = $image->url;
+
+        // Delete the image from the database
+        $image->delete();
+
+        // Delete the image file from the storage folder
+        Storage::delete('public/' . $imageUrl);
 
         // Return a response or redirect as needed
-        return redirect()->back()->with('success', 'L’image de la propriété a été supprimée avec succès.');
+        return redirect()->back()->with('success', 'L\'image a été supprimée avec succès.');
     }
 
 
@@ -268,6 +244,7 @@ public function edit(Property $property)
                 foreach ($piece->images as $image) {
                     // Delete the image file from storage
                     Storage::disk('public')->delete($image->url);
+                    
                     
                     // Delete the image record from the database
                     $image->delete();
