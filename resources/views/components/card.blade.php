@@ -1,3 +1,5 @@
+
+@endsection
 <div class="house-card h-100 shadow-lg">
     @if ($showBanner)
         <div class="img-container">
@@ -14,10 +16,11 @@
         @else
         
            @if($apartment->coverImage)
-           <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Room" class="card-img-top object-fit-cover" width="150px" height="150px">
+           <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Room" class="card-img-top object-fit-cover" style=" height: 150px; border-radius:0">
            @endif
         @endif
 <div class="card-body">
+    <div class="num-text">{{$apartment->name}} </div>
     <div class="num-text">{{$apartment->property->location}} (83200)</div>
     <div class="price">{{ $apartment->monthly_price}} XAF cc - 57.0 m<sup>2</sup></div>
     <div class="rooms d-flex">

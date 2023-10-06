@@ -70,7 +70,7 @@
                                             :url="route('admin.property.destroy', $property->id)"
                                             :content="'Are you sure you want to delete this Apartment <strong>' .
                                             $property->id .
-                                            '</strong>? Cette action est irréversible'" />
+                                            '</strong>? <b>Cette action est irréversible</b>'" />
                                     </tr>
                                 @empty
                                     <tr>

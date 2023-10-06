@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use App\Models\ApartmentType;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,35 +44,54 @@ class ApartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    public function store(Request $request)
-    {
+     
+     public function store(Request $request)
+     {
+        
         $request->validate([
             'name' => ['required'],
             'floor' => ['required'],
-            'furnished' => ['nullable', 'string', 'max:255'],
+            'furnished' => ['nullable', 'string'],
             'monthly_price' => ['required', 'string'],
             'number_of_pieces' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
+            'cover_image' => ['required'],
         ]);
-    
-        $new_prop_id = session('new_prop_id');
-    
-        if (!$new_prop_id) {
-            return redirect()->route('admin.property.index')->with('error', 'Invalid access');
-        }
-    
-        $apartment = $request->all();
-        $apartment['apt_type_id'] = 1; // Set the appropriate apartment type ID here
-        $apartment['property_id'] = $new_prop_id;
-        // dd($apartment);
-        $createdApartment = Apartment::create($apartment);
+        
+         $new_prop_id = session('new_prop_id');
+     
+         if (!$new_prop_id) {
+             return redirect()->route('admin.property.index')->with('error', 'Invalid access');
+         }
+       
+       
+         $apartment = new Apartment();
+         $apartment->name = $request->input('name');
+         $apartment->floor = $request->input('floor');
+         $apartment->furnished = $request->input('furnished');
+         $apartment->monthly_price = $request->input('monthly_price');
+         $apartment->number_of_pieces = $request->input('number_of_pieces');
+         $apartment->description = $request->input('description');
+         $apartment->apt_type_id = 1; // Set the appropriate apartment type ID here
+         $apartment->property_id = $new_prop_id;
+         $apartment->save();
 
-        session(['new_apt_id' => $createdApartment->id]);
-    
-        return redirect()->route('admin.pieces.create', ['new_prop_id' => $new_prop_id]);
-    }
-    
+         // Handle the cover image
+         if ($request->hasFile('cover_image')) {
+             $coverImage = $request->file('cover_image');
+             $coverImagePath = $coverImage->storeAs('cover_images', time() . '_' . $coverImage->getClientOriginalName(), 'public');
+         
+             $coverImageModel = new Image();
+             $coverImageModel->url = $coverImagePath;
+             $coverImageModel->imageable_id = $apartment->id;
+             $coverImageModel->imageable_type = Apartment::class;
+             $coverImageModel->isCover = true;
+             $coverImageModel->save();
+         }
+         session(['new_apt_id' => $apartment->id]);
+     
+         return redirect()->route('admin.pieces.create', ['new_prop_id' => $new_prop_id]);
+     }
     
     /**
      * Display the specified resource.
@@ -134,6 +154,7 @@ class ApartmentController extends Controller
             'number_of_pieces' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
         ]);
+    
         $apartment = Apartment::findOrFail($id);
         $apartment->name = $request->get('name');
         $apartment->floor = $request->get('floor');
@@ -141,8 +162,25 @@ class ApartmentController extends Controller
         $apartment->monthly_price = $request->get('monthly_price');
         $apartment->number_of_pieces = $request->get('number_of_pieces');
         $apartment->description = $request->get('description');
-
+    
         $apartment->save();
+    
+        // Handle the cover image
+        if ($request->hasFile('cover_image')) {
+            // Remove previous cover image
+            $apartment->coverImage()->delete();
+    
+            $coverImage = $request->file('cover_image');
+            $coverImagePath = $coverImage->storeAs('cover_images', time() . '_' . $coverImage->getClientOriginalName(), 'public');
+    
+            $coverImageModel = new Image();
+            $coverImageModel->url = $coverImagePath;
+            $coverImageModel->imageable_id = $apartment->id;
+            $coverImageModel->imageable_type = Apartment::class;
+            $coverImageModel->isCover = true;
+            $coverImageModel->save();
+        }
+    
         return redirect()->route('admin.property.show', $new_prop_id);
     }
 
@@ -153,10 +191,11 @@ class ApartmentController extends Controller
     
         return view('admin.apartments.show', compact('apartment', 'images'));
     }
-    public function storePropertyImages(Request $request, $propertyId)
+
+    public function storeApartmentImages(Request $request, $id)
     {
         // Retrieve the piece
-        $property = Property::findOrFail($propertyId);
+        $apartment = Apartment::findOrFail($id);;
 
         // Validate the uploaded images
         $request->validate([
@@ -172,20 +211,17 @@ class ApartmentController extends Controller
             // Store the uploaded images
             $uploadedImages = [];
             foreach ($request->file('images') as $uploadedImage) {
-                $imagePath = $uploadedImage->store('Piece_images', 'public');
-                $originalImageName = $uploadedImage->getClientOriginalName();
-                $uniqueImageName = time() . '_' . $originalImageName;
+                $imagePath = $uploadedImage->storeAs('Apartment_images', time() . '_' . $uploadedImage->getClientOriginalName(), 'public');
         
                 $image = new Image();
                 $image->url = $imagePath;
-                // $image->original_name = $originalImageName;
-                $image->imageable_id = $property->id;
-                $image->imageable_type = Property::class;
+                $image->imageable_id = $apartment->id;
+                $image->imageable_type = Apartment::class;
                 $uploadedImages[] = $image;
             }
-        
+
              // Save the images using the morph relationship
-             $property->images()->saveMany($uploadedImages);
+              $apartment->images()->saveMany($uploadedImages);
         
             // Return a response or redirect as needed
             return redirect()->back()->with('success', 'Les images de cette propriété sont stockées avec succès.');
@@ -195,73 +231,13 @@ class ApartmentController extends Controller
         return redirect()->back()->withErrors(['empty_form' => 'Veuillez sélectionner au moins une image.'])->withInput();
     
     }
-    
-    public function storeApartmentImages(Request $request, $id)
-    {
-        // Retrieve the apartment
-        $apartment = Apartment::findOrFail($id);
 
-        // Validate the uploaded images
-        $request->validate([
-            'images.*' => 'required|image|max:2048', // Assuming the image field name is 'images[]'
-            'cover_image' => 'required|image|max:2048',
-        ], [
-            'images.*.required' => 'Veuillez sélectionner au moins une image.',
-            'images.*.image' => 'Le fichier doit être une image.',
-            'images.*.max' => 'L\'image ne doit pas dépasser 2 Mo.',
-            'cover_image.required' => 'Veuillez sélectionner une image de couverture.',
-            'cover_image.image' => 'Le fichier de couverture doit être une image.',
-            'cover_image.max' => 'L\'image de couverture ne doit pas dépasser 2 Mo.',
-        ]);
-
-        // Check if any images were uploaded
-        if ($request->hasFile('images')) {
-            // Store the uploaded images
-            $uploadedImages = [];
-            foreach ($request->file('images') as $uploadedImage) {
-                $imagePath = $uploadedImage->store('Apartment_images', 'public');
-                $originalImageName = $uploadedImage->getClientOriginalName();
-                $uniqueImageName = time() . '_' . $originalImageName;
-
-                $image = new Image();
-                $image->url = $imagePath;
-                $image->imageable_id = $apartment->id;
-                $image->imageable_type = Apartment::class;
-                $uploadedImages[] = $image;
-            }
-
-            // Handle the cover image
-            if ($request->hasFile('cover_image')) {
-                $coverImage = $request->file('cover_image');
-                $coverImagePath = $coverImage->store('cover_images', 'public');
-                $coverImageName = time() . '_' . $coverImage->getClientOriginalName();
-
-                $coverImage = new Image();
-                $coverImage->url = $coverImagePath;
-                $coverImage->imageable_id = $apartment->id;
-                $coverImage->imageable_type = Apartment::class;
-                $coverImage->isCover = true;
-                $coverImage->save();
-        }
-
-        // Save the images using the morph relationship
-        $apartment->images()->saveMany($uploadedImages);
-
-        // Return a response or redirect as needed
-        return redirect()->back()->with('success', 'Les images de cette l\'appartement sont stockées avec succès.');
-    }
-
-            // If no images were uploaded, return a response or redirect with an appropriate message
-            return redirect()->back()->withErrors(['empty_form' => 'Veuillez sélectionner au moins une image.'])->withInput();
-    }
     
     public function changeCoverImage(Request $request)
     {
         $request->validate([
             'image_id' => 'required|exists:images,id',
         ]);
-
-        // dd('123');
 
         $imageId = $request->input('image_id');
         $apartmentId = session('new_apt_id');

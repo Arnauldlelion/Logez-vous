@@ -28,17 +28,19 @@ class PageController extends Controller
    }
 
    public function showSingleAppartment($id)
-   {
-       $apartment = Apartment::with(['images', 'pieces.images'])->findOrFail($id);
-       $otherApartments = Apartment::where('id', '!=', $apartment->id)->with('images')->limit(3)->get();
-   
-       // Retrieve the images belonging to both apartment and piece
-       $images = $apartment->images->merge($apartment->pieces->flatMap(function ($piece) {
-           return $piece->images;
-       }));
-   
-       return view('web.apartment', compact('apartment', 'otherApartments', 'images'));
-   }
+    {
+        $apartment = Apartment::with(['images', 'pieces.images'])->findOrFail($id);
+        $otherApartments = Apartment::where('id', '!=', $apartment->id)->with('images')->limit(3)->get();
+
+        // Retrieve the images belonging to both the apartment and piece
+        $images = $apartment->images->merge($apartment->pieces->flatMap(function ($piece) {
+            return $piece->images;
+        }));
+
+        $remainingImages = count($images) - 4;
+
+        return view('web.apartment', compact('apartment', 'otherApartments', 'images', 'remainingImages'));
+    }
 
     public function help(){
 

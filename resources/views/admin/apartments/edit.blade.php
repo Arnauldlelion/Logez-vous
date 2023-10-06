@@ -15,7 +15,7 @@
                         </div>
 
                         <!-- form -->
-                        <form action="{{ route('admin.apartments.update', $apt->id) }}" method="POST">
+                        <form action="{{ route('admin.apartments.update', $apt->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -59,7 +59,7 @@
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('name') is-invalid @enderror"
                                         type="text" id="name" value="{{ old('name', $apt->name) }}" name="name"
-                                        placeholder="T48, chambre 237">
+                                        placeholder="T48, Apart 237">
                                     @error('name')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -70,7 +70,7 @@
                                     <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror"
-                                        type="text" id="floor" value="{{ old('floor', $apt->floor) }}" name="floor"
+                                        type="number" id="floor" value="{{ old('floor', $apt->floor) }}" name="floor"
                                         placeholder="8">
                                     @error('floor')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -103,7 +103,7 @@
                                     <label for="monthly_price" class="col-sm-2 col-form-label-sm">Prix</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('monthly_price') is-invalid @enderror"
-                                        type="text" id="monthly_price"
+                                        type="number" id="monthly_price"
                                         value="{{ old('monthly_price', $apt->monthly_price) }}" name="monthly_price"
                                         placeholder="100,000">
                                     @error('monthly_price')
@@ -126,6 +126,23 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
+                            </div>
+
+                            @if ($apt->coverImage)
+                                <div class="form-group mb-1">
+                                    <label for="existing_cover_image">Image de couverture existante</label>
+                                    <br>
+                                    <img src="{{ asset('storage/' . $apt->coverImage->url) }}" alt="Image de couverture existante" style="max-width: 120px; max-height: 90px;">
+                                </div>
+                            @endif
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="col-12 col-lg-7">
+                                  <label>Image de couverture</label>
+                              <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
+                              @error('cover_image')
+                                  <span class="invalid-feedback">{{ $message }}</span>
+                              @enderror
+                              </div>
                             </div>
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
