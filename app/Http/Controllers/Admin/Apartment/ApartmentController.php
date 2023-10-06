@@ -232,6 +232,21 @@ class ApartmentController extends Controller
     
     }
 
+    public function deleteApartmentImage(Request $request, $id)
+    {
+        // Retrieve the image
+        $image = Image::findOrFail($id);
+        
+        // Delete the image file from storage
+        Storage::disk('public')->delete($image->url);
+    
+        // Delete the image record from the database
+        $image->delete();
+    
+        // Return a response or redirect as needed
+        return redirect()->back()->with('success', 'L’image de la l\'appartement a été supprimée avec succès.');
+    }
+
     
     public function changeCoverImage(Request $request)
     {

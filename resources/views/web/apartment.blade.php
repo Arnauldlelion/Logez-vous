@@ -20,11 +20,11 @@
                         @if ($index == 3)
                             <a href="{{ $image->getImageUrl() }}" class="remaining-images position-relative d-none d-md-block">
                                 <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
-                                <span class="position-absolute top-50 start-50 translate-middle">{{ $remainingImages }} more image(s)</span>
+                                <span class="position-absolute top-50 start-50 translate-middle badge text-bg-secondary">+{{ $remainingImages }} photos</span>
                             </a>
                             @else
                             <a href="{{ $image->getImageUrl() }}" class="remaining-images d-none">
-                                <span >{{ $remainingImages }} more image(s)</span>
+                                <span > {{ $remainingImages }} </span>
                             </a>
                         @endif
                     @endif

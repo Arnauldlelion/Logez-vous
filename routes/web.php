@@ -142,9 +142,7 @@ Route::group(['namespace' => 'web'], function () {
     Route::middleware(['auth:landlord'])->group(function () {
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
-        Route::get('/appartement', 'Dashboard\DashboardController@apartments')->name('apartments');
-        // Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
-       
+        Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
         Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
         Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
         Route::get('locataire', 'Dashboard\DashboardController@locataire')->name('tenants');
@@ -152,7 +150,7 @@ Route::group(['namespace' => 'web'], function () {
         Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
         Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
-        Route::get('/appartment/{apartmentId}', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
+        Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
 
         Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
         // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
