@@ -139,6 +139,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/apartments/filter', 'ApartmentController@filterApartments')->name('apartments.filter');
     Route::get('/apartments/count', 'ApartmentController@countApartments')->name('apartments.count');
     Route::get('/help', 'PageController@help')->name('help');
+
+    
     Route::middleware(['auth:landlord'])->group(function () {
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
