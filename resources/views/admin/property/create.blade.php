@@ -9,9 +9,9 @@
                 <div class="container col-lg-10">
                     <div class="card-body">
                         <!-- title-->
-                        <div class="d-flex align-items-center mb-5 mt-5">
-                            <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
-                            <h1 class="text-danger">Ajouter un bien</h1>
+                        <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 10%">
+                            
+                            <h1 class="text-danger" >Ajouter un bien</h1>
                         </div>
 
                         <!-- form -->
@@ -82,13 +82,13 @@
                                 </div>
                             </div>
                             <div class="w-100 mb-5">
-                                <div class="text-black float-start">
+                                <div class="text-black float-start" style="padding-bottom: 10%">
                                     <a href="{{ route('admin.property.index') }}" class="text-secondary">
                                         <i class="mdi mdi-chevron-left text-secondary"></i>
                                        Retour
                                     </a>
                                 </div>
-                                <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>
+                                <button type="submit" class="btn btn-danger rounded-pill float-end " >Ajouter</button>
                             </div>
                         </form>
                         <!-- end form-->

@@ -28,7 +28,7 @@
             <li class="ms-2">{{ $apartment->floor}} étage</li>
     </div>
         
-    <div class="published">Publié le 20 septembre 2023</div>
+    
 </div>
 </div>
 </div>

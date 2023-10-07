@@ -90,8 +90,8 @@
                     <div class="d-flex align-items-center mb-3 mb-lg-0">
                         <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
                         <div class="ms-2 content">
-                            <h5>Présenté par votre expert.e en location Logez-vous</h5>
-                            <div>Arnauld</div>
+                            <h5>Présenté par votre expert(e) en location.</h5>
+                            <div>Logez-vous</div>
                         </div>
                     </div>
                     <div class="contact">

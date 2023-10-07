@@ -43,24 +43,16 @@
                         <div class="input-group">
                             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
                                 <span class="input-group-text" id="search">
-                                    <i class="icon-search"></i>
+                                    
                                 </span>
                             </div>
-                            <input type="text" class="form-control" id="navbar-search-input"
-                                placeholder="Rechercher.." aria-label="search" aria-describedby="search">
+                            
                         </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                            data-toggle="dropdown">
-                            <i class="icon-bell mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                   
+                         
                             {{-- <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-success">
@@ -74,19 +66,7 @@
                                     </p>
                                 </div>
                             </a> --}}
-                            <a class="dropdown-item preview-item" href="{{ route('profile')}}">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-warning">
-                                        <i class="ti-settings mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        Private message
-                                    </p>
-                                </div>
-                            </a>
+                            
                             {{-- <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-info">
@@ -315,7 +295,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                   <!-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                             aria-controls="charts">
                             <i class="ti-user mx-0"></i>
@@ -327,7 +307,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('tenants')}}">Mes Locatiares</a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
                             aria-controls="tables">
