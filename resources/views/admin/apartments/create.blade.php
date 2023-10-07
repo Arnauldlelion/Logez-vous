@@ -16,7 +16,7 @@
                 </div>
 
                  <!-- form -->
-                 <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
+                 <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data" >
                     @csrf
 
 

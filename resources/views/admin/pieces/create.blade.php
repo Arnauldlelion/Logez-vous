@@ -87,7 +87,7 @@
                                        Retour
                                     </a>
                                 </div>
-                                <button type="submit" class="btn btn-danger rounded-pill float-end">Ajouter</button>
+                                <button type="submit" class="btn btn-danger rounded-pill float-end" >Ajouter</button>
                             </div>
                         </form>
                         <!-- end form-->

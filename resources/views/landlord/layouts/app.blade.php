@@ -41,21 +41,18 @@
                 <ul class="navbar-nav mr-lg-2">
                     <li class="nav-item nav-search d-none d-lg-block">
                         <div class="input-group">
-                           
-                           
+                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                <span class="input-group-text" id="search">
+                                    
+                                </span>
+                            </div>
+                            
                         </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown">
-                        
-                               
-                            {{-- <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-success">
                                         <i class="ti-info-alt mx-0"></i>
                                     </div>
-                                </div>
                                 <div class="preview-item-content">
                                     <h6 class="preview-subject font-weight-normal">Application Error</h6>
                                     <p class="font-weight-light small-text mb-0 text-muted">
@@ -63,14 +60,7 @@
                                     </p>
                                 </div>
                             </a> --}}
-                            <a class="dropdown-item preview-item" href="{{ route('profile')}}">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-light">
-                                        <i class="ti-settings mx-0"></i>
-                                    </div>
-                                </div>
-                               
-                            </a>
+                            
                             {{-- <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-info">
@@ -299,7 +289,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                   <!-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                             aria-controls="charts">
                             <i class="ti-user mx-0"></i>
@@ -311,7 +301,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('tenants')}}">Mes Locatiares</a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
                             aria-controls="tables">
