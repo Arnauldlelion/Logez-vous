@@ -9,7 +9,7 @@
                     <th>#</th>
                     <th>Nom</th>
                     <th>Emplacement</th>
-                    <th>Nombre d'Appartement</th>
+                    {{-- <th>Nombre d'Appartement</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +18,7 @@
                         <td>{{ $loop->index + 1 }}</td>
                         <td> {{ $property->name }}</td>
                         <td> {{ $property->location }}</td>
-                        @if ($property->apartments)
+                        {{-- @if ($property->apartments)
                             <td>
                                 <a href="" class="btn-btn-success btn-sm">
                                     
@@ -29,7 +29,7 @@
                             </td>
                         @else
                             <td>0</td>
-                        @endif
+                        @endif --}}
                     </tr>
                 @empty
                     <tr>
