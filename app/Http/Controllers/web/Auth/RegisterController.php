@@ -23,7 +23,7 @@ class RegisterController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => ['required', 'string', 'email', 'unique:users'],
-            'phone' => ['required', 'unique:users'],
+            'phone' => ['required', 'unique:users', 'regex:/^\d{9}$/'],
             'location' => 'required',
             'description' => 'required',
         ]);

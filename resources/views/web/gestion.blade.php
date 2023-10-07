@@ -37,11 +37,17 @@
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="intl-tel-input form-group mb-3 rounded-pill">
+                   <!-- <div class="intl-tel-input form-group mb-3 rounded-pill">
                         <div class="selected-flag rounded-start-pill"></div>
-                        <input type="tel" class="form-control rounded-pill w-100" name="phone" id="phoneNumber" placeholder="Enter phone number">
-                    </div>
-
+                         <input type="tel" class="form-control rounded-pill w-100" name="phone" id="phoneNumber" placeholder="Enter phone number"> 
+                    </div> -->
+                    <div class="form-group mb-3">
+                      <input class="form-control rounded-pill @error('phone') is-invalid @enderror" type="text"
+                             value="{{old('phone')}}" name="phone" placeholder="Numero">
+                      @error('phone')
+                      <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
+                  </div> 
                     <div class="form-group mb-3 ">
                         <input class="form-control rounded-pill @error('location') is-invalid @enderror" type="text"
                                id="location" name="location" placeholder="emplacement de votre propriété e.g Douala,Bonajo" style="width: 100% !important">
