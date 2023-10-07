@@ -53,7 +53,7 @@ class LocataireController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => ['required', 'unique:locataires', 'regex:/^\d{9}$/'],
             'email' => 'required|email|unique:locataires|max:255',
         ]);
     
