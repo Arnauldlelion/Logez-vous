@@ -154,7 +154,7 @@ Route::group(['namespace' => 'web'], function () {
 
         Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
         // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
-});
+    });
 });
 
 
