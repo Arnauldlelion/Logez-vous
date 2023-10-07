@@ -72,7 +72,7 @@ class LandlordController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'phone' => ['required', 'unique:landlords'],
+            'phone' => ['required', 'unique:landlords', 'regex:/^\d{9}$/'],
             'email' => ['required', 'string', 'email', 'unique:landlords'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
