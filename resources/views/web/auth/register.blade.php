@@ -114,4 +114,11 @@ closeButton.addEventListener('click', closePopup);
         alert('Le numéro de téléphone n’est pas valide.');
       }
     }
+
+    @if(session('status'))
+       alert({{session('status')}});
+      
+        @endif
   </script>
+
+

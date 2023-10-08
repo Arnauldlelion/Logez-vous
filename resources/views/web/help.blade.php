@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('web.layouts.app')
 
 @section('content')
     {{-- Please put your navbar code inside the layouts.app file --}}
 
-    <section>
+    <section style="padding-top: 15%">
         <div class="container-fluid  help-banner" id="top_page">
             <div class="container me-5 pe-3">
                 <div class="row">
@@ -39,8 +39,8 @@
                         </div>
                         <a href="" class="text-decoration-none">vous etes proprietaire de plusieurs logement ?</a>
                         <div class="mt-4 pt-4">
-                            <img src="{{ asset('storage/images/logos/google_stars.png') }}" alt="">
-                            <img src="{{ asset('storage/images/logos/trust.png') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('storage/images/logos/google_stars.png') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('storage/images/logos/trust.png') }}" alt="">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mt-5">
@@ -548,8 +548,8 @@
     </section>
     <section>
         <div class="justify-content-center">
-            <h2 class="text-center mb-3 pt-5"><img src="{{ asset('storage/images/logez-vous.png') }}" width="18%"
-                    alt="" class="img-fluid"> <span class="text-danger">gère mieux</span> votre logement </h2>
+            <h2 class="text-center mb-3 pt-5"><img src="{{ asset('storage/images/logez-vous.png') }}" style="width: 5%"
+                    alt="" > <span class="text-danger">gère mieux</span> votre logement </h2>
         </div>
         <div class="container-fluid col-xxl-8 py-5 d-none d-md-block">
 

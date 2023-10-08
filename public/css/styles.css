@@ -330,7 +330,7 @@
 
 #gallery-image .image-grid span {
    box-shadow: rgba(0, 0, 0, .1);
-   background-color: ;
+   background-color: #fff;
 }
 #gallery-image .image-grid > a,img {
     width: 100%;

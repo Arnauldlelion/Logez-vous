@@ -140,7 +140,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::get('/apartments/count', 'ApartmentController@countApartments')->name('apartments.count');
     Route::get('/help', 'PageController@help')->name('help');
 
-    
+    Route::get('/info', 'PageController@info')->name('info');
+
     Route::middleware(['auth:landlord'])->group(function () {
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
@@ -153,15 +154,15 @@ Route::group(['namespace' => 'web'], function () {
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
         Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
         Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
-
         Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
         // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
+       
 });
 });
 
 
 Route::get('/prop', function () {
-    return view('aide');
+    return view('help');
 });
 
 Route::get('/prop', function () {

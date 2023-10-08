@@ -41,7 +41,10 @@ class PageController extends Controller
 
         return view('web.apartment', compact('apartment', 'otherApartments', 'images', 'remainingImages'));
     }
+    public function info(){
 
+        return view('web.help');
+    }
     public function help(){
 
         return view('web.aide');
