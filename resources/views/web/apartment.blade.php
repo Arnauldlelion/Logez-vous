@@ -113,10 +113,13 @@
                     <p>{{ $apartment->description }} </p>
                     <hr>
                 </div>
-                <div class="mt-4 d-lg-flex align-items-center justify-content-between text-main">
-                    <div class=" mb-3 mb-lg-0">
+                <div class="expert mt-4 d-lg-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center mb-3 mb-lg-0">
+                        <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
+                        <div class="ms-2 content">
                             <h5>Présenté par votre expert(e) en location.</h5>
-                            <div class="col-2"><img src="{{ asset('storage/images/logez-vous.png') }}" alt="{{ config('app.name') }}" ></div>
+                            <div>Logez-vous</div>
+                        </div>
                     </div>
                     <div class="contact text-main">
                         <span>

@@ -51,6 +51,11 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
+                   
+                         
+                            {{-- <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-success">
                                         <i class="ti-info-alt mx-0"></i>
                                     </div>
                                 <div class="preview-item-content">
@@ -289,7 +294,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                   <!-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                             aria-controls="charts">
                             <i class="ti-user mx-0"></i>
@@ -301,7 +306,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('tenants')}}">Mes Locatiares</a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
                             aria-controls="tables">
