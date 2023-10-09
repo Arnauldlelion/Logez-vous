@@ -25,6 +25,7 @@ class DashboardController extends Controller
             ->get()
             ->pluck('apartments')
             ->flatten();
+
     
         // Retrieve all "rapport de gestion" and "annual rapport de gestion" records for the apartments
         $allRapportDeGestions = collect();
@@ -37,13 +38,24 @@ class DashboardController extends Controller
         $totalRapportDeGestionsCount = $allRapportDeGestions->count();
     
         // Retrieve approved tenant for each apartment
-        $approvedTenants = collect();
+        // $approvedTenants = collect();
     
-        foreach ($totalApartments as $apartment) {
+        // foreach ($totalApartments as $apartment) {
+        //     if ($apartment->tenant && $apartment->tenant->is_approved) {
+        //         $approvedTenants->push($apartment->tenant);
+        //     }
+        // }
+
+                      // Retrieve approved tenants for each apartment
+    $approvedTenants = collect();
+
+    foreach ($properties as $property) {
+        foreach ($property->apartments as $apartment) {
             if ($apartment->tenant && $apartment->tenant->is_approved) {
                 $approvedTenants->push($apartment->tenant);
             }
         }
+    }
     
         return view('landlord.dashboard.index', compact('properties', 'totalApartments', 'userName', 'totalRapportDeGestionsCount', 'approvedTenants'));
     }

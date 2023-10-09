@@ -290,8 +290,8 @@
             <div class="col-lg-7 ps-3">
                 <div class="d-flex justify-content-between  mb-1">
                     <div>
-                        <h4> 95 logements disponible <span class="text-muted" style="font-size: 16px">sur
-                                {{ \App\Models\Apartment::count() }}</span></h4>
+                        <h4> {{ \App\Models\Apartment::count() }} logements disponible <span class="text-muted" style="font-size: 16px">sur
+                                </span></h4>
                     </div>
                     <div class="dropdown ">
                         <span>Trier par </span>

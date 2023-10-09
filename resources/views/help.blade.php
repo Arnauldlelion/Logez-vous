@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('web.layouts.app')
 
 @section('content')
     {{-- Please put your navbar code inside the layouts.app file --}}

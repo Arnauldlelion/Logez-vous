@@ -49,11 +49,12 @@
                             <div class="form-group col-sm-6">
                                 <label for="phone">Numero</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" type="number"
-                                       value="{{old('phone')}}" phone="phone" placeholder="Entrez le numero du propriétaire ">
+                                       value="{{old('phone')}}" name="phone" placeholder="Entrez le numero du propriétaire ">
                                 @error('phone')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
+                            
                             <div class="col-sm-6"></div>
                             <div class="form-group col-sm-6">
                                 <label for="password">Mot de passe</label>

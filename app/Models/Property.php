@@ -14,6 +14,7 @@ class Property extends Model
         'admin_id',
         'slug',
         'name',
+        'number_of_apartments',
         'location',
         'apartmentType',
         'landlord_id',
@@ -28,7 +29,9 @@ class Property extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
-   
+    public function amenities(){
+        return $this->belongstoMany(Amenity::class, 'property_amenity','property_id','amenity_id');
+    }
 
     public function apartments()
     {

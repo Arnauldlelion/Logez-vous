@@ -125,6 +125,18 @@
                         </div>
                       </div>
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                        <label for="size" class="col-sm-2 col-form-label-sm">Superficie</label>
+                        <div class="col-12 col-lg-7">
+                            <input
+                                class="form-control rounded-pill form-control-sm @error('size') is-invalid @enderror"
+                                type="text" id="size" value="{{ old('size') }}" name="size"
+                                placeholder="10x10, 40">
+                            @error('size')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                           <div class="col-12 col-lg-7">
                             <label>Image de couverture</label>
                         <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
