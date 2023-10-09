@@ -31,9 +31,12 @@
                     <p class="text-muted mb-2 font-13">
                         <strong>Nom :</strong> <span class="ml-2">{{ $apartment->name }}</span>
                     </p>
-                    {{-- <p class="text-muted mb-2 font-13">
-                        <strong>Type d'Appartement :</strong> <span class="ml-2">{{ $apartment->apartmentType }}</span>
-                    </p> --}}
+                    <p class="text-muted mb-2 font-13">
+                        <strong>Type d'Appartement :</strong> <span class="ml-2">{{ $apartment->apartmentType->name }}</span>
+                    </p>
+                    <p class="text-muted mb-2 font-13">
+                        <strong>Description :<br></strong> <span class="ml-2">{{ $apartment->description }}</span>
+                    </p>
 
                 </div>
             </div>

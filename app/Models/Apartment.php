@@ -16,6 +16,7 @@ class Apartment extends Model
         'description',
         'monthly_price',
         'number_of_pieces',
+        'size',
         'apt_type_id',
         'property_id',
     ];
@@ -27,7 +28,7 @@ class Apartment extends Model
 
     public function apartmentType()
     {
-    return $this->belongsTo(ApartmentType::class, );
+        return $this->belongsTo(ApartmentType::class, 'apt_type_id');
     }
 
 
@@ -59,6 +60,7 @@ class Apartment extends Model
     {
     return $this->hasMany(Piece::class, 'apartment_id');
     }
+    
 
 
     // public function images()

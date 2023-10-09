@@ -10,13 +10,14 @@ use App\Http\Controllers\Controller;
 class PageController extends Controller
 {
     //
-   public function index()
+    public function index()
     {
-        $apartments = Apartment::orderBy('created_at', 'desc')
+        $apartments = Apartment::where('published', true)
+            ->orderBy('created_at', 'desc')
             ->with('images')
             ->take(8)
             ->get();
-        
+    
         return view('index', compact('apartments'));
     }
 
@@ -27,10 +28,16 @@ class PageController extends Controller
     return view('web.apartments', compact('apartments'));
    }
 
-   public function showSingleAppartment($id)
+    public function showSingleAppartment($id)
     {
-        $apartment = Apartment::with(['images', 'pieces.images'])->findOrFail($id);
-        $otherApartments = Apartment::where('id', '!=', $apartment->id)->with('images')->limit(3)->get();
+        $apartment = Apartment::with(['images', 'pieces.images', 'property.amenities'])
+            ->findOrFail($id);
+
+        $otherApartments = Apartment::where('id', '!=', $apartment->id)
+            ->where('published', true)
+            ->with('images')
+            ->limit(3)
+            ->get();
 
         // Retrieve the images belonging to both the apartment and piece
         $images = $apartment->images->merge($apartment->pieces->flatMap(function ($piece) {
@@ -39,13 +46,16 @@ class PageController extends Controller
 
         $remainingImages = count($images) - 4;
 
-        return view('web.apartment', compact('apartment', 'otherApartments', 'images', 'remainingImages'));
+        $amenities = $apartment->property->amenities;
+
+        return view('web.apartment', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities'));
     }
 
     public function help(){
 
         return view('web.aide');
     }
+
    public function proprietaire(){
     return view('proprietaires.index');
    }

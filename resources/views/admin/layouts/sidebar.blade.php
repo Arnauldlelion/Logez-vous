@@ -15,7 +15,6 @@
                     </a>
                 </li>
 
-                <li class="menu-title  mt-2">Gestion immobilière</li>
 
                         <li class="{{ Route::is('admin.piece_types*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.piece_types.index') }}">
@@ -29,6 +28,14 @@
                                 <span> Types d’appartements </span>
                             </a>
                         </li>
+                        <li class="menu-title  mt-2">Atout</li>
+                        <li class="{{ Request::is('admin/amenities*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.amenities.index') }}">
+                                <i data-feather="users"></i>
+                                <span>Atout</span>
+                            </a>
+                        </li>
+                        <li class="menu-title  mt-2">Gestion immobilière</li>
                         <li class="{{ Route::is('admin.property.*') ? 'menuitem-active' : '' }}">
                             <a href="{{ route('admin.property.index') }}">
                                 <i data-feather="home"></i>
@@ -37,8 +44,8 @@
                         </li>
 
                         <li class="menu-title  mt-2">Locataires</li>
-                        <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
-                            <a href="{{ route('admin.tenant') }}">
+                        <li class="{{ Request::is('admin/tenant*') ? 'menuitem-active' : '' }}">
+                            <a href="{{ route('admin.tenants.index') }}">
                                 <i data-feather="users"></i>
                                 <span>Mes Locataire</span>
                             </a>

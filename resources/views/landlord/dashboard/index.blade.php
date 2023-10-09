@@ -46,7 +46,7 @@
                         <a href="{{ route('properties')}}" class="text-decoration-none text-light">
                           <p class="mb-4">Nombre de Logements</p>
                           <p class="fs-30 mb-2">{{ $properties->count() }}</p>
-                          <p>10.00% (30 jours)</p>
+                          {{-- <p>10.00% (30 jours)</p> --}}
                         </a>
                       </div>
                   </div>
@@ -57,7 +57,7 @@
                         <a href="{{ route('apartments')}}" class="text-decoration-none text-white">
                           <p class="mb-4">Nombre d'appartements</p>
                           <p class="fs-30 mb-2">{{ $totalApartments->count() }}</p>
-                          <p>22.00% (30 jours)</p>
+                          {{-- <p>22.00% (30 jours)</p> --}}
                         </a>
                       </div>
                   </div>
@@ -70,7 +70,10 @@
                         <a href="{{ route('tenants')}}" class="text-decoration-none text-white">
                           <p class="mb-4">Nombre de Locataires</p>
                           <p class="fs-30 mb-2">{{ $approvedTenants->count() }}</p>
-                          <p>2.00% (30 jours)</p>
+                          @foreach($approvedTenants as $tenant)
+    <p>{{ $tenant->first_name }} {{ $tenant->last_name }}</p>
+@endforeach
+                          {{-- <p>2.00% (30 jours)</p> --}}
                         </a>
                       </div>
                   </div>
@@ -80,7 +83,7 @@
                       <div class="card-body">
                           <p class="mb-4">Vos Rapports de gestion</p>
                           <p class="fs-30 mb-2"></p>{{ $totalRapportDeGestionsCount }}
-                          <p>0.22% (30 jours)</p>
+                          {{-- <p>0.22% (30 jours)</p> --}}
                       </div>
                   </div>
               </div>

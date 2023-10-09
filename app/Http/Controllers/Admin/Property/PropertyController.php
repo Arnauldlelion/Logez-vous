@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Property;
 
+use App\Models\Image;
+use App\Models\Amenity;
+use App\Models\Landlord;
+use App\Models\Property;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ApartmentType;
-use Illuminate\Support\Str;
-use App\Models\Landlord;
-use App\Models\Image;
-use App\Models\Property;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,8 +33,9 @@ class PropertyController extends Controller
     public function create()
     {
         $landlords = Landlord::where('admin_id', auth('admin')->id())->get();
+        $amenities = Amenity::orderBy('name')->get();
 
-        return view('admin.property.create', compact('landlords'));
+        return view('admin.property.create', compact('landlords','amenities'));
     }
 
     /**
@@ -50,17 +52,22 @@ class PropertyController extends Controller
              'apartmentType.*' => ['exists:apartment_types,id'],
              'location' => ['required', 'string', 'max:255'],
              'name' => ['required', 'string'],
+             'number_of_apartments' => ['required', 'integer'],
              'landlord' => ['required', 'exists:landlords,id'], 
          ]);
      
          $property = new Property();
          $property->name = $request->input('name');
+         $property->number_of_apartments = $request->input('number_of_apartments');
          $property->slug = Str::slug($request->input('name') . '-' . time());
          $property->location = $request->input('location');
          $property->admin_id = auth('admin')->id();
          $property->landlord_id = $request->input('landlord');
          $property->save();
      
+         $property_amenityIds = $request->input('amenity');
+         $property->amenities()->sync($property_amenityIds);
+
          $apartmentTypes = $request->input('apartmentType');
      
          $property->apartmentTypes()->attach($apartmentTypes, ['property_id' => $property->id]);
@@ -102,9 +109,10 @@ public function edit(Property $property)
 
     $landlords = Landlord::where('admin_id', auth('admin')->id())->get();
     $apt_types = ApartmentType::all();
+    $amenities = Amenity::orderBy('name')->get();
     $selectedAptTypes = $property->apartmentTypes()->pluck('apartment_types.id')->toArray();
 
-    return view('admin.property.edit', compact('property', 'apt_types', 'landlords', 'selectedAptTypes'));
+    return view('admin.property.edit', compact('property', 'apt_types', 'landlords', 'selectedAptTypes','amenities'));
 }
 
    
@@ -157,21 +165,6 @@ public function edit(Property $property)
     
     }
 
-    // public function deletePropertyImage(Request $request, $propertyId)
-    // {
-    // // Retrieve the image
-    // $image = Image::findOrFail($id);
-            
-    // // Delete the image file from storage
-    // Storage::disk('public')->delete($image->url);
-
-    // // Delete the image record from the database
-    // $image->delete();
-
-    //     // Return a response or redirect as needed
-    //     return redirect()->back()->with('success', 'L’image de la propriété a été supprimée avec succès.');
-    // }
-
 
     public function deletePropertyImage($id)
     {
@@ -210,15 +203,19 @@ public function edit(Property $property)
             'apartmentType.*' => ['exists:apartment_types,id'],
             'location' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string'],
+            'number_of_apartments' => ['required', 'integer'],
             'landlord' => ['required', 'exists:landlords,id'], 
         ]);
     
         $property = Property::findOrFail($id);
         $property->name = $request->input('name');
+        $property->number_of_apartments = $request->input('number_of_apartments');
         $property->location = $request->input('location');
         $property->landlord_id = $request->input('landlord');
         $property->save();
     
+        $property_amenityIds = $request->input('amenity');
+        $property->amenities()->sync($property_amenityIds);
         $apartmentTypes = $request->input('apartmentType');
         $property->apartmentTypes()->sync($apartmentTypes);
     
