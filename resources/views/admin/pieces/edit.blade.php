@@ -10,7 +10,7 @@
             <div class="card-body">
                  <!-- title-->
                  <div class="d-flex align-items-center my-5" style="padding-top: 10%">
-                    
+
                     <h1 class="text-danger">Pièce</h1>
                 </div>
                  <!-- form -->

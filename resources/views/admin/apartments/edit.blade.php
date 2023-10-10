@@ -9,8 +9,8 @@
                 <div class="container col-lg-10">
                     <div class="card-body">
                         <!-- title-->
-                        <div class="d-flex align-items-center mb-5 mt-5">
-                            <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
+                        <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 10%">
+                           
                             <h1 class="text-danger">Detail de votre appartement</h1>
                         </div>
 
@@ -183,7 +183,7 @@
                                 </div>
                             </div>
 
-                            <div class="w-100 mb-5">
+                            <div class="w-100 mb-5" style="padding-bottom: 10%">
                                 <div class="text-black float-start">
                                     <a href="{{ route('admin.property.show', session('new_prop_id')) }}" class="text-secondary">
                                         Retour
