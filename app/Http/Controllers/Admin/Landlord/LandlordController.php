@@ -72,21 +72,20 @@ class LandlordController extends Controller
         
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'phone' => ['required', 'unique:landlords'],
+            'phone' => ['required', 'unique:landlords', 'regex:/^\d{9}$/'],
             'email' => ['required', 'string', 'email', 'unique:landlords'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-      
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
+       
 
         $input = $request->all();
         $input['password'] = \Hash::make($request->password);
         $input['admin_id'] = auth('admin')->user()->id; // Assign the admin_id value
-      
         $landlord = Landlord::create($input);
         return redirect()->to(route('admin.landlords.index'))->with('success', "Propriétaire créé avec succès");
     }

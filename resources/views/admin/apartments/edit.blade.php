@@ -9,8 +9,8 @@
                 <div class="container col-lg-10">
                     <div class="card-body">
                         <!-- title-->
-                        <div class="d-flex align-items-center mb-5 mt-5">
-                            <img src="{{ asset('storage/images/logos/devis.png') }}" alt="" height="64">
+                        <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 10%">
+                           
                             <h1 class="text-danger">Detail de votre appartement</h1>
                         </div>
 
@@ -65,6 +65,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="col-12 col-lg-7">
+                                    <label for="published">Disponibilité</label>
+                                <select class="form-control" name="published" id="published">
+                                    <option value="0" {{ $apt->published == 0 ? 'selected' : '' }}>Non Disponible</option>
+                                    <option value="1" {{ $apt->published == 1 ? 'selected' : '' }}>Disponible</option>
+                                </select>
+                                    @error('name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                  
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                                 <div class="col-12 col-lg-7">
                                     <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
@@ -127,6 +140,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <label for="size" class="col-sm-2 col-form-label-sm">Superficie</label>
+                                <div class="col-12 col-lg-7">
+                                    <input class="form-control rounded-pill form-control-sm @error('size') is-invalid @enderror" type="text"
+                                       id="size" required=""
+                                       value="{{ old('size', $apt->size) }}"
+                                       name="size"
+                                       placeholder="10x10, 40">
+                                @error('size')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                                </div>
+                              </div>
 
                             @if ($apt->coverImage)
                                 <div class="form-group mb-1">
@@ -157,7 +183,7 @@
                                 </div>
                             </div>
 
-                            <div class="w-100 mb-5">
+                            <div class="w-100 mb-5" style="padding-bottom: 10%">
                                 <div class="text-black float-start">
                                     <a href="{{ route('admin.property.show', session('new_prop_id')) }}" class="text-secondary">
                                         Retour

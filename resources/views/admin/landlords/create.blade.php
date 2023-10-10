@@ -54,6 +54,7 @@
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
+                            
                             <div class="col-sm-6"></div>
                             <div class="form-group col-sm-6">
                                 <label for="password">Mot de passe</label>

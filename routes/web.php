@@ -43,21 +43,16 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/landlord/{id}', 'Dashboard\DashboardController@landlordDetails')->name('landlord-details');
-        // Route::get('/admin/landlords/{landlord}', 'Admin\LandlordController@show')->name('admin.landlords.show');
-
-            
-                // Route::get('/pieces', [LandlordController::class, 'getPieces'])->name('pieces');
-                // Route::post('/pieces', [LandlordController::class, 'postPieces'])->name('pieces');
-
-        // Route::resource('approuved-landlords', 'Landlord\LandlordController');
-        Route::resource('landlords', 'Landlord\LandlordController');
-        Route::resource('approuved-landlords', 'Landlord\LandlordController');
-        Route::resource('pages', 'PageContentController');
         Route::resource('apartment_types', 'ApartmentTypes\ApartmentTypesController');
+        Route::resource('approuved-landlords', 'Landlord\LandlordController');
         Route::resource('piece_types', 'PieceTypes\PieceTypesController');
+        Route::resource('landlords', 'Landlord\LandlordController');
+        Route::resource('amenities', 'Amenity\AmenityController');
         Route::resource('testimonials', 'TestimonyController');
+        Route::resource('pages', 'PageContentController');
         Route::resource('news', 'NewsController');
         Route::resource('faqs', 'FaqsController');
+        
 
         // super Administrators
         Route::group(['middleware' => ['auth:admin', 'admin.super']], function () {
@@ -98,11 +93,12 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::post('users/{user}/approve', 'Administrator\AdminController@approve')->name('users.approve');
         // REJECT LANDLORD ACCOUNT
         Route::delete('users/{user}/reject', 'Administrator\AdminController@reject')->name('users.reject');
-        // CANDIDATURE
-        Route::get('tenant', 'Locataire\LocataireController@tenants')->name('tenant');
-        Route::get('candidatures/non-approved', 'Locataire\LocataireController@unApprovedCandidature')->name('unApprovedCandidature');
-        Route::post('candidatures/approve/{candidate}', 'Locataire\LocataireController@approveCandidature')->name('candidatures.approve');
-        Route::delete('candidatures/reject/{id}', 'Locataire\LocataireController@rejectCandidature')->name('candidatures.reject');
+
+        // TENANTS
+        Route::resource('tenants', 'Locataire\LocataireController');
+        Route::get('tenants/candidatures/non-approved', 'Locataire\LocataireController@unApprovedCandidature')->name('unApprovedCandidature');
+        Route::post('tenants/candidatures/approve/{candidate}', 'Locataire\LocataireController@approveCandidature')->name('candidatures.approve');
+        Route::delete('tenants/candidatures/reject/{id}', 'Locataire\LocataireController@rejectCandidature')->name('candidatures.reject');
 
         // PROFILE
         Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
@@ -127,11 +123,6 @@ Route::group(['namespace' => 'web'], function () {
 
     Route::post('/locataires/{apartment_id}', 'Locataire\LocataireController@store')->name('storeLocataire');
 
-
-       
-    Route::group(['middleware' => ['auth']], function () {
-    });
-
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');
     Route::get('/apartments/single-appartment/{id}', 'PageController@show')->name('single-appartment');
@@ -143,6 +134,8 @@ Route::group(['namespace' => 'web'], function () {
     Route::get('/info', 'PageController@info')->name('info');
 
     Route::middleware(['auth:landlord'])->group(function () {
+    
+    Route::group(['middleware' => ['auth:landlord']], function ()  {
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
         Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
@@ -156,8 +149,7 @@ Route::group(['namespace' => 'web'], function () {
         Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
         Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
         // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
-       
-});
+    });
 });
 
 
@@ -165,12 +157,11 @@ Route::get('/prop', function () {
     return view('help');
 });
 
-Route::get('/prop', function () {
-    return view('landlord.create_property');
-});
+// Route::get('/prop', function () {
+//     return view('landlord.create_property');
+// });
 
 Route::get('/proprietaires', function () {
     return view('proprietaires.index');
 });
-
-
+});

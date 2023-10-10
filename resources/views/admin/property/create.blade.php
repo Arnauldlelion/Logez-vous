@@ -9,9 +9,13 @@
                 <div class="container col-lg-10">
                     <div class="card-body">
                         <!-- title-->
+
                         <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 10%">
                             
                             <h1 class="text-danger" >Ajouter un bien</h1>
+
+                      
+
                         </div>
 
                         <!-- form -->
@@ -28,6 +32,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <label for="number_of_apartments" class="col-sm-2 col-form-label-sm">Nombre d'Appartements</label>
+                                <div class="col-12 col-lg-7">
+                                    <input class="form-control rounded-pill form-control-sm @error('number_of_apartments') is-invalid @enderror" type="text"
+                                       id="number_of_apartments" required=""
+                                       value="{{ old('number_of_apartments') }}"
+                                       name="number_of_apartments"
+                                       placeholder="">
+                                @error('number_of_apartments')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                                </div>
+                              </div>
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                                 <label for="apartmentType" class="col-sm-2 col-form-label-sm">Type d'Appartment</label>
@@ -65,6 +82,7 @@
                                     @enderror
                                 </div>
                             </div>
+                           
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                                 <label for="landlord" class="col-sm-2 col-form-label-sm">Propriétaire</label>
                                 <div class="col-12 col-lg-7">
@@ -81,14 +99,38 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="w-100 mb-5">
-                                <div class="text-black float-start" style="padding-bottom: 10%">
+
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                Commodité
+                                @foreach ($amenities as $amenity)
+                                <div class="form-check {{ $errors->has('amenity') ? 'is-invalid' : ''}}">
+                    
+                                       <label>
+                                             <input type="checkbox"
+                                            class="form-check-input"
+                                               name="amenity[]"
+                                               value="{{ $amenity->id }}"
+                                               {{ collect(old('amenity'))->contains($amenity->id) ? 'checked' : ''}}> {{ $amenity->name }}
+                                       </label>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                           
+
+                            <div class="w-100 mb-5" style="padding-bottom: 10%">
+                                <div class="text-black float-start">
+
                                     <a href="{{ route('admin.property.index') }}" class="text-secondary">
                                         <i class="mdi mdi-chevron-left text-secondary"></i>
                                        Retour
                                     </a>
                                 </div>
+
                                 <button type="submit" class="btn btn-danger rounded-pill float-end " >Ajouter</button>
+
+                              
+
                             </div>
                         </form>
                         <!-- end form-->

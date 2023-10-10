@@ -54,6 +54,7 @@ class ApartmentController extends Controller
             'furnished' => ['nullable', 'string'],
             'monthly_price' => ['required', 'string'],
             'number_of_pieces' => ['required', 'integer'],
+            'size' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
             'cover_image' => ['required'],
         ]);
@@ -71,6 +72,7 @@ class ApartmentController extends Controller
          $apartment->furnished = $request->input('furnished');
          $apartment->monthly_price = $request->input('monthly_price');
          $apartment->number_of_pieces = $request->input('number_of_pieces');
+         $apartment->size = $request->input('size');
          $apartment->description = $request->input('description');
          $apartment->apt_type_id = 1; // Set the appropriate apartment type ID here
          $apartment->property_id = $new_prop_id;
@@ -152,6 +154,7 @@ class ApartmentController extends Controller
             'furnished' => ['nullable', 'string'],
             'monthly_price' => ['required', 'string'],
             'number_of_pieces' => ['required', 'integer'],
+            'size' => ['required', 'integer'],
             'description' => ['nullable', 'string'],
         ]);
     
@@ -161,6 +164,8 @@ class ApartmentController extends Controller
         $apartment->furnished = $request->input('furnished');
         $apartment->monthly_price = $request->get('monthly_price');
         $apartment->number_of_pieces = $request->get('number_of_pieces');
+        $apartment->published = $request->get('published');
+        $apartment->size = $request->input('size');
         $apartment->description = $request->get('description');
     
         $apartment->save();

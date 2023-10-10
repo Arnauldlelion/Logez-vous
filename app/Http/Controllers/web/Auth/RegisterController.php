@@ -20,8 +20,8 @@ class RegisterController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => ['required', 'alpha', 'max:255'],
+            'last_name' => ['required', 'alpha', 'max:255'],
             'email' => ['required', 'string', 'email', 'unique:users'],
             'phone' => ['required', 'unique:users', 'regex:/^\d{9}$/'],
             'location' => 'required',

@@ -41,18 +41,26 @@
                 <ul class="navbar-nav mr-lg-2">
                     <li class="nav-item nav-search d-none d-lg-block">
                         <div class="input-group">
+
                             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
                                 <span class="input-group-text" id="search">
                                     
                                 </span>
                             </div>
-                            
+
+                           
+                           
+
                         </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
+
                    
-                         
+
+                    <li class="nav-item dropdown">
+                        
+
                             {{-- <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-success">
@@ -66,7 +74,11 @@
                                     </p>
                                 </div>
                             </a> --}}
+
                             
+
+                           
+
                             {{-- <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-info">
@@ -299,7 +311,7 @@
                         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                             aria-controls="charts">
                             <i class="ti-user mx-0"></i>
-                            <span class="menu-title">Vos Locataires</span>
+                            <span class="menu-title">Mes Locataires</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="charts">
