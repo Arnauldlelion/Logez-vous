@@ -10,41 +10,51 @@ use Illuminate\Support\Facades\Auth;
 
 class LocataireController extends Controller
 {
-    public function locataire()
-    {
-        // Get the authenticated landlord
-        $landlord = Auth::guard('landlord')->user();
+    // public function locataire()
+    // {
+    //     // Get the authenticated landlord
+    //     $landlord = Auth::guard('landlord')->user();
     
-        $userName = $landlord->name;
+    //     $userName = $landlord->name;
     
-        // Retrieve properties and apartments
-        $properties = $landlord->properties;
+    //     // Retrieve properties and apartments
+    //     $properties = $landlord->properties;
     
-        $totalApartments = $landlord->properties()
-            ->with('apartments')
-            ->get()
-            ->pluck('apartments')
-            ->flatten();
+    //     $totalApartments = $landlord->properties()
+    //         ->with('apartments')
+    //         ->get()
+    //         ->pluck('apartments')
+    //         ->flatten();
     
-        // Retrieve all "rapport de gestion" and "annual rapport de gestion" records for the apartments
-        $allRapportDeGestions = collect();
+    //     // Retrieve all "rapport de gestion" and "annual rapport de gestion" records for the apartments
+    //     $allRapportDeGestions = collect();
     
-        foreach ($totalApartments as $apartment) {
-            $allRapportDeGestions = $allRapportDeGestions->merge($apartment->rapportDeGestions);
-            $allRapportDeGestions = $allRapportDeGestions->merge($apartment->annualRapportDeGestions);
-        }
+    //     foreach ($totalApartments as $apartment) {
+    //         $allRapportDeGestions = $allRapportDeGestions->merge($apartment->rapportDeGestions);
+    //         $allRapportDeGestions = $allRapportDeGestions->merge($apartment->annualRapportDeGestions);
+    //     }
     
-        $totalRapportDeGestionsCount = $allRapportDeGestions->count();
+    //     $totalRapportDeGestionsCount = $allRapportDeGestions->count();
     
-        // Retrieve approved tenant for each apartment
-        $approvedTenants = collect();
+    //     // Retrieve approved tenant for each apartment
+    //     $approvedTenants = collect();
     
-        foreach ($totalApartments as $apartment) {
-            if ($apartment->tenant && $apartment->tenant->is_approved) {
-                $approvedTenants->push($apartment->tenant);
-            }
-        }
+    //     foreach ($totalApartments as $apartment) {
+    //         if ($apartment->tenant && $apartment->tenant->is_approved) {
+    //             $approvedTenants->push($apartment->tenant);
+    //         }
+    //     }
     
+    //     return view('landlord.tenants.index', compact( 'approvedTenants'));
+    // }
+
+    public function locataire(){
+        $propertyIds = Property::where('landlord_id', $landlordId)->pluck('id');
+    
+    $approvedTenants = Locataire::where('is_approved', true)
+        ->whereIn('apartment_id', $propertyIds)
+        ->get();
+        
         return view('landlord.tenants.index', compact( 'approvedTenants'));
     }
 
@@ -53,7 +63,7 @@ class LocataireController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => ['required', 'unique:locataires', 'regex:/^\d{9}$/'],
             'email' => 'required|email|unique:locataires|max:255',
         ]);
     

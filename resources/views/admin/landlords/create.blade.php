@@ -47,14 +47,14 @@
                             </div>
                             <div class="col-sm-6"></div>
                             <div class="form-group col-sm-6">
-                                <label>Phone</label>
-                                <input class="form-control @error('phone') is-invalid @enderror" type="phone"
-                                       value="{{old('phone')}}" name="phone"
-                                       placeholder="Entrez numero de téléphone du propriétaire">
+                                <label for="phone">Numero</label>
+                                <input class="form-control @error('phone') is-invalid @enderror" type="number"
+                                       value="{{old('phone')}}" name="phone" placeholder="Entrez le numero du propriétaire ">
                                 @error('phone')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
+                            
                             <div class="col-sm-6"></div>
                             <div class="form-group col-sm-6">
                                 <label for="password">Mot de passe</label>

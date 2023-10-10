@@ -68,8 +68,8 @@
                                         </td>
                                         <x-delete-modal :id="$property->id"
                                             :url="route('admin.property.destroy', $property->id)"
-                                            :content="'Are you sure you want to delete this Apartment <strong>' .
-                                            $property->id .
+                                            :content="'Êtes-vous sûre de vouloir supprimer cet propriété <strong>' .
+                                            $property->name .
                                             '</strong>? <b>Cette action est irréversible</b>'" />
                                     </tr>
                                 @empty

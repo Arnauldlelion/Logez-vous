@@ -11,12 +11,12 @@
             <div class="card-body">
                  <!-- title-->
                  <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 10%">
-                   
+
                     <h1 class="text-danger">Detail de votre appartment</h1>
                 </div>
 
                  <!-- form -->
-                 <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
+                 <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data" >
                     @csrf
 
 
@@ -124,6 +124,18 @@
                         @enderror
                         </div>
                       </div>
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                        <label for="size" class="col-sm-2 col-form-label-sm">Superficie</label>
+                        <div class="col-12 col-lg-7">
+                            <input
+                                class="form-control rounded-pill form-control-sm @error('size') is-invalid @enderror"
+                                type="text" id="size" value="{{ old('size') }}" name="size"
+                                placeholder="10x10, 40">
+                            @error('size')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                           <div class="col-12 col-lg-7">
                             <label>Image de couverture</label>

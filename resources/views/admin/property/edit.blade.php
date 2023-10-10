@@ -30,6 +30,19 @@
                             @enderror
                         </div>
                       </div>
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                        <label for="number_of_apartments" class="col-sm-2 col-form-label-sm">Nombre d'Appartements</label>
+                        <div class="col-12 col-lg-7">
+                            <input class="form-control rounded-pill form-control-sm @error('number_of_apartments') is-invalid @enderror" type="text"
+                               id="number_of_apartments" required=""
+                               value="{{ old('number_of_apartments', $property->number_of_apartments) }}"
+                               name="number_of_apartments"
+                               placeholder="">
+                        @error('number_of_apartments')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                        </div>
+                      </div>
 
                       <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
                         <label for="appartmentType" class="col-sm-2 col-form-label-sm">Type d'Appartement</label>
@@ -86,6 +99,24 @@
                             @enderror
                         </div>
                     </div>
+                    @foreach ($amenities as $amenity)
+                    <div class="row">
+                        <div class="col-md-auto col-xl-3">
+                            <div class="form-group">
+                                <div class="form-check {{ $errors->has('amenity') ? 'is-invalid' : ''}}">
+                                    <label for="amenity">
+                                     <input type="checkbox" 
+                                           class="form-check-input" 
+                                           name="amenity[]" 
+                                         {{ collect(old('amenity', collect($property->amenities()->pluck('amenity_id'))))->contains($amenity->id) ? 'checked' : '' }}
+                                         value="{{ $amenity->id }}">
+                                     {{ $amenity->name}}
+                                   </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  @endforeach
                       <div class="w-100 mb-5">
                         <div class="text-black float-start">
                             <a href="{{ route('admin.property.index') }}" class="text-secondary">

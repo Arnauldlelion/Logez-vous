@@ -41,7 +41,15 @@
                     {{ $apartment->property->location }}</h1>
                 <div class="small">FLTK38060</div>
                 <div class="small-main">Les atouts du bien</div>
-                <div class="row g-0">
+              <div class="row d-flex align-items-center mt-4 mb-4">
+                @foreach ($amenities as $amenity)
+                <div class="col-3 text-center" style="border-right:1px solid black">
+                    <img src="{{ asset('storage/' . $amenity->image) }}" class="img-fluid" style="height: 40px; width:40px;"><br><br>
+                {{ $amenity->name }}
+                </div>
+                @endforeach
+              </div>
+                {{-- <div class="row g-0">
                     <div class="col-3">
                         <div class="icon-box">
                             <div class="icon">
@@ -98,26 +106,23 @@
                             <div class="text">Parking</div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <hr>
                 <div class="p-text">
                     <h4>Description de l'appartement</h4>
                     <p>{{ $apartment->description }} </p>
                     <hr>
                 </div>
-                <div class="expert mt-4 d-lg-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center mb-3 mb-lg-0">
-                        <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
-                        <div class="ms-2 content">
-                            <h5>Présenté par votre expert.e en location Logez-vous</h5>
-                            <div>Arnauld</div>
-                        </div>
+                <div class="mt-4 d-lg-flex align-items-center justify-content-between text-main">
+                    <div class=" mb-3 mb-lg-0">
+                            <h5>Présenté par votre expert(e) en location.</h5>
+                            <div class="col-2"><img src="{{ asset('storage/images/logez-vous.png') }}" alt="{{ config('app.name') }}" ></div>
                     </div>
-                    <div class="contact">
+                    <div class="contact text-main">
                         <span>
                             <i class="fas fa-phone"></i>
                         </span>
-                        <span class="ms-2">+237 657170133</span>
+                        <span >+237 657170133</span>
                     </div>
                 </div>
                 <hr>
@@ -173,7 +178,7 @@
                                 <div class="icon">
                                     <i class="fas fa-landmark"></i>
                                 </div>
-                                <div class="ms-2">{{ 66 }} m<sup>2</sup></div>
+                                <div class="ms-2">{{ $apartment->size }} m<sup>2</sup></div>
                             </div>
                             <div class="d-flex align-items-center text-main mb-3">
                                 <div class="icon">

@@ -35,13 +35,13 @@
                                         class=" ml-2 fa fa-angle-down"></i></button>
                             <div class="dropdown-menu w-25" aria-labelledby="resultCount">
                                 <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 10]) }}">10</a>
+                                   href="{{ route('admin.tenants.index', ['q'=>$search['q'], 'limit' => 10]) }}">10</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 20]) }}">20</a>
+                                   href="{{ route('admin.tenants.index', ['q'=>$search['q'], 'limit' => 20]) }}">20</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 50]) }}">50</a>
+                                   href="{{ route('admin.tenants.index', ['q'=>$search['q'], 'limit' => 50]) }}">50</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 100]) }}">100</a>
+                                   href="{{ route('admin.tenants.index', ['q'=>$search['q'], 'limit' => 100]) }}">100</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="collapse {{ $search['q'] ? 'show' : ''}}" id="collapseFilter">
-                    <form action="{{ route('admin.tenant') }}">
+                    <form action="{{ route('admin.tenants.index') }}">
                         <input type="hidden" name="limit" value="{{ $search['limit'] }}">
                         <div class="row">
                             <div class="col-md-10">
@@ -91,21 +91,21 @@
                             <td>{{ $tenant->email ?: 'N/A' }}</td>
                             <td>{{ $tenant->apartment->name }}</td>
                             <td>{{ $tenant->apartment->property->name }}</td>
+                            <td>
                             
-                            {{-- <td>
-                                @if(!$tenant->super_tenant)
-                                    <a class="btn btn-danger btn-sm text-white" onclick="event.preventDefault();
-                                            document.getElementById('{{$tenant->id}}').submit();">
-                                        <span class="fa fa-trash"></span>
-                                    </a>
-                                @endif
-
-                                <form action=""
-                                      id="" method="POST" style="display: none;">
-                                    @method('DELETE')
-                                    {{ csrf_field() }}
-                                </form>
-                            </td> --}}
+                            <div class="btn-group">
+                                <a href="{{ route('admin.tenants.edit', $tenant->id) }}"
+                                    class="btn btn-success  btn-sm">
+                                    <i class="mdi mdi-pencil"></i></a>
+                                <a data-toggle="modal" data-target="#deleteModal{{ $tenant->id}}"
+                                    href="#" class="btn btn-danger btn-sm"><i
+                                        class="mdi mdi-delete"></i></a>
+                            </div>
+     
+                        </td>
+                        <x-delete-modal :id="$tenant->id" :url="route('admin.tenants.destroy', $tenant->id)" :content="'Are you sure you want to delete this Piece <strong>' .
+                            $tenant->first_name, $tenant->last_name.
+                            '</strong>?  Cette action est irréversible'" />
                         </tr>
                     @empty
                         <tr>

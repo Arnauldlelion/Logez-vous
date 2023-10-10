@@ -41,11 +41,13 @@
                         </div>
                         <div class="col-sm-6"></div>
                     
-                        <div class="intl-tel-input form-group mb-3 rounded-pill" style="width: 100%">
-                          <div class="selected-flag rounded-start-pill" style="width: 100%"></div>
-                          <input type="tel" class="form-control rounded-pill w-100" name="phone" id="phoneNumber" placeholder="Enter phone number">
-                        </div>
-                  
+                        <div class="form-group mb-3">
+                          <input class="form-control rounded-pill @error('phone') is-invalid @enderror" type="text"
+                                 value="{{old('phone')}}" name="phone" placeholder="Numero">
+                          @error('phone')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                          @enderror
+                      </div>
                         <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
 
                         <div id="popupContainer">
