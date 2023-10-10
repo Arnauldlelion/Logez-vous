@@ -88,7 +88,7 @@
                 </div>
                 <div class="expert mt-4 d-lg-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center mb-3 mb-lg-0">
-                        <img src="/storage/images/black-man.jpg" alt="{{ config('app.name') }}" class="img-fluid">
+                        <img src="{{ asset('/storage/images/logos/logez-vous.png') }} " style="width: 35%" alt="{{ config('app.name') }}" class="img-fluid">
                         <div class="ms-2 content">
                             <h5>Présenté par votre expert(e) en location.</h5>
                             <div>Logez-vous</div>
@@ -98,7 +98,7 @@
                         <span>
                             <i class="fas fa-phone"></i>
                         </span>
-                        <span class="ms-2">+237 657170133</span>
+                        <span class="ms-2">+237 693256587</span>
                     </div>
                 </div>
                 <hr>
@@ -150,12 +150,12 @@
                                     <div class="text-sec">Dont {{ $apartment->monthly_price }} xaf de charges</div>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center text-main mb-3">
+                            {{-- <div class="d-flex align-items-center text-main mb-3">
                                 <div class="icon">
                                     <i class="fas fa-landmark"></i>
                                 </div>
                                 <div class="ms-2">{{ 66 }} m<sup>2</sup></div>
-                            </div>
+                            </div> --}}
                             <div class="d-flex align-items-center text-main mb-3">
                                 <div class="icon">
                                     <i class="far fa-calendar"></i>

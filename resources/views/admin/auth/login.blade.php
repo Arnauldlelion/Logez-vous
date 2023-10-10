@@ -110,11 +110,8 @@
     <div class="auth-fluid-right text-center">
         <div class="auth-user-testimonial">
             <h2 class="mb-3 text-white">Admin Back-office</h2>
-            <p class="lead"><i class="mdi mdi-format-quote-open"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
+            <p class="lead"><i class="mdi mdi-format-quote-open"></i> Ceci est l'espace de connexion au panneau d'administration de la plateforme Logez-vous. Bonne navigation a vous.
+                <i class="mdi mdi-format-quote-open"></i></p>
         </div> <!-- end auth-user-testimonial-->
     </div>
     <!-- end Auth fluid right content -->

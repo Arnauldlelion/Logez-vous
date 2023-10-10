@@ -979,7 +979,7 @@
         <div class="container-fluid mt-5 pt-5">
             <div class="col-lg-10 mx-auto">
                 <div class="container">
-                    <h1 class="my-5 pb-2 text-center">Retrouvez nos 5227 biens en gestion</h1>
+                    <h1 class="my-5 pb-2 text-center">Retrouvez nos 52 biens en gestion</h1>
                     <div>
                         <iframe src="" frameborder="0"></iframe>
                     </div>

@@ -24,7 +24,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('help') }}">Aide</a>
                     </li>
-                    @if (!request()->is('gestion'))
+                    @if (!request()->is('info') && !request()->is('gestion')) <!-- Added condition for 'gestion' route -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('gestion') }}">
                                 <button class="btn btn-main rounded-pill">Vous etes proprietaire ?</button>
@@ -36,7 +36,7 @@
                             <button data-bs-toggle="modal" class="nav-link" data-bs-target="#login-modal">Connexion</button>
                         </li>
                     @endguest
-                    @if(Request::is('gestion'))
+                    @if(Request::is('info'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('gestion') }}">
                                 <button class="btn btn-main rounded-pill">Mettre en gestion</button>
