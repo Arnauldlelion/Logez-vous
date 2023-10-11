@@ -161,13 +161,17 @@ class LocataireController extends Controller
         return view('admin.candidature.index', compact('candidatures'));
     }
 
+
     public function approveCandidature(Locataire $candidate)
     {
-        
         $candidate->is_approved = true;
         $candidate->save();
-    
-        // return redirect()->back()->with('success', 'Candidature approuvée.');
+
+        // Update the corresponding apartment's published value
+        $apartment = $candidate->apartment;
+        $apartment->published = true;
+        $apartment->save();
+
         return redirect()->back()->with('success', 'Candidature approuvée.')->with('candidate', $candidate);
     }
 

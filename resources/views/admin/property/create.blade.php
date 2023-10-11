@@ -9,9 +9,13 @@
                 <div class="container col-lg-10">
                     <div class="card-body">
                         <!-- title-->
+
                         <div class="d-flex align-items-center mb-5 mt-5" style="padding-top: 10%">
                             
                             <h1 class="text-danger" >Ajouter un bien</h1>
+
+                      
+
                         </div>
 
                         <!-- form -->
@@ -95,30 +99,37 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                Commodité
-                                @foreach ($amenities as $amenity)
-                                <div class="form-check {{ $errors->has('amenity') ? 'is-invalid' : ''}}">
-                    
-                                       <label>
-                                             <input type="checkbox"
+                                <label for="pieces_types_id" class="col-sm-2 ">Atout</label>
+                                <div class="col-12 col-lg-7">
+
+                             @foreach ($amenities as $amenity)
+                                        <div class="d-flex gap-3">
+                                            <input type="checkbox"
                                             class="form-check-input"
                                                name="amenity[]"
                                                value="{{ $amenity->id }}"
                                                {{ collect(old('amenity'))->contains($amenity->id) ? 'checked' : ''}}> {{ $amenity->name }}
-                                       </label>
-                                    </div>
-                                    @endforeach
+                                        </div>
+                                        @endforeach
                                 </div>
                             </div>
-                            <div class="w-100 mb-5">
-                                <div class="text-black float-start" style="padding-bottom: 10%">
+                           
+
+                            <div class="w-100 mb-5" style="padding-bottom: 10%">
+                                <div class="text-black float-start">
+
                                     <a href="{{ route('admin.property.index') }}" class="text-secondary">
                                         <i class="mdi mdi-chevron-left text-secondary"></i>
                                        Retour
                                     </a>
                                 </div>
+
                                 <button type="submit" class="btn btn-danger rounded-pill float-end " >Ajouter</button>
+
+                              
+
                             </div>
                         </form>
                         <!-- end form-->

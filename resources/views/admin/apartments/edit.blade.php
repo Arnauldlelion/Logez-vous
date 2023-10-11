@@ -19,7 +19,7 @@
                             @csrf
                             @method('PUT')
 
-                            {{-- <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                            {{-- <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                         <label for="property" class="col-sm-2 col-form-label-sm">Property Category </label>
                         <div class="col-12 col-lg-7">
                             <select name="property"
@@ -53,9 +53,9 @@
                         </div>
                       </div> --}}
 
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
+                                <label for="name" class="col-sm-2 col-form-label-sm">Nom de l'Appartement</label>
                                 <div class="col-12 col-lg-7">
-                                    <label for="name" class="col-sm-2 col-form-label-sm">Nom de l'Appartement</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('name') is-invalid @enderror"
                                         type="text" id="name" value="{{ old('name', $apt->name) }}" name="name"
@@ -65,22 +65,10 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
+                                <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
                                 <div class="col-12 col-lg-7">
-                                    <label for="published">Disponibilité</label>
-                                <select class="form-control" name="published" id="published">
-                                    <option value="0" {{ $apt->published == 0 ? 'selected' : '' }}>Non Disponible</option>
-                                    <option value="1" {{ $apt->published == 1 ? 'selected' : '' }}>Disponible</option>
-                                </select>
-                                    @error('name')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                  
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <div class="col-12 col-lg-7">
-                                    <label for="floor" class="col-sm-2 col-form-label-sm">Niveau d'etage</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('floor') is-invalid @enderror"
                                         type="number" id="floor" value="{{ old('floor', $apt->floor) }}" name="floor"
@@ -90,8 +78,8 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                <div class="d-flex gap-5">
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
+                                <div class="d-flex">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="furnished"
                                             id="flexRadioDefault2" {{ $apt->furnished == 'Non meublé' ? 'checked' : '' }}
@@ -112,8 +100,11 @@
                                 @error('furnished')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
+                            </div>
+                            
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
+                                <label for="monthly_price" class="col-sm-2 col-form-label-sm">Prix</label>
                                 <div class="col-12 col-lg-7">
-                                    <label for="monthly_price" class="col-sm-2 col-form-label-sm">Prix</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('monthly_price') is-invalid @enderror"
                                         type="number" id="monthly_price"
@@ -124,11 +115,9 @@
                                     @enderror
                                 </div>
                             </div>
-
-
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
+                                <label for="number_of_appartments" class="col-sm-2 col-form-label-sm">Nombre de pieces</label>
                                 <div class="col-12 col-lg-7">
-                                    <label for="number_of_appartments" class=" col-form-label-sm">Nombre de pieces</label>
                                     <input
                                         class="form-control rounded-pill form-control-sm @error('number_of_pieces') is-invalid @enderror"
                                         type="number" id="number_of_pieces"
@@ -140,7 +129,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                 <label for="size" class="col-sm-2 col-form-label-sm">Superficie</label>
                                 <div class="col-12 col-lg-7">
                                     <input class="form-control rounded-pill form-control-sm @error('size') is-invalid @enderror" type="text"
@@ -161,7 +150,7 @@
                                     <img src="{{ asset('storage/' . $apt->coverImage->url) }}" alt="Image de couverture existante" style="max-width: 120px; max-height: 90px;">
                                 </div>
                             @endif
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                 <div class="col-12 col-lg-7">
                                   <label>Image de couverture</label>
                               <input type="file" class="form-control" id="cover_image" accept="image/*" name="cover_image">
@@ -171,10 +160,10 @@
                               </div>
                             </div>
 
-                            <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                            <div class="form-group row mb-5 d-block d-lg-flex">
+                                <label for="description" class="col-sm-2 col-form-label-sm">Description</label>
                                 <div class="col-12 col-lg-7">
-                                    <label for="description">Description <em>*</em></label>
-                                    <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"
+                                    <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="8"
                                         name="description" placeholder="">{{ old('description', $apt->description) }}</textarea>
 
                                     @error('description')

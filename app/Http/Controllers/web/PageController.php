@@ -12,8 +12,7 @@ class PageController extends Controller
     //
     public function index()
     {
-        $apartments = Apartment::where('published', true)
-            ->orderBy('created_at', 'desc')
+        $apartments = Apartment::orderBy('created_at', 'desc')
             ->with('images')
             ->take(8)
             ->get();
@@ -34,7 +33,6 @@ class PageController extends Controller
             ->findOrFail($id);
 
         $otherApartments = Apartment::where('id', '!=', $apartment->id)
-            ->where('published', true)
             ->with('images')
             ->limit(3)
             ->get();
@@ -50,7 +48,10 @@ class PageController extends Controller
 
         return view('web.apartment', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities'));
     }
+    public function info(){
 
+        return view('web.help');
+    }
     public function help(){
 
         return view('web.aide');

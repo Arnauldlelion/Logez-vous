@@ -21,7 +21,7 @@ class CreateApartmentsTable extends Migration
             $table->longText('description')->nullable();
             $table->string('monthly_price');
             $table->integer('number_of_pieces');
-            $table->boolean('published')->default(true); 
+            $table->boolean('published')->default(false); 
             $table->integer('size');
             $table->unsignedBigInteger('property_id');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
