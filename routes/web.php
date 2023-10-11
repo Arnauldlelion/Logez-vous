@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\SendMailController;
 // use App\Http\Controllers\Admin\Auth\LoginController;
 // use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 
@@ -165,3 +166,6 @@ Route::get('/proprietaires', function () {
     return view('proprietaires.index');
 });
 });
+
+
+Route::get('/sendMail', [SendMailController::class, 'index'])->name("sendMail");

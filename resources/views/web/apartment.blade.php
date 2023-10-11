@@ -176,7 +176,7 @@
                                     <div class="text-sec">Dont {{ $apartment->monthly_price }} xaf de charges</div>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center text-main mb-3">
+                             <div class="d-flex align-items-center text-main mb-3">
                                 <div class="icon">
                                     <i class="fas fa-landmark"></i>
                                 </div>
