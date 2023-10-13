@@ -50,13 +50,6 @@
                       </div>
                         <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
 
-                        <div id="popupContainer">
-                          <div id="popupContent">
-                            <h2>Merci</h2>
-                            <p>Vos informations ont été reçues avec succès. Un agent vous recontactera.</p>
-                            <button id="closeButton">OK</button>
-                          </div>
-                        </div>
                 </form>
                 <div>
                     <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les
@@ -71,54 +64,47 @@
 </div>
 @endif
 <script>
-    // Initialize the intlTelInput plugin
-    const input = document.querySelector("#phoneNumber");
-    const iti = window.intlTelInput(input, {
-      initialCountry: "auto",
-      separateDialCode: true,
-      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+   $(document).ready(function() {
+    $('#register-modal form').submit(function(event) {
+      // Prevent the form from submitting automatically
+      event.preventDefault();
+
+      // Get the form data
+      var form = $(this);
+      var formData = form.serialize();
+
+      // Send an AJAX request to the server
+      $.ajax({
+        url: "{{ route('storeLocataire', ['apartment_id' => $apartment->id]) }}",
+        method: form.attr('method'),
+        data: formData,
+        success: function(response) {
+          // Check the validation result from the controller
+          if (response.success) {
+            // Validation passed, close the modal
+            $('#register-modal').modal('hide');
+          } else {
+            // Validation failed, display error messages
+            // ...
+          }
+        },
+        error: function(error) {
+          // Handle the error response
+          console.log(error);
+          // Optionally, you can display error messages or perform other actions
+          // ...
+        }
+      });
     });
 
-  // Get the necessary elements
-const registerButton = document.getElementById('registerButton');
-const popupContainer = document.getElementById('popupContainer');
-const closeButton = document.getElementById('closeButton');
-
-// Function to show the pop-up
-function showPopup(event) {
-  event.preventDefault(); // Prevent form submission
-  popupContainer.style.display = 'flex';
-}
-
-// Function to close the pop-up
-function closePopup() {
-  popupContainer.style.display = 'none';
-}
-
-// Event listener for the register button
-registerButton.addEventListener('click', showPopup);
-
-// Event listener for the close button
-closeButton.addEventListener('click', closePopup);
-
-    // Phone number validation function
-    function validatePhoneNumber() {
-      const phoneNumber = iti.getNumber();
-
-      if (iti.isValidNumber()) {
-        const selectedCountryData = iti.getSelectedCountryData();
-        const countryFlagElement = document.querySelector(".selected-flag");
-        countryFlagElement.innerHTML = `<img src="${selectedCountryData.flag}" alt="${selectedCountryData.name}">`;
-
-      } else {
-        alert('Le numéro de téléphone n’est pas valide.');
+    $('#register-modal').on('hide.bs.modal', function(event) {
+      var formSubmitted = $('#register-modal').data('form-submitted');
+      if (!formSubmitted) {
+        // Prevent the modal from closing if the form is not submitted
+        event.preventDefault();
       }
-    }
-
-    @if(session('status'))
-       alert({{session('status')}});
-      
-        @endif
+    });
+  });
   </script>
 
 

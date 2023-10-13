@@ -5,7 +5,8 @@
 
     {{-- logement --}}
 
-    @include('web.layouts.banner')
+    {{-- @include('web.layouts.header')
+    @include('web.layouts.banner') --}}
     <a href="#featured" class="text-decoration-none d-flex justify-content-center fw-lighter mt-5">
         <i class="fa fa-chevron-down" style="font-size: 70px; color:gray"></i>
     </a>
@@ -102,7 +103,7 @@
                                             </p>
                                         </div>
                                         <div class="" >
-                                            <img src="{{ asset('storage/images/logos/board.png') }}" class="mx-auto"
+                                            <img src="{{ asset('storage/images/logos/board.png') }}" class="img-fluid mx-auto"
                                                 alt="">
                                         </div>
                                     </div>
@@ -294,12 +295,14 @@
                                             <div class="owl-carousel owl-theme solution_carousels">
                                                 @foreach ($apartments as $apartment)
                                                     <div class="item">
+                                                        <a href="{{ route('single-appartment', $apartment->id) }}">
                                                         @include('components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
                                                             'showBorder' => true,
                                                         ])
+                                                        </a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -325,12 +328,14 @@
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
+                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
                                                     @include('components.card', [
                                                         'index' => $apartment,
                                                         'showBanner' => false,
                                                         'isSlider' => false,
                                                         'showBorder' => true,
                                                     ])
+                                                    </a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -356,12 +361,14 @@
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
-                                                    @include('components.card', [
-                                                        'index' => $apartment,
-                                                        'showBanner' => false,
-                                                        'isSlider' => false,
-                                                        'showBorder' => true,
-                                                    ])
+                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                                                        @include('components.card', [
+                                                            'index' => $apartment,
+                                                            'showBanner' => false,
+                                                            'isSlider' => false,
+                                                            'showBorder' => true,
+                                                        ])
+                                                        </a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -391,12 +398,14 @@
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
-                                                    @include('components.card', [
-                                                        'index' => $apartment,
-                                                        'showBanner' => true,
-                                                        'isSlider' => false,
-                                                        'showBorder' => true,
-                                                    ])
+                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                                                        @include('components.card', [
+                                                            'index' => $apartment,
+                                                            'showBanner' => false,
+                                                            'isSlider' => false,
+                                                            'showBorder' => true,
+                                                        ])
+                                                        </a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -583,7 +592,7 @@
     </section>
 
     <script type="text/javascript">
-        $('.owl-carousel').owlCarousel({
+        $('.solution_carousels').owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
@@ -592,10 +601,10 @@
                     items: 1
                 },
                 600: {
-                    items: 3
+                    items: 2
                 },
                 1000: {
-                    items: 5
+                    items: 3
                 }
             }
         })

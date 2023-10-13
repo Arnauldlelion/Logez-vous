@@ -1,10 +1,10 @@
 @extends('web.layouts.app')
 
-
+{{-- @include('web.layouts.header') --}}
 
 @section('content')
     <section id="gallery-image">
-        <div class="container-fluid col-lg-9 mx-auto my-5" style="padding-top: 6rem;">
+        <div class="container-fluid col-lg-9 mx-auto">
             <div class="image-grid" id="animated-thumbnails">
                 @if ($apartment->coverImage)
                     <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="image-grid-col-2 image-grid-row-2">
@@ -37,10 +37,10 @@
     </section>
 
     <section class="house-section">
-        <div class="container-fluid col-lg-9 mx-md-auto">
+        <div class="container-fluid col-lg-9 mx-md-auto mb-5">
             <div class="row flex-md-row-reverse p-2 ms-md-5 mx-md-1">
                 <div class="col-12 col-md-3 mb-4">
-                    <div class="shadow-lg shadow-md-down-none d-flex justify-content-center py-3 position-sticky top-0">
+                    <div class="shadow-lg shadow-md-down-none d-flex justify-content-center py-3 position-sticky " style="top: 85px;">
                        <div>
                         <button class="btn btn-main p-2" data-bs-toggle="modal" data-bs-target="#register-modal" {{ $apartment->published ? 'disabled' : '' }}>
                             Deposer ma candidature
@@ -82,6 +82,7 @@
                         <div class="text-main expert"> <i class="fas fa-phone me-3" style="color:red"></i> +237 657170133</div>
                     </div>
                     <hr>
+                    
                     {{-- <h3>Caractéristiques du bien</h3>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
@@ -176,25 +177,46 @@
                     </iframe>
                     <p>Transports à proximité</p> --}}
                     <h3 class="mt-5">Nos autres logements à proximité de {{ $apartment->name }}</h3>
-                    <div class="row flex-nowrap overflow-auto">
-                        @foreach ($otherApartments as $apartment)
-                            <div class="col-md-4 mb-3">
-                                <a href="{{ route('single-appartment', $apartment->id) }}">
-                                @include('components.card', [
-                                    'index' => $apartment,
-                                    'showBanner' => false,
-                                    'isSlider' => false,
-                                    'showBorder' => true,
-                                ])
-                                </a>
-                            </div>
-                        @endforeach
+                        <div class="owl-carousel owl-theme otherApartments">
+                            @foreach ($otherApartments as $apartment)
+                                <div class="item">
+                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                                    @include('components.card', [
+                                        'index' => $apartment,
+                                        'showBanner' => false,
+                                        'isSlider' => false,
+                                        'showBorder' => true,
+                                    ])
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <script>
+        
+        $('.otherApartments').owlCarousel({
+            loop: false,
+            margin: 10,
+            // nav: true,
+            dots:false,
+            drag:true,
+            draggable: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
         lightGallery(document.getElementById('animated-thumbnails'), {
             thumbnail: true,
         });
@@ -202,6 +224,7 @@
         document.getElementById('candidaterButton').addEventListener('click', function() {
             document.getElementById('loginModal').style.display = 'block';
         });
+
         
     </script>
 @endsection

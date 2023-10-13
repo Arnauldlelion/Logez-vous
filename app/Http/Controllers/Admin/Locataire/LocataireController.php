@@ -138,6 +138,9 @@ class LocataireController extends Controller
     {
         //
         $tenant = Locataire::findOrFail($id);
+        $apartment = $tenant->apartment;
+        $apartment->published = false;
+        $apartment->save();
         $tenant->delete();
 
         return redirect()->back()->with('success', 'Locataire supprimé avec succès.');

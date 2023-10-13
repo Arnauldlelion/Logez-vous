@@ -34,7 +34,6 @@ class PageController extends Controller
 
         $otherApartments = Apartment::where('id', '!=', $apartment->id)
             ->with('images')
-            ->limit(3)
             ->get();
 
         // Retrieve the images belonging to both the apartment and piece
