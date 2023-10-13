@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Mail\NewTenantRequest;
+use Illuminate\Support\Facades\Mail;
 class RegisterController extends Controller
 {
     //
@@ -37,6 +38,10 @@ class RegisterController extends Controller
 
         $input = $request->all();
         $admin = User::create($input);
+        
+        $adminEmail = 'arnauldfohom1@gmail.com';
+        // Send the email to the admin
+        Mail::to($adminEmail)->send(new NewTenantRequest($input['email']));
 
          // Redirect to a thank you page or display a success message
         //  return redirect()->route('thankyou');

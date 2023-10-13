@@ -8,9 +8,9 @@
 </head>
 <body>
    
-    <h1>Bienvenue, M/Mme {{ $landlord->name }} sur la plateforme Logez-vous!</h1>
-    <h2>Nous avons le plaisir de vous informer que votre compte a été créé avec succès. Veuillez trouver ci-dessous les informations de connexion associées à votre compte :</h2>
-    <h3>Email: {{ $landlord->email }}</h3>
+    <h1>Bienvenue, M/Mme {{ $admin->name }} sur la plateforme Logez-vous!</h1>
+    <h2>Votre compte gestionnaire a ete creer. Veuillez trouver ci-dessous les informations de connexion associées à votre compte :</h2>
+    <h3>Email: {{ $admin->email }}</h3>
     <h3>Password: <b> {{ $password }} </b></h3>
     <h3>Connectez vous ici: <b> https://www.Logez-vous.com/ </b></h3>
     <p>Nous vous prions de veiller à la sécurité de ces informations confidentielles pour garantir leur protection.</p>
