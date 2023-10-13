@@ -9,7 +9,7 @@
             <div class="container col-lg-10">
             <div class="card-body">
                  <!-- title-->
-                 <div class="d-flex align-items-center my-5" style="padding-top: 10%">
+                 <div class="d-flex align-items-center mb-5">
                     <h1 class="text-danger">Pièce</h1>
                 </div>
                  <!-- form -->
@@ -17,14 +17,9 @@
                     @csrf
                     @method('PUT')
 
-                    <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                    <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                       <label for="pieces_types_id" class="col-sm-2 col-form-label-sm">Type de pièce</label>
                       <div class="col-12 col-lg-7">
-                          {{-- <input class="form-control rounded-pill form-control-sm @error('pieces_types_id') is-invalid @enderror" type="text"
-                             id="pieces_types_id"
-                             value="{{ old('pieces_types_id') }}"
-                             name="pieces_types_id"
-                             placeholder="chambre,studio,apartment 2chambre"> --}}
 
                             @foreach(\App\Models\PieceType::all() as $piece_type)
                                <div class="d-flex gap-3">
@@ -38,7 +33,7 @@
                       </div>
                     </div>
 
-                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                         <label for="nombre_of_pieces" class="col-sm-2 col-form-label-sm">Nombre </label>
                         <div class="col-12 col-lg-7">
                             <input class="form-control rounded-pill form-control-sm @error('nombre_of_pieces') is-invalid @enderror" type="number"
@@ -51,7 +46,7 @@
                         </div>
                       </div>
 
-                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                         <label for="size" class="col-sm-2 col-form-label-sm">Superficie</label>
                         <div class="col-12 col-lg-7">
                             <input class="form-control rounded-pill form-control-sm @error('size') is-invalid @enderror" type="text"
@@ -64,9 +59,9 @@
                         @enderror
                         </div>
                       </div>
-                      <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                      <div class="form-group row mb-5 d-block d-lg-flex">
+                          <label for="description" class="col-sm-2 col-form-label-sm">Description</label>
                         <div class="col-12 col-lg-7">
-                            <label for="description">Description</label>
                             <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"
                                 name="description" placeholder="">{{ old('description', $piece->description) }}</textarea>
 
@@ -75,7 +70,7 @@
                             @enderror
                         </div>
                     </div>
-                      <div class="w-100 mb-5" style="padding-bottom: 10%">
+                      <div class="w-100 mt-5">
                         <div class="text-black float-start">
                             <a href="{{ route('admin.apartments.show', session('new_apt_id')) }}" class="text-secondary">
                                Retour

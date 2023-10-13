@@ -19,7 +19,7 @@
                     @foreach ($apartments as $apartment)
                     <div class="col-6 col-lg-3 d-none d-md-block">
                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                            @include('components.card', [
+                            @include('web.components.card', [
                                 'index' => $apartment,
                                 'showBanner' => true,
                                 'isSlider' => false,
@@ -34,7 +34,7 @@
                 <div class="owl-carousel owl-theme featured_carousel d-block d-md-none">
                     @foreach ($apartments as $apartment)
                         <div class="item">
-                            @include('components.card', [
+                            @include('web.components.card', [
                                 'index' => $apartment,
                                 'showBanner' => true,
                                 'isSlider' => false,
@@ -44,13 +44,6 @@
                     @endforeach
                 </div>
 
-                {{-- <div class="carousel-indicators d-lg-none">
-                    <button type="button" data-bs-target="#videos" data-bs-slide-to="0" class="active"
-                        aria-current="true"></button>
-                    <button type="button" data-bs-target="#videos" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#videos" data-bs-slide-to="2"></button>
-
-                </div> --}}
                 <div class="col-lg-11 mx-lg-auto row d-flex justify-content-between mt-5">
                     <div class="col-lg-5 mb-lg-0">
                         <span class="text"><i class="fa fa-chevron-right"></i> Comment faire apparaître mon logement à la
@@ -249,7 +242,7 @@
     </section>
 
     {{-- Video Modal --}}
-    @include('components.modals.video')
+    @include('web.components.modals.video')
 
 
     <section>
@@ -296,7 +289,7 @@
                                                 @foreach ($apartments as $apartment)
                                                     <div class="item">
                                                         <a href="{{ route('single-appartment', $apartment->id) }}">
-                                                        @include('components.card', [
+                                                        @include('web.components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
@@ -329,7 +322,7 @@
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
                                                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                                                    @include('components.card', [
+                                                    @include('web.components.card', [
                                                         'index' => $apartment,
                                                         'showBanner' => false,
                                                         'isSlider' => false,
@@ -362,7 +355,7 @@
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
                                                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                                                        @include('components.card', [
+                                                        @include('web.components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
@@ -399,7 +392,7 @@
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
                                                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                                                        @include('components.card', [
+                                                        @include('web.components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,

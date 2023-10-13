@@ -24,7 +24,7 @@ class PageController extends Controller
    public function searchForm(){
     $apartments = Apartment::with('images')->get();
 
-    return view('web.apartments', compact('apartments'));
+    return view('web.apartments.index', compact('apartments'));
    }
 
     public function showSingleAppartment($id)
@@ -45,7 +45,7 @@ class PageController extends Controller
 
         $amenities = $apartment->property->amenities;
 
-        return view('web.apartment', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities'));
+        return view('web.apartments.show', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities'));
     }
     public function info(){
 

@@ -10,7 +10,7 @@
             <div>
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Vous êtes propriétaire ?</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('gestion') }}">Vous êtes propriétaire ?</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Aide</a>

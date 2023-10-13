@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -38,8 +39,7 @@ class RegisterController extends Controller
         $input = $request->all();
         $admin = User::create($input);
 
-         // Redirect to a thank you page or display a success message
-        //  return redirect()->route('thankyou');
+        Alert::success('success', 'thanks');
          return redirect()->back();
     }
 }

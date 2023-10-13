@@ -11,6 +11,16 @@ class LoginController extends Controller
 {
     //
 
+    public function showLoginForm()
+    {
+
+        if (Auth('landlord')->check()) {
+            return redirect()->route('dashboard');
+        }
+
+        return view('web.auth.login');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');

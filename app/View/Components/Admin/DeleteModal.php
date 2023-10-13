@@ -29,6 +29,6 @@ class DeleteModal extends Component
      */
     public function render()
     {
-        return view('components.admin.delete-modal');
+        return view('admin.component.delete-modal');
     }
 }

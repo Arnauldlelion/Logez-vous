@@ -12,8 +12,8 @@
                         <li class="breadcrumb-item"><a
                                 href="{{ route('admin.property.index') }}">{{ $apartment->property->name }}</a></li>
                         <li class="breadcrumb-item"><a
-                                href="{{ route('admin.property.show', session('new_prop_id')) }}">Appartement
-                                {{ $apartment->id }}</a></li>
+                                href="{{ route('admin.property.show', session('new_prop_id')) }}">
+                                {{ $apartment->name }}</a></li>
                         <li class="breadcrumb-item active">Rapports</li>
                     </ol>
                 </div>

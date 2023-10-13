@@ -28,10 +28,14 @@
         <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/all.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/main.js')}}"></script>
+        <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
         <script src="{{asset('assets/js/popper.min.js')}}"></script>
         <script src="{{ asset('assets/js/all.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/js/lightgallery.min.js"></script>
+        
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css"> --}}
 </head>
 
 <body>
@@ -43,7 +47,7 @@
     {{-- Navbar code here --}}
     @yield('content')
     {{-- Register Modal --}}
-    
+
     @include('web.auth.register')
 
     {{-- Login Modal --}}
@@ -51,14 +55,6 @@
 
     {{-- Footer code here --}}
     @include('web.layouts.footer')
-
-
-    <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/js/lightgallery.min.js"></script>
-
 
 </body>
 

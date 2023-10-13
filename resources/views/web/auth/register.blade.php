@@ -1,4 +1,5 @@
 @if(isset($apartment))
+@include('sweetalert::alert')
 <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -50,7 +51,9 @@
                       </div>
                         <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
 
+
                 </form>
+                
                 <div>
                     <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les
                     <a href="#" class="text-main">conditions d'utilisation.</a></small>
@@ -63,48 +66,7 @@
     </div>
 </div>
 @endif
-<script>
-   $(document).ready(function() {
-    $('#register-modal form').submit(function(event) {
-      // Prevent the form from submitting automatically
-      event.preventDefault();
 
-      // Get the form data
-      var form = $(this);
-      var formData = form.serialize();
 
-      // Send an AJAX request to the server
-      $.ajax({
-        url: "{{ route('storeLocataire', ['apartment_id' => $apartment->id]) }}",
-        method: form.attr('method'),
-        data: formData,
-        success: function(response) {
-          // Check the validation result from the controller
-          if (response.success) {
-            // Validation passed, close the modal
-            $('#register-modal').modal('hide');
-          } else {
-            // Validation failed, display error messages
-            // ...
-          }
-        },
-        error: function(error) {
-          // Handle the error response
-          console.log(error);
-          // Optionally, you can display error messages or perform other actions
-          // ...
-        }
-      });
-    });
-
-    $('#register-modal').on('hide.bs.modal', function(event) {
-      var formSubmitted = $('#register-modal').data('form-submitted');
-      if (!formSubmitted) {
-        // Prevent the modal from closing if the form is not submitted
-        event.preventDefault();
-      }
-    });
-  });
-  </script>
 
 
