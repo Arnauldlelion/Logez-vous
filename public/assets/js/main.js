@@ -15,24 +15,9 @@ $(function(){
             }
         }
     })
-    $('.solution_carousels').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        dots:false,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:1
-            },
-            1000:{
-                items:3
-            }
-        }
-    })
+
 });
+
 
 
 
@@ -204,10 +189,36 @@ $(function(){
                 10
             );
         });
-
-        
+ /* ------------------------------
+    header
+------------------------------*/
+    // window.addEventListener('scroll', function(){
+    //     var header = this.document.querySelector('header');
+    //     header.classList.toggle('sticky', this.window.scrollY > 0);
+    // })
+    // const nav = document.querySelector('nav');
+    // window.addEventListener('scroll', function () {
+    //     if (window.pageXOffset > 100) {
+    //           nav.classList.add('bg-dark', 'shadow');
+    //      }
+    //     else {
+    //         nav.classList.remove('bg-dark', 'shadow');
+    //     }
+    // });
+          
+/* ------------------------------
+    header
+------------------------------*/
 const text = document.querySelector(".text");
 const moreText = document.querySelector(".more-text");
+
+    text.addEventListener('click', function() {
+        if (moreText.style.display === 'none') {
+            moreText.style.display = 'block';
+        } else {
+            moreText.style.display = 'none';
+        }
+    });
 
 /* ------------------------------
 landlord dashboard

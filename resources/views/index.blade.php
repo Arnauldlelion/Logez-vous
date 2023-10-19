@@ -5,7 +5,8 @@
 
     {{-- logement --}}
 
-    @include('web.layouts.banner')
+    {{-- @include('web.layouts.header')
+    @include('web.layouts.banner') --}}
     <a href="#featured" class="text-decoration-none d-flex justify-content-center fw-lighter mt-5">
         <i class="fa fa-chevron-down" style="font-size: 70px; color:gray"></i>
     </a>
@@ -54,9 +55,9 @@
                     <div class="col-lg-5 mb-lg-0">
                         <span class="text"><i class="fa fa-chevron-right"></i> Comment faire apparaître mon logement à la
                             une ?</span>
-                        <small class="more-text ms-4">Si vous êtes propriétaire, vous pouvez faire apparaître vos logements
+                        <p class="more-text ms-4">Si vous êtes propriétaire, vous pouvez faire apparaître vos logements
                             à la
-                            une en souscrivant à l’offre premium sur la recherche de locataire.</small>
+                            une en souscrivant à l’offre premium sur la recherche de locataire.</p>
                     </div>
                     <div class="col-lg-5">
                         <a href="#" class="text-main">
@@ -74,7 +75,7 @@
         <div class="container-fluid  py-5 mb-5">
             <div class="row mb-1">
                 <div class="col-12 text-center">
-                    <h3>Comment ça marche ?</h3>
+                    <h1>Comment ça marche ?</h1>
                 </div>
             </div>
             <div class="row">
@@ -93,16 +94,16 @@
                                 <div class="col-12 col-md-3 pt-3 text-md-center text-muted">
                                     <div class="d-flex d-md-block gap-2 align-items-center">
                                         <button class=" rounded-pill" id="rounded-circle" style="width: 3rem; height:3rem;">1</button><br><br>
-                                        <h5>Fiche locative</h5>
+                                        <h4>Fiche locative</h4>
                                     </div>
                                     <div class="d-flex d-md-block gap-5 ">
                                         <div>
-                                            <small>Complétez une fiche descriptive et déposez une candidature <span
+                                            <p>Complétez une fiche descriptive et déposez une candidature <span
                                                     class="text-danger">en moins de 3 minutes.</span>
-                                            </small>
+                                            </p>
                                         </div>
                                         <div class="" >
-                                            <img src="{{ asset('storage/images/logos/board.png') }}" class="mx-auto"
+                                            <img src="{{ asset('storage/images/logos/board.png') }}" class="img-fluid mx-auto"
                                                 alt="">
                                         </div>
                                     </div>
@@ -110,13 +111,13 @@
                                 <div class="col-12 col-md-3 pt-3 text-md-center text-muted">
                                     <div class="d-flex d-md-block gap-2 align-items-center mb-3">
                                         <button class=" rounded-pill" id="rounded-circle" style="width: 2.7rem; height:2.7rem;">2</button><br><br>
-                                        <h5>Dossier sécurisé</h5>
+                                        <h4>Dossier sécurisé</h4>
                                     </div>
                                     <div class="d-flex d-md-block gap-5">
                                         <div>
-                                            <small>Vos documents sont chiffrés puis stockés dans des serveurs sécurisés
+                                            <p>Vos documents sont chiffrés puis stockés dans des serveurs sécurisés
                                                 pour <span class="text-danger"> une sécurité optimale</span> . La gestion
-                                                des données et des documents est conforme à la RGPD.</small>
+                                                des données et des documents est conforme à la RGPD.</p>
                                         </div>
                                         <div >
                                             <img src="{{ asset('storage/images/logos/whistle.png') }}" class=""
@@ -127,13 +128,13 @@
                                 <div class="col-12 col-md-3 pt-3 text-md-center text-muted">
                                     <div class="d-flex d-md-block gap-2 align-items-center mb-3">
                                         <button class=" rounded-pill" id="rounded-circle" style="width: 2.7rem; height:2.7rem;">3</button><br><br>
-                                        <h5>Signature électronique</h5>
+                                        <h4>Signature électronique</h4>
                                     </div>
                                     <div class="d-flex d-md-block gap-5">
                                         <div>
-                                            <small>Signez votre bail <span class="text-danger">100% en ligne </span>
+                                            <p>Signez votre bail <span class="text-danger">100% en ligne </span>
                                                 avec une signature électronique via notre <span class="text-danger">
-                                                    partenaire sécurisé</span> Docusign ®.</small>
+                                                    partenaire sécurisé</span> Docusign ®.</p>
                                         </div>
                                         <div class="d-block justify-content-center align-items-center mt-lg-auto" >
                                             <img src="{{ asset('storage/images/logos/pen.png') }}" 
@@ -144,15 +145,15 @@
                                 <div class="col-12 col-md-3 pt-3 text-md-center text-muted">
                                     <div class="d-flex d-md-block gap-2 align-items-center mb-3">
                                         <button class=" rounded-pill" id="rounded-circle" style="width: 2.7rem; height:2.7rem;">4</button><br><br>
-                                        <h5>État des lieux physique</h5>
+                                        <h4>État des lieux physique</h4>
                                     </div>
                                     <div class="d-flex d-md-block gap-5">
                                         <div>
-                                            <small>Découvrez physiquement votre logement lors de l<span
+                                            <p>Découvrez physiquement votre logement lors de l<span
                                                     class="text-danger">’état des lieux d’entrée</span> . Si celui-ci ne
                                                 correspond pas à la visite virtuelle, vous pouvez <span
                                                     class="text-danger">vous rétracter sans frais</span> lors de ce
-                                                rendez-vous.</small>
+                                                rendez-vous.</p>
                                         </div>
                                         <div class="d-block justify-content-center align-items-center mt-lg-auto" >
                                             <img src="{{ asset('storage/images/logos/hand.png') }}" class=""
@@ -171,9 +172,9 @@
                                     </div>
                                     <div class="d-flex d-md-block gap-5">
                                         <div>
-                                            <small>Nous réalisons un <span class="text-danger">reportage photo et vidéo
+                                            <p>Nous réalisons un <span class="text-danger">reportage photo et vidéo
                                                     complet</span> et diffusons votre annonce sur <span
-                                                    class="text-danger">plus de 15 plateformes</span> .</small>
+                                                    class="text-danger">plus de 15 plateformes</span> .</p>
                                         </div>
                                         <div class="d-flex justify-content-center align-items-center mt-lg-auto" >
                                             <img src="{{ asset('storage/images/logos/loop.png') }}" class=" "
@@ -189,9 +190,9 @@
                                     </div>
                                     <div class="d-flex d-md-block gap-5">
                                         <div>
-                                            <small>Nous <span class="text-danger">vérifions minutieusement</span> les
+                                            <p>Nous <span class="text-danger">vérifions minutieusement</span> les
                                                 candidatures, rédigeons le bail et assurons l<span
-                                                    class="text-danger">’état des lieux d’entrée</span> .</small>
+                                                    class="text-danger">’état des lieux d’entrée</span> .</p>
                                         </div>
                                         <div class="d-block justify-content-center align-items-center mt-lg-auto">
                                             <img src="{{ asset('storage/images/logos/call.png') }}" class=" "
@@ -206,10 +207,10 @@
                                     </div>
                                     <div class="d-flex d-md-block gap-5">
                                         <div>
-                                            <small>Votre <span class="text-danger">espace en ligne</span> vous permet
+                                            <p>Votre <span class="text-danger">espace en ligne</span> vous permet
                                                 de suivre toutes les opérations et de <span class="text-danger">contacter
                                                     facilement</span> votre
-                                                conseiller.</small>
+                                                conseiller.</p>
                                         </div>
                                         <div class="d-block justify-content-center align-items-center mt-lg-auto">
                                             <img src="{{ asset('storage/images/logos/pen.png') }}" class=" "
@@ -224,9 +225,9 @@
                                     </div>
                                     <div class="d-flex d-md-block gap-5">
                                         <div>
-                                            <small>Grâce à notre technologie de paiement, vous recevez vos fonds <span
+                                            <p>Grâce à notre technologie de paiement, vous recevez vos fonds <span
                                                     class="text-danger">moins de 7 jours après le paiement du
-                                                    locataire.</span> </small>
+                                                    locataire.</span> </p>
                                         </div>
                                         <div class="d-block justify-content-center align-items-center ">
                                             <img src="{{ asset('storage/images/logos/wallet.png') }}" class=" "
@@ -255,7 +256,7 @@
         <div class="container-fluid tab2">
             <div class="mt-5 pt-5">
                 <div class="row  mt-5">
-                    <div class="col-sm-12 text-center mt-5">
+                    <div class="col-sm-12 text-center mt-2 mb-5">
                         <h3>Une solution immobilière adaptée à tous</h3>
                     </div>
                 </div>
@@ -283,23 +284,25 @@
                                         loading="lazy">
                                 </div>
                                 <div class="col-lg-8">
-                                    <h5 class="text-danger mb-4">Vous faites des études ou un stage dans une nouvelle
-                                        ville ?</h5>
-                                        <small>Logez-vous est la solution idéale pour vous permettre de <span
+                                    <h4 class="text-danger mb-4">Vous faites des études ou un stage dans une nouvelle
+                                        ville ?</h4>
+                                        <p>Logez-vous est la solution idéale pour vous permettre de <span
                                                 class="text-danger">trouver votre futur logement à distance
                                             </span><br>plus besoin de déplacements et de visites inutiles, finies les
-                                            galères !</small>
-                                        <h5 class="text-danger my-4">Ces logements pourraient vous intéresser</h5>
+                                            galères !</p>
+                                        <h4 class="text-danger my-4">Ces logements pourraient vous intéresser</h4>
                                         <div class="container col-8 col-md-10 mx-auto">
                                             <div class="owl-carousel owl-theme solution_carousels">
                                                 @foreach ($apartments as $apartment)
                                                     <div class="item">
+                                                        <a href="{{ route('single-appartment', $apartment->id) }}">
                                                         @include('components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
                                                             'showBorder' => true,
                                                         ])
+                                                        </a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -315,22 +318,24 @@
                                         loading="lazy">
                                 </div>
                                 <div class="col-lg-8">
-                                    <h5 class="text-danger mb-4">Vous commencez un travail dans une nouvelle ville ou
-                                        avez une mutation professionnelle ?</h5>
-                                    <small class="">Flatlooker vous fait gagner du temps et vous permet de <span
+                                    <h4 class="text-danger mb-4">Vous commencez un travail dans une nouvelle ville ou
+                                        avez une mutation professionnelle ?</h4>
+                                    <p class="">Flatlooker vous fait gagner du temps et vous permet de <span
                                             class="text-danger">trouver votre futur logement sans stress et sans
-                                            déplacement.</span></small>
-                                    <h5 class="text-danger mt-4">Ces logements pourraient vous intéresser</h5>
+                                            déplacement.</span></p>
+                                    <h4 class="text-danger mt-4">Ces logements pourraient vous intéresser</h4>
                                     <div class="container col-8 col-md-10 mx-auto">
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
+                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
                                                     @include('components.card', [
                                                         'index' => $apartment,
                                                         'showBanner' => false,
                                                         'isSlider' => false,
                                                         'showBorder' => true,
                                                     ])
+                                                    </a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -346,22 +351,24 @@
                                         loading="lazy">
                                 </div>
                                 <div class="col-lg-8">
-                                    <h5 class="text-danger mb-4">Vous rentrez d’expatriation et n’avez pas encore
-                                        de logement pour votre retour ?</h5>
-                                    <small class="">Flatlooker vous permet de<span class="text-danger">louer
+                                    <h4 class="text-danger mb-4">Vous rentrez d’expatriation et n’avez pas encore
+                                        de logement pour votre retour ?</h4>
+                                    <p class="">Flatlooker vous permet de<span class="text-danger">louer
                                             votre futur logement à des milliers de kilomètres.</span>Rentrez en
-                                        France l’esprit tranquille ! </small>
-                                    <h5 class="text-danger mt-4">Ces logements pourraient vous intéresser</h5>
+                                        France l’esprit tranquille ! </p>
+                                    <h4 class="text-danger mt-4">Ces logements pourraient vous intéresser</h4>
                                     <div class="container col-8 col-md-10 mx-auto">
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
-                                                    @include('components.card', [
-                                                        'index' => $apartment,
-                                                        'showBanner' => false,
-                                                        'isSlider' => false,
-                                                        'showBorder' => true,
-                                                    ])
+                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                                                        @include('components.card', [
+                                                            'index' => $apartment,
+                                                            'showBanner' => false,
+                                                            'isSlider' => false,
+                                                            'showBorder' => true,
+                                                        ])
+                                                        </a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -377,26 +384,28 @@
                                         loading="lazy">
                                 </div>
                                 <div class="col-lg-8">
-                                    <h5 class="text-danger">Vous souhaitez habiter à plusieurs dans un même logement ?
-                                    </h5>
-                                    <h5 class="text-danger">Vous n’êtes pas tous disponibles pour visiter des biens en
-                                        même temps ?</h5>
-                                    <small>Bénéficiez de reportages vidéos et des visites virtuelles détaillées de
+                                    <h4 class="text-danger">Vous souhaitez habiter à plusieurs dans un même logement ?
+                                    </h4>
+                                    <h4 class="text-danger">Vous n’êtes pas tous disponibles pour visiter des biens en
+                                        même temps ?</h4>
+                                    <p>Bénéficiez de reportages vidéos et des visites virtuelles détaillées de
                                         Flatlooker pour <span class="text-danger">partager la visite entre
-                                            colocataires.</span></small>
-                                    <small>Constituez un dossier à plusieurs et <span class="text-danger">simplifiez votre
-                                            recherche de location.</span></small>
-                                    <h5 class="text-danger mb-3 mt-5">Ces logements pourraient vous intéresser</h5>
+                                            colocataires.</span></p>
+                                    <p>Constituez un dossier à plusieurs et <span class="text-danger">simplifiez votre
+                                            recherche de location.</span></p>
+                                    <h4 class="text-danger mb-3 mt-5">Ces logements pourraient vous intéresser</h4>
                                     <div class="container col-8 col-md-10 mx-auto">
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
-                                                    @include('components.card', [
-                                                        'index' => $apartment,
-                                                        'showBanner' => true,
-                                                        'isSlider' => false,
-                                                        'showBorder' => true,
-                                                    ])
+                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                                                        @include('components.card', [
+                                                            'index' => $apartment,
+                                                            'showBanner' => false,
+                                                            'isSlider' => false,
+                                                            'showBorder' => true,
+                                                        ])
+                                                        </a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -583,7 +592,7 @@
     </section>
 
     <script type="text/javascript">
-        $('.owl-carousel').owlCarousel({
+        $('.solution_carousels').owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
@@ -592,10 +601,10 @@
                     items: 1
                 },
                 600: {
-                    items: 3
+                    items: 2
                 },
                 1000: {
-                    items: 5
+                    items: 3
                 }
             }
         })

@@ -99,24 +99,22 @@
                             @enderror
                         </div>
                     </div>
-                    @foreach ($amenities as $amenity)
-                    <div class="row">
-                        <div class="col-md-auto col-xl-3">
-                            <div class="form-group">
-                                <div class="form-check {{ $errors->has('amenity') ? 'is-invalid' : ''}}">
-                                    <label for="amenity">
-                                     <input type="checkbox" 
-                                           class="form-check-input" 
-                                           name="amenity[]" 
-                                         {{ collect(old('amenity', collect($property->amenities()->pluck('amenity_id'))))->contains($amenity->id) ? 'checked' : '' }}
-                                         value="{{ $amenity->id }}">
-                                     {{ $amenity->name}}
-                                   </label>
+                    <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                        <label for="pieces_types_id" class="col-sm-2 ">Atout</label>
+                        <div class="col-12 col-lg-7">
+
+                     @foreach ($amenities as $amenity)
+                                <div class="d-flex gap-3">
+                                    <input type="checkbox" 
+                                    class="form-check-input" 
+                                    name="amenity[]" 
+                                  {{ collect(old('amenity', collect($property->amenities()->pluck('amenity_id'))))->contains($amenity->id) ? 'checked' : '' }}
+                                  value="{{ $amenity->id }}">
+                              {{ $amenity->name}}
                                 </div>
-                            </div>
+                                @endforeach
                         </div>
                     </div>
-                  @endforeach
                       <div class="w-100 mb-5">
                         <div class="text-black float-start">
                             <a href="{{ route('admin.property.index') }}" class="text-secondary">

@@ -34,7 +34,7 @@ class WelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('contact@hoozonsarl.com')
+        return $this->from('contact@logez-vous.com')
             ->view('emails.welcome')
             ->with([
                 'landlord' => $this->landlord,

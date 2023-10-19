@@ -41,7 +41,6 @@
                 <ul class="navbar-nav mr-lg-2">
                     <li class="nav-item nav-search d-none d-lg-block">
                         <div class="input-group">
-
                             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
                                 <span class="input-group-text" id="search">
                                     
@@ -66,7 +65,6 @@
                                     <div class="preview-icon bg-success">
                                         <i class="ti-info-alt mx-0"></i>
                                     </div>
-                                </div>
                                 <div class="preview-item-content">
                                     <h6 class="preview-subject font-weight-normal">Application Error</h6>
                                     <p class="font-weight-light small-text mb-0 text-muted">

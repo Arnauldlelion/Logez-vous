@@ -101,19 +101,18 @@
                             </div>
 
                             <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                Commodité
-                                @foreach ($amenities as $amenity)
-                                <div class="form-check {{ $errors->has('amenity') ? 'is-invalid' : ''}}">
-                    
-                                       <label>
-                                             <input type="checkbox"
+                                <label for="pieces_types_id" class="col-sm-2 ">Atout</label>
+                                <div class="col-12 col-lg-7">
+
+                             @foreach ($amenities as $amenity)
+                                        <div class="d-flex gap-3">
+                                            <input type="checkbox"
                                             class="form-check-input"
                                                name="amenity[]"
                                                value="{{ $amenity->id }}"
                                                {{ collect(old('amenity'))->contains($amenity->id) ? 'checked' : ''}}> {{ $amenity->name }}
-                                       </label>
-                                    </div>
-                                    @endforeach
+                                        </div>
+                                        @endforeach
                                 </div>
                             </div>
                            

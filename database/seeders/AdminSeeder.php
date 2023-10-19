@@ -16,18 +16,6 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-
-        // if (User::where('last_name', 'Admin')->count()) {
-        //     return;
-        // }
-
-        // User::create([
-        //     'first_name' => "Admin",
-        //     'last_name' => "Admin",
-        //     'type' => "Admin",
-        //     'email' => 'admin@logezvous.co',
-        //     'password' => \Illuminate\Support\Facades\Hash::make('password'),
-        // ]);
         if (Admin::count() > 0) {
             return;
         }

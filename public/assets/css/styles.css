@@ -256,10 +256,6 @@
 
 
 /* House card */
-.house-card .num-text {
-    color: var(--text-color);
-    text-transform: uppercase;
-}
 
 .house-card .card-body {
     background-color: white;
@@ -269,23 +265,6 @@
     border-color: var(--main-color);
 }
 
-.house-card .price {
-    color: var(--main-color);
-    margin-bottom: 0.3rem;
-    font-size: .9rem;
-    margin-top: 0.5rem;
-}
-
-.house-card .rooms {
-    color: rgb(100, 100, 100);
-    font-size: 14px;
-    margin-bottom: 0.3rem;
-}
-
-.house-card .published {
-    color: var(--text-color);
-    font-size: 14px;
-}
 
 .house-card {
     display: block;
@@ -313,11 +292,11 @@
     overflow: hidden;
 }
 
-/* test code  */
+
 #gallery-image .image-grid{
     --gap: 16px;
     --num-cols:4;
-    --row-height:230px;
+    --row-height:180px;
 
     box-sizing: border-box;
     padding: var(--gap);
@@ -337,7 +316,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 7px;
 } 
 
 #gallery-image .image-grid-col-2{
@@ -355,119 +334,35 @@
         --row-height: 200px;
     }
 }
-
-/* test code  */
-
-/* Sinlge house preview */
-/* .house-images {
-    cursor: pointer;
+@media screen and (max-width: 767px) {
+    #gallery-image .image-grid > img {
+        display: none;
+    }
+    #gallery-image .image-grid > a.image-grid-col-2 {
+        display: block;
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    #gallery-image .image-grid {
+        --num-cols: 1;
+        --row-height: 400px;
+        gap: 0;
+    }
+}
+.house-section .position-sticky i{
+    color: var(--main-color) !important;
+    font-size: 1.2rem !important;
 }
 
-.house-images img {
-    border-radius: 5px;
+.house-section button{
+    border-radius: 13px !important;
+}
+.house-section .expert{
+    border-left: 1px solid #646464;
+    padding: 5px;
+    padding-left: 27px;
 }
 
-.house-images .last {
-    position: relative;
-}
-
-.house-images .plus-photos {
-    position: absolute;
-    top: 35%;
-    left: 30%;
-    background-color: white;
-    color: var(--main-color);
-    font-size: 17px;
-    border-radius: 20px;
-} */
-
-.house-section h1 {
-    color: var(--main-color);
-    margin-bottom: 1rem;
-}
-
-.house-section .small {
-    text-transform: uppercase;
-    color: var(--text-color);
-    font-size: 16px;
-}
-
-.house-section .small-main {
-    color: var(--main-color);
-    font-size: 22px;
-    margin-top: 0.5rem;
-}
-
-/* .icon-box .icon {
-    color: var(--main-color);
-    font-size: 25px;
-}
-
-.icon-box {
-    text-align: center;
-    margin-top: 2rem;
-    width: 100%;
-    border-right: 1px solid var(--text-color);
-}
-
-.icon-box .question {
-    color: var(--main-color);
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 1rem;
-} 
-
-.icon-box .text {
-    font-size: 16px;
-    color: var(--text-color);
-    margin-top: 1rem;
-} */
-
-.p-text h4 {
-    color: var(--main-color);
-    margin-bottom: 1rem;
-    font-size: var(--header-size);
-}
-
-.p-text p {
-    font-size: 18px;
-    color: var(--text-color);
-}
-
-.expert .content h5 {
-    color: var(--main-color);
-    font-size: 20px;
-}
-
-.expert .content div {
-    margin-top: -0.5rem;
-    font-size: 24px;
-    color: var(--text-color);
-}
-
-/* .expert .contact {
-    color: var(--main-color);
-    font-size: 20px;
-    border-left: 2px solid var(--text-color);
-    padding-left: 4rem;
-} */
-
-
-.others h4 {
-    color: var(--main-color);
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-    font-size: var(--header-size);
-}
-
-.house-sidebar .icon {
-    font-size: 20px;
-}
-
-.house-sidebar div {
-    font-size: 16px;
-    line-height: 1.3rem;
-}
 
 /* Responsiveness */
 @media (max-width: 991px) {
@@ -1124,6 +1019,18 @@ body {
     background-color: var(--white) !important;
 }
 
+.other-header .nav-link{
+    color: #646464;
+}
+.other-header .nav-link:hover{
+    color: var(--main-color);
+}
+
+.other-header.scrolled {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+    background-color: var(--white);
+}
+
 .banner{
     position: relative;
     min-height: 80vh;
@@ -1165,7 +1072,10 @@ button {
     max-width: 490px;
 }
 
-
+#main-header.scrolled {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important; 
+    background-color: var(--white) !important;
+}
 
 .main-header .search-box {
     flex: 1;
@@ -1435,11 +1345,7 @@ section .tab2 {
     color: var(--main-color) !important;
 }
 
-.white-navbar {
-    background-color: white;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    z-index: 99 !important;
-}
+
 
 
 @keyframes fade {

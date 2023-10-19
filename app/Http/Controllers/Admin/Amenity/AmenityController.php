@@ -30,8 +30,8 @@ class AmenityController extends Controller
 
         // Upload image if present
         if ($request->file('image')) {
-            $request->image->storeAs('images', time() . '_' . $request->image->getClientOriginalName(), 'public');
-            $image = 'images/' . time() . '_' . $request->image->getClientOriginalName();
+            $request->image->storeAs('Amenities', time() . '_' . $request->image->getClientOriginalName(), 'public');
+            $image = 'Amenities/' . time() . '_' . $request->image->getClientOriginalName();
         } else {
             $image = null;
         }
@@ -42,7 +42,7 @@ class AmenityController extends Controller
         $amenity->save();
 
         session()->flash("success", 'Commodité créée avec succès');
-        return redirect()->route('admin.amenities.index');
+        return redirect()->route('admin.amenities.index')->with("success", 'Commodité créée avec succès');
     }
 
     public function edit($id)
@@ -63,8 +63,8 @@ class AmenityController extends Controller
         // Upload image if present
         if ($request->hasFile('image')) {
             Storage::delete('/' . $amenity->image);
-            $request->image->storeAs('images', time() . '_' . $request->image->getClientOriginalName(), 'public');
-            $image = 'images/' . time() . '_' . $request->image->getClientOriginalName();
+            $request->image->storeAs('Amenities', time() . '_' . $request->image->getClientOriginalName(), 'public');
+            $image = 'Amenities/' . time() . '_' . $request->image->getClientOriginalName();
         } else {
             $image = $amenity->image;
         }
@@ -73,7 +73,7 @@ class AmenityController extends Controller
         $amenity->image = $image;
         $amenity->save();
 
-        session()->flash('success', 'Commodité mise à jour avec succès');
+        // session()->flash('success', 'Commodité mise à jour avec succès');
 
         return redirect()->route('admin.amenities.index');
     }

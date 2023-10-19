@@ -91,7 +91,7 @@
 
 </div>
 <!-- END wrapper -->
-
+<script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
 <!-- Vendor js -->
 <script src="{{ asset('admin_assets/js/vendor.min.js') }}"></script>
 

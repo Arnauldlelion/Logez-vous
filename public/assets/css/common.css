@@ -4,6 +4,7 @@
     --header-size: 28px;
     --secondary: #28a745;
     --grey: #6c757d;
+    --gray: #BCBCBC;
     --orangered: rgb(218, 74, 22);
     --white: #fff;
     --black: #000000;
@@ -13,10 +14,37 @@
 
 * {
     font-family: "Varela Round", "Helvetica Neue", Helvetica, sans-serif;
+    color: #646464;
+    font-size: 14px;
 }
+
+h1{
+    font-size: 30px !important;
+}
+
+h3{
+    font-size: 20px;
+}
+
+h4{
+    font-size: 18px;
+}
+
+p{
+    font-size: 14px;
+}
+
+small{
+    font-size: 12px;
+}
+
 
 .text-main {
     color: var(--main-color) !important;
+}
+
+.text-mute{
+    color: var(--gray) !important; 
 }
 
 .bg-main {

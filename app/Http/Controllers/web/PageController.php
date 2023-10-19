@@ -12,8 +12,7 @@ class PageController extends Controller
     //
     public function index()
     {
-        $apartments = Apartment::where('published', true)
-            ->orderBy('created_at', 'desc')
+        $apartments = Apartment::orderBy('created_at', 'desc')
             ->with('images')
             ->take(8)
             ->get();
@@ -34,9 +33,7 @@ class PageController extends Controller
             ->findOrFail($id);
 
         $otherApartments = Apartment::where('id', '!=', $apartment->id)
-            ->where('published', true)
             ->with('images')
-            ->limit(3)
             ->get();
 
         // Retrieve the images belonging to both the apartment and piece
