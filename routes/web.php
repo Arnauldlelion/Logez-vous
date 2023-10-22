@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\SendMailController;
 // use App\Http\Controllers\Admin\Auth\LoginController;
 // use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 
@@ -148,3 +149,20 @@ Route::group(['namespace' => 'web'], function () {
 
     Route::get('/info', 'PageController@info')->name('info');
 });
+
+
+Route::get('/prop', function () {
+    return view('help');
+});
+
+// Route::get('/prop', function () {
+//     return view('landlord.create_property');
+// });
+
+Route::get('/proprietaires', function () {
+    return view('proprietaires.index');
+});
+});
+
+
+Route::get('/sendMail', [SendMailController::class, 'index'])->name("sendMail");

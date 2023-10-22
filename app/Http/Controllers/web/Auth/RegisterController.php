@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
-
+use App\Mail\NewTenantRequest;
+use Illuminate\Support\Facades\Mail;
 class RegisterController extends Controller
 {
     //
@@ -38,6 +39,10 @@ class RegisterController extends Controller
 
         $input = $request->all();
         $admin = User::create($input);
+        
+        $adminEmail = 'arnauldfohom1@gmail.com';
+        // Send the email to the admin
+        Mail::to($adminEmail)->send(new NewTenantRequest($input['email']));
 
         Alert::success('success', 'thanks');
          return redirect()->back();

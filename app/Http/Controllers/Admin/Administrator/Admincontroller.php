@@ -12,7 +12,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Mail\WelcomeGestionnaireEmail;
+use Illuminate\Support\Facades\Mail;
 class Admincontroller extends Controller
 {
 
@@ -60,8 +61,14 @@ class Admincontroller extends Controller
         }
 
         $input = $request->all();
-        $input['password'] = \Hash::make($request->password);
+        $input['password'] = Hash::make($request->password);
+        $input['admin_id'] = Auth::guard('admin')->user()->id;
+
         $admin = Admin::create($input);
+
+        // Send the welcome email to the gestionnaire
+        Mail::to($admin->email)->send(new WelcomeGestionnaireEmail($admin, $request->password));
+
         return redirect()->to(route('admin.administrator.index'))->with('success', "Gestionnaires créé avec succès");
     }
 

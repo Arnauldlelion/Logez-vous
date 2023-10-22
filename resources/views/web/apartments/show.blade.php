@@ -125,7 +125,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-9">
+                {{-- the button should be here --}}
+               
+                <div class="col-12 col-md-9" style="padding-bottom: 15%">
+                    <div class="col-9 text-center" style="border-right:1px solid #cf2929">
+                        <button class="btn btn-secondary" id="salon">Salon</button>
+                   
+                        <button class="btn btn-secondary" id="toilette">Toilette</button>
+                   
+                    
+                        <button class="btn btn-secondary" id="cuisine">Cuisine</button>
+                 
+                        <button class="btn btn-secondary" id="chambre">Chambre</button>
+                    </div>
+            
                     <h1 class="text-main">Location d'un {{ $apartment->name }} {{ $apartment->furnished }}
                         {{ $apartment->property->location }}</h1>
                     <p>Les atouts du bien</p>
@@ -262,6 +275,7 @@
             </div>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         
         
@@ -294,5 +308,8 @@
         });
 
         
+        
     </script>
+   
+
 @endsection
