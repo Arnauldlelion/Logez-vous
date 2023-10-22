@@ -70,18 +70,19 @@ class LocataireController extends Controller
             'apartment_id' => 'required|exists:apartments,id',
         ]);
 
-        $locataire = new Locataire;
-        $locataire->first_name = $validatedData['first_name'];
-        $locataire->last_name = $validatedData['last_name'];
-        $locataire->phone = $validatedData['phone'];
-        $locataire->email = $validatedData['email'];
-        $locataire->is_approved = false;
-        $locataire->apartment_id = $validatedData['apartment_id'];
-    
-        $locataire->save();
-    
-        Alert::success('success', 'thanks');
-        // Alert::success(session('status'), 'thanks');
-        return redirect()->back();
-    }
+    // Process other form fields and store data in the database
+    dd( $validatedData);
+    $locataire = new Locataire;
+    $locataire->first_name = $validatedData['first_name'];
+    $locataire->last_name = $validatedData['last_name'];
+    $locataire->phone = $validatedData['phone'];
+    $locataire->email = $validatedData['email'];
+    $locataire->is_approved = false;
+    $locataire->apartment_id = $apartment_id; // Assign the apartment_id
+    $locataire->save();
+
+    // Rest of your code
+
+    return response()->json(['success' => true]);
+}
 }
