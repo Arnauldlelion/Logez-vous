@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
 
-                                <div class="w-100 mb-5" style="padding-bottom: 10%">
+                                <div class="w-100">
                                     <div class="text-black float-start">
                                         <a href="{{ route('admin.property.show', session('new_prop_id')) }}"
                                             class="text-secondary">
@@ -148,7 +148,6 @@
                                     <button type="submit" class="btn btn-danger rounded-pill float-end">Mettre à
                                         jour</button>
                                 </div>
-
                             </form>
                             <!-- end form-->
                         </div>

@@ -80,6 +80,10 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Display Bootstrap pagination links -->
+                <div class="d-flex justify-content-center">
+                    {{ $properties->links('pagination::bootstrap-4') }}
+                </div>
                 </div>
             </div>
         </div>

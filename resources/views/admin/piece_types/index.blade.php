@@ -62,6 +62,10 @@
 						</tbody>
 					</table>
 				</div>
+				<!-- Display Bootstrap pagination links -->
+				<div class="d-flex justify-content-center">
+                	{{ $piece_types->links('pagination::bootstrap-4') }}
+                </div>
 			</div>
 		</div>
 		<div class="col-md-4">

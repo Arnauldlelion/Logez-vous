@@ -37,10 +37,7 @@ class Apartment extends Model
     return $this->hasMany(Payment::class);
     }
 
-    // public function locataire()
-    // {
-    // return $this->belongsTo(Locataire::class);
-    // }
+
     public function locataire()
     {
         return $this->hasOne(Locataire::class);
@@ -61,12 +58,6 @@ class Apartment extends Model
     return $this->hasMany(Piece::class, 'apartment_id');
     }
     
-
-
-    // public function images()
-    // {
-    // return $this->hasMany(Image::class, "apartment_id");
-    // }
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');

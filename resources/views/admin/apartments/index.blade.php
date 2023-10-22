@@ -78,7 +78,7 @@
                                                 <a href="{{ route('admin.apartments.edit', $apartment->id) }}"
                                                     style="height: fit-content;" class="btn btn-success  btn-sm ml-4">
                                                     <i class="mdi mdi-pencil"></i></a>
-                                                <a data-toggle="modal" data-target="#deleteModal{{ $apartment->id }}"
+                                                <a data-toggle="modal" data-target="#deleteModal h"
                                                     href="#" style="height: fit-content;" class="btn btn-danger btn-sm"><i
                                                         class="mdi mdi-delete"></i></a>
                                             </div>
@@ -98,7 +98,10 @@
                             </tbody>
                         </table>
                     </div>
-                    {{-- {{ $apartment->links() }} --}}
+                    <!-- Display Bootstrap pagination links -->
+                    <div class="d-flex justify-content-center">
+                        {{ $apartments->links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
             </div>
         </div>

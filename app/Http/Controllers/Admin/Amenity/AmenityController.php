@@ -11,7 +11,7 @@ class AmenityController extends Controller
 {
     public function index()
     {
-        $amenities = Amenity::orderBy('created_at', 'DESC')->paginate(20);
+        $amenities = Amenity::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('admin.amenities.index', compact('amenities'));
     }

@@ -289,7 +289,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dashboard') }}">
+                        <a class="nav-link" href="{{ route('landlord.dashboard') }}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Accueil</span>
                         </a>
@@ -299,13 +299,8 @@
                             <i class="icon-layout menu-icon"></i>
                             <span class="menu-title">Mes Logements</span>
                         </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#">Logement</a></li>
-                            </ul>
-                        </div>
                     </li>
-                   {{-- <li class="nav-item">
+                   <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                             aria-controls="charts">
                             <i class="ti-user mx-0"></i>
@@ -317,7 +312,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('tenants')}}">Mes Locatiares</a></li>
                             </ul>
                         </div>
-                    </li>  --}}
+                    </li> 
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
                             aria-controls="tables">
@@ -347,7 +342,12 @@
                         </div>
                     </li>
 
-
+                    <li class="nav-item">
+                        <a class="nav-link"  href="{{ route('index')}}">
+                            <i class="ti-home"></i>
+                            <span class="menu-title"></span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
            

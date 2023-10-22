@@ -105,7 +105,7 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrfail($id);
         session()->put('new_apt_id', $id);
-        $pieces = $apartment->pieces;
+        $pieces = $apartment->pieces()->paginate(10);
         $aptImages = $apartment->images;
         return view('admin.pieces.index', compact('pieces', 'apartment', 'aptImages'));
     }

@@ -16,7 +16,7 @@ class ApartmentTypesController extends Controller
      */
     public function index()
     {
-        $apt_types = ApartmentType::orderBy('created_at', 'DESC')->get();
+        $apt_types = ApartmentType::orderBy('created_at', 'DESC')->paginate(15);
         return view('admin.apartment_types.index', compact('apt_types'));
     }
 

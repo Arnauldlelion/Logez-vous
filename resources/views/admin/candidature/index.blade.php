@@ -21,53 +21,6 @@
 
     <div class="card">
         <div class="card-body">
-            {{-- <div class="filter">
-                <div class="d-flex justify-content-between mb-3">
-                    <div class="d-flex">
-                        <button class="btn btn-success btn-sm btn-rounded waves-effect mr-2"
-                                title="Filtrer les résultats" type="button" data-toggle="collapse"
-                                data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
-                            <i class="mdi mdi-filter"></i>
-                        </button>
-                        <div class="dropdown">
-                            <button class="btn btn-success px-2 btn-sm" id="resultCount" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"> {{ $search['limit'] ?: 20 }} <i
-                                        class=" ml-2 fa fa-angle-down"></i></button>
-                            <div class="dropdown-menu w-25" aria-labelledby="resultCount">
-                                <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 10]) }}">10</a>
-                                <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 20]) }}">20</a>
-                                <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 50]) }}">50</a>
-                                <a class="dropdown-item"
-                                   href="{{ route('admin.tenant', ['q'=>$search['q'], 'limit' => 100]) }}">100</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-nowrap align-items-center">
-                        <small class="mx-2">page {{ $candidatures->currentPage() }} de {{ $candidatures->total() }} résultats</small>
-                    </div>
-                </div>
-
-                <div class="collapse {{ $search['q'] ? 'show' : ''}}" id="collapseFilter">
-                    <form action="{{ route('admin.tenant') }}">
-                        <input type="hidden" name="limit" value="{{ $search['limit'] }}">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <input type="text" name="q" value="{{ $search['q'] }}"
-                                       class="form-control form-control-sm"
-                                       placeholder="Enter user name">
-                            </div>
-                            <div class="col-md-2 text-right d-flex align-items-end justify-content-end mt-3 mt-md-0">
-                                <button class="btn btn-success btn-sm" type="submit">Filtre</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div> --}}
-
-
             <div class="table-responsive">
                 <table class="table table-centered table-striped">
                     <thead>
@@ -118,7 +71,10 @@
                 </table>
             </div>
 
-            {{ $candidatures->links('pagination::bootstrap-4') }}
+            <!-- Display Bootstrap pagination links -->
+            <div class="d-flex justify-content-center">
+                {{ $candidatures->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 

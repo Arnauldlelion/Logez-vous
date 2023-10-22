@@ -1269,16 +1269,13 @@ section .tab2 {
 }
 
 .auth-fluid .auth-fluid-right {
-    padding: 6rem 3rem;
+    /* padding: 6rem 3rem; */
     flex: 1;
     position: relative;
     color: #fff;
     background-color: rgba(0, 0, 0, .3)
 }
 
-.auth-brand {
-    margin-bottom: 2rem
-}
 
 .auth-user-testimonial {
     position: absolute;

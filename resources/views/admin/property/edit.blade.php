@@ -18,7 +18,7 @@
                             <form action="{{ route('admin.property.update', $property->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                     <label for="name" class="col-sm-2 col-form-label-sm">Nom du bien</label>
                                     <div class="col-12 col-lg-7">
                                         <input
@@ -30,7 +30,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                     <label for="number_of_apartments" class="col-sm-2 col-form-label-sm">Nombre
                                         d'Appartements</label>
                                     <div class="col-12 col-lg-7">
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                     <label for="appartmentType" class="col-sm-2 col-form-label-sm">Type
                                         d'Appartement</label>
                                     <div class="col-12 col-lg-7">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                     <label for="location" class="col-sm-2 col-form-label-sm">Emplacement</label>
                                     <div class="col-12 col-lg-7">
                                         <input
@@ -79,7 +79,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                     <label for="landlord" class="col-sm-2 col-form-label-sm">Propriétaire</label>
                                     <div class="col-12 col-lg-7">
                                         <select
@@ -98,7 +98,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center">
                                     <label for="pieces_types_id" class="col-sm-2 ">Atout</label>
                                     <div class="col-12 col-lg-7">
 
@@ -112,7 +112,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="w-100 mb-5">
+                                <div class="w-100">
                                     <div class="text-black float-start">
                                         <a href="{{ route('admin.property.index') }}" class="text-secondary">
                                             <i class="mdi mdi-chevron-left text-secondary"></i>

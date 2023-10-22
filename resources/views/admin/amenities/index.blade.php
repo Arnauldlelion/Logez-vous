@@ -93,7 +93,10 @@
         </div>
 
         <div class="mt-3">
-            {{ $amenities->links() }}
+            <!-- Display Bootstrap pagination links -->
+            <div class="d-flex justify-content-center">
+                {{ $amenities->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 

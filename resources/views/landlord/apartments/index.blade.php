@@ -1,7 +1,7 @@
 @extends('landlord.layouts.app')
 
 @section('content')
-
+<h2 class="page-title text-capitalize mb-3">Mes Appartements</h2>
     <div class="table-responsive">
         <table class="table table-centered table-striped">
             <thead>

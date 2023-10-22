@@ -16,7 +16,7 @@ class PieceTypesController extends Controller
      */
     public function index()
     {
-        $piece_types = PieceType::orderBy('created_at', 'DESC')->paginate(20);
+        $piece_types = PieceType::orderBy('created_at', 'DESC')->paginate(15);
         return view('admin.piece_types.index', compact('piece_types'));
     }
 

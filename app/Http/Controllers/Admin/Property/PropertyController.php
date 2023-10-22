@@ -21,7 +21,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::where('admin_id', auth('admin')->id())->get();
+        $properties = Property::where('admin_id', auth('admin')->id())->paginate(10);
     
         return view('admin.property.index', compact('properties'));
     }
@@ -87,7 +87,7 @@ class PropertyController extends Controller
     {
         $property = Property::findOrfail($id);
         session()->put('new_prop_id', $id);
-        $apartments = $property->apartments;
+        $apartments = $property->apartments()->paginate(7);
         // dd($apartments);
         return view('admin.apartments.index', compact('apartments', 'property'));
     }

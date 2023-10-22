@@ -17,19 +17,20 @@
       <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
       <link rel="stylesheet" href="{{ asset ('assets/css/bootstrap-icons.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/lightgallery.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/lightgallery-bundle.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
 
 
 
-        <script type="text/javascript" src="{{asset('assets/js/code.jquery.com_jquery-3.7.1.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('assets/js/all.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('assets/js/main.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/code.jquery.com_jquery-3.7.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/lightgallery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/all.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
-        <script src="{{asset('assets/js/popper.min.js')}}"></script>
+        <script src="{{ asset('assets/js/popper.min.js')}}"></script>
         <script src="{{ asset('assets/js/all.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
 
@@ -55,6 +56,8 @@
 
     {{-- Footer code here --}}
     @include('web.layouts.footer')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/js/lightgallery.min.js"></script>
 
 </body>
 

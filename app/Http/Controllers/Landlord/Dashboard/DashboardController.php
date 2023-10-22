@@ -25,7 +25,6 @@ class DashboardController extends Controller
             ->get()
             ->pluck('apartments')
             ->flatten();
-
     
         // Retrieve all "rapport de gestion" and "annual rapport de gestion" records for the apartments
         $allRapportDeGestions = collect();
@@ -37,29 +36,19 @@ class DashboardController extends Controller
     
         $totalRapportDeGestionsCount = $allRapportDeGestions->count();
     
-        // Retrieve approved tenant for each apartment
-        // $approvedTenants = collect();
+        // Retrieve approved tenants for each apartment
+        $tenants = collect();
     
-        // foreach ($totalApartments as $apartment) {
-        //     if ($apartment->tenant && $apartment->tenant->is_approved) {
-        //         $approvedTenants->push($apartment->tenant);
-        //     }
-        // }
-
-                      // Retrieve approved tenants for each apartment
-    $approvedTenants = collect();
-
-    foreach ($properties as $property) {
-        foreach ($property->apartments as $apartment) {
-            if ($apartment->tenant && $apartment->tenant->is_approved) {
-                $approvedTenants->push($apartment->tenant);
+        foreach ($properties as $property) {
+            foreach ($property->apartments as $apartment) {
+                if ($apartment->locataire) {
+                    $tenants->push($apartment->locataire);
+                }
             }
         }
-    }
     
-        return view('landlord.dashboard.index', compact('properties', 'totalApartments', 'userName', 'totalRapportDeGestionsCount', 'approvedTenants'));
+        return view('landlord.dashboard.index', compact('properties', 'totalApartments', 'userName', 'totalRapportDeGestionsCount', 'tenants'));
     }
-
    public function properties(){
          // Get the authenticated landlord
          $landlord = Auth::guard('landlord')->user();
@@ -106,7 +95,7 @@ class DashboardController extends Controller
         // Retrieve the property with its apartments
         $property = Property::with('apartments')->findOrFail($propertyId);
 
-        return view('landlord.apartments.show', compact('property'));
+        return view('landlord.properties.show', compact('property'));
     }
 
         public function rapportDeGestion()
@@ -146,37 +135,23 @@ class DashboardController extends Controller
         // Get the authenticated landlord
         $landlord = Auth::guard('landlord')->user();
     
-        $userName = $landlord->name;
     
         // Retrieve properties and apartments
         $properties = $landlord->properties;
+
     
-        $totalApartments = $landlord->properties()
-            ->with('apartments')
-            ->get()
-            ->pluck('apartments')
-            ->flatten();
+         // Retrieve approved tenants for each apartment
+         $tenants = collect();
     
-        // Retrieve all "rapport de gestion" and "annual rapport de gestion" records for the apartments
-        $allRapportDeGestions = collect();
+         foreach ($properties as $property) {
+             foreach ($property->apartments as $apartment) {
+                 if ($apartment->locataire) {
+                     $tenants->push($apartment->locataire);
+                 }
+             }
+         }
     
-        foreach ($totalApartments as $apartment) {
-            $allRapportDeGestions = $allRapportDeGestions->merge($apartment->rapportDeGestions);
-            $allRapportDeGestions = $allRapportDeGestions->merge($apartment->annualRapportDeGestions);
-        }
-    
-        $totalRapportDeGestionsCount = $allRapportDeGestions->count();
-    
-        // Retrieve approved tenant for each apartment
-        $approvedTenants = collect();
-    
-        foreach ($totalApartments as $apartment) {
-            if ($apartment->tenant && $apartment->tenant->is_approved) {
-                $approvedTenants->push($apartment->tenant);
-            }
-        }
-    
-        return view('landlord.tenants.index', compact( 'approvedTenants'));
+        return view('landlord.tenants.index', compact( 'tenants'));
     }
 }
 

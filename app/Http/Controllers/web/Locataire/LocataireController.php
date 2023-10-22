@@ -60,27 +60,25 @@ class LocataireController extends Controller
         return view('landlord.tenants.index', compact( 'approvedTenants'));
     }
 
-    public function store(Request $request, $apartment_id)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone' => ['required', 'unique:locataires', 'regex:/^\d{9}$/'],
             'email' => 'required|email|unique:locataires|max:255',
+            'apartment_id' => 'required|exists:apartments,id',
         ]);
-    
-        // Process other form fields and store data in the database
-    
+
         $locataire = new Locataire;
         $locataire->first_name = $validatedData['first_name'];
         $locataire->last_name = $validatedData['last_name'];
         $locataire->phone = $validatedData['phone'];
         $locataire->email = $validatedData['email'];
         $locataire->is_approved = false;
-        $locataire->apartment_id = $apartment_id; // Assign the apartment_id
-        $locataire->save();
+        $locataire->apartment_id = $validatedData['apartment_id'];
     
-        // Rest of your code
+        $locataire->save();
     
         Alert::success('success', 'thanks');
         // Alert::success(session('status'), 'thanks');

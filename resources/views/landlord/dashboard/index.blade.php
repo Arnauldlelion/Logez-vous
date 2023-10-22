@@ -69,10 +69,7 @@
                       <div class="card-body">
                         <a href="{{ route('tenants')}}" class="text-decoration-none text-white">
                           <p class="mb-4">Nombre de Locataires</p>
-                          <p class="fs-30 mb-2">{{ $approvedTenants->count() }}</p>
-                          @foreach($approvedTenants as $tenant)
-    <p>{{ $tenant->first_name }} {{ $tenant->last_name }}</p>
-@endforeach
+                          <p class="fs-30 mb-2">{{ $tenants->count() }}</p>
                           {{-- <p>2.00% (30 jours)</p> --}}
                         </a>
                       </div>

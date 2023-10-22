@@ -15,7 +15,7 @@ class LoginController extends Controller
     {
 
         if (Auth('landlord')->check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('landlord.dashboard');
         }
 
         return view('web.auth.login');

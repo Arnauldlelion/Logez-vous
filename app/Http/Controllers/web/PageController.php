@@ -32,6 +32,7 @@ class PageController extends Controller
         $apartment = Apartment::with(['images', 'pieces.images', 'property.amenities'])
             ->findOrFail($id);
 
+            // dd($apartment->id);
         $otherApartments = Apartment::where('id', '!=', $apartment->id)
             ->with('images')
             ->get();
@@ -41,11 +42,15 @@ class PageController extends Controller
             return $piece->images;
         }));
 
+
         $remainingImages = count($images) - 4;
+
+        // Get all pieces belonging to the apartment with their images
+        $pieces = $apartment->pieces()->with('images')->get();
 
         $amenities = $apartment->property->amenities;
 
-        return view('web.apartments.show', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities'));
+        return view('web.apartments.show', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities', 'pieces'));
     }
     public function info(){
 

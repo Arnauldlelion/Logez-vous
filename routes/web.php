@@ -113,7 +113,7 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
 // Landlord routes
     Route::group(['namespace' => 'Landlord', 'middleware' => ['auth:landlord']], function ()  {
-    Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
+    Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('landlord.dashboard');
     Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
     Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
     Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
@@ -138,7 +138,7 @@ Route::group(['namespace' => 'web'], function () {
     Route::get('/gestion', 'Auth\RegisterController@showRegistrationForm')->name('gestion');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
 
-    Route::post('/locataires/{apartment_id}', 'Locataire\LocataireController@store')->name('storeLocataire');
+    Route::post('/locataire/apartment', 'Locataire\LocataireController@store')->name('storeLocataire');
 
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');

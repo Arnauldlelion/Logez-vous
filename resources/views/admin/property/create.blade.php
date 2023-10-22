@@ -13,7 +13,7 @@
                             <!-- form -->
                             <form action="{{ route('admin.property.store') }}" method="POST">
                                 @csrf
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center ">
                                     <label for="name" class="col-sm-2 col-form-label-sm">Nom du bien</label>
                                     <div class="col-12 col-lg-7">
                                         <input
@@ -24,7 +24,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center ">
                                     <label for="number_of_apartments" class="col-sm-2 col-form-label-sm">Nombre
                                         d'Appartements</label>
                                     <div class="col-12 col-lg-7">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
     
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center ">
                                     <label for="apartmentType" class="col-sm-2 col-form-label-sm">Type d'Appartment</label>
                                     <div class="col-12 col-lg-7">
     
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
     
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center ">
                                     <label for="location" class="col-sm-2 col-form-label-sm">Emplacement</label>
                                     <div class="col-12 col-lg-7">
                                         <input
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
     
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center ">
                                     <label for="landlord" class="col-sm-2 col-form-label-sm">Propriétaire</label>
                                     <div class="col-12 col-lg-7">
                                         <select
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
     
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
+                                <div class="form-group row mb-5 d-block d-lg-flex ">
                                     <label for="pieces_types_id" class="col-sm-2 ">Atout</label>
                                     <div class="col-12 col-lg-7">
     
@@ -105,19 +105,13 @@
                                 </div>
     
     
-                                <div class="w-100 mb-5" style="padding-bottom: 10%">
-                                    <div class="text-black float-start">
-    
+                                <div>
                                         <a href="{{ route('admin.property.index') }}" class="text-secondary">
                                             <i class="mdi mdi-chevron-left text-secondary"></i>
                                             Retour
                                         </a>
-                                    </div>
     
                                     <button type="submit" class="btn btn-danger rounded-pill float-end ">Ajouter</button>
-    
-    
-    
                                 </div>
                             </form>
                             <!-- end form-->

@@ -25,4 +25,26 @@ class Landlord extends Authenticatable
         return $this->hasMany(Property::class);
     }
 
+    // public function getLocataireByApartmentId($apartmentId)
+    // {
+    //     return Locataire::whereHas('apartment.property', function ($query) use ($apartmentId) {
+    //         $query->where('landlord_id', $this->id)
+    //             ->where('id', $apartmentId);
+    //     })->first();
+    // }
+    // public function getLocatairesByApartmentId($apartmentId)
+    // {
+    //     return Locataire::whereHas('apartment.property', function ($query) use ($apartmentId) {
+    //         $query->where('landlord_id', $this->id)
+    //             ->where('id', $apartmentId);
+    //     })->get();
+    // }
+    public function getLocatairesByApartmentId($apartmentId)
+    {
+        return Locataire::whereHas('apartment.property', function ($query) use ($apartmentId) {
+            $query->where('landlord_id', $this->id)
+                ->where('id', $apartmentId);
+        })->where('is_approved', 1)->get();
+    }
+
 }

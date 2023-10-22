@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h4>Locataire</h4>
+    <h2 class="page-title text-capitalize mb-3">Mes Locataire</h2>
     <div class="table-responsive">
         <table class="table table-centered table-striped">
             <thead>
@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($approvedTenants as $tenant)
+                @forelse($tenants as $tenant)
                     <tr role="row">
                         <td>{{ $loop->index + 1 }}</td>
                     
@@ -31,9 +31,6 @@
         </table>
     </div>
 
-    {{-- {{ $admins->appends($search)->links()}} --}}
-    </div>
-    </div>
 
 @endsection
 

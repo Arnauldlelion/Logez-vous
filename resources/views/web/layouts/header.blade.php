@@ -30,7 +30,7 @@
                             </a>
                         </li>
                     @endif
-                    @guest
+                    @guest('landlord')
                         <li class="nav-item">
                             <button data-bs-toggle="modal" class="nav-link" data-bs-target="#login-modal">Connexion</button>
                         </li>
@@ -43,7 +43,7 @@
                         </li>
                     @endif
                    
-                    @auth
+                    @auth('landlord')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('landlord.dashboard') }}">Mon compte</a>
                         </li>
