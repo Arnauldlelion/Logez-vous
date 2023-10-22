@@ -36,6 +36,8 @@
                         <strong>Numéro de téléphone :</strong> <span class="ml-2 ">{{ $landlord->phone}}</span></p>
                     <p class="text-muted mb-2 font-13">
                         <strong>Email :</strong> <span class="ml-2 ">{{ $landlord->email }}</span></p>
+                        <a href="{{ route('admin.landlord.create', $landlord->id) }}" class="btn btn-success  btn-sm mr-1">
+                            Approuver</a>
 
                 </div>
             </div>
@@ -46,6 +48,7 @@
                 {!! $landlord->location ?: '--' !!}
                 <h4 class="mt-4">A propos</h4>
                 {!! $landlord->description ?: '--' !!}
+                
             </div>
         </div>
     </div>

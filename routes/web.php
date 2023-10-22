@@ -89,10 +89,7 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         // Route::resource('rapport-general', 'GeneralRapport\GeneralRapportController');
         Route::resource('rapport-general', 'GeneralRapport\GeneralRapportController');
      
-        Route::resource('payments', 'Payments\PaymentsController');
 
-        // APPROUVE LANDLORD ACCOUNT
-        Route::post('users/{user}/approve', 'Administrator\AdminController@approve')->name('users.approve');
         // REJECT LANDLORD ACCOUNT
         Route::delete('users/{user}/reject', 'Administrator\AdminController@reject')->name('users.reject');
 

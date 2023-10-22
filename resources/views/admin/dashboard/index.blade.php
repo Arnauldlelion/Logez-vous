@@ -118,7 +118,7 @@
                                 <th>S/N</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
-                                <th>Status</th>
+                                <th>Emplacement</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -128,23 +128,16 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $landlord->first_name }}</td>
                                 <td>{{ $landlord->last_name }}</td>
-                                <td>{{ $landlord->is_approved ? 'Approved' : 'En instance' }}</td>
+                                <td>{{ $landlord->location }}</td>
                                 <td>
                                     <div class="btn-group ">
                                         <a href="{{ route('admin.landlord-details', $landlord->id) }}"
-                                            class="btn btn-success btn-sm text-white align-items-center" title="View">
+                                            class="btn btn-success btn-sm text-white align-items-center mr-1" title="View">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         @if (!$landlord->is_approved)
-                                            {{-- <form method="POST" action="{{ route('admin.users.approve', $landlord->id) }}">
-                                                @csrf
-                                                <button type="submit" class="btn btn-primary btn-sm">Approuver</button>
-
-                                            </form> --}}
-                                            <form method="POST" action="{{ route('admin.users.approve', $landlord->id) }}">
-                                                @csrf
-                                                <button type="submit" class="btn btn-primary btn-sm">Approuver</button>
-                                            </form>
+                                            <a href="{{ route('admin.landlord.create', $landlord->id) }}" class="btn btn-success  btn-sm mr-1">
+                                                Approuver</a>
                         
                                             <form action="{{ route('admin.users.reject', $landlord) }}" method="POST" style="display: inline;">
                                                 @csrf

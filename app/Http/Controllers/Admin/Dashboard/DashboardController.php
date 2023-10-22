@@ -27,24 +27,24 @@ class DashboardController extends Controller
     }
     
     public function unApprovedLocataires()
-{
-    $landlords = User::orderBy('created_at', 'DESC')->where('is_approved', false)->paginate(20);
+    {
+        $landlords = User::orderBy('created_at', 'DESC')->where('is_approved', false)->paginate(20);
 
-    if (auth()->check()) {
-        // Get the IDs of properties associated with the admin
-        $adminPropertyIds = auth()->user()->properties()->pluck('id')->toArray();
+        if (auth()->check()) {
+            // Get the IDs of properties associated with the admin
+            $adminPropertyIds = auth()->user()->properties()->pluck('id')->toArray();
 
-        $candidatures = Locataire::where('is_approved', false)
-            ->whereHas('apartment', function ($query) use ($adminPropertyIds) {
-                $query->whereIn('property_id', $adminPropertyIds);
-            })
-            ->get();
-    } else {
-        $candidatures = collect(); // Create an empty collection if user is not authenticated
+            $candidatures = Locataire::where('is_approved', false)
+                ->whereHas('apartment', function ($query) use ($adminPropertyIds) {
+                    $query->whereIn('property_id', $adminPropertyIds);
+                })
+                ->get();
+        } else {
+            $candidatures = collect(); // Create an empty collection if user is not authenticated
+        }
+
+        return view('admin.dashboard.index', compact('landlords', 'candidatures'));
     }
-
-    return view('admin.dashboard.index', compact('landlords', 'candidatures'));
-}
 
     public function landlordDetails($id)
     {
@@ -53,7 +53,5 @@ class DashboardController extends Controller
             compact('landlord'));
             
     }
-
-
 
 }

@@ -73,9 +73,13 @@ class LandlordController extends Controller
 
         // Send the welcome email to the landlord
         Mail::to($landlord->email)->send(new WelcomeEmail($landlord, $request->password));
+
+        // Delete the user from the users table
+        User::where('email', $landlord->email)->delete();
         
         return redirect()->route('admin.landlords.index')->with('success', 'Propriétaire créé avec succès');
     }
+
 
     public function show($id)
     {
