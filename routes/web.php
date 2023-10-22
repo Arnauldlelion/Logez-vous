@@ -114,19 +114,19 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
 // Landlord routes
     Route::group(['namespace' => 'Landlord', 'middleware' => ['auth:landlord']], function ()  {
-    Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('landlord.dashboard');
-    Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
-    Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
-    Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
-    Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
-    Route::get('locataire', 'Dashboard\DashboardController@locataire')->name('tenants');
-    Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
-    Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
-    Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
-    Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
-    Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
-    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-    // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
+        Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('landlord.dashboard');
+        Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
+        Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
+        Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
+        Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
+        Route::get('locataire', 'Dashboard\DashboardController@locataire')->name('tenants');
+        Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
+        Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
+        Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
+        Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
+        Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
+        Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+        // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
 });
 
 
@@ -151,18 +151,3 @@ Route::group(['namespace' => 'web'], function () {
 });
 
 
-Route::get('/prop', function () {
-    return view('help');
-});
-
-// Route::get('/prop', function () {
-//     return view('landlord.create_property');
-// });
-
-Route::get('/proprietaires', function () {
-    return view('proprietaires.index');
-});
-});
-
-
-Route::get('/sendMail', [SendMailController::class, 'index'])->name("sendMail");
