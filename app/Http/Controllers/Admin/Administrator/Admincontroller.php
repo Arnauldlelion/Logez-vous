@@ -130,13 +130,20 @@ class Admincontroller extends Controller
         return redirect()->to(route('admin.administrator.index'));
     }
 
-    public function approve(User $user)
-{
-    $user->is_approved = true;
-    $user->save();
+    // public function approve(User $user)
+    // {
+    //     $user->is_approved = true;
+    //     $user->save();
 
-    return redirect()->back()->with('message', 'Approuvé avec succès.')->with('user', $user);
-}
+    //     return redirect()->back()->with('message', 'Approuvé avec succès.')->with('user', $user);
+    // }
+    public function approve(User $user)
+    {
+        $user->is_approved = true;
+        $user->save();
+
+        return redirect()->route('admin.landlord.create', $user->id);
+    }
 
     public function reject(User $user)
     {

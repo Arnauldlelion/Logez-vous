@@ -136,6 +136,11 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         @if (!$landlord->is_approved)
+                                            {{-- <form method="POST" action="{{ route('admin.users.approve', $landlord->id) }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary btn-sm">Approuver</button>
+
+                                            </form> --}}
                                             <form method="POST" action="{{ route('admin.users.approve', $landlord->id) }}">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary btn-sm">Approuver</button>

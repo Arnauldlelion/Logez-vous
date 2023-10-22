@@ -47,9 +47,6 @@
     @endif
     {{-- Navbar code here --}}
     @yield('content')
-    {{-- Register Modal --}}
-
-    @include('web.auth.register')
 
     {{-- Login Modal --}}
     @include('web.auth.login')

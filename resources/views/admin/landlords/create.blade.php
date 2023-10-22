@@ -30,7 +30,7 @@
                             <div class="form-group col-sm-6">
                                 <label for="firstname">Nom</label>
                                 <input class="form-control @error('name') is-invalid @enderror" type="text"
-                                       value="{{old('name')}}" name="name" placeholder="Entrez le nom complète du propriétaire ">
+                                value="{{ old('name', $landlord->first_name. ' '.$landlord->last_name ?? '') }}" name="name" placeholder="Entrez le nom complète du propriétaire ">
                                 @error('name')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -39,7 +39,7 @@
                             <div class="form-group col-sm-6">
                                 <label>Email</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="email"
-                                       value="{{old('email')}}" name="email"
+                                value="{{ old('name', $landlord->email ?? '') }}" name="email"
                                        placeholder="Entrez l’adresse e-mail du propriétaire">
                                 @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
@@ -49,7 +49,7 @@
                             <div class="form-group col-sm-6">
                                 <label for="phone">Numero</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" type="number"
-                                       value="{{old('phone')}}" name="phone" placeholder="Entrez le numero du propriétaire ">
+                                value="{{ old('name', $landlord->phone ?? '') }}" name="phone" placeholder="Entrez le numero du propriétaire ">
                                 @error('phone')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror

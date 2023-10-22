@@ -44,10 +44,11 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('dashboard');
         Route::get('/landlord/{id}', 'Dashboard\DashboardController@landlordDetails')->name('landlord-details');
+        Route::get('landlords/create/{id}', 'Landlord\LandlordController@create')->name('landlord.create');
+        Route::resource('landlords', 'Landlord\LandlordController');
         Route::resource('apartment_types', 'ApartmentTypes\ApartmentTypesController');
         Route::resource('approuved-landlords', 'Landlord\LandlordController');
         Route::resource('piece_types', 'PieceTypes\PieceTypesController');
-        Route::resource('landlords', 'Landlord\LandlordController');
         Route::resource('amenities', 'Amenity\AmenityController');
         Route::resource('testimonials', 'TestimonyController');
         Route::resource('pages', 'PageContentController');

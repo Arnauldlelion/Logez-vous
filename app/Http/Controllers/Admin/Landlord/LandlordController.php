@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Landlord;
 
-use App\Http\Controllers\Controller;
-use App\Mail\WelcomeEmail;
+use App\Models\User;
 use App\Models\Landlord;
+use App\Mail\WelcomeEmail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -43,9 +44,10 @@ class LandlordController extends Controller
         return view('admin.landlords.index', compact('landlords', 'search'));
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('admin.landlords.create');
+        $landlord = User::findOrFail($id);
+        return view('admin.landlords.create', compact('landlord'));
     }
 
     public function store(Request $request)
