@@ -5,36 +5,49 @@
 @section('content')
     <section id="gallery-image">
         <div class="container-fluid col-lg-9 mx-auto">
-            <div class="image-grid overflow-hidden" id="static-thumbnails">
-                @if ($apartment->coverImage)
-                    <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="image-grid-col-2 image-grid-row-2">
-                        <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
-                    </a>
-                @endif
-                @foreach ($images as $index => $image)
-                    @if ($index < 3)
-                        <a href="{{ $image->getImageUrl() }}" class="img-link  d-none d-md-block">
-                            <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
+                <div class="image-grid" id="lightgallery">
+                    @if ($apartment->coverImage)
+                        <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="image-grid-col-2 image-grid-row-2" >
+                            <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
                         </a>
-                    @else
-                        @if ($index == 3)
-                            <a href="{{ $image->getImageUrl() }}"
-                                class="remaining-images position-relative d-none d-md-block">
+                    @endif
+                    @foreach ($images as $index => $image)
+                        @if ($index < 3)
+                            <a href="{{ $image->getImageUrl() }}" class="img-link  d-none d-md-block" >
                                 <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
-                                <span
-                                    class="position-absolute top-50 start-50 translate-middle badge text-bg-secondary">+{{ $remainingImages }}
-                                    photos</span>
                             </a>
                         @else
-                            <a href="{{ $image->getImageUrl() }}" class="remaining-images d-none">
-                                <span> {{ $remainingImages }} </span>
-                            </a>
+                            @if ($index == 3)
+                                <a href="{{ $image->getImageUrl() }}"
+                                    class="remaining-images position-relative d-none d-md-block" >
+                                    <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
+                                    <span
+                                        class="position-absolute top-50 start-50 translate-middle badge text-bg-secondary">+{{ $remainingImages }}
+                                        photos</span>
+                                </a>
+                            @else
+                                <a href="{{ $image->getImageUrl() }}" class="remaining-images d-none" >
+                                    <span> {{ $remainingImages }} </span>
+                                </a>
+                            @endif
                         @endif
-                    @endif
-                @endforeach
-            </div>
-  
+                    @endforeach
+                </div>
+                <div class="row">
+                    @foreach ($pieces as $index => $piece)
+                        @if ($piece->images->isNotEmpty())
+                            <div class="col-1" id="lightgallery-{{ $index }}">
+                                <a href="{{ $piece->images[0]->getImageUrl() }}" class="piece-name btn btn-secondary rounded-pill">{{ $piece->pieceType->name }}</a>
+                                @foreach ($piece->images as $image)
+                                    <a href="{{ $image->getImageUrl() }}" data-src="{{ $image->getImageUrl() }}" style="display: none;"></a>
+                                @endforeach
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+ 
         </div>
+        <i class="bi bi-0-circle-fill"></i>
     </section>
     <section class="house-section">
         <div class="container-fluid col-lg-9 mx-md-auto mb-5 mt-3">
@@ -282,6 +295,18 @@
         </div>
     </section>
     <script>
+            lightGallery(document.getElementById('lightgallery'), {
+                thumbnail: true,
+        
+    });
+
+    @foreach ($pieces as $index => $piece)
+    @if ($piece->images->isNotEmpty())
+        lightGallery(document.getElementById('lightgallery-{{ $index }}'), {
+            thumbnail: true,
+        });
+    @endif
+@endforeach
         $(document).ready(function() {
         $('.otherApartments').owlCarousel({
             loop: false,
@@ -303,14 +328,8 @@
             }
         })
 
-
-        lightGallery(document.getElementById('static-thumbnails'), {
-            animateThumb: false,
-            zoomFromOrigin: false,
-            allowMediaOverlap: true,
-            toggleThumb: true,
-        });
-        });
+    
+});
 
 
 
