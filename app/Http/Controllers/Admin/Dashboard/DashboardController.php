@@ -12,7 +12,7 @@ class DashboardController extends Controller
     //
     function getDashboard()
     {
-        $landlords = User::orderBy('created_at', 'DESC')->where('is_approved', false)->paginate(20);
+        $landlords = User::orderBy('created_at', 'DESC')->paginate(20);
         // $candidatures = Locataire::orderBy('created_at', 'ASC')->where('is_approved', false)->get();
         // Get the IDs of properties associated with the admin
     $adminPropertyIds = auth('admin')->user()->properties()->pluck('id')->toArray();

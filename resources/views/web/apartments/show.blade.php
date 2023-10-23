@@ -1,24 +1,24 @@
 @extends('web.layouts.app')
 
-{{-- @include('web.layouts.header') --}}
+@section('title', 'Appartement')
 
 @section('content')
     <section id="gallery-image">
         <div class="container-fluid col-lg-9 mx-auto">
-            <div class="image-grid overflow-hidden" id="animated-thumbnails">
+            <div class="image-grid overflow-hidden" id="static-thumbnails">
                 @if ($apartment->coverImage)
-                    <a href="{{ asset('storage/' . $apartment->coverImage->url) }}"  class="image-grid-col-2 image-grid-row-2">
+                    <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="image-grid-col-2 image-grid-row-2">
                         <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
                     </a>
                 @endif
                 @foreach ($images as $index => $image)
                     @if ($index < 3)
-                        <a href="{{ $image->getImageUrl() }}"  class="img-link  d-none d-md-block">
+                        <a href="{{ $image->getImageUrl() }}" class="img-link  d-none d-md-block">
                             <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
                         </a>
                     @else
                         @if ($index == 3)
-                            <a href="{{ $image->getImageUrl() }}" 
+                            <a href="{{ $image->getImageUrl() }}"
                                 class="remaining-images position-relative d-none d-md-block">
                                 <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
                                 <span
@@ -26,119 +26,124 @@
                                     photos</span>
                             </a>
                         @else
-                            <a href="{{ $image->getImageUrl() }}"  class="remaining-images d-none">
+                            <a href="{{ $image->getImageUrl() }}" class="remaining-images d-none">
                                 <span> {{ $remainingImages }} </span>
                             </a>
                         @endif
                     @endif
                 @endforeach
             </div>
+  
         </div>
     </section>
     <section class="house-section">
-        <div class="container-fluid col-lg-9 mx-md-auto mb-5">
+        <div class="container-fluid col-lg-9 mx-md-auto mb-5 mt-3">
             <div class="row flex-md-row-reverse p-2 ms-md-5 mx-md-1">
                 <div class="col-12 col-md-3 mb-4">
-                    <div class="shadow-lg shadow-md-down-none d-flex justify-content-center py-3 position-sticky " style="top: 85px;">
-                       <div>
-                        <button class="btn btn-main p-2" data-bs-toggle="modal" data-bs-target="#register-modal" {{ $apartment->published ? 'disabled' : '' }}>
-                            Deposer ma candidature
-                        </button>
-                       
-                        <hr>
-                        <p><i class="fas fa-home me-2"></i> {{ $apartment->name }} ● {{ $apartment->furnished }}</p>
-                        <p class="text-main"> <i class="fas fa-map-marker me-2"></i> {{ $apartment->property->location }}
-                        </p>
-                        <p> <i class="fas fa-dollar-sign me-2"></i> {{ $apartment->monthly_price }} XAF/mois</p>
-                        <p class="text-mute ms-4">Dont {{ $apartment->monthly_price }} xaf de charges</p>
-                        <p><i class="fas fa-landmark  me-2"></i>{{ $apartment->size }} m<sup>2</sup></p>
-                        <p>
-                            <i class="far fa-calendar me-2"></i>
-                            Disponibilité: <span class="{{ $apartment->published ? 'text-danger' : '' }}">{{ $apartment->published ? 'déjà loué' : 'immédiate' }}</span>
-                        </p>
-                       </div>
+                    <div class="shadow-lg shadow-md-down-none d-flex justify-content-center py-3 position-sticky "
+                        style="top: 85px;">
+                        <div>
+                            <button class="btn btn-main p-2" data-bs-toggle="modal" data-bs-target="#register-modal"
+                                {{ $apartment->published ? 'disabled' : '' }}>
+                                Deposer ma candidature
+                            </button>
+
+                            <hr>
+                            <p><i class="fas fa-home me-2"></i> {{ $apartment->name }} ● {{ $apartment->furnished }}</p>
+                            <p class="text-main"> <i class="fas fa-map-marker me-2"></i>
+                                {{ $apartment->property->location }}
+                            </p>
+                            <p> <i class="fas fa-dollar-sign me-2"></i> {{ $apartment->monthly_price }} XAF/mois</p>
+                            <p class="text-mute ms-4">Dont {{ $apartment->monthly_price }} xaf de charges</p>
+                            <p><i class="fas fa-landmark  me-2"></i>{{ $apartment->size }} m<sup>2</sup></p>
+                            <p>
+                                <i class="far fa-calendar me-2"></i>
+                                Disponibilité: <span
+                                    class="{{ $apartment->published ? 'text-danger' : '' }}">{{ $apartment->published ? 'déjà loué' : 'immédiate' }}</span>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                {{-- @include('sweetalert::alert')
-                <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                            <div class="d-flex justify-content-end gap-5 text-center">
-                            
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                                <div class="btn-group d-block d-md-flex justify-content-md-between gap-3 mt-2">
-                                <b >Candidater</b>
-                                </div>
-                                <div class="text-center d-flex align-items-center my-3">
-                                
-                                </div>
-                                <form action="{{ route('storeLocataire') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="apartment_id" id="apartment-id-input" value="{{ $apartment->id }}">
+                    @include('sweetalert::alert')
+                    <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static"
+                        data-bs-keyboard="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="d-flex justify-content-end gap-5 text-center">
+
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="btn-group d-block d-md-flex justify-content-md-between gap-3 mt-2">
+                                        <b>Candidater</b>
+                                    </div>
+                                    <div class="text-center d-flex align-items-center my-3">
+
+                                    </div>
+                                    <form action="{{ route('storeLocataire') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="apartment_id" id="apartment-id-input"
+                                            value="{{ $apartment->id }}">
                                         <div class="form-group mb-3">
-                                            <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text"
-                                                value="{{old('first_name')}}" name="first_name" placeholder="Prénom">
+                                            <input
+                                                class="form-control rounded-pill @error('first_name') is-invalid @enderror"
+                                                type="text" value="{{ old('first_name') }}" name="first_name"
+                                                placeholder="Prénom">
                                             @error('first_name')
-                                            <span class="invalid-feedback">{{ $message }}</span>
+                                                <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input class="form-control rounded-pill @error('last_name') is-invalid @enderror" type="text"
-                                                value="{{old('last_name')}}" name="last_name" placeholder="Nom">
+                                            <input
+                                                class="form-control rounded-pill @error('last_name') is-invalid @enderror"
+                                                type="text" value="{{ old('last_name') }}" name="last_name"
+                                                placeholder="Nom">
                                             @error('last_name')
-                                            <span class="invalid-feedback">{{ $message }}</span>
+                                                <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <div class="form-group mb-3 ">
-                                            <input class="form-control rounded-pill @error('email') is-invalid @enderror" type="email"
-                                                value="{{old('email')}}" name="email"
+                                            <input class="form-control rounded-pill @error('email') is-invalid @enderror"
+                                                type="email" value="{{ old('email') }}" name="email"
                                                 placeholder="Adresse email">
                                             @error('email')
-                                            <span class="invalid-feedback">{{ $message }}</span>
+                                                <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-sm-6"></div>
-                                    
+
                                         <div class="form-group mb-3">
-                                        <input class="form-control rounded-pill @error('phone') is-invalid @enderror" type="text"
-                                                value="{{old('phone')}}" name="phone" placeholder="Numero">
-                                        @error('phone')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
+                                            <input class="form-control rounded-pill @error('phone') is-invalid @enderror"
+                                                type="text" value="{{ old('phone') }}" name="phone"
+                                                placeholder="Numero">
+                                            @error('phone')
+                                                <span class="invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <button id="registerButton" class="btn btn-main"
+                                            style="width: 100%">S'enregistrer</button>
+
+
+                                    </form>
+
+                                    <div>
+                                        <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les
+                                            <a href="#" class="text-main">conditions d'utilisation.</a></small>
                                     </div>
-                                        <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
-
-
-                                </form>
-                                
-                                <div>
-                                    <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les
-                                    <a href="#" class="text-main">conditions d'utilisation.</a></small>
-                                </div>
-                                <div class="float-end">
-                                    <small>J'ai déjà un compte <a href="" class="text-main">Se connecter</a></small>
+                                    <div class="float-end">
+                                        <small>J'ai déjà un compte <a href="" class="text-main">Se
+                                                connecter</a></small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 {{-- the button should be here --}}
-               
-                <div class="col-12 col-md-9" style="padding-bottom: 15%">
-                    <div class="col-9 text-center" style="border-right:1px solid #cf2929">
-                        <button class="btn btn-secondary" id="salon">Salon</button>
-                   
-                        <button class="btn btn-secondary" id="toilette">Toilette</button>
-                   
-                    
-                        <button class="btn btn-secondary" id="cuisine">Cuisine</button>
-                 
-                        <button class="btn btn-secondary" id="chambre">Chambre</button>
-                    </div>
-            
+
+                <div class="col-12 col-md-9">
+
                     <h1 class="text-main">Location d'un {{ $apartment->name }} {{ $apartment->furnished }}
                         {{ $apartment->property->location }}</h1>
                     <p>Les atouts du bien</p>
@@ -158,10 +163,11 @@
                     <div class="d-block d-md-flex justify-content-between">
                         <div>Présenté par votre expert.e en location Logez-vous</div>
                         <div></div>
-                        <div class="text-main expert"> <i class="fas fa-phone me-3" style="color:red"></i> +237 657170133</div>
+                        <div class="text-main expert"> <i class="fas fa-phone me-3" style="color:red"></i> +237 657170133
+                        </div>
                     </div>
                     <hr>
-                    
+
                     {{-- <h3>Caractéristiques du bien</h3>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
@@ -256,35 +262,33 @@
                     </iframe>
                     <p>Transports à proximité</p> --}}
                     <h3 class="mt-5">Nos autres logements à proximité de {{ $apartment->name }}</h3>
-                        <div class="owl-carousel owl-theme otherApartments">
-                            @foreach ($otherApartments as $apartment)
-                                <div class="item">
-                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                    <div class="owl-carousel owl-theme otherApartments">
+                        @foreach ($otherApartments as $apartment)
+                            <div class="item">
+                                <a href="{{ route('single-appartment', $apartment->id) }}">
                                     @include('web.components.card', [
                                         'index' => $apartment,
                                         'showBanner' => false,
                                         'isSlider' => false,
                                         'showBorder' => true,
                                     ])
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        
-        
+        $(document).ready(function() {
         $('.otherApartments').owlCarousel({
             loop: false,
             margin: 10,
             // nav: true,
-            dots:false,
-            drag:true,
+            dots: false,
+            drag: true,
             draggable: false,
             responsive: {
                 0: {
@@ -298,18 +302,19 @@
                 }
             }
         })
-        lightGallery(document.getElementById('animated-thumbnails'), {
-            thumbnail: true,
-        });
-        
 
-        document.getElementById('candidaterButton').addEventListener('click', function() {
-            document.getElementById('loginModal').style.display = 'block';
+
+        lightGallery(document.getElementById('static-thumbnails'), {
+            animateThumb: false,
+            zoomFromOrigin: false,
+            allowMediaOverlap: true,
+            toggleThumb: true,
+        });
         });
 
-        
-        
+
+
     </script>
-   
+
 
 @endsection

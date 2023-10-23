@@ -10,7 +10,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center ">
                     <div class="search-box">
                         <form class="d-flex" role="search">
                             <div>
@@ -20,8 +20,8 @@
                             </div>
                         </form>
                     </div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('help') }}">Aide</a>
+                    <li class="nav-item ">
+                        <a class="nav-link text-light" href="{{ route('help') }}">Aide</a>
                     </li>
                     @if (!request()->is('info') && !request()->is('gestion')) <!-- Added condition for 'gestion' route -->
                         <li class="nav-item">
@@ -32,12 +32,12 @@
                     @endif
                     @guest('landlord')
                         <li class="nav-item">
-                            <button data-bs-toggle="modal" class="nav-link" data-bs-target="#login-modal">Connexion</button>
+                            <button data-bs-toggle="modal" class="nav-link text-light" data-bs-target="#login-modal">Connexion</button>
                         </li>
                     @endguest
                     @if(Request::is('info'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('gestion') }}">
+                            <a class="nav-link text-light" href="{{ route('gestion') }}">
                                 <button class="btn btn-main rounded-pill">Mettre en gestion</button>
                             </a>
                         </li>
@@ -45,9 +45,9 @@
                    
                     @auth('landlord')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('landlord.dashboard') }}">Mon compte</a>
+                            <a class="nav-link text-light" href="{{ route('landlord.dashboard') }}">Mon compte</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-light">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn">Déconnexion</button>
@@ -65,8 +65,8 @@
     </video>
     {{-- <div class="content col-lg-7 mx-lg-auto text-center pb-3"> --}}
         <div class="row d-flex align-items-end">
-            <div class="col-12 col-md-7 mx-auto">
-                <h1 class="text-light ">Visitez et louez votre prochain logement depuis chez vous</h1>
+            <div class="col-12 col-md-9 mx-auto">
+                <h1 class="text-light">Visitez et louez votre prochain logement depuis chez vous</h1>
                 <div class="" style="background: white; border-radius:10px;">
                     <ul class="nav nav-tabs d-flex justify-content-center align-items-end mb-4 gap-md-5" id="myTab" role="tablist">
                         <li class="nav-item">

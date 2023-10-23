@@ -74,7 +74,6 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::put('/apartment/change-cover', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
 
         Route::post('/apartments/storeImages', 'Apartment\ApartmentController@storeImages')->name('apartments.storeImages');
-        // Route::put('/change-cover-image', 'Apartment\ApartmentController@changeCoverImage')->name('changeCoverImage');
         Route::get('/apartments/showPayments/{id}', 'Apartment\ApartmentController@showPayments')->name('apartments.showPayments');
         Route::resource('pieces', 'Pieces\PiecesController');
         Route::get('/piece/{id}/images', 'Pieces\PiecesController@showPieceImagesform')->name('showPieceImagesform');
@@ -136,16 +135,16 @@ Route::group(['namespace' => 'web'], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/gestion', 'Auth\RegisterController@showRegistrationForm')->name('gestion');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
-
     Route::post('/locataire/apartment', 'Locataire\LocataireController@store')->name('storeLocataire');
 
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');
-    Route::get('/apartments/single-appartment/{id}', 'PageController@show')->name('single-appartment');
     Route::get('/single-appartment/{id}', 'PageController@showSingleAppartment')->name('single-appartment');
     Route::get('/help', 'PageController@help')->name('help');
 
     Route::get('/info', 'PageController@info')->name('info');
+
+    Route::post('/apartments/filter', 'ApartmentController@filter')->name('apartments.filter');
 });
 
 

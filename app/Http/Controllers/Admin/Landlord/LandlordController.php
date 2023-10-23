@@ -47,6 +47,7 @@ class LandlordController extends Controller
     public function create($id)
     {
         $landlord = User::findOrFail($id);
+        
         return view('admin.landlords.create', compact('landlord'));
     }
 

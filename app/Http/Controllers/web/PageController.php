@@ -20,12 +20,6 @@ class PageController extends Controller
         return view('index', compact('apartments'));
     }
 
-  
-   public function searchForm(){
-    $apartments = Apartment::with('images')->get();
-
-    return view('web.apartments.index', compact('apartments'));
-   }
 
     public function showSingleAppartment($id)
     {
@@ -52,6 +46,13 @@ class PageController extends Controller
 
         return view('web.apartments.show', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities', 'pieces'));
     }
+
+    public function searchForm(){
+        $apartments = Apartment::with('images')->get();
+    
+        return view('web.apartments.index', compact('apartments'));
+       }
+
     public function info(){
 
         return view('web.help');
@@ -65,35 +66,35 @@ class PageController extends Controller
     return view('proprietaires.index');
    }
 
-    // public function search(Request $request)
-    // {
-    //     $query = Property::query();
+    public function search(Request $request)
+    {
+        $query = Property::query();
 
-    //     // Check if search criteria are present in the request
-    //     if ($request->has('town')) {
-    //         $query->where('town', 'like', '%' . $request->input('town') . '%');
-    //     }
+        // Check if search criteria are present in the request
+        if ($request->has('town')) {
+            $query->where('town', 'like', '%' . $request->input('town') . '%');
+        }
 
-    //     if ($request->has('monthly_price')) {
-    //         $query->where('monthly_price', '<=', $request->input('monthly_price'));
-    //     }
+        if ($request->has('monthly_price')) {
+            $query->where('monthly_price', '<=', $request->input('monthly_price'));
+        }
 
-    //     if ($request->has('size')) {
-    //         $query->where('size', '>=', $request->input('size'));
-    //     }
+        if ($request->has('size')) {
+            $query->where('size', '>=', $request->input('size'));
+        }
 
-    //     // Execute the query to get the search results
-    //     $properties = $query->get();
+        // Execute the query to get the search results
+        $properties = $query->get();
 
-    //     // Assign an empty collection if no results are found
-    //     if ($properties->isEmpty()) {
-    //         $properties = new Collection();
-    //     }
+        // Assign an empty collection if no results are found
+        if ($properties->isEmpty()) {
+            $properties = new Collection();
+        }
 
-    //     return view('properties', compact('properties'));
+        return view('properties', compact('properties'));
         
         
-    // }
+    }
     
 
 }

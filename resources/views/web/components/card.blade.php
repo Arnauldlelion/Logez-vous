@@ -7,7 +7,7 @@
     <div class="card {{ $showBorder ? 'card-border' : '' }}">
         @if ($isSlider)
             <div class="card-img-top">
-                @include('components.card-carousel', [
+                @include('web.components.card-carousel', [
                     'index' => $index,
                 ])
             </div>

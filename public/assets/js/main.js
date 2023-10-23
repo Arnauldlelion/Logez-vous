@@ -100,12 +100,12 @@ $(function(){
             const progress = document.querySelector(progressSelector);
             const sizeInput = document.querySelectorAll(sizeInputSelector);
             const sizeProgress = document.querySelector(sizeProgressSelector);
-        
+    
             priceInput.forEach((input) => {
                 input.addEventListener("input", (e) => {
                     let minVal = parseInt(priceInput[0].value);
                     let maxVal = parseInt(priceInput[1].value);
-        
+    
                     if ((maxVal - minVal >= priceGap) && maxVal <= 10000) {
                         if (e.target.className === "input-min") {
                             rangeInput[0].value = minVal;
@@ -117,12 +117,12 @@ $(function(){
                     }
                 });
             });
-        
+    
             rangeInput.forEach((input) => {
                 input.addEventListener("input", (e) => {
                     let minVal = parseInt(rangeInput[0].value);
                     let maxVal = parseInt(rangeInput[1].value);
-        
+    
                     if (maxVal - minVal < priceGap) {
                         if (e.target.className === "range-min") {
                             rangeInput[0].value = maxVal - priceGap;
@@ -137,13 +137,13 @@ $(function(){
                     }
                 });
             });
-        
+    
             sizeInput.forEach((input) => {
                 input.addEventListener("input", (e) => {
                     let minVal = parseInt(sizeInput[0].value);
                     let maxVal = parseInt(sizeInput[1].value);
-        
-                    if ((maxVal - minVal >= sizeGap) && maxVal <= 400) {
+    
+                    if ((maxVal- minVal >= sizeGap) && maxVal <= 400) {
                         if (e.target.className === "input-min") {
                             rangeInput[0].value = minVal;
                             sizeProgress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
@@ -154,12 +154,12 @@ $(function(){
                     }
                 });
             });
-        
+    
             rangeInput.forEach((input) => {
                 input.addEventListener("input", (e) => {
                     let minVal = parseInt(rangeInput[0].value);
                     let maxVal = parseInt(rangeInput[1].value);
-        
+    
                     if (maxVal - minVal < sizeGap) {
                         if (e.target.className === "range-min") {
                             rangeInput[0].value = maxVal - sizeGap;
@@ -175,6 +175,17 @@ $(function(){
                 });
             });
         }
+    
+        // Call the setupRangeInputs function with the appropriate selector values and gap sizes
+        setupRangeInputs(
+            ".range-input input[type='range']",
+            ".price-input input[type='number']",
+            ".slider .progress",
+            1000, // Example price gap value
+            ".size-input input[type='number']",
+            ".size-slider .progress",
+            50 // Example size gap value
+        );
         
         // Example usage with the provided HTML structure
         document.addEventListener("DOMContentLoaded", function() {

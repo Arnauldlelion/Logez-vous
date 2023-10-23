@@ -17,15 +17,13 @@
       <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
       <link rel="stylesheet" href="{{ asset ('assets/css/bootstrap-icons.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/lightgallery-bundle.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
-
+   
 
 
         <script type="text/javascript" src="{{ asset('assets/js/code.jquery.com_jquery-3.7.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/lightgallery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/all.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
@@ -33,10 +31,7 @@
         <script src="{{ asset('assets/js/popper.min.js')}}"></script>
         <script src="{{ asset('assets/js/all.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/js/lightgallery.min.js"></script>
         
-        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css"> --}}
 </head>
 
 <body>
@@ -52,9 +47,10 @@
     @include('web.auth.login')
 
     {{-- Footer code here --}}
+    @if(!request()->is('search-appartment'))
     @include('web.layouts.footer')
+@endif
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/js/lightgallery.min.js"></script>
 
 </body>
 
