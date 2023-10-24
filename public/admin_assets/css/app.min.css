@@ -7465,5 +7465,6 @@ table[data-toggle=table] {
 }
 
 .highlight {
-    background-color: yellow !important;
+    background-color: #0dcaf0 !important;
+    color: white;
 }
