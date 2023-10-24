@@ -44,6 +44,7 @@ body {
     overflow-x: hidden
 }
 
+
 #wrapper {
     height: 100%;
     overflow: hidden;
@@ -7449,8 +7450,6 @@ table[data-toggle=table] {
 
 
 
-
-
 .previewImages img {
     height: 100px;
     width: 100px;
@@ -7465,4 +7464,6 @@ table[data-toggle=table] {
     cursor: pointer;
 }
 
-
+.highlight {
+    background-color: yellow !important;
+}

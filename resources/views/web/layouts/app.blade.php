@@ -19,7 +19,8 @@
       <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
       <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/lightgallery-bundle.css')}}" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <!-- icons -->
+    <link href="{{ asset('admin_assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
    
 
 

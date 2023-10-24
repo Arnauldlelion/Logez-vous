@@ -27,7 +27,15 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         //
         view()->composer('admin.layouts.header', function (View $view) {
-            $candidatures = Locataire::where('is_approved', false)->get();
+        // Get the IDs of properties associated with the admin
+        $adminPropertyIds = auth('admin')->user()->properties()->pluck('id')->toArray();
+
+        $candidatures = Locataire::where('is_approved', false)
+        ->whereHas('apartment', function ($query) use ($adminPropertyIds) {
+            $query->whereIn('property_id', $adminPropertyIds);
+        })
+        ->get();
+        
             $view->with('candidatures', $candidatures);
         });
     }

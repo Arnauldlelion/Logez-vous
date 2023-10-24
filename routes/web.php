@@ -94,9 +94,9 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 
         // TENANTS
         Route::resource('tenants', 'Locataire\LocataireController');
-        Route::get('tenants/candidatures/non-approved', 'Locataire\LocataireController@unApprovedCandidature')->name('unApprovedCandidature');
-        Route::post('tenants/candidatures/approve/{candidate}', 'Locataire\LocataireController@approveCandidature')->name('candidatures.approve');
-        Route::delete('tenants/candidatures/reject/{id}', 'Locataire\LocataireController@rejectCandidature')->name('candidatures.reject');
+        Route::get('candidatures/non-approved', 'Candidature\CandidatureController@index')->name('candidature.index');
+        Route::post('candidatures/approve/{candidate}', 'Candidature\CandidatureController@approveCandidature')->name('candidatures.approve');
+        Route::delete('candidatures/reject/{id}', 'Candidature\CandidatureController@rejectCandidature')->name('candidatures.reject');
 
         // PROFILE
         Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');

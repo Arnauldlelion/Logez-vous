@@ -21,30 +21,29 @@
                     <!-- item-->
                     <div class="dropdown-item noti-title">
                         <h5 class="m-0">
-                            <span class="float-right">
+                            {{-- <span class="float-right">
                                 <a href="" class="text-dark">
                                     <small>Effacer tout</small>
                                 </a>
-                            </span>
+                            </span> --}}
                             Notification
                         </h5>
                     </div>
             
                     <div class="noti-scroll" data-simplebar>
                         
-                            <!-- item-->
-                            <a href="{{ route('admin.unApprovedCandidature') }}" class="dropdown-item notify-item active">
-                                <div class="notify-icon">
-                                    <img src="{{ asset('admin_assets/images/users/user-1.jpg') }}" class="img-fluid rounded-circle" alt=""/>
-                                </div>
-                              @foreach ($candidatures as $candidature)
-                              <p class="notify-details">{{ $candidature->first_name }} {{ $candidature->last_name }}</p>
-                              <p class="text-muted mb-0 user-msg">
-                                  <small>Appartement: {{ $candidature->apartment->name }} ({{ $candidature->apartment->property->name }})</small>
-                                  <small>{{ $candidature->created_at->locale('fr')->diffForHumans() }}</small>
-                              </p>
-                          @endforeach
-                            </a>
+                          @foreach ($candidatures as $candidature)
+                          <a href="{{ route('admin.candidature.index', ['selectedCandidatureId' => $candidature->id]) }}" class="dropdown-item notify-item active">
+                                    <div class="notify-icon">
+                                        <img src="{{ asset('admin_assets/images/user-8.jpg') }}" class="img-fluid rounded-circle" alt=""/>
+                                    </div>
+                                    <p class="notify-details">{{ $candidature->first_name }} {{ $candidature->last_name }}</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Appartement: {{ $candidature->apartment->name }} ({{ $candidature->apartment->property->name }})</small>
+                                        <small>{{ $candidature->created_at->locale('fr')->diffForHumans() }}</small>
+                                    </p>
+                                </a>
+                            @endforeach
                        
                     </div>
             

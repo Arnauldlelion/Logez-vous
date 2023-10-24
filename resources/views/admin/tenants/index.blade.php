@@ -73,7 +73,7 @@
                     <thead>
                     <tr role="row">
                         <th>#</th>
-                        <th>Locatiare</th>
+                        <th>Nome</th>
                         <th>numéro de téléphone</th>
                         <th>Email</th>
                         <th>Appartement</th>

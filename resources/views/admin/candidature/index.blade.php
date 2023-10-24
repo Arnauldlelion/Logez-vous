@@ -9,10 +9,10 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Locataires</li>
+                        <li class="breadcrumb-item active">Candidature</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Locataires</h4>
+                <h4 class="page-title">Candidature</h4>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                     <thead>
                     <tr role="row" class="bold-text">
                         <th>#</th>
-                        <th>Locataire</th>
+                        <th>Nom</th>
                         <th>Numéro de téléphone</th>
                         <th>Email</th>
                         <th>Appartement</th>
@@ -36,7 +36,8 @@
                     </thead>
                     <tbody>
                     @forelse($candidatures as $candidature)
-                        <tr role="row">
+                        {{-- <tr role="row"> --}}
+                            <tr role="row" class="{{ $candidature->id == $selectedCandidatureId ? 'highlight' : '' }}">
                             <td>{{ $loop->index + 1 }}</td>
                            
                             <td>{{ $candidature->first_name }} {{ $candidature->last_name }}</td>

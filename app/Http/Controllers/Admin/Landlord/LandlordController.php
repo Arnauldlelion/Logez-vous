@@ -91,49 +91,49 @@ class LandlordController extends Controller
 
    
 
-public function edit($id)
-{
-    $landlord = Landlord::findOrFail($id);
+    public function edit($id)
+    {
+        $landlord = Landlord::findOrFail($id);
 
-    return view('admin.landlords.edit', compact('landlord'));
-}
-
-public function update(Request $request, $id)
-{
-    $validator = Validator::make($request->all(), [
-        'name' => 'required',
-        'phone' => ['required', 'unique:landlords,phone,'.$id, 'regex:/^\d{9}$/'],
-        'email' => ['required', 'string', 'email', 'unique:landlords,email,'.$id],
-        'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-    ]);
-
-    if ($validator->fails()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+        return view('admin.landlords.edit', compact('landlord'));
     }
 
-    $landlord = Landlord::findOrFail($id);
-    $input = $request->all();
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'phone' => ['required', 'unique:landlords,phone,'.$id, 'regex:/^\d{9}$/'],
+            'email' => ['required', 'string', 'email', 'unique:landlords,email,'.$id],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+        ]);
 
-    if ($request->has('password')) {
-        $input['password'] = Hash::make($request->password);
-    } else {
-        unset($input['password']); // Remove the password field from the input if not provided
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $landlord = Landlord::findOrFail($id);
+        $input = $request->all();
+
+        if ($request->has('password')) {
+            $input['password'] = Hash::make($request->password);
+        } else {
+            unset($input['password']); // Remove the password field from the input if not provided
+        }
+
+        $landlord->update($input);
+
+        return redirect()->route('admin.landlords.index')->with('success', 'Propriétaire mis à jour avec succès');
     }
 
-    $landlord->update($input);
+    public function destroy($id)
+    {
+        $landlord = Landlord::findOrFail($id);
+        $landlord->delete();
 
-    return redirect()->route('admin.landlords.index')->with('success', 'Propriétaire mis à jour avec succès');
-}
-
-public function destroy($id)
-{
-    $landlord = Landlord::findOrFail($id);
-    $landlord->delete();
-
-    return redirect()->route('admin.landlords.index')->with('success', 'Propriétaire supprimé avec succès');
-}
+        return redirect()->route('admin.landlords.index')->with('success', 'Propriétaire supprimé avec succès');
+    }
 
 
 

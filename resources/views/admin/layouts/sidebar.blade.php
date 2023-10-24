@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li class="{{ Request::is('admin/property*') ? 'menuitem-active' : '' }}">
-                            <a href="{{ route('admin.unApprovedCandidature') }}">
+                            <a href="{{ route('admin.candidature.index') }}">
                                 <i data-feather="users"></i>
                                 <span>Candidature</span>
                             </a>
