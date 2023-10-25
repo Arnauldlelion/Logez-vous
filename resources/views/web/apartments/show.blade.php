@@ -3,51 +3,51 @@
 @section('title', 'Appartement')
 
 @section('content')
-    <section id="gallery-image">
+    <section class="gallery-image">
         <div class="container-fluid col-lg-9 mx-auto">
-                <div class="image-grid" id="lightgallery">
-                    @if ($apartment->coverImage)
-                        <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="image-grid-col-2 image-grid-row-2" >
-                            <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
+            <div class="image-grid" id="lightgallery">
+                @if ($apartment->coverImage)
+                    <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="img-link image-grid-col-2 image-grid-row-2" data-fancybox="gallery" data-caption="">
+                        <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
+                    </a>
+                @endif
+                @foreach ($images as $index => $image)
+                    @if ($index < 3)
+                        <a href="{{ $image->getImageUrl() }}" class="img-link d-none d-md-block" data-fancybox="gallery" data-caption="">
+                            <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
                         </a>
-                    @endif
-                    @foreach ($images as $index => $image)
-                        @if ($index < 3)
-                            <a href="{{ $image->getImageUrl() }}" class="img-link  d-none d-md-block" >
+                    @else
+                        @if ($index == 3)
+                            <a href="{{ $image->getImageUrl() }}" class="img-link remaining-images position-relative d-none d-md-block" data-fancybox="gallery" data-caption="">
                                 <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
+                                <span class="position-absolute top-50 start-50 translate-middle badge text-bg-secondary">
+                                    +{{ $remainingImages }} photos
+                                </span>
                             </a>
                         @else
-                            @if ($index == 3)
-                                <a href="{{ $image->getImageUrl() }}"
-                                    class="remaining-images position-relative d-none d-md-block" >
-                                    <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
-                                    <span
-                                        class="position-absolute top-50 start-50 translate-middle badge text-bg-secondary">+{{ $remainingImages }}
-                                        photos</span>
-                                </a>
-                            @else
-                                <a href="{{ $image->getImageUrl() }}" class="remaining-images d-none" >
-                                    <span> {{ $remainingImages }} </span>
-                                </a>
-                            @endif
+                            <a href="{{ $image->getImageUrl() }}" class="img-link remaining-images d-none" data-fancybox="gallery" data-caption="">
+                                <span>{{ $remainingImages }}</span>
+                            </a>
                         @endif
-                    @endforeach
-                </div>
+                    @endif
+                @endforeach
+            </div>
+                
                 <div class="row">
                     @foreach ($pieces as $index => $piece)
                         @if ($piece->images->isNotEmpty())
-                            <div class="col-1" id="lightgallery-{{ $index }}">
-                                <a href="{{ $piece->images[0]->getImageUrl() }}" class="piece-name btn btn-secondary rounded-pill">{{ $piece->pieceType->name }}</a>
+                            <div class="col-1">
+                                <a href="#" class="piece-name btn btn-secondary rounded-pill" data-fancybox="{{ 'piece-gallery-' . $index }}">{{ $piece->pieceType->name }}</a>
                                 @foreach ($piece->images as $image)
-                                    <a href="{{ $image->getImageUrl() }}" data-src="{{ $image->getImageUrl() }}" style="display: none;"></a>
+                                    <a href="{{ $image->getImageUrl() }}" data-fancybox="{{ 'piece-gallery-' . $index }}" data-caption="{{ $piece->pieceType->name }}"></a>
                                 @endforeach
                             </div>
                         @endif
                     @endforeach
                 </div>
+                
  
         </div>
-        <i class="bi bi-0-circle-fill"></i>
     </section>
     <section class="house-section">
         <div class="container-fluid col-lg-9 mx-md-auto mb-5 mt-3">
@@ -77,76 +77,58 @@
                         </div>
                     </div>
                     @include('sweetalert::alert')
-                    <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static"
-                        data-bs-keyboard="false">
+                    <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <div class="d-flex justify-content-end gap-5 text-center">
-
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="btn-group d-block d-md-flex justify-content-md-between gap-3 mt-2">
                                         <b>Candidater</b>
                                     </div>
-                                    <div class="text-center d-flex align-items-center my-3">
-
-                                    </div>
-                                    <form action="{{ route('storeLocataire') }}" method="POST">
+                                    <div class="text-center d-flex align-items-center my-3"></div>
+                                    <form action="{{ route('storeLocataire') }}" method="POST" id="registerForm">
                                         @csrf
-                                        <input type="hidden" name="apartment_id" id="apartment-id-input"
-                                            value="{{ $apartment->id }}">
+                                        <input type="hidden" name="apartment_id" id="apartment-id-input" value="{{ $apartment->id }}">
                                         <div class="form-group mb-3">
-                                            <input
-                                                class="form-control rounded-pill @error('first_name') is-invalid @enderror"
-                                                type="text" value="{{ old('first_name') }}" name="first_name"
-                                                placeholder="Prénom">
+                                            <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text"
+                                                value="{{ old('first_name') }}" name="first_name" placeholder="Prénom">
                                             @error('first_name')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input
-                                                class="form-control rounded-pill @error('last_name') is-invalid @enderror"
-                                                type="text" value="{{ old('last_name') }}" name="last_name"
-                                                placeholder="Nom">
+                                            <input class="form-control rounded-pill @error('last_name') is-invalid @enderror" type="text"
+                                                value="{{ old('last_name') }}" name="last_name" placeholder="Nom">
                                             @error('last_name')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-sm-6"></div>
-                                        <div class="form-group mb-3 ">
-                                            <input class="form-control rounded-pill @error('email') is-invalid @enderror"
-                                                type="email" value="{{ old('email') }}" name="email"
-                                                placeholder="Adresse email">
+                                        <div class="form-group mb-3">
+                                            <input class="form-control rounded-pill @error('email') is-invalid @enderror" type="email"
+                                                value="{{ old('email') }}" name="email" placeholder="Adresse email">
                                             @error('email')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-sm-6"></div>
-
                                         <div class="form-group mb-3">
-                                            <input class="form-control rounded-pill @error('phone') is-invalid @enderror"
-                                                type="text" value="{{ old('phone') }}" name="phone"
-                                                placeholder="Numero">
+                                            <input class="form-control rounded-pill @error('phone') is-invalid @enderror" type="text"
+                                                value="{{ old('phone') }}" name="phone" placeholder="Numero">
                                             @error('phone')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <button id="registerButton" class="btn btn-main"
-                                            style="width: 100%">S'enregistrer</button>
-
-
+                                        <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
                                     </form>
-
                                     <div>
-                                        <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les
-                                            <a href="#" class="text-main">conditions d'utilisation.</a></small>
+                                        <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les <a href="#"
+                                                class="text-main">conditions d'utilisation.</a></small>
                                     </div>
                                     <div class="float-end">
-                                        <small>J'ai déjà un compte <a href="" class="text-main">Se
-                                                connecter</a></small>
+                                        <small>J'ai déjà un compte <a href="" class="text-main">Se connecter</a></small>
                                     </div>
                                 </div>
                             </div>
@@ -295,18 +277,11 @@
         </div>
     </section>
     <script>
-            lightGallery(document.getElementById('lightgallery'), {
-                thumbnail: true,
-        
-    });
 
-    @foreach ($pieces as $index => $piece)
-    @if ($piece->images->isNotEmpty())
-        lightGallery(document.getElementById('lightgallery-{{ $index }}'), {
-            thumbnail: true,
-        });
-    @endif
-@endforeach
+    Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
         $(document).ready(function() {
         $('.otherApartments').owlCarousel({
             loop: false,
@@ -330,7 +305,6 @@
 
     
 });
-
 
 
     </script>

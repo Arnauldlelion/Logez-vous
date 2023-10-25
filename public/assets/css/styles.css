@@ -293,7 +293,7 @@
 }
 
 
-#gallery-image .image-grid{
+.gallery-image .image-grid{
     --gap: 16px;
     --num-cols:4;
     --row-height:180px;
@@ -307,48 +307,49 @@
     gap: var(--gap);
 }
 
-#gallery-image .image-grid span {
+.gallery-image .image-grid span {
    box-shadow: rgba(0, 0, 0, .1);
    background-color: #fff;
 }
 
-#gallery-image .image-grid > a,img {
+.gallery-image .image-grid .img-link > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 7px;
 } 
 
-#gallery-image .image-grid-col-2{
+.gallery-image .image-grid-col-2{
     grid-column: span 2;
 }
 
-#gallery-image .image-grid-row-2{
+.gallery-image .image-grid-row-2{
     grid-row: span 2;
 }
 
-
 @media screen and (max-width:1024px) {
-    #gallery-image .image-grid > img {
+    .gallery-image .image-grid > img {
         --num-cols: 2;
         --row-height: 200px;
     }
 }
+
 @media screen and (max-width: 767px) {
-    #gallery-image .image-grid > img {
+    .gallery-image .image-grid > img {
         display: none;
     }
-    #gallery-image .image-grid > a.image-grid-col-2 {
+    .gallery-image .image-grid > a.image-grid-col-2 {
         display: block;
         grid-column: span 1;
         grid-row: span 1;
     }
-    #gallery-image .image-grid {
+    .gallery-image .image-grid {
         --num-cols: 1;
         --row-height: 400px;
         gap: 0;
     }
 }
+
 .house-section .position-sticky i{
     color: var(--main-color) !important;
     font-size: 1.2rem !important;

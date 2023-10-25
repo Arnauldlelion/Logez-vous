@@ -16,6 +16,7 @@
 
 
     <!-- App css -->
+    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('admin_assets/libs/owl-carousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin_assets/libs/owl-carousel/dist/assets/owl.theme.default.min.css') }}">

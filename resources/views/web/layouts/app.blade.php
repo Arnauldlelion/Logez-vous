@@ -9,6 +9,8 @@
 
       <title>{{ config('app.name', 'Logez-vous') }}</title>
       
+    <!-- icons -->
+     <link href="{{ asset('admin_assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
 
       <!-- Styles -->
       <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
@@ -18,14 +20,11 @@
       <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
-      <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/lightgallery-bundle.css')}}" />
-      <!-- icons -->
-    <link href="{{ asset('admin_assets/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
-   
+      <link rel="stylesheet" href="{{ asset('assets/css/fancybox.css') }}">
 
 
-        <script src="{{ asset('assets/js/lightgallery.umd.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/code.jquery.com_jquery-3.7.1.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/fancybox.umd.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/all.min.js') }}"></script>
@@ -54,6 +53,8 @@
     @include('web.layouts.footer')
 @endif
 
+
+<script type="text/javascript" src="{{ asset('assets/js/code.jquery.com_jquery-3.7.1.min.js') }}"></script>
 
 </body>
 
