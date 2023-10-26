@@ -93,16 +93,14 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row mb-5 d-block d-lg-flex align-items-center gap-5">
-                                    <div class="col-12 col-lg-7">
-                                        <label for="description">Dèscription de votre bien <em>*</em></label>
-                                        <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"
-                                            name="description" placeholder="">{{ old('description') }}</textarea>
-
-                                        @error('description')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
-                                    </div>
+                                <div class="col-12 col-lg-7">
+                                    <label for="description">Description de votre bien <em>*</em></label>
+                                    <small id="descriptionCount" class="form-text text-muted"></small>
+                                    <textarea class="form-control tiny-textarea {{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"
+                                        name="description" placeholder="" maxlength="100" oninput="updateDescriptionCharacters(this)">{{ old('description') }}</textarea>
+                                    @error('description')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class=" mb-5" style="padding-bottom: 15%">
@@ -131,3 +129,13 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function updateDescriptionCharacters(textarea) {
+        var maxLength = 100;
+        var currentLength = textarea.value.length;
+        var remainingLength = maxLength - currentLength;
+        var countElement = document.getElementById('descriptionCount');
+        countElement.textContent = remainingLength + ' caractères restants';
+    }
+</script>

@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         // super Administrators
         Route::group(['middleware' => ['auth:admin', 'admin.super']], function () {
          Route::resource('administrator', 'Administrator\AdminController');
+         Route::post('/landlords/update-admin/{landlord}', 'Administrator\AdminController@updateAdmin')->name('landlords.updateAdmin');
+         Route::post('administrator/reassign-landlord/{landlord}', 'Administrator\AdminController@reassignLandlord')->name('reassign-landlord');
          Route::post('administrator/roles/{id}', 'Administrator\AdminController@assignRoles')->name('admin.roles');
         });
 
@@ -85,7 +87,6 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         // General Rapport
         Route::get('/rapport-general/{id}/index', 'GeneralRapport\GeneralRapportController@index')->name('generalrapportIndex');
         Route::post('/upload/general-rapport/{id}', 'GeneralRapport\GeneralRapportController@store')->name('general-rapport.upload');
-        // Route::resource('rapport-general', 'GeneralRapport\GeneralRapportController');
         Route::resource('rapport-general', 'GeneralRapport\GeneralRapportController');
      
 
@@ -110,7 +111,9 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
 });
 
 // Landlord routes
-    Route::group(['namespace' => 'Landlord', 'middleware' => ['auth:landlord']], function ()  {
+    Route::group(['namespace' => 'Landlord',  'middleware' => ['auth:landlord']], function ()  {
+        // Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+        // Route::post('/login', 'Auth\LoginController@login')->name('login');
         Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('landlord.dashboard');
         Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
         Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
@@ -132,7 +135,7 @@ Route::group(['namespace' => 'web'], function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    // Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/gestion', 'Auth\RegisterController@showRegistrationForm')->name('gestion');
     Route::post('/register', 'Auth\RegisterController@store')->name('register');
     Route::post('/locataire/apartment', 'Locataire\LocataireController@store')->name('storeLocataire');

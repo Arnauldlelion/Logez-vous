@@ -72,13 +72,34 @@ class Admincontroller extends Controller
         return redirect()->to(route('admin.administrator.index'))->with('success', "Gestionnaires créé avec succès");
     }
 
+    // public function show($id)
+    // {
+    //     $user = Admin::with('landlords')->findOrFail($id);
+    //     return view('admin.admin.show',
+    //         compact('user'));
+            
+    // }
     public function show($id)
     {
         $user = Admin::with('landlords')->findOrFail($id);
-        return view('admin.admin.show',
-            compact('user'));
-            
+        $admins = Admin::get();
+        $landlords = $user->landlords; // Assuming `$user` has a relationship with `landlords`
+        
+        return view('admin.admin.show', compact('user', 'admins', 'landlords'));
     }
+    public function updateAdmin(Request $request, $landlord)
+    {
+        $validatedData = $request->validate([
+            'admin' => 'required|exists:admins,id',
+        ]);
+
+        $landlord = Landlord::findOrFail($landlord);
+        $landlord->admin_id = $validatedData['admin'];
+        $landlord->save();
+
+        return redirect()->back()->with('success', 'Admin updated successfully.');
+    }
+ 
 
     public function edit($id)
     {
@@ -130,6 +151,19 @@ class Admincontroller extends Controller
         return redirect()->to(route('admin.administrator.index'));
     }
 
+
+    public function reassignLandlord(Request $request, $landlord)
+    {
+        $validatedData = $request->validate([
+            'admin' => 'required|exists:admins,id',
+        ]);
+
+        $landlord = Landlord::findOrFail($landlord);
+        $landlord->admin_id = $validatedData['admin'];
+        $landlord->save();
+
+        return redirect()->back()->with('success', 'Admin updated successfully.');
+    }
 
     public function reject(User $user)
     {

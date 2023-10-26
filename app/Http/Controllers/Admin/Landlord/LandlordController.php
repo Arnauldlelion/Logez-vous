@@ -44,10 +44,13 @@ class LandlordController extends Controller
         return view('admin.landlords.index', compact('landlords', 'search'));
     }
 
-    public function create($id)
+    public function create($id = null)
     {
-        $landlord = User::findOrFail($id);
-        
+        if ($id === null) {
+            $landlord = new User();
+        } else {
+            $landlord = User::findOrFail($id);
+        }
         return view('admin.landlords.create', compact('landlord'));
     }
 
@@ -72,15 +75,14 @@ class LandlordController extends Controller
 
         $landlord = Landlord::create($input);
 
+        // Delete the user from the users table
+        User::where('email', $landlord->email)->delete();
+
         // Send the welcome email to the landlord
         Mail::to($landlord->email)->send(new WelcomeEmail($landlord, $request->password));
 
-        // Delete the user from the users table
-        User::where('email', $landlord->email)->delete();
-        
         return redirect()->route('admin.landlords.index')->with('success', 'Propriétaire créé avec succès');
     }
-
 
     public function show($id)
     {
@@ -88,8 +90,6 @@ class LandlordController extends Controller
 
         return view('admin.landlords.show', compact('landlord'));
     }
-
-   
 
     public function edit($id)
     {
@@ -102,8 +102,8 @@ class LandlordController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'phone' => ['required', 'unique:landlords,phone,'.$id, 'regex:/^\d{9}$/'],
-            'email' => ['required', 'string', 'email', 'unique:landlords,email,'.$id],
+            'phone' => ['required', 'unique:landlords,phone,' . $id, 'regex:/^\d{9}$/'],
+            'email' => ['required', 'string', 'email', 'unique:landlords,email,' . $id],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -134,7 +134,4 @@ class LandlordController extends Controller
 
         return redirect()->route('admin.landlords.index')->with('success', 'Propriétaire supprimé avec succès');
     }
-
-
-
 }

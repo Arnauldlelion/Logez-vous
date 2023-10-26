@@ -18,7 +18,7 @@
     <!-- end page title -->
 
     <div class="row gap-3">
-        <div class="col-auto">
+        <div class="col-12 col-md-6">
             <a href="">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
@@ -37,7 +37,7 @@
                 </div>
             </a> <!-- end widget-rounded-circle-->
         </div> <!-- end col-->
-        <div class="col-auto">
+        <div class="col-12 col-md-6">
             <a href="">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">

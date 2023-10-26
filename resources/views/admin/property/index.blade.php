@@ -32,6 +32,7 @@
                                     <th>Nom</th>
                                     <th>Emplacement</th>
                                     <th>Propriétaire</th>
+                                    <th>Atout</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,28 +44,33 @@
                                         <td>{{ $property->location }}</td>
                                         <td>{{ $property->landlord->name }}</td>
                                         <td>
-                                            <div class="btn-group">
+                                            @foreach ($property->amenities as $amenity)
+                                                <span class="d-flex">{{ $amenity->name }} </span><i class="mdi mdi-delete">
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            <div class="btn-group d-flex">
                                                 <div>
                                                     <a href="{{ route('admin.property.show', $property->id) }}"
-                                                        class="btn btn-secondary btn-sm">
+                                                        class="btn btn-secondary btn-sm mb-1">
                                                         <i class="mdi mdi-eye"></i> Appartements
                                                     </a>
-                                                </div>
-                                                <div>
+                                               
                                                     <a href="{{ route('admin.showPropertyImagesform', $property->id) }}"
                                                         class="btn btn-secondary btn-sm ml-1">
                                                         <i class="mdi mdi-eye"></i> Images
                                                     </a>
                                                 </div>
+                                                <a href="{{ route('admin.property.edit', $property->id) }}"
+                                                    style="height: fit-content;" class="btn btn-success  btn-sm ml-5">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <a data-toggle="modal" data-target="#deleteModal{{ $property->id }}"
+                                                    href="#" style="height: fit-content;" class="btn btn-danger btn-sm">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a>
                                             </div>
-                                            <a href="{{ route('admin.property.edit', $property->id) }}"
-                                                style="height: fit-content;" class="btn btn-success  btn-sm ml-5">
-                                                <i class="mdi mdi-pencil"></i>
-                                            </a>
-                                            <a data-toggle="modal" data-target="#deleteModal{{ $property->id }}"
-                                                href="#" style="height: fit-content;" class="btn btn-danger btn-sm">
-                                                <i class="mdi mdi-delete"></i>
-                                            </a>
+                                          
                                         </td>
                                         <x-delete-modal :id="$property->id"
                                             :url="route('admin.property.destroy', $property->id)"

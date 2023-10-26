@@ -36,7 +36,7 @@
                 <div class="row">
                     @foreach ($pieces as $index => $piece)
                         @if ($piece->images->isNotEmpty())
-                            <div class="col-1">
+                            <div class="d-flex">
                                 <a href="#" class="piece-name btn btn-secondary rounded-pill" data-fancybox="{{ 'piece-gallery-' . $index }}">{{ $piece->pieceType->name }}</a>
                                 @foreach ($piece->images as $image)
                                     <a href="{{ $image->getImageUrl() }}" data-fancybox="{{ 'piece-gallery-' . $index }}" data-caption="{{ $piece->pieceType->name }}"></a>
@@ -56,10 +56,10 @@
                     <div class="shadow-lg shadow-md-down-none d-flex justify-content-center py-3 position-sticky "
                         style="top: 85px;">
                         <div>
-                            <button class="btn btn-main p-2" data-bs-toggle="modal" data-bs-target="#register-modal"
-                                {{ $apartment->published ? 'disabled' : '' }}>
-                                Deposer ma candidature
-                            </button>
+                            <button class="btn btn-main btn-sm w-100 p-2" data-bs-toggle="modal" data-bs-target="#register-modal"
+                            {{ $apartment->published ? 'disabled' : '' }}>
+                            {{ $apartment->published ? 'Déjà loué' : 'Déposer ma candidature' }}
+                        </button>
 
                             <hr>
                             <p><i class="fas fa-home me-2"></i> {{ $apartment->name }} ● {{ $apartment->furnished }}</p>
@@ -124,11 +124,6 @@
                                         <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
                                     </form>
                                     <div>
-                                        <small>En cliquant sur le "S'enregistrer" je confirme que j'accepte les <a href="#"
-                                                class="text-main">conditions d'utilisation.</a></small>
-                                    </div>
-                                    <div class="float-end">
-                                        <small>J'ai déjà un compte <a href="" class="text-main">Se connecter</a></small>
                                     </div>
                                 </div>
                             </div>

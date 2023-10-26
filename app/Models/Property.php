@@ -20,10 +20,7 @@ class Property extends Model
         'landlord_id',
     ];
 
-    // public function images()
-    // {
-    //     return $this->hasMany(Image::class);
-    // }
+
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');

@@ -45,7 +45,7 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
-                                            <a href="{{ asset('storage/Rapport/' . $rapport->rapport) }}" class="pdf-link">
+                                            <a href="{{ asset('storage/Rapport/' . $rapport->rapport) }}" class="pdf-link"  data-fancybox="pdf-link" >
                                                 <i class="mdi mdi-file-pdf pdf-icon" style="color: red; font-size: 24px;" aria-hidden="true"></i> View PDF
                                             </a>
                                         </td>
@@ -82,18 +82,21 @@
 
 @section('footer_script')
 <script>
-$(document).ready(function() {
-  $('.pdf-link').magnificPopup({
-    type: 'iframe',
-    iframe: {
-      patterns: {
-        pdf: {
-          index: null,
-          src: '%id%'
-        }
-      }
-    }
-  });
+// $(document).ready(function() {
+//   $('.pdf-link').magnificPopup({
+//     type: 'iframe',
+//     iframe: {
+//       patterns: {
+//         pdf: {
+//           index: null,
+//           src: '%id%'
+//         }
+//       }
+//     }
+//   });
+// });
+Fancybox.bind("[data-fancybox]", {
+  // Your custom options
 });
     </script>
 @endsection
