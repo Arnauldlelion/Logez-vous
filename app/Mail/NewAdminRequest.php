@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -6,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewTenantRequest extends Mailable
+class NewAdminRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,8 +31,8 @@ class NewTenantRequest extends Mailable
      */
     public function build()
     {
-        return $this->subject('Nouvelle requete locataire.')
-            ->view('emails.new_tenant_request')
+        return $this->subject('Nouvel enregistrement du proprietaire.')
+            ->view('emails.new_landlord_request')
             ->with('emailData', $this->emailData);
     }
 }

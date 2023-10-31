@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nouvelle alerte de candidature!</title>
+    <meta charset="utf-8">
+    <title>Nouvelle requete de locataire</title>
 </head>
 <body>
-    <h1>Nouvelle Requete de locataire.</h1>
-    <p>Un nouveau locataire vient de candidater pour un logement. ci-apres sont marquees ses informations:</p>
-    <ul>
-        <li>Name: {{ $tenant->first_name }} {{ $tenant->last_name }}</li>
-        <li>Email: {{ $tenant->email }}</li>
-        <li>Phone: {{ $tenant->phone }}</li>
-    </ul>
+    <h2>Nouvelle requete de locataire</h2>
+    <p>Nous avons reçu une demande de candidature d'un nouveau locataire. En voici les détails :</p>
+
+    <table>
+        <tr>
+            <td><strong>Nom:</strong></td>
+            <td>{{ $emailData['first_name'] }}</td>
+        </tr>
+        <tr>
+            <td><strong>Prenom:</strong></td>
+            <td>{{ $emailData['last_name'] }}</td>
+        </tr>
+        <tr>
+            <td><strong>Email:</strong></td>
+            <td>{{ $emailData['email'] }}</td>
+        </tr>
+        <tr>
+            <td><strong>Numero:</strong></td>
+            <td>{{ $emailData['phone'] }}</td>
+        </tr>
+      
+    </table>
+
+    <p>Veuillez prendre les mesures qui s'imposent et assurer le suivi avec le locataire si nécessaire.</p>
+
+    <p>Merci bien!</p>
 </body>
 </html>

@@ -30,7 +30,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         } else {
             // Authentication failed
-            return redirect()->back()->withErrors(['email' => 'Invalid credentials or user not approved.']);
+            return redirect()->back()->withErrors(['email' => 'Informations non valide ou utilisateur non approuver.']);
         }
     }
     
