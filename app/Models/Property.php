@@ -20,17 +20,15 @@ class Property extends Model
         'landlord_id',
     ];
 
-    // public function images()
-    // {
-    //     return $this->hasMany(Image::class);
-    // }
+
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
     }
 
     public function amenities(){
-        return $this->belongstoMany(Amenity::class, 'property_amenity','property_id','amenity_id');
+        return $this->belongsToMany(Amenity::class, 'property_amenity', 'property_id', 'amenity_id')
+        ->withTimestamps();
     }
 
     public function apartments()

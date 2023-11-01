@@ -342,12 +342,6 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link"  href="{{ route('index')}}">
-                            <i class="ti-home"></i>
-                            <span class="menu-title"></span>
-                        </a>
-                    </li>
                 </ul>
             </nav>
            

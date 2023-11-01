@@ -75,10 +75,24 @@ class Admincontroller extends Controller
     public function show($id)
     {
         $user = Admin::with('landlords')->findOrFail($id);
-        return view('admin.admin.show',
-            compact('user'));
-            
+        $admins = Admin::get();
+        $landlords = $user->landlords; // Assuming `$user` has a relationship with `landlords`
+        
+        return view('admin.admin.show', compact('user', 'admins', 'landlords'));
     }
+    public function updateAdmin(Request $request, $landlord)
+    {
+        $validatedData = $request->validate([
+            'admin' => 'required|exists:admins,id',
+        ]);
+
+        $landlord = Landlord::findOrFail($landlord);
+        $landlord->admin_id = $validatedData['admin'];
+        $landlord->save();
+
+        return redirect()->back()->with('success', 'Admin updated successfully.');
+    }
+ 
 
     public function edit($id)
     {
@@ -131,11 +145,24 @@ class Admincontroller extends Controller
     }
 
 
+    public function reassignLandlord(Request $request, $landlord)
+    {
+        $validatedData = $request->validate([
+            'admin' => 'required|exists:admins,id',
+        ]);
+
+        $landlord = Landlord::findOrFail($landlord);
+        $landlord->admin_id = $validatedData['admin'];
+        $landlord->save();
+
+        return redirect()->back()->with('success', 'Propriétaire réattribuer avec succès.');
+    }
+
     public function reject(User $user)
     {
         $user->delete();
 
-        return redirect()->back()->with('message', 'Utilisateur rejeté et supprimé avec succès.');
+        return redirect()->back()->with('success', 'Propriétaire rejeté et supprimé avec succès.');
     }
 
  

@@ -30,7 +30,7 @@
                                     <div class="col-12 col-lg-7">
                                         <input
                                             class="form-control rounded-pill form-control-sm @error('number_of_apartments') is-invalid @enderror"
-                                            type="text" id="number_of_apartments" required=""
+                                            type="number" id="number_of_apartments" required=""
                                             value="{{ old('number_of_apartments') }}" name="number_of_apartments"
                                             placeholder="">
                                         @error('number_of_apartments')

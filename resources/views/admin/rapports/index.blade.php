@@ -59,8 +59,8 @@
 
                                                 <a href="#"
                                                     onclick="openPdfModal('{{ asset('storage/Rapport/' . $rapport->rapport) }}')">
-                                                    <i class="mdi mdi-file-pdf" style="color: red; font-size: 24px;"
-                                                        aria-hidden="true"></i> Voir
+                                                    <i class="mdi mdi-delete" style="color: red; font-size: 24px;"
+                                                        aria-hidden="true"></i>
                                                 </a>
                                                 <x-delete-modal :id="$rapport->id" :url="route('admin.rapports.destroy', $rapport->id)" :content="'Voulez-vous vraiment supprimer ce Rapport <strong>' .
                                                     $rapport->id .

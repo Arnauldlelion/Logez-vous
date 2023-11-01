@@ -99,31 +99,31 @@ class PropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-public function edit(Property $property)
-{
-    // Check if the logged-in user owns the property
-    if ($property->admin_id !== auth('admin')->user()->id) {
-        // Redirect or display an error message indicating unauthorized access
-        return redirect()->back()->with('error', 'You are not authorized to edit this property.');
+    public function edit(Property $property)
+    {
+        // Check if the logged-in user owns the property
+        if ($property->admin_id !== auth('admin')->user()->id) {
+            // Redirect or display an error message indicating unauthorized access
+            return redirect()->back()->with('error', 'You are not authorized to edit this property.');
+        }
+
+        $landlords = Landlord::where('admin_id', auth('admin')->id())->get();
+        $apt_types = ApartmentType::all();
+        $amenities = Amenity::orderBy('name')->get();
+        $selectedAptTypes = $property->apartmentTypes()->pluck('apartment_types.id')->toArray();
+
+        return view('admin.property.edit', compact('property', 'apt_types', 'landlords', 'selectedAptTypes','amenities'));
     }
-
-    $landlords = Landlord::where('admin_id', auth('admin')->id())->get();
-    $apt_types = ApartmentType::all();
-    $amenities = Amenity::orderBy('name')->get();
-    $selectedAptTypes = $property->apartmentTypes()->pluck('apartment_types.id')->toArray();
-
-    return view('admin.property.edit', compact('property', 'apt_types', 'landlords', 'selectedAptTypes','amenities'));
-}
 
    
 
     public function showPropertyImagesform($propertyId)
-{
-    $property = Property::where('admin_id', auth('admin')->id())->findOrFail($propertyId);
-    $images = $property->images;
+    {
+        $property = Property::where('admin_id', auth('admin')->id())->findOrFail($propertyId);
+        $images = $property->images;
 
-    return view('admin.property.show', compact('property', 'images'));
-}
+        return view('admin.property.show', compact('property', 'images'));
+    }
 
     public function storePropertyImages(Request $request, $propertyId)
     {
@@ -186,7 +186,12 @@ public function edit(Property $property)
 
 
 
-   
+    public function removeAmenity(Property $property, Amenity $amenity)
+    {
+        $property->amenities()->detach($amenity);
+    
+        return redirect()->back()->with('success', 'Atout pour cette propriété a été supprimée avec succès');
+    }
 
 
     /**

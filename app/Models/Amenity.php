@@ -11,6 +11,7 @@ class Amenity extends Model
     protected $fillable = ['name','image'];
 
     public function properties(){
-        return $this->belongstoMany(Property::class, 'property_amenity','amenity_id','property_id');
+        return $this->belongsToMany(Property::class, 'property_amenity', 'amenity_id', 'property_id')
+                ->withTimestamps();
     }
 }
