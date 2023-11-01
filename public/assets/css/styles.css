@@ -438,9 +438,17 @@
 }
 
 
-.filtered-apartment .dropdown i{
+/* .filtered-apartment {
+    max-height: 100px !important;
+} */
+.filtered-apartment .left-section .dropdown  i{
     color: #ff040c !important;
 }
+.filtered-apartment .left-section{
+    max-height: 540px !important;
+    overflow-y: scroll !important;
+}
+
 
 
 input[type="checkbox"] {

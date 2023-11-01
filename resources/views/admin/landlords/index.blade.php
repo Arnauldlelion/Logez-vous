@@ -50,7 +50,7 @@
                    
                     <div class="d-flex flex-nowrap align-items-center">
                         <small class="mx-2">page {{ $landlords->currentPage() }} de {{ $landlords->total() }} résultats</small>
-                        <a href="{{route('admin.landlords.create')}}" class="btn btn-success text-white btn-sm">Nouveau
+                        <a href="{{route('admin.landlords.create', ['id' => 0])}}" class="btn btn-success text-white btn-sm">Nouveau
                             Propriétaire</a>
                     </div>
                 </div>

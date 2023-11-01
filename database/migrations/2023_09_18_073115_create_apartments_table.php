@@ -19,7 +19,7 @@ class CreateApartmentsTable extends Migration
             $table->string('floor');
             $table->enum('furnished', ['Meublé', 'Non meublé'])->default('Non meublé');
             $table->longText('description')->nullable();
-            $table->string('monthly_price');
+            $table->float('monthly_price', 8, 2)->change();
             $table->integer('number_of_pieces');
             $table->boolean('published')->default(false); 
             $table->integer('size');

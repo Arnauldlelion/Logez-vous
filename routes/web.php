@@ -139,6 +139,7 @@ Route::group(['namespace' => 'web'], function () {
 
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/search-appartment', 'PageController@searchForm')->name('search-appartment');
+    Route::post('/search-appartment', 'PageController@searchForm')->name('search-appartment');
     Route::get('/single-appartment/{id}', 'PageController@showSingleAppartment')->name('single-appartment');
     Route::get('/help', 'PageController@help')->name('help');
 

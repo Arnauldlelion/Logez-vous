@@ -9,6 +9,11 @@ class Apartment extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'monthly_price' => 'float',
+    ];
+    
+
     protected $fillable = [
         'name',
         'floor',

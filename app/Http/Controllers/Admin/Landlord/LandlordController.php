@@ -44,13 +44,19 @@ class LandlordController extends Controller
         return view('admin.landlords.index', compact('landlords', 'search'));
     }
 
-    public function create($id)
+
+    public function create($id = null)
     {
-        $landlord = User::findOrFail($id);
-        
+        if ($id === null) {
+            // Create a new user
+            $landlord = new User();
+        } else {
+            // Retrieve the user details
+            $landlord = User::findOrFail($id);
+        }
+
         return view('admin.landlords.create', compact('landlord'));
     }
-
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

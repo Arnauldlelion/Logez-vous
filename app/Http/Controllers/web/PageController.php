@@ -47,12 +47,140 @@ class PageController extends Controller
         return view('web.apartments.show', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities', 'pieces'));
     }
 
-    public function searchForm(){
-        $apartments = Apartment::with('images')->get();
+  
+    // public function searchForm(Request $request)
+    // {
+    //     if ($request->isMethod('post')) {
+    //         // Form has been submitted, perform the filtering logic
     
-        return view('web.apartments.index', compact('apartments'));
-       }
+    //         // Get the selected room options from the form request
+    //         $selectedRooms = $request->input('rooms', []);
+    
+    //         // Get the minimum and maximum price inputs from the form request
+    //         $minPrice = $request->input('min_price', 0);
+    //         $maxPrice = $request->input('max_price', 10000);
+    
+    //         // Get the minimum and maximum surface area inputs from the form request
+    //         $minSurfaceArea = $request->input('min_surface_area', 0);
+    //         $maxSurfaceArea = $request->input('max_surface_area', 100);
+    
+    //         // Get the furnished option from the form request
+    //         $furnishedOption = $request->input('furnished');
+    
+    //         // Get the keyword from the form request
+    //         $keyword = $request->input('keyword');
+    
+    //         // Check if cancel button was clicked
+    //         $cancel = $request->input('cancel');
+    
+    //         if ($cancel) {
+    //             // Clear the keyword if cancel button was clicked
+    //             $keyword = '';
+    //         }
+    
+    //         // Perform the filtering logic
+    //         $query = Apartment::whereBetween('monthly_price', [$minPrice, $maxPrice])
+    //             ->whereBetween('size', [$minSurfaceArea, $maxSurfaceArea]);
+    
+    //         if (!empty($selectedRooms)) {
+    //             $query->whereIn('number_of_pieces', $selectedRooms);
+    //         }
+    
+    //         // Filter based on furnished option
+    //         if ($furnishedOption === 'meublé') {
+    //             $query->where('furnished', 'Meublé');
+    //         } elseif ($furnishedOption === 'Non meublé') {
+    //             $query->where('furnished', 'Non meublé');
+    //         }
+    
+    //         // Filter based on keyword
+    //         if (!empty($keyword)) {
+    //             $query->where(function ($q) use ($keyword) {
+    //                 $q->where('name', 'like', "%{$keyword}%")
+    //                     ->orWhere('description', 'like', "%{$keyword}%");
+    //             });
+    //         }
+    
+    //         $apartments = $query->get();
+    
+    //         // Pass the filtered apartments and keyword to the view
+    //         return view('web.apartments.index', compact('apartments', 'keyword'));
+    //     } else {
+    //         // Initial display of the view, no form submission yet
+    //         $apartments = Apartment::all(); // Retrieve all apartments
+    //         $keyword = '';
+    //         return view('web.apartments.index', compact('apartments', 'keyword'));
+    //     }
+    // }
+    public function searchForm(Request $request)
+{
+    if ($request->isMethod('post')) {
+        // Form has been submitted, perform the filtering logic
 
+        // Get the selected room options from the form request
+        $selectedRooms = $request->input('rooms', []);
+
+        // Get the minimum and maximum price inputs from the form request
+        $minPrice = $request->input('min_price', 0);
+        $maxPrice = $request->input('max_price', 10000);
+
+        // Get the minimum and maximum surface area inputs from the form request
+        $minSurfaceArea = $request->input('min_surface_area', 0);
+        $maxSurfaceArea = $request->input('max_surface_area', 100);
+
+        // Get the furnished option from the form request
+        $furnishedOption = $request->input('furnished');
+
+        // Get the keyword from the form request
+        $keyword = $request->input('keyword');
+
+        // Check if cancel button was clicked
+        $cancel = $request->input('cancel');
+
+        if ($cancel) {
+            // Clear the keyword if cancel button was clicked
+            $keyword = '';
+        }
+
+        // Perform the filtering logic
+        $query = Apartment::query();
+
+        // Filter based on price range
+        $query->whereBetween('monthly_price', [$minPrice, $maxPrice]);
+
+        // Filter based on surface area range
+        $query->whereBetween('size', [$minSurfaceArea, $maxSurfaceArea]);
+
+        if (!empty($selectedRooms)) {
+            $query->whereIn('number_of_pieces', $selectedRooms);
+        }
+
+        // Filter based on furnished option
+        if ($furnishedOption === 'meublé') {
+            $query->where('furnished', 'Meublé');
+        } elseif ($furnishedOption === 'Non meublé') {
+            $query->where('furnished', 'Non meublé');
+        }
+
+        // Filter based on keyword
+        if (!empty($keyword)) {
+            $query->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%")
+                    ->orWhere('description', 'like', "%{$keyword}%");
+            });
+        }
+
+        $apartments = $query->get();
+
+        // Pass the filtered apartments and keyword to the view
+        return view('web.apartments.index', compact('apartments', 'keyword'));
+    } else {
+        // Initial display of the view, no form submission yet
+        $apartments = Apartment::all(); // Retrieve all apartments
+        $keyword = '';
+        return view('web.apartments.index', compact('apartments', 'keyword'));
+    }
+}
     public function info(){
 
         return view('web.help');
@@ -92,7 +220,7 @@ class PageController extends Controller
         }
 
         return view('properties', compact('properties'));
-        
+  
         
     }
     

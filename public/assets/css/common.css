@@ -51,6 +51,9 @@ small{
     background-color: var(--main-color) !important;
 }
 
+.btn:focus {
+    outline: none !important;
+  }
 
 .btn-main {
     background-color: var(--main-color) !important;

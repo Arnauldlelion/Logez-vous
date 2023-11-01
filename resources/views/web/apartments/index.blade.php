@@ -9,28 +9,29 @@
         <div class="mx-1 d-flex justify-content-between align-items-center">
             <div class="d-flex gap-2">
                 <form action="" method="post">
-                    <input type="search" class="form-control form-control-lg" style="width: 300px">
+                    <input type="search" class="form-control form-control-lg" style="width: 300px" name="keyword" id="searchInput" value="{{ old('keyword', $keyword) }}">
+                    {{-- <button type="button" onclick="cancelSearch()">Cancel</button> --}}
                 </form>
-                <button class="btn filter-btn" data-popup-number="1" id="popupTriggerButton1">
+                <button class="btn filter-btn"  id="popupTriggerButton1">
                     <i class="fa-solid fa-euro-sign"></i> Loyer
                 </button>
 
-                <button class="btn filter-btn" data-popup-number="2" id="popupTriggerButton2">
+                <button class="btn filter-btn"  id="popupTriggerButton2">
                     <i class="fa-regular fa-square me-1"></i>Surface
                 </button>
 
-                <button class="btn filter-btn" data-popup-number="3" id="popupTriggerButton3">
+                <button class="btn filter-btn"  id="popupTriggerButton3">
                     <i class="fa-solid fa-couch me-1"></i>Meubles?
                 </button>
 
-                <button class="btn filter-btn" data-popup-number="4" id="popupTriggerButton4">
+                <button class="btn filter-btn"  id="popupTriggerButton4">
                     <i class="fa-brands fa-windows me-1"></i>Nombre de pièces
                 </button>
                 <button class="btn filter-btn" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="closePopup()">Plus
                     de filtres</button>
-                <button class="btn btn-outline-main btn-lg" type="button" 
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button class="btn btn-outline-main btn-lg" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
                     Créer une alerte
                 </button>
             </div>
@@ -41,15 +42,15 @@
             </div>
         </div>
         <hr>
-        <div class="popup" id="popup1">
-            <!-- Content for popup 1 -->
-            <div class="wrapper">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="text-main">Quel est votre budget?</h5>
-                    <button class="btn-close" onclick="closePopup()"></button>
-                </div>
-                <form action="{{ route('apartments.filter') }}" method="POST" id="filterForm">
-                    @csrf
+        <form action="{{ route('search-appartment') }}" method="POST">
+            @csrf
+            <div class="popup" id="popup1">
+                <!-- Content for popup 1 -->
+                <div class="wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="text-main">Quel est votre budget?</h5>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
                     <div class="d-flex justify-content-between price-input mb-1">
                         <div class="field col-5 input-group-sm d-flex mb-3">
                             <input type="number" class="input-min form-control rounded-start-pill" name="min_price"
@@ -75,7 +76,7 @@
 
                     <hr>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-center gap-2" onclick="resetFields('popup1')">
                             <i class="fa fa-chevron-right"></i>
                             <span>Effacer</span>
                         </div>
@@ -84,27 +85,27 @@
                             <span id="apartmentCount" class="ms-2"></span>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="popup" id="popup2">
-            <!-- Content for popup 2 -->
-            <div class="wrapper">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="text-main">Quelle est la superficie souhaitée?</h5>
-                    <button class="btn-close" onclick="closePopup()"></button>
                 </div>
-                <form method="POST" action="{{ route('apartments.filter') }}">
-                    @csrf
+            </div>
+
+            <div class="popup" id="popup2">
+                <!-- Content for popup 2 -->
+                <div class="wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="text-main">Quelle est la superficie souhaitée?</h5>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+
                     <div class="d-flex justify-content-between price-input mb-1">
                         <div class="field col-5 input-group-sm d-flex mb-3">
-                            <input type="number" class="size-input-min form-control rounded-start-pill" value="0">
+                            <input type="number" class="size-input-min form-control rounded-start-pill"
+                                name="min_surface_area" value="0">
                             <span class="input-group-text rounded-end-pill">m² min</span>
                         </div>
                         <div class="separator">-</div>
                         <div class="field col-5 input-group-sm d-flex mb-3">
-                            <input type="number" class="form-control rounded-start-pill size-input-max" value="100">
+                            <input type="number" class="form-control rounded-start-pill size-input-max"
+                                name="max_surface_area" value="100" onchange="updateButtonName()">
                             <span class="input-group-text rounded-end-pill">m² max</span>
                         </div>
                     </div>
@@ -119,7 +120,7 @@
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-center gap-2" onclick="resetFields('popup2')">
                             <i class="fa fa-chevron-right"></i>
                             <span>Effacer</span>
                         </div>
@@ -127,33 +128,33 @@
                             <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="popup" id="popup3">
-            <!-- Content for popup 3 -->
-            <div class="wrapper">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="text-main">Meublé ou non meublé ?</h5>
-                    <button class="btn-close" onclick="closePopup()"></button>
                 </div>
-                <form method="POST" action="{{ route('apartments.filter') }}">
-                    @csrf
+            </div>
+
+            <div class="popup" id="popup3">
+                <!-- Content for popup 3 -->
+                <div class="wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="text-main">Meublé ou non meublé ?</h5>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+
                     <div class="d-flex gap-3">
                         <label class="radio-label">
-                            <input type="radio" name="furnished" value="1" onchange="toggleBorder(this)">
+                            <input type="radio" id="furnished" name="furnished" value="meublé"
+                                onchange="toggleBorder(this)">
                             <img src="{{ asset('storage/images/logos/meublé.png') }}" alt="" class="img-fluid">
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="furnished" value="0" onchange="toggleBorder(this)">
+                            <input type="radio" id="furnished" name="furnished" value="Non meublé"
+                                onchange="toggleBorder(this)">
                             <img src="{{ asset('storage/images/logos/non-meublé.png') }}" alt=""
                                 class="img-fluid">
                         </label>
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-center gap-2" role="button" onclick="resetFields('popup3')">
                             <i class="fa fa-chevron-right"></i>
                             <span>Effacer</span>
                         </div>
@@ -161,20 +162,18 @@
                             <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
 
-        <div class="popup" id="popup4">
-            <!-- Content for popup 4 -->
-            <div class="wrapper px-1">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="text-main">Combien de pièces ?</h4>
-                    <button class="btn-close" onclick="closePopup()"></button>
                 </div>
+            </div>
 
-                <form method="POST" action="{{ route('apartments.filter') }}">
-                    @csrf
+            <div class="popup" id="popup4">
+                <!-- Content for popup 4 -->
+                <div class="wrapper px-1">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="text-main">Combien de pièces ?</h4>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+
                     <div>
                         <small class="text-muted mb-5">Vous pouvez sélectionner plusieurs options.</small>
                         <div class="d-flex gap-3 mt-3">
@@ -206,7 +205,7 @@
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-center gap-2" role="button" onclick="resetFields('popup4')">
                             <i class="fa fa-chevron-right"></i>
                             <span>Effacer</span>
                         </div>
@@ -214,10 +213,11 @@
                             <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
                         </div>
                     </div>
-                </form>
+
+                </div>
             </div>
-        </div>
-        <div class="popup-5" >
+        </form>
+        <div class="popup-5">
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
                 id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                 <div class="offcanvas-header d-flex justify-content-end">
@@ -305,21 +305,34 @@
                 </div>
             </div>
         </div>
-    </section class="filtered-apartment">
+    </section>
+    <section class="filtered-apartment">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-7 ps-3 left-section">
                     <div class="d-flex justify-content-between  mb-1">
                         <div>
-                            <h4> {{ \App\Models\Apartment::where('published', false)->count() }} logements disponible <span
-                                    class="text-muted" style="font-size: 16px">sur {{ \App\Models\Apartment::count() }}
-                                </span></h4>
+                            @if (request()->isMethod('post'))
+                                @php
+                                    $filteredApartments = $apartments->count();
+                                @endphp
+                                <h4>{{ $filteredApartments }} logements disponibles <span class="text-muted"
+                                        style="font-size: 16px">sur {{ \App\Models\Apartment::count() }}
+                                    </span></h4>
+                            @else
+                                <h4>{{ \App\Models\Apartment::where('published', false)->count() }} logements disponible
+                                    <span class="text-muted" style="font-size: 16px">sur
+                                        {{ \App\Models\Apartment::count() }}
+                                    </span>
+                                </h4>
+                            @endif
                         </div>
+
                         <div class="dropdown ">
                             <span>Trier par </span>
                             <span class="text-main" style="cursor:pointer" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <i class="fas fa-paper-plane me-1" ></i>distance du lieu choisi <i
+                                <i class="fas fa-paper-plane me-1"></i>distance du lieu choisi <i
                                     class="fa fa-chevron-down"></i>
                             </span>
                             <ul class="dropdown-menu shadow-lg rounded-4 px-2 py-3 border border-0">
@@ -412,12 +425,24 @@
             popup.style.left = buttonLeft + "px";
             popup.style.display = "block";
 
+            button.style.border = "1px dashed red";
+            button.style.backgroundColor = "#FFEBEE";
+            button.style.fontWeight = "bold";
+
             // Update the currently opened popup
             currentPopup = popup;
 
             // Add click event listener to the close button
             closeButton.addEventListener("click", function() {
                 closePopup(popup);
+            });
+
+            // Add click event listener to window object to close the popup when clicking outside
+            window.addEventListener("click", function(event) {
+                if (!popup.contains(event.target) && event.target !== button) {
+                    closePopup(popup);
+                    button.style.border = "1px dashed #BCBCBC";
+                }
             });
         }
 
@@ -499,9 +524,30 @@
         // Call the setupRangeInputs function for size range inputs and sliders
         setupRangeInputs("popup2", "size-input-min", "size-input-max", "size-range-min", "size-range-max");
 
-        // function closePopup() {
-        //     var popup = document.querySelector('.wrapper');
-        //     popup.style.display = 'none';
-        // }
+
+
+        function resetFields(popupId) {
+            // Get the popup element
+            var popup = document.getElementById(popupId);
+
+            // Find all input elements within the popup
+            var inputs = popup.getElementsByTagName('input');
+
+            // Reset the input values
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+
+                // Check the input type and reset accordingly
+                if (input.type === 'text' || input.type === 'number' || input.type === 'range') {
+                    input.value = input.defaultValue;
+                } else if (input.type === 'checkbox' || input.type === 'radio') {
+                    input.checked = input.defaultChecked;
+                }
+            }
+        }
+      function cancelSearch() {
+            document.getElementById('searchInput').value = ''; // Clear the search input field
+            document.querySelector('form').submit(); // Submit the form to perform a new search with no keyword
+        }
     </script>
 @endsection
