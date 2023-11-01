@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-soft-success border-success border">
-                                <i class="fe-file-text font-22 avatar-title text-success"></i>
+                                <i class="fe-users font-22 avatar-title text-success"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                                <i class="fe-user-check font-22 avatar-title text-info"></i>
+                                <i class="fe-users font-22 avatar-title text-info"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                                <i class="fe-user-check font-22 avatar-title text-info"></i>
+                                <i class="fe-users font-22 avatar-title text-info"></i>
                             </div>
                         </div>
                         <div class="col-6">
