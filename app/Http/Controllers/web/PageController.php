@@ -184,8 +184,9 @@ class PageController extends Controller
         */
 
         $apartments = Apartment::filter()->get();
+        $keyword = $request->input('keyword', '');
 
-        return view('web.apartments.index', compact('apartments'));
+        return view('web.apartments.index', compact('apartments', 'keyword'));
     }
     public function info()
     {
