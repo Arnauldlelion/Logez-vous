@@ -33,7 +33,15 @@ class Apartment extends Model
         $query
             ->when(request('q') ?? false, function ($query, $search) {
                 $query->where('keyword', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
-            });
+            })
+            ->when(request('min_price') ?? false, function ($query, $minPrice) {
+                $query->where('monthly_price', '>=', $minPrice);
+            })
+            ->when(request('min_price') ?? false, function ($query, $minPrice) {
+                $query->where('monthly_price', '>=', $minPrice);
+            })
+            //
+        ;
     }
 
     public function property()
