@@ -14,14 +14,14 @@ class CreateApartmentsTable extends Migration
     public function up()
     {
         Schema::create('apartments', function (Blueprint $table) {
-            $table->id();   
+            $table->id();
             $table->string('name');
             $table->string('floor');
             $table->enum('furnished', ['Meublé', 'Non meublé'])->default('Non meublé');
             $table->longText('description')->nullable();
-            $table->float('monthly_price', 8, 2)->change();
+            $table->float('monthly_price', 8, 2);
             $table->integer('number_of_pieces');
-            $table->boolean('published')->default(false); 
+            $table->boolean('published')->default(false);
             $table->integer('size');
             $table->unsignedBigInteger('property_id');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
