@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Apartment extends Model
 {
@@ -12,7 +14,7 @@ class Apartment extends Model
     protected $casts = [
         'monthly_price' => 'float',
     ];
-    
+
 
     protected $fillable = [
         'name',
@@ -26,9 +28,17 @@ class Apartment extends Model
         'property_id',
     ];
 
+    public function scopeFilter(Builder $query, array $filters)
+    {
+        $query
+            ->when(request('q') ?? false, function ($query, $search) {
+                $query->where('keyword', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
+            });
+    }
+
     public function property()
     {
-    return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class);
     }
 
     public function apartmentType()
@@ -39,7 +49,7 @@ class Apartment extends Model
 
     public function payments()
     {
-    return $this->hasMany(Payment::class);
+        return $this->hasMany(Payment::class);
     }
 
 
@@ -50,19 +60,19 @@ class Apartment extends Model
 
     public function AnnualRapportDeGestions()
     {
-    return $this->hasMany(AnnualRapport::class);
+        return $this->hasMany(AnnualRapport::class);
     }
 
     public function rapportDeGestions()
     {
-    return $this->hasMany(RapportDeGestion::class);
+        return $this->hasMany(RapportDeGestion::class);
     }
 
     public function pieces()
     {
-    return $this->hasMany(Piece::class, 'apartment_id');
+        return $this->hasMany(Piece::class, 'apartment_id');
     }
-    
+
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
