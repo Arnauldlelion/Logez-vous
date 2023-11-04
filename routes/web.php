@@ -22,6 +22,7 @@ use App\Http\Controllers\SendMailController;
 /*======================
   ADMIN ROUTES
 ========================*/
+
 Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
 
     Route::group(['namespace' => 'Auth'], function () {
@@ -50,19 +51,18 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::resource('approuved-landlords', 'Landlord\LandlordController');
         Route::resource('piece_types', 'PieceTypes\PieceTypesController');
         Route::resource('amenities', 'Amenity\AmenityController');
-        Route::resource('testimonials', 'TestimonyController');
         Route::resource('pages', 'PageContentController');
         Route::resource('news', 'NewsController');
         Route::resource('faqs', 'FaqsController');
-        
-        
+
+
 
         // super Administrators
         Route::group(['middleware' => ['auth:admin', 'admin.super']], function () {
-         Route::resource('administrator', 'Administrator\AdminController');
-         Route::post('/landlords/update-admin/{landlord}', 'Administrator\AdminController@updateAdmin')->name('landlords.updateAdmin');
-         Route::post('administrator/reassign-landlord/{landlord}', 'Administrator\AdminController@reassignLandlord')->name('reassign-landlord');
-         Route::post('administrator/roles/{id}', 'Administrator\AdminController@assignRoles')->name('admin.roles');
+            Route::resource('administrator', 'Administrator\AdminController');
+            Route::post('/landlords/update-admin/{landlord}', 'Administrator\AdminController@updateAdmin')->name('landlords.updateAdmin');
+            Route::post('administrator/reassign-landlord/{landlord}', 'Administrator\AdminController@reassignLandlord')->name('reassign-landlord');
+            Route::post('administrator/roles/{id}', 'Administrator\AdminController@assignRoles')->name('admin.roles');
         });
 
         Route::resource('property', 'Property\PropertyController');
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::get('/property/{propertyId}/images', 'Property\PropertyController@showPropertyImagesform')->name('showPropertyImagesform');
         Route::post('/property/{propertyId}/images', 'Property\PropertyController@storePropertyImages')->name('property-images');
         Route::delete('/property/image/{id}', 'Property\PropertyController@deletePropertyImage')->name('deletePropertyImage');
-        
+
         Route::resource('apartments', 'Apartment\ApartmentController');
         Route::get('/apartment/{id}/images', 'Apartment\ApartmentController@showApartmentImagesform')->name('showApartmentImagesform');
         Route::post('/apartment/{id}/images', 'Apartment\ApartmentController@storeApartmentImages')->name('apartment-images');
@@ -90,7 +90,7 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::get('/rapport-general/{id}/index', 'GeneralRapport\GeneralRapportController@index')->name('generalrapportIndex');
         Route::post('/upload/general-rapport/{id}', 'GeneralRapport\GeneralRapportController@store')->name('general-rapport.upload');
         Route::resource('rapport-general', 'GeneralRapport\GeneralRapportController');
-     
+
 
         // REJECT LANDLORD ACCOUNT
         Route::delete('users/{user}/reject', 'Administrator\AdminController@reject')->name('users.reject');
@@ -107,28 +107,26 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
 
         Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-
     });
-
 });
 
 // Landlord routes
-    Route::group(['namespace' => 'Landlord',  'middleware' => ['auth:landlord']], function ()  {
-        // Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-        // Route::post('/login', 'Auth\LoginController@login')->name('login');
-        Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('landlord.dashboard');
-        Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
-        Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
-        Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
-        Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
-        Route::get('locataire', 'Dashboard\DashboardController@locataire')->name('tenants');
-        Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
-        Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
-        Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
-        Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
-        Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
-        Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-        // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
+Route::group(['namespace' => 'Landlord',  'middleware' => ['auth:landlord']], function () {
+    // Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+    // Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::get('/dashboard', 'Dashboard\DashboardController@getDashboard')->name('landlord.dashboard');
+    Route::get('/mes-logement', 'Dashboard\DashboardController@properties')->name('properties');
+    Route::get('/appartements', 'Dashboard\DashboardController@apartments')->name('apartments');
+    Route::get('/rapport-de-gestion', 'Dashboard\DashboardController@rapportDeGestion')->name('rapport-de-gestion');
+    Route::get('/rapport-de-gestion-general', 'Dashboard\DashboardController@generalRapportDeGestion')->name('annual-rapport-de-gestion');
+    Route::get('locataire', 'Dashboard\DashboardController@locataire')->name('tenants');
+    Route::get('/profile', 'Profile\ProfileController@getProfile')->name('profile');
+    Route::post('/profile/edit', 'Profile\ProfileController@editProfile')->name('profile.edit');
+    Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('profile.password');
+    Route::get('appartments/{propertyId}', 'Dashboard\DashboardController@showApartments')->name('apartments.show');
+    Route::get('/apartments/{apartmentId}/rapport-de-gestions', 'Dashboard\DashboardController@showRapportDeGestions')->name('apartments.rapport-de-gestions');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+    // Route::get('/proprietaires', [PageController::class, 'proprietaire'])->name('proprietaires.index');
 });
 
 
@@ -152,5 +150,3 @@ Route::group(['namespace' => 'web'], function () {
 
     Route::post('/apartments/filter', 'ApartmentController@filter')->name('apartments.filter');
 });
-
-
