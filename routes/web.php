@@ -147,6 +147,4 @@ Route::group(['namespace' => 'web'], function () {
     Route::get('/help', 'PageController@help')->name('help');
 
     Route::get('/info', 'PageController@info')->name('info');
-
-    Route::post('/apartments/filter', 'ApartmentController@filter')->name('apartments.filter');
 });
