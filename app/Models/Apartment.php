@@ -31,14 +31,14 @@ class Apartment extends Model
     public function scopeFilter(Builder $query, array $filters)
     {
         $query
-            ->when(request('q') ?? false, function ($query, $search) {
-                $query->where('keyword', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
+            ->when(request('keyword') ?? false, function ($query, $search) {
+                $query->where('name', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
             })
             ->when(request('min_price') ?? false, function ($query, $minPrice) {
                 $query->where('monthly_price', '>=', $minPrice);
             })
-            ->when(request('min_price') ?? false, function ($query, $minPrice) {
-                $query->where('monthly_price', '>=', $minPrice);
+            ->when(request('max_price') ?? false, function ($query, $maxPrice) {
+                $query->where('monthly_price', '<=', $maxPrice);
             })
             //
         ;
