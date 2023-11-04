@@ -32,13 +32,23 @@ class Apartment extends Model
     {
         $query
             ->when(request('keyword') ?? false, function ($query, $search) {
-                $query->where('name', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
+                $query->where('name', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%')
+                    ->orWhere('description', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
             })
             ->when(request('min_price') ?? false, function ($query, $minPrice) {
                 $query->where('monthly_price', '>=', $minPrice);
             })
             ->when(request('max_price') ?? false, function ($query, $maxPrice) {
                 $query->where('monthly_price', '<=', $maxPrice);
+            })
+            ->when(request('min_surface_area') ?? false, function ($query, $minArea) {
+                $query->where('size', '>=', $minArea);
+            })
+            ->when(request('max_surface_area') ?? false, function ($query, $maxArea) {
+                $query->where('size', '<=', $maxArea);
+            })
+            ->when(request('furnished') ?? false, function ($query, $furnished) {
+                $query->where('furnished', $furnished);
             })
             //
         ;
