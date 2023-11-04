@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\WelcomeGestionnaireEmail;
 use Illuminate\Support\Facades\Mail;
-class Admincontroller extends Controller
+
+class AdminController extends Controller
 {
 
     protected $search = [
@@ -77,7 +78,7 @@ class Admincontroller extends Controller
         $user = Admin::with('landlords')->findOrFail($id);
         $admins = Admin::get();
         $landlords = $user->landlords; // Assuming `$user` has a relationship with `landlords`
-        
+
         return view('admin.admin.show', compact('user', 'admins', 'landlords'));
     }
     public function updateAdmin(Request $request, $landlord)
@@ -92,7 +93,7 @@ class Admincontroller extends Controller
 
         return redirect()->back()->with('success', 'Admin updated successfully.');
     }
- 
+
 
     public function edit($id)
     {
@@ -109,9 +110,9 @@ class Admincontroller extends Controller
     public function destroy($id)
     {
         $user = Admin::findOrFail($id);
-    
+
         $loggedInUser = Auth::guard('admin')->user();
-    
+
         if (!$loggedInUser->super_admin) {
             // If the logged-in user is not a super admin, display an error message
             session()->flash('error', 'You do not have permission to perform this action');
@@ -120,7 +121,7 @@ class Admincontroller extends Controller
             session()->flash('error', 'You cannot delete a super administrator');
         } else {
             $superAdmin = Admin::where('super_admin', true)->first();
-    
+
             if ($superAdmin) {
                 // Assign landlords associated with the admin to the super admin
                 $landlords = Landlord::where('admin_id', $user->id)->get();
@@ -128,7 +129,7 @@ class Admincontroller extends Controller
                     $landlord->admin_id = $superAdmin->id;
                     $landlord->save();
                 }
-    
+
                 // Assign properties associated with the admin to the super admin
                 $properties = Property::where('admin_id', $user->id)->get();
                 foreach ($properties as $property) {
@@ -136,11 +137,11 @@ class Admincontroller extends Controller
                     $property->save();
                 }
             }
-    
+
             $user->delete();
             session()->flash('success', 'Gestionnaires supprimé avec succès');
         }
-    
+
         return redirect()->to(route('admin.administrator.index'));
     }
 
@@ -164,6 +165,5 @@ class Admincontroller extends Controller
 
         return redirect()->back()->with('success', 'Propriétaire rejeté et supprimé avec succès.');
     }
-
- 
 }
+
