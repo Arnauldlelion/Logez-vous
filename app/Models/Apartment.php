@@ -28,7 +28,7 @@ class Apartment extends Model
         'property_id',
     ];
 
-    public function scopeFilter(Builder $query, array $filters)
+    public function scopeFilter(Builder $query, array $filters = [])
     {
         $query
             ->when(request('keyword') ?? false, function ($query, $search) {
