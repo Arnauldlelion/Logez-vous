@@ -50,6 +50,7 @@ class Apartment extends Model
             ->when(request('furnished') ?? false, function ($query, $furnished) {
                 $query->where('furnished', $furnished);
             })
+
             //
         ;
     }
