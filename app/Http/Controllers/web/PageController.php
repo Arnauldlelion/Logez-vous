@@ -16,7 +16,7 @@ class PageController extends Controller
             ->with('images')
             ->take(8)
             ->get();
-    
+
         return view('index', compact('apartments'));
     }
 
@@ -26,7 +26,7 @@ class PageController extends Controller
         $apartment = Apartment::with(['images', 'pieces.images', 'property.amenities'])
             ->findOrFail($id);
 
-            // dd($apartment->id);
+        // dd($apartment->id);
         $otherApartments = Apartment::where('id', '!=', $apartment->id)
             ->with('images')
             ->get();
@@ -47,52 +47,52 @@ class PageController extends Controller
         return view('web.apartments.show', compact('apartment', 'otherApartments', 'images', 'remainingImages', 'amenities', 'pieces'));
     }
 
-  
+
     // public function searchForm(Request $request)
     // {
     //     if ($request->isMethod('post')) {
     //         // Form has been submitted, perform the filtering logic
-    
+
     //         // Get the selected room options from the form request
     //         $selectedRooms = $request->input('rooms', []);
-    
+
     //         // Get the minimum and maximum price inputs from the form request
     //         $minPrice = $request->input('min_price', 0);
     //         $maxPrice = $request->input('max_price', 10000);
-    
+
     //         // Get the minimum and maximum surface area inputs from the form request
     //         $minSurfaceArea = $request->input('min_surface_area', 0);
     //         $maxSurfaceArea = $request->input('max_surface_area', 100);
-    
+
     //         // Get the furnished option from the form request
     //         $furnishedOption = $request->input('furnished');
-    
+
     //         // Get the keyword from the form request
     //         $keyword = $request->input('keyword');
-    
+
     //         // Check if cancel button was clicked
     //         $cancel = $request->input('cancel');
-    
+
     //         if ($cancel) {
     //             // Clear the keyword if cancel button was clicked
     //             $keyword = '';
     //         }
-    
+
     //         // Perform the filtering logic
     //         $query = Apartment::whereBetween('monthly_price', [$minPrice, $maxPrice])
     //             ->whereBetween('size', [$minSurfaceArea, $maxSurfaceArea]);
-    
+
     //         if (!empty($selectedRooms)) {
     //             $query->whereIn('number_of_pieces', $selectedRooms);
     //         }
-    
+
     //         // Filter based on furnished option
     //         if ($furnishedOption === 'meublé') {
     //             $query->where('furnished', 'Meublé');
     //         } elseif ($furnishedOption === 'Non meublé') {
     //             $query->where('furnished', 'Non meublé');
     //         }
-    
+
     //         // Filter based on keyword
     //         if (!empty($keyword)) {
     //             $query->where(function ($q) use ($keyword) {
@@ -100,9 +100,9 @@ class PageController extends Controller
     //                     ->orWhere('description', 'like', "%{$keyword}%");
     //             });
     //         }
-    
+
     //         $apartments = $query->get();
-    
+
     //         // Pass the filtered apartments and keyword to the view
     //         return view('web.apartments.index', compact('apartments', 'keyword'));
     //     } else {
@@ -113,7 +113,8 @@ class PageController extends Controller
     //     }
     // }
     public function searchForm(Request $request)
-{
+    {
+        /*
     if ($request->isMethod('post')) {
         // Form has been submitted, perform the filtering logic
 
@@ -179,20 +180,26 @@ class PageController extends Controller
         $apartments = Apartment::all(); // Retrieve all apartments
         $keyword = '';
         return view('web.apartments.index', compact('apartments', 'keyword'));
+        }
+        */
+
+        $apartments = Apartment::filter()->get();
+
+        return view('web.apartments.index', compact('apartments'));
     }
-}
-    public function info(){
+    public function info()
+    {
 
         return view('web.help');
     }
-    public function help(){
+    public function help()
+    {
 
         return view('web.aide');
     }
 
-   public function proprietaire(){
-    return view('proprietaires.index');
-   }
-    
-
+    public function proprietaire()
+    {
+        return view('proprietaires.index');
+    }
 }
