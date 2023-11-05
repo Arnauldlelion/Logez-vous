@@ -1,6 +1,7 @@
-@props(['apartment', 'index', 'isSlider', 'showBanner' => false, 'showBorder])
+@props(['apartment', 'index', 'isSlider', 'showBanner' => false, 'showBorder'])
+
 <div class="house-card h-100 shadow-lg">
-    @if ($appartment->create_at->diffInWeeks() < 1) <div class="img-container">
+    @if ($appartment->created_at->diffInWeeks() < 1) <div class="img-container">
         <img src="/storage/images/premium.png" class="img-fluid premium" alt="{{ config('app.name') }}">
 </div>
 @endif
