@@ -51,12 +51,12 @@
                 </div>
                 <div class="d-flex justify-content-between price-input mb-1">
                     <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="input-min form-control rounded-start-pill" name="min_price" id="minPriceInput" value="0">
+                        <input type="number" class="input-min form-control rounded-start-pill" name="min_price" id="minPriceInput" value="{{ request('min_price', '0') }}">
                         <span class="input-group-text rounded-end-pill">CFA min</span>
                     </div>
                     <div class="separator">-</div>
                     <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="form-control rounded-start-pill input-max" name="max_price" id="maxPriceInput" value="10000">
+                        <input type="number" class="form-control rounded-start-pill input-max" name="max_price" id="maxPriceInput" value="{{ request('max_price', '10000') }}">
                         <span class="input-group-text rounded-end-pill">CFA max</span>
                     </div>
                 </div>
@@ -64,8 +64,8 @@
                     <div class="progress"></div>
                 </div>
                 <div class="range-input mb-4">
-                    <input type="range" class="range-min" name="range_min" id="rangeMinInput" min="0" max="10000" value="0">
-                    <input type="range" class="range-max" name="range_max" id="rangeMaxInput" min="0" max="10000" value="10000">
+                    <input type="range" class="range-min" name="range_min" id="rangeMinInput" min="0" max="10000" value="{{ request('min_price') }}">
+                    <input type="range" class="range-max" name="range_max" id="rangeMaxInput" min="0" max="10000" value="{{ request('max_price', 10000) }}">
                 </div>
 
                 <hr>
