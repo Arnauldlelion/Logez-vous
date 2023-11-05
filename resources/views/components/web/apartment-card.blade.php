@@ -1,4 +1,4 @@
-@props(['apartment', 'index' => null, 'isSlider', 'showBanner' => false, 'showBorder' => false])
+@props(['apartment', 'index' => null, 'isSlider' => false, 'showBanner' => false, 'showBorder' => false])
 
 <div class="house-card h-100 shadow-lg">
     @if ($apartment->created_at->diffInWeeks() < 1) <div class="img-container">
