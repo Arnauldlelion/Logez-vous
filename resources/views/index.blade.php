@@ -19,12 +19,13 @@
                     @foreach ($apartments as $apartment)
                     <div class="col-6 col-lg-3 d-none d-md-block">
                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                            @include('web.components.card', [
+                            {{-- @include('web.components.card', [
                                 'index' => $apartment,
                                 'showBanner' => true,
                                 'isSlider' => false,
                                 'showBorder' => true,
-                            ])
+                            ]) --}}
+                            <x-web.apartment-card :apartment="$apartment" />
                     </a>
                 </div>
                 @endforeach
@@ -34,12 +35,13 @@
                 <div class="owl-carousel owl-theme featured_carousel d-block d-md-none">
                     @foreach ($apartments as $apartment)
                         <div class="item">
-                            @include('web.components.card', [
+                            {{-- @include('web.components.card', [
                                 'index' => $apartment,
                                 'showBanner' => true,
                                 'isSlider' => false,
                                 'showBorder' => true,
-                            ])
+                            ]) --}}
+                            <x-web.apartment-card :apartment="$apartment" />
                         </div>
                     @endforeach
                 </div>
@@ -288,13 +290,14 @@
                                             <div class="owl-carousel owl-theme solution_carousels">
                                                 @foreach ($apartments as $apartment)
                                                     <div class="item">
-                                                        <a href="{{ route('single-appartment', $apartment->id) }}">
+                                                        {{-- <a href="{{ route('single-appartment', $apartment->id) }}">
                                                         @include('web.components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
                                                             'showBorder' => true,
-                                                        ])
+                                                        ]) --}}
+                                                        <x-web.apartment-card :apartment="$apartment" />
                                                         </a>
                                                     </div>
                                                 @endforeach
@@ -322,12 +325,13 @@
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
                                                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                                                    @include('web.components.card', [
+                                                    {{-- @include('web.components.card', [
                                                         'index' => $apartment,
                                                         'showBanner' => false,
                                                         'isSlider' => false,
                                                         'showBorder' => true,
-                                                    ])
+                                                    ]) --}}
+                                                    <x-web.apartment-card :apartment="$apartment" />
                                                     </a>
                                                 </div>
                                             @endforeach
@@ -354,13 +358,14 @@
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
-                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                                                    {{-- <a href="{{ route('single-appartment', $apartment->id) }}">
                                                         @include('web.components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
                                                             'showBorder' => true,
-                                                        ])
+                                                        ]) --}}
+                                                        <x-web.apartment-card :apartment="$apartment" />
                                                         </a>
                                                 </div>
                                             @endforeach
@@ -391,13 +396,14 @@
                                         <div class="owl-carousel owl-theme solution_carousels">
                                             @foreach ($apartments as $apartment)
                                                 <div class="item">
-                                                    <a href="{{ route('single-appartment', $apartment->id) }}">
+                                                    {{-- <a href="{{ route('single-appartment', $apartment->id) }}">
                                                         @include('web.components.card', [
                                                             'index' => $apartment,
                                                             'showBanner' => false,
                                                             'isSlider' => false,
                                                             'showBorder' => true,
-                                                        ])
+                                                        ]) --}}
+                                                        <x-web.apartment-card :apartment="$apartment" />
                                                         </a>
                                                 </div>
                                             @endforeach
