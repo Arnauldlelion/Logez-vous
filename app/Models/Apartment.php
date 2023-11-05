@@ -50,6 +50,9 @@ class Apartment extends Model
             ->when(request('furnished') ?? false, function ($query, $furnished) {
                 $query->where('furnished', $furnished);
             })
+            ->when(request('rooms') ?? false, function ($query, $rooms) {
+                $query->whereIn('number_of_pieces', $rooms);
+            })
 
             //
         ;
