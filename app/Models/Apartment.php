@@ -59,6 +59,16 @@ class Apartment extends Model
                         $query->where('number_of_pieces', '>=', 5);
                     });
             })
+            ->when(request('amenity') ?? false, function ($query, $amenity) {
+                $query->whereHas('property.amenity', function ($query) use ($amenity) {
+                    $query->whereIn('name', $amenity);
+                });
+            })
+            ->when(request('equipment') ?? false, function ($query, $equipment) {
+                $query->whereHas('property.amenity', function ($query) use ($equipment) {
+                    $query->whereIn('name', $equipment);
+                });
+            })
 
             //
         ;
