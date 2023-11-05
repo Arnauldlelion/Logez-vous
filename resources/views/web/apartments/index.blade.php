@@ -340,6 +340,7 @@
                         <div class="col-6 col-md-4 col-xl-4 mb-3 ">
                             <a href="{{ route('single-appartment', $apartment->id) }}">
                                 @include('web.components.card', [
+                                'apartment' => $apartment,
                                 'index' => $apartment,
                                 'showBanner' => now()->diffInWeeks($apartment->created_at) < 1, 'isSlider'=> true,
                                     'showBorder' => true,
