@@ -51,8 +51,7 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::resource('approuved-landlords', 'Landlord\LandlordController');
         Route::resource('piece_types', 'PieceTypes\PieceTypesController');
         Route::resource('amenities', 'Amenity\AmenityController');
-        // Route::resource('pages', 'PageContentController');
-        // Route::resource('news', 'NewsController');
+        Route::resource('news', 'NewsController');
         Route::resource('faqs', 'FaqsController');
 
 
