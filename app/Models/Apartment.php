@@ -51,9 +51,12 @@ class Apartment extends Model
                 $query->where('furnished', $furnished);
             })
             ->when(request('rooms') ?? false, function ($query, $rooms) {
-                $query->whereIn('number_of_pieces', $rooms)
-                    ->orWhereHas('apartmentType', function ($query) use ($rooms) {
+                $query->whereIn('number_of_pieces', $rooms) // Search for apartments with number of romms corresponds to filter query
+                    ->orWhereHas('apartmentType', function ($query) use ($rooms) { // Or seach all apartments with type having name that is in filter query
                         $query->whereIn('name', $rooms);
+                    })
+                    ->when(in_array('5+', $rooms), function ($query, $plus) { // Filter all apartments with more than 5 rooms
+                        $query->where('number_of_pieces', '>=', 5);
                     });
             })
 
