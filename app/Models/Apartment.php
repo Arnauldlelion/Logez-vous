@@ -69,6 +69,9 @@ class Apartment extends Model
                     $query->whereIn('name', $floor);
                 });
             })
+            ->when(request('apartment_status') ?? false, function ($query, $status) {
+                $query->where('published', $status);
+            })
 
             //
         ;
