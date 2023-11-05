@@ -341,7 +341,7 @@
                             <a href="{{ route('single-appartment', $apartment->id) }}">
                                 @include('web.components.card', [
                                 'index' => $apartment,
-                                'showBanner' => now()->diffInWeeks($apartment->created_at) < 7, 'isSlider'=> true,
+                                'showBanner' => now()->diffInWeeks($apartment->created_at) < 1, 'isSlider'=> true,
                                     'showBorder' => true,
                                     ])
                             </a>
