@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admins', 'as' => 'admin.', 'namespace' => 'Admin'], f
         Route::resource('amenities', 'Amenity\AmenityController');
         // Route::resource('pages', 'PageContentController');
         // Route::resource('news', 'NewsController');
-        // Route::resource('faqs', 'FaqsController');
+        Route::resource('faqs', 'FaqsController');
 
 
 
