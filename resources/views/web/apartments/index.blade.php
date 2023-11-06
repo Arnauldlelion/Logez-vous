@@ -8,7 +8,7 @@
     <hr>
     <div class="mx-1 d-flex justify-content-between align-items-center">
         <div class="d-flex gap-2">
-            <form action="" method="post">
+            <form action="" method="get">
                 <input type="search" class="form-control form-control-lg" style="width: 300px" name="keyword" id="searchInput" value="{{ old('keyword', $keyword) }}">
                 {{-- <button type="button" onclick="cancelSearch()">Cancel</button> --}}
             </form>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <hr>
-    <form action="{{ route('search-appartment') }}" method="POST">
+    <form action="{{ route('search-appartment') }}" method="GET">
         @csrf
         <div class="popup" id="popup1">
             <!-- Content for popup 1 -->
