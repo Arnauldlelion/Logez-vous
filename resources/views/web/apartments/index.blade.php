@@ -12,8 +12,14 @@
                 <input type="search" class="form-control form-control-lg" style="width: 300px" name="keyword" id="searchInput" value="{{ old('keyword', $keyword) }}">
                 {{-- <button type="button" onclick="cancelSearch()">Cancel</button> --}}
             </form>
-            <button class="btn filter-btn" id="popupTriggerButton1">
-                <i class="fa-solid fa-euro-sign"></i> Loyer
+            <button class="btn filter-btn {{ request('min_price') != null || request('max_price') != null ? 'border-dashed fw-bold' : ''}}" style="{{ request('min_price') != null || request('max_price') != null ? 'border-color: #ff0405;background-color: rgb(255, 235, 238)' : '' }}" id="popupTriggerButton1">
+                @if (request('min_price') != null || request('max_price') != null)
+                {{ request('min_price', '0') }} - {{ request('max_price', '100000') }}
+                <i class="fa-solid fa-euro-sign"></i>
+                @else
+                <i class="fa-solid fa-euro-sign"></i>
+                Loyer
+                @endif
             </button>
 
             <button class="btn filter-btn" id="popupTriggerButton2">
@@ -51,12 +57,12 @@
                 </div>
                 <div class="d-flex justify-content-between price-input mb-1">
                     <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="input-min form-control rounded-start-pill" name="min_price" id="minPriceInput" value="{{ request('min_price', '0') }}">
+                        <input type="number" class="input-min form-control rounded-start-pill" name="min_price" id="minPriceInput" value="{{ request('min_price', null) }}">
                         <span class="input-group-text rounded-end-pill">CFA min</span>
                     </div>
                     <div class="separator">-</div>
                     <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="form-control rounded-start-pill input-max" name="max_price" id="maxPriceInput" value="{{ request('max_price', '10000') }}">
+                        <input type="number" class="form-control rounded-start-pill input-max" name="max_price" id="maxPriceInput" value="{{ request('max_price', null) }}">
                         <span class="input-group-text rounded-end-pill">CFA max</span>
                     </div>
                 </div>
@@ -64,8 +70,8 @@
                     <div class="progress"></div>
                 </div>
                 <div class="range-input mb-4">
-                    <input type="range" class="range-min" name="range_min" id="rangeMinInput" min="0" max="10000" value="{{ request('min_price') }}">
-                    <input type="range" class="range-max" name="range_max" id="rangeMaxInput" min="0" max="10000" value="{{ request('max_price', 10000) }}">
+                    <input type="range" class="range-min" name="range_min" id="rangeMinInput" min="0" max="10000" value="{{ request('min_price', 0) }}">
+                    <input type="range" class="range-max" name="range_max" id="rangeMaxInput" min="0" max="10000" value="{{ request('max_price', 100000) }}">
                 </div>
 
                 <hr>
@@ -434,11 +440,19 @@
 
     function setupRangeInputs(popupId, minInputClass, maxInputClass, rangeMinClass, rangeMaxClass) {
         const popup = document.querySelector(`#${popupId}`);
-        const minInput = popup.querySelector(`.${minInputClass}`);
-        const maxInput = popup.querySelector(`.${maxInputClass}`);
+        let minInput = popup.querySelector(`.${minInputClass}`);
+        let maxInput = popup.querySelector(`.${maxInputClass}`);
         const rangeMinInput = popup.querySelector(`.${rangeMinClass}`);
         const rangeMaxInput = popup.querySelector(`.${rangeMaxClass}`);
         const progress = popup.querySelector(".progress");
+
+        // set input to default values from request
+        maxInput.setAttribute('value', maxInput.value ? maxInput.value : 100000);
+        minInput.setAttribute('value', minInput.value ? minInput.value : 0);
+        rangeMinInput.setAttribute('value', minInput.value);
+        rangeMaxInput.setAttribute('value', maxInput.value);
+        updateProgress(rangeMinInput, rangeMaxInput, progress);
+
 
         minInput.addEventListener("input", () => {
             let minVal = parseInt(minInput.value);
