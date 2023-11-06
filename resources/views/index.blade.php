@@ -14,17 +14,19 @@
 
     <div class="container pb-5 featured col-10 mx-auto " id="featured">
         <h1 class="text-center mb-4 pb-2">Nos logements à la une</h1>
+        <div class="d-flex justify-content-end">
+            <form method="get" action="">
+                <div class="d-flex align-items-center gap-2 ms-auto">
+                    <input type="checkbox" style="border-radius: 0px;" id="logements-louer" name="apartment_status" {{ request('apartment_status', 'off') === 'on' ? 'checked' : null }}>
+                    <label for="logements-louer">Afficher les logements déjà loués</label>
+                </div>
+            </form>
+        </div>
         <div class="container">
             <div class="row gy-3 my-3">
                 @foreach ($apartments as $apartment)
                 <div class="col-6 col-lg-3 d-none d-md-block">
                     <a href="{{ route('single-appartment', $apartment->id) }}">
-                        {{-- @include('web.components.card', [
-                                'index' => $apartment,
-                                'showBanner' => true,
-                                'isSlider' => false,
-                                'showBorder' => true,
-                            ]) --}}
                         <x-web.apartment-card :apartment="$apartment" />
                     </a>
                 </div>
@@ -569,6 +571,11 @@
                 items: 3
             }
         }
+    })
+</script>
+<script>
+    document.querySelector('#logements-louer').addEventListener('click', (event) => {
+        event.target.closest('form').submit();
     })
 </script>
 @endsection

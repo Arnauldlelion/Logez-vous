@@ -12,7 +12,9 @@ class PageController extends Controller
     //
     public function index()
     {
-        $apartments = Apartment::orderBy('created_at', 'desc')
+        $apartments = Apartment::inRandomOrder()
+            ->filter()
+            ->latest()
             ->with('images')
             ->take(8)
             ->get();
@@ -182,6 +184,7 @@ class PageController extends Controller
         return view('web.apartments.index', compact('apartments', 'keyword'));
         }
         */
+        // Apartment::filter()->dd();
 
         $apartments = Apartment::filter()->get();
         $keyword = $request->input('keyword', '');

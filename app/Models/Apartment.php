@@ -65,8 +65,8 @@ class Apartment extends Model
                     $query->whereIn('name', $floor);
                 });
             })
-            ->when(request('apartment_status') ?? false, function ($query, $status) {
-                $query->where('published', $status);
+            ->when(request('apartment_status') == 'off' || request('apartment_status', null) == null, function ($query, $status) {
+                $query->where('published', 0);
             })
             ->when(request('keyword') ?? false, function ($query, $search) {
                 $query->where('name', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%')
