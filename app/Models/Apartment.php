@@ -31,10 +31,6 @@ class Apartment extends Model
     public function scopeFilter(Builder $query, array $filters = [])
     {
         $query
-            ->when(request('keyword') ?? false, function ($query, $search) {
-                $query->where('name', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%')
-                    ->orWhere('description', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
-            })
             ->when(request('min_price') ?? false, function ($query, $minPrice) {
                 $query->where('monthly_price', '>=', $minPrice);
             })
@@ -71,6 +67,10 @@ class Apartment extends Model
             })
             ->when(request('apartment_status') ?? false, function ($query, $status) {
                 $query->where('published', $status);
+            })
+            ->when(request('keyword') ?? false, function ($query, $search) {
+                $query->where('name', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%')
+                    ->orWhere('description', 'LIKE', '%' . Str::replace(' ', '%', $search) .  '%');
             })
 
             //
