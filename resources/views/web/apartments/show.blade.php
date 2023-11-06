@@ -248,7 +248,7 @@
                     @foreach ($otherApartments as $apartment)
                     <div class="item">
                         <a href="{{ route('single-appartment', $apartment->id) }}">
-                            <x-web.appartment-card :apartment="$apartment" />
+                            <x-web.apartment-card :apartment="$apartment" />
                         </a>
                     </div>
                     @endforeach
