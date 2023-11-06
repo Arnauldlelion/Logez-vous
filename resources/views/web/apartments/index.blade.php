@@ -7,208 +7,207 @@
 <section class="search-section">
     <hr>
     <div class="mx-1 d-flex justify-content-between align-items-center">
-        <div class="d-flex gap-2">
-            <form action="" method="get">
+        <form action="" method="get" class="w-100 px-2">
+            <div class="d-flex gap-2">
                 <input type="search" class="form-control form-control-lg" style="width: 300px" name="keyword" id="searchInput" value="{{ old('keyword', $keyword) }}">
                 {{-- <button type="button" onclick="cancelSearch()">Cancel</button> --}}
-            </form>
-            <button class="btn filter-btn {{ request('min_price') != null || request('max_price') != null ? 'border-dashed fw-bold' : ''}}" style="{{ request('min_price') != null || request('max_price') != null ? 'border-color: #ff0405;background-color: rgb(255, 235, 238)' : '' }}" id="popupTriggerButton1">
-                @if (request('min_price') != null || request('max_price') != null)
-                {{ request('min_price', '0') }} - {{ request('max_price', '100000') }}
-                <i class="fa-solid fa-euro-sign"></i>
-                @else
-                <i class="fa-solid fa-euro-sign"></i>
-                Loyer
-                @endif
-            </button>
+                <button type="button" class="btn filter-btn {{ request('min_price') != null || request('max_price') != null ? 'border-dashed fw-bold' : ''}}" style="{{ request('min_price') != null || request('max_price') != null ? 'border-color: #ff0405;background-color: rgb(255, 235, 238)' : '' }}" id="popupTriggerButton1">
+                    @if (request('min_price') != null || request('max_price') != null)
+                    {{ request('min_price', '0') }} - {{ request('max_price', '100000') }}
+                    <i class="fa-solid fa-euro-sign"></i>
+                    @else
+                    <i class="fa-solid fa-euro-sign"></i>
+                    Loyer
+                    @endif
+                </button>
 
-            <button class="btn filter-btn" id="popupTriggerButton2">
-                <i class="fa-regular fa-square me-1"></i>Surface
-            </button>
+                <button type="button" class="btn filter-btn" id="popupTriggerButton2">
+                    <i class="fa-regular fa-square me-1"></i>Surface
+                </button>
 
-            <button class="btn filter-btn" id="popupTriggerButton3">
-                <i class="fa-solid fa-couch me-1"></i>Meubles?
-            </button>
+                <button type="button" class="btn filter-btn" id="popupTriggerButton3">
+                    <i class="fa-solid fa-couch me-1"></i>Meubles?
+                </button>
 
-            <button class="btn filter-btn" id="popupTriggerButton4">
-                <i class="fa-brands fa-windows me-1"></i>Nombre de pièces
-            </button>
-            <button class="btn filter-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="closePopup()">Plus
-                de filtres</button>
-            <button class="btn btn-outline-main btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Créer une alerte
-            </button>
-        </div>
+                <button type="button" class="btn filter-btn" id="popupTriggerButton4">
+                    <i class="fa-brands fa-windows me-1"></i>Nombre de pièces
+                </button>
+                <button type="button" class="btn filter-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="closePopup()">Plus
+                    de filtres</button>
+                <button type="button" class="btn btn-outline-main btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Créer une alerte
+                </button>
+                <div class="d-flex align-items-center gap-2 ms-auto">
+                    <input type="checkbox" style="border-radius: 0px;" id="logements-louer" name="apartment_status" {{ request('apartment_status', 'off') === 'on' ? 'checked' : null }}>
+                    <label for="logements-louer">Afficher les logements déjà loués</label>
+                </div>
+            </div>
 
-        <div class="d-flex align-items-center gap-2">
-            <input type="checkbox" id="logements-louer" value="true" checked>
-            <label for="logements-louer">Afficher les logements déjà loués</label>
-        </div>
+            <div class="popup" id="popup1">
+                <!-- Content for popup 1 -->
+                <div class="wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="text-main">Quel est votre budget?</h5>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+                    <div class="d-flex justify-content-between price-input mb-1">
+                        <div class="field col-5 input-group-sm d-flex mb-3">
+                            <input type="number" class="input-min form-control rounded-start-pill" name="min_price" id="minPriceInput" value="{{ request('min_price', null) }}">
+                            <span class="input-group-text rounded-end-pill">CFA min</span>
+                        </div>
+                        <div class="separator">-</div>
+                        <div class="field col-5 input-group-sm d-flex mb-3">
+                            <input type="number" class="form-control rounded-start-pill input-max" name="max_price" id="maxPriceInput" value="{{ request('max_price', null) }}">
+                            <span class="input-group-text rounded-end-pill">CFA max</span>
+                        </div>
+                    </div>
+                    <div class="slider">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="range-input mb-4">
+                        <input type="range" class="range-min" name="range_min" id="rangeMinInput" min="0" max="10000" value="{{ request('min_price', 0) }}">
+                        <input type="range" class="range-max" name="range_max" id="rangeMaxInput" min="0" max="10000" value="{{ request('max_price', 100000) }}">
+                    </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2" onclick="resetFields('popup1')">
+                            <i class="fa fa-chevron-right"></i>
+                            <span>Effacer</span>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
+                            <span id="apartmentCount" class="ms-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup" id="popup2">
+                <!-- Content for popup 2 -->
+                <div class="wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="text-main">Quelle est la superficie souhaitée?</h5>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+
+                    <div class="d-flex justify-content-between price-input mb-1">
+                        <div class="field col-5 input-group-sm d-flex mb-3">
+                            <input type="number" class="size-input-min form-control rounded-start-pill" name="min_surface_area" value="0">
+                            <span class="input-group-text rounded-end-pill">m² min</span>
+                        </div>
+                        <div class="separator">-</div>
+                        <div class="field col-5 input-group-sm d-flex mb-3">
+                            <input type="number" class="form-control rounded-start-pill size-input-max" name="max_surface_area" value="100" onchange="updateButtonName()">
+                            <span class="input-group-text rounded-end-pill">m² max</span>
+                        </div>
+                    </div>
+                    <div class="slider">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="range-input mb-4">
+                        <input type="range" class="size-range-min" name="size-range_min" min="0" max="100" value="0">
+                        <input type="range" class="size-range-max" name="size-range_max" min="0" max="100" value="100">
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2" onclick="resetFields('popup2')">
+                            <i class="fa fa-chevron-right"></i>
+                            <span>Effacer</span>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup" id="popup3">
+                <!-- Content for popup 3 -->
+                <div class="wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="text-main">Meublé ou non meublé ?</h5>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <label class="radio-label">
+                            <input type="radio" id="furnished" name="furnished" value="meublé" onchange="toggleBorder(this)">
+                            <img src="{{ asset('storage/images/logos/meublé.png') }}" alt="" class="img-fluid">
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" id="furnished" name="furnished" value="Non meublé" onchange="toggleBorder(this)">
+                            <img src="{{ asset('storage/images/logos/non-meublé.png') }}" alt="" class="img-fluid">
+                        </label>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2" role="button" onclick="resetFields('popup3')">
+                            <i class="fa fa-chevron-right"></i>
+                            <span>Effacer</span>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="popup" id="popup4">
+                <!-- Content for popup 4 -->
+                <div class="wrapper px-1">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="text-main">Combien de pièces ?</h4>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+
+                    <div>
+                        <small class="text-muted mb-5">Vous pouvez sélectionner plusieurs options.</small>
+                        <div class="d-flex gap-3 mt-3">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="rooms[]" value="studio" onchange="toggleBorder(this)">
+                                <span>Studio</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="rooms[]" value="1" onchange="toggleBorder(this)">
+                                <span>1</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="rooms[]" value="2" onchange="toggleBorder(this)">
+                                <span>2</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="rooms[]" value="3" onchange="toggleBorder(this)">
+                                <span>3</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="rooms[]" value="4" onchange="toggleBorder(this)">
+                                <span>4</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="rooms[]" value="5+" onchange="toggleBorder(this)">
+                                <span>5+</span>
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2" role="button" onclick="resetFields('popup4')">
+                            <i class="fa fa-chevron-right"></i>
+                            <span>Effacer</span>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
     </div>
     <hr>
     <form action="{{ route('search-appartment') }}" method="GET">
-        @csrf
-        <div class="popup" id="popup1">
-            <!-- Content for popup 1 -->
-            <div class="wrapper">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="text-main">Quel est votre budget?</h5>
-                    <button type="button" class="btn-close" onclick="closePopup()"></button>
-                </div>
-                <div class="d-flex justify-content-between price-input mb-1">
-                    <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="input-min form-control rounded-start-pill" name="min_price" id="minPriceInput" value="{{ request('min_price', null) }}">
-                        <span class="input-group-text rounded-end-pill">CFA min</span>
-                    </div>
-                    <div class="separator">-</div>
-                    <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="form-control rounded-start-pill input-max" name="max_price" id="maxPriceInput" value="{{ request('max_price', null) }}">
-                        <span class="input-group-text rounded-end-pill">CFA max</span>
-                    </div>
-                </div>
-                <div class="slider">
-                    <div class="progress"></div>
-                </div>
-                <div class="range-input mb-4">
-                    <input type="range" class="range-min" name="range_min" id="rangeMinInput" min="0" max="10000" value="{{ request('min_price', 0) }}">
-                    <input type="range" class="range-max" name="range_max" id="rangeMaxInput" min="0" max="10000" value="{{ request('max_price', 100000) }}">
-                </div>
-
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center gap-2" onclick="resetFields('popup1')">
-                        <i class="fa fa-chevron-right"></i>
-                        <span>Effacer</span>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
-                        <span id="apartmentCount" class="ms-2"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="popup" id="popup2">
-            <!-- Content for popup 2 -->
-            <div class="wrapper">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="text-main">Quelle est la superficie souhaitée?</h5>
-                    <button type="button" class="btn-close" onclick="closePopup()"></button>
-                </div>
-
-                <div class="d-flex justify-content-between price-input mb-1">
-                    <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="size-input-min form-control rounded-start-pill" name="min_surface_area" value="0">
-                        <span class="input-group-text rounded-end-pill">m² min</span>
-                    </div>
-                    <div class="separator">-</div>
-                    <div class="field col-5 input-group-sm d-flex mb-3">
-                        <input type="number" class="form-control rounded-start-pill size-input-max" name="max_surface_area" value="100" onchange="updateButtonName()">
-                        <span class="input-group-text rounded-end-pill">m² max</span>
-                    </div>
-                </div>
-                <div class="slider">
-                    <div class="progress"></div>
-                </div>
-                <div class="range-input mb-4">
-                    <input type="range" class="size-range-min" name="size-range_min" min="0" max="100" value="0">
-                    <input type="range" class="size-range-max" name="size-range_max" min="0" max="100" value="100">
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center gap-2" onclick="resetFields('popup2')">
-                        <i class="fa fa-chevron-right"></i>
-                        <span>Effacer</span>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="popup" id="popup3">
-            <!-- Content for popup 3 -->
-            <div class="wrapper">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="text-main">Meublé ou non meublé ?</h5>
-                    <button type="button" class="btn-close" onclick="closePopup()"></button>
-                </div>
-
-                <div class="d-flex gap-3">
-                    <label class="radio-label">
-                        <input type="radio" id="furnished" name="furnished" value="meublé" onchange="toggleBorder(this)">
-                        <img src="{{ asset('storage/images/logos/meublé.png') }}" alt="" class="img-fluid">
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" id="furnished" name="furnished" value="Non meublé" onchange="toggleBorder(this)">
-                        <img src="{{ asset('storage/images/logos/non-meublé.png') }}" alt="" class="img-fluid">
-                    </label>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center gap-2" role="button" onclick="resetFields('popup3')">
-                        <i class="fa fa-chevron-right"></i>
-                        <span>Effacer</span>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="popup" id="popup4">
-            <!-- Content for popup 4 -->
-            <div class="wrapper px-1">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="text-main">Combien de pièces ?</h4>
-                    <button type="button" class="btn-close" onclick="closePopup()"></button>
-                </div>
-
-                <div>
-                    <small class="text-muted mb-5">Vous pouvez sélectionner plusieurs options.</small>
-                    <div class="d-flex gap-3 mt-3">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="rooms[]" value="studio" onchange="toggleBorder(this)">
-                            <span>Studio</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="rooms[]" value="1" onchange="toggleBorder(this)">
-                            <span>1</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="rooms[]" value="2" onchange="toggleBorder(this)">
-                            <span>2</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="rooms[]" value="3" onchange="toggleBorder(this)">
-                            <span>3</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="rooms[]" value="4" onchange="toggleBorder(this)">
-                            <span>4</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="rooms[]" value="5+" onchange="toggleBorder(this)">
-                            <span>5+</span>
-                        </label>
-                    </div>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center gap-2" role="button" onclick="resetFields('popup4')">
-                        <i class="fa fa-chevron-right"></i>
-                        <span>Effacer</span>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-main rounded-pill">Afficher les logements</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </form>
     <div class="popup-5">
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
@@ -544,5 +543,9 @@
         document.getElementById('searchInput').value = ''; // Clear the search input field
         document.querySelector('form').submit(); // Submit the form to perform a new search with no keyword
     }
+
+    document.querySelector('#logements-louer').addEventListener('click', (event) => {
+        event.target.closest('form').submit();
+    })
 </script>
 @endsection
