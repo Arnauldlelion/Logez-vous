@@ -3,162 +3,154 @@
 @section('title', 'Appartement')
 
 @section('content')
-    <section class="gallery-image">
-        <div class="container-fluid col-lg-9 mx-auto">
-            <div class="image-grid" id="lightgallery">
-                @if ($apartment->coverImage)
-                    <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="img-link image-grid-col-2 image-grid-row-2" data-fancybox="gallery" data-caption="">
-                        <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
-                    </a>
+<section class="gallery-image">
+    <div class="container-fluid col-lg-9 mx-auto">
+        <div class="image-grid" id="lightgallery">
+            @if ($apartment->coverImage)
+            <a href="{{ asset('storage/' . $apartment->coverImage->url) }}" class="img-link image-grid-col-2 image-grid-row-2" data-fancybox="gallery" data-caption="">
+                <img src="{{ asset('storage/' . $apartment->coverImage->url) }}" alt="Logez-vous">
+            </a>
+            @endif
+            @foreach ($images as $index => $image)
+            @if ($index < 3) <a href="{{ $image->getImageUrl() }}" class="img-link d-none d-md-block" data-fancybox="gallery" data-caption="">
+                <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
+                </a>
+                @else
+                @if ($index == 3)
+                <a href="{{ $image->getImageUrl() }}" class="img-link remaining-images position-relative d-none d-md-block" data-fancybox="gallery" data-caption="">
+                    <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
+                    <span class="position-absolute top-50 start-50 translate-middle badge text-bg-secondary">
+                        +{{ $remainingImages }} photos
+                    </span>
+                </a>
+                @else
+                <a href="{{ $image->getImageUrl() }}" class="img-link remaining-images d-none" data-fancybox="gallery" data-caption="">
+                    <span>{{ $remainingImages }}</span>
+                </a>
                 @endif
-                @foreach ($images as $index => $image)
-                    @if ($index < 3)
-                        <a href="{{ $image->getImageUrl() }}" class="img-link d-none d-md-block" data-fancybox="gallery" data-caption="">
-                            <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
-                        </a>
-                    @else
-                        @if ($index == 3)
-                            <a href="{{ $image->getImageUrl() }}" class="img-link remaining-images position-relative d-none d-md-block" data-fancybox="gallery" data-caption="">
-                                <img src="{{ $image->getImageUrl() }}" alt="Logez-vous" class="img">
-                                <span class="position-absolute top-50 start-50 translate-middle badge text-bg-secondary">
-                                    +{{ $remainingImages }} photos
-                                </span>
-                            </a>
-                        @else
-                            <a href="{{ $image->getImageUrl() }}" class="img-link remaining-images d-none" data-fancybox="gallery" data-caption="">
-                                <span>{{ $remainingImages }}</span>
-                            </a>
-                        @endif
-                    @endif
+                @endif
+                @endforeach
+        </div>
+
+        <div class="row">
+            @foreach ($pieces as $index => $piece)
+            @if ($piece->images->isNotEmpty())
+            <div class="d-flex">
+                <a href="#" class="piece-name btn btn-secondary rounded-pill" data-fancybox="{{ 'piece-gallery-' . $index }}">{{ $piece->pieceType->name }}</a>
+                @foreach ($piece->images as $image)
+                <a href="{{ $image->getImageUrl() }}" data-fancybox="{{ 'piece-gallery-' . $index }}" data-caption="{{ $piece->pieceType->name }}"></a>
                 @endforeach
             </div>
-                
-                <div class="row">
-                    @foreach ($pieces as $index => $piece)
-                        @if ($piece->images->isNotEmpty())
-                            <div class="d-flex">
-                                <a href="#" class="piece-name btn btn-secondary rounded-pill" data-fancybox="{{ 'piece-gallery-' . $index }}">{{ $piece->pieceType->name }}</a>
-                                @foreach ($piece->images as $image)
-                                    <a href="{{ $image->getImageUrl() }}" data-fancybox="{{ 'piece-gallery-' . $index }}" data-caption="{{ $piece->pieceType->name }}"></a>
-                                @endforeach
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-                
- 
+            @endif
+            @endforeach
         </div>
-    </section>
-    <section class="house-section">
-        <div class="container-fluid col-lg-9 mx-md-auto mb-5 mt-3">
-            <div class="row flex-md-row-reverse p-2 ms-md-5 mx-md-1">
-                <div class="col-12 col-md-3 mb-4">
-                    <div class="shadow-lg shadow-md-down-none d-flex justify-content-center py-3 position-sticky "
-                        style="top: 85px;">
-                        <div>
-                            <button class="btn btn-main btn-sm w-100 p-2" data-bs-toggle="modal" data-bs-target="#register-modal"
-                            {{ $apartment->published ? 'disabled' : '' }}>
+
+
+    </div>
+</section>
+<section class="house-section">
+    <div class="container-fluid col-lg-9 mx-md-auto mb-5 mt-3">
+        <div class="row flex-md-row-reverse p-2 ms-md-5 mx-md-1">
+            <div class="col-12 col-md-3 mb-4">
+                <div class="shadow-lg shadow-md-down-none d-flex justify-content-center py-3 position-sticky " style="top: 85px;">
+                    <div>
+                        <button class="btn btn-main btn-sm w-100 p-2" data-bs-toggle="modal" data-bs-target="#register-modal" {{ $apartment->published ? 'disabled' : '' }}>
                             {{ $apartment->published ? 'Déjà loué' : 'Déposer ma candidature' }}
                         </button>
 
-                            <hr>
-                            <p><i class="fas fa-home me-2"></i> {{ $apartment->name }} ● {{ $apartment->furnished }}</p>
-                            <p class="text-main"> <i class="fas fa-map-marker me-2"></i>
-                                {{ $apartment->property->location }}
-                            </p>
-                            <p> <i class="fas fa-dollar-sign me-2"></i> {{ $apartment->monthly_price }} XAF/mois</p>
-                            <p class="text-mute ms-4">Dont {{ $apartment->monthly_price }} xaf de charges</p>
-                            <p><i class="fas fa-landmark  me-2"></i>{{ $apartment->size }} m<sup>2</sup></p>
-                            <p>
-                                <i class="far fa-calendar me-2"></i>
-                                Disponibilité: <span
-                                    class="{{ $apartment->published ? 'text-danger' : '' }}">{{ $apartment->published ? 'déjà loué' : 'immédiate' }}</span>
-                            </p>
-                        </div>
+                        <hr>
+                        <p><i class="fas fa-home me-2"></i> {{ $apartment->name }} ● {{ $apartment->furnished }}</p>
+                        <p class="text-main"> <i class="fas fa-map-marker me-2"></i>
+                            {{ $apartment->property->location }}
+                        </p>
+                        <p> <i class="fas fa-dollar-sign me-2"></i> {{ $apartment->monthly_price }} XAF/mois</p>
+                        <p class="text-mute ms-4">Dont {{ $apartment->monthly_price }} xaf de charges</p>
+                        <p><i class="fas fa-landmark  me-2"></i>{{ $apartment->size }} m<sup>2</sup></p>
+                        <p>
+                            <i class="far fa-calendar me-2"></i>
+                            Disponibilité: <span class="{{ $apartment->published ? 'text-danger' : '' }}">{{ $apartment->published ? 'déjà loué' : 'immédiate' }}</span>
+                        </p>
                     </div>
-                    @include('sweetalert::alert')
-                    <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <div class="d-flex justify-content-end gap-5 text-center">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                @include('sweetalert::alert')
+                <div class="modal col-lg-8" id="register-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="d-flex justify-content-end gap-5 text-center">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="btn-group d-block d-md-flex justify-content-md-between gap-3 mt-2">
+                                    <b>Candidater</b>
+                                </div>
+                                <div class="text-center d-flex align-items-center my-3"></div>
+                                <form action="{{ route('storeLocataire') }}" method="POST" id="registerForm">
+                                    @csrf
+                                    <input type="hidden" name="apartment_id" id="apartment-id-input" value="{{ $apartment->id }}">
+                                    <div class="form-group mb-3">
+                                        <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text" value="{{ old('first_name') }}" name="first_name" placeholder="Prénom">
+                                        @error('first_name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    <div class="btn-group d-block d-md-flex justify-content-md-between gap-3 mt-2">
-                                        <b>Candidater</b>
+                                    <div class="form-group mb-3">
+                                        <input class="form-control rounded-pill @error('last_name') is-invalid @enderror" type="text" value="{{ old('last_name') }}" name="last_name" placeholder="Nom">
+                                        @error('last_name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    <div class="text-center d-flex align-items-center my-3"></div>
-                                    <form action="{{ route('storeLocataire') }}" method="POST" id="registerForm">
-                                        @csrf
-                                        <input type="hidden" name="apartment_id" id="apartment-id-input" value="{{ $apartment->id }}">
-                                        <div class="form-group mb-3">
-                                            <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text"
-                                                value="{{ old('first_name') }}" name="first_name" placeholder="Prénom">
-                                            @error('first_name')
-                                                <span class="invalid-feedback">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <input class="form-control rounded-pill @error('last_name') is-invalid @enderror" type="text"
-                                                value="{{ old('last_name') }}" name="last_name" placeholder="Nom">
-                                            @error('last_name')
-                                                <span class="invalid-feedback">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-sm-6"></div>
-                                        <div class="form-group mb-3">
-                                            <input class="form-control rounded-pill @error('email') is-invalid @enderror" type="email"
-                                                value="{{ old('email') }}" name="email" placeholder="Adresse email">
-                                            @error('email')
-                                                <span class="invalid-feedback">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-sm-6"></div>
-                                        <div class="form-group mb-3">
-                                            <input class="form-control rounded-pill @error('phone') is-invalid @enderror" type="text"
-                                                value="{{ old('phone') }}" name="phone" placeholder="Numero">
-                                            @error('phone')
-                                                <span class="invalid-feedback">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
-                                    </form>
-                                    <div>
+                                    <div class="col-sm-6"></div>
+                                    <div class="form-group mb-3">
+                                        <input class="form-control rounded-pill @error('email') is-invalid @enderror" type="email" value="{{ old('email') }}" name="email" placeholder="Adresse email">
+                                        @error('email')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
+                                    <div class="col-sm-6"></div>
+                                    <div class="form-group mb-3">
+                                        <input class="form-control rounded-pill @error('phone') is-invalid @enderror" type="text" value="{{ old('phone') }}" name="phone" placeholder="Numero">
+                                        @error('phone')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <button id="registerButton" class="btn btn-main" style="width: 100%">S'enregistrer</button>
+                                </form>
+                                <div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- the button should be here --}}
+            </div>
+            {{-- the button should be here --}}
 
-                <div class="col-12 col-md-9">
+            <div class="col-12 col-md-9">
 
-                    <h1 class="text-main">Location d'un {{ $apartment->name }} {{ $apartment->furnished }}
-                        {{ $apartment->property->location }}</h1>
-                    <p>Les atouts du bien</p>
-                    <div class="row d-flex align-items-center mt-4 mb-4">
-                        @foreach ($amenities as $amenity)
-                            <div class="col-3 text-center" style="border-right:1px solid #646464">
-                                <img src="{{ asset('storage/' . $amenity->image) }}" class="img-fluid"
-                                    style="height: 30px; width:30px;"><br><br>
-                                <small> {{ $amenity->name }}</small>
-                            </div>
-                        @endforeach
+                <h1 class="text-main">Location d'un {{ $apartment->name }} {{ $apartment->furnished }}
+                    {{ $apartment->property->location }}
+                </h1>
+                <p>Les atouts du bien</p>
+                <div class="row d-flex align-items-center mt-4 mb-4">
+                    @foreach ($amenities as $amenity)
+                    <div class="col-3 text-center" style="border-right:1px solid #646464">
+                        <img src="{{ asset('storage/' . $amenity->image) }}" class="img-fluid" style="height: 30px; width:30px;"><br><br>
+                        <small> {{ $amenity->name }}</small>
                     </div>
-                    <hr>
-                    <h3>Description de l'appartement</h3>
-                    <div>{{ $apartment->description }} </div>
-                    <hr>
-                    <div class="d-block d-md-flex justify-content-between">
-                        <div>Présenté par votre expert.e en location Logez-vous</div>
-                        <div></div>
-                        <div class="text-main expert"> <i class="fas fa-phone me-3" style="color:red"></i> +237 657170133
-                        </div>
+                    @endforeach
+                </div>
+                <hr>
+                <h3>Description de l'appartement</h3>
+                <div>{{ $apartment->description }} </div>
+                <hr>
+                <div class="d-block d-md-flex justify-content-between">
+                    <div>Présenté par votre expert.e en location Logez-vous</div>
+                    <div></div>
+                    <div class="text-main expert"> <i class="fas fa-phone me-3" style="color:red"></i> +237 657170133
                     </div>
-                    <hr>
+                </div>
+                <hr>
 
-                    {{-- <h3>Caractéristiques du bien</h3>
+                {{-- <h3>Caractéristiques du bien</h3>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                             <p class="accordion-header">
@@ -251,33 +243,27 @@
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                     <p>Transports à proximité</p> --}}
-                    <h3 class="mt-5">Nos autres logements à proximité de {{ $apartment->name }}</h3>
-                    <div class="owl-carousel owl-theme otherApartments">
-                        @foreach ($otherApartments as $apartment)
-                            <div class="item">
-                                <a href="{{ route('single-appartment', $apartment->id) }}">
-                                    @include('web.components.card', [
-                                        'index' => $apartment,
-                                        'showBanner' => false,
-                                        'isSlider' => false,
-                                        'showBorder' => true,
-                                    ])
-                                </a>
-                            </div>
-                        @endforeach
+                <h3 class="mt-5">Nos autres logements à proximité de {{ $apartment->name }}</h3>
+                <div class="owl-carousel owl-theme otherApartments">
+                    @foreach ($otherApartments as $apartment)
+                    <div class="item">
+                        <a href="{{ route('single-appartment', $apartment->id) }}">
+                            <x-web.appartment-card :apartment="$apartment" />
+                        </a>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-        </div>
-    </section>
-    <script>
-
+    </div>
+    </div>
+</section>
+<script>
     Fancybox.bind("[data-fancybox]", {
-  // Your custom options
-});
+        // Your custom options
+    });
 
-        $(document).ready(function() {
+    $(document).ready(function() {
         $('.otherApartments').owlCarousel({
             loop: false,
             margin: 10,
@@ -298,11 +284,9 @@
             }
         })
 
-    
-});
 
-
-    </script>
+    });
+</script>
 
 
 @endsection
