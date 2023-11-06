@@ -26,12 +26,3 @@
     </div>
 </div>
 </div>
-{{-- <div class="card-body">
-    <div class="num-text">toulon (83200)</div>
-    <div class="price">8,000 XAF cc - 57.0 m<sup>2</sup></div>
-    <div class="rooms">3 pièces * non meublé * 1er étage</div>
-    <div class="published">Publié le 11 juillet 2023</div>
-</div>
-</div>
-</a>
-pièces --}}
