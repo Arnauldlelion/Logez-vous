@@ -36,9 +36,12 @@
             @foreach ($pieces as $index => $piece)
             @if ($piece->images->isNotEmpty())
             <div class="d-flex">
-                <a href="#" class="piece-name btn btn-secondary rounded-pill" data-fancybox="{{ 'piece-gallery-' . $index }}">{{ $piece->pieceType->name }}</a>
                 @foreach ($piece->images as $image)
-                <a href="{{ $image->getImageUrl() }}" data-fancybox="{{ 'piece-gallery-' . $index }}" data-caption="{{ $piece->pieceType->name }}"></a>
+                <a href="{{ $image->getImageUrl() }}" class="piece-name btn btn-secondary rounded-pill {{ !$loop->first ? 'd-none' : '' }}" data-fancybox="{{ 'piece-gallery-' . $index }}">
+                    @if($loop->first)
+                    {{ $piece->pieceType->name }}
+                    @endif
+                </a>
                 @endforeach
             </div>
             @endif
