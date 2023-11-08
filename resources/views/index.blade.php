@@ -579,10 +579,8 @@
     })
 
     @if(request()->is('login') ?? false)
-    console.log('doing some javascript')
     $('document').ready(function() {
         $('#login-modal').modal('show');
-        console.log('the document is ready');
     })
     @endif
 </script>
