@@ -34,7 +34,7 @@ class WelcomeGestionnaireEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('arnauldfohom1@gmail.com')
+        return $this
             ->view('emails.welcomeGestionnaire')
             ->with([
                 'admin' => $this->admin,
