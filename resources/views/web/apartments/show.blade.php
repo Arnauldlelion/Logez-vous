@@ -32,12 +32,12 @@
                 @endforeach
         </div>
 
-        <div class="row">
+        <div class="row gap-1">
             @foreach ($pieces as $index => $piece)
             @if ($piece->images->isNotEmpty())
-            <div class="d-flex">
+            <div class="d-flex gap-1">
                 @foreach ($piece->images as $image)
-                <a href="{{ $image->getImageUrl() }}" class="piece-name btn btn-secondary rounded-pill {{ !$loop->first ? 'd-none' : '' }}" data-fancybox="{{ 'piece-gallery-' . $index }}">
+                <a href="{{ $image->getImageUrl() }}" class="piece-name btn btn-secondary rounded-pill {{ !$loop->first ? 'd-none' : '' }}" data-fancybox="{{ 'piece-gallery-' . $index }}" data-caption="{{ $piece->pieceType->name }}">
                     @if($loop->first)
                     {{ $piece->pieceType->name }}
                     @endif
