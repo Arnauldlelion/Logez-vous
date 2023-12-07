@@ -8,8 +8,8 @@
     <hr>
     <div class="mx-1 d-flex justify-content-between align-items-center">
         <form action="" method="get" class="w-100 px-2">
-            <div class="d-flex gap-2">
-                <input type="search" class="form-control form-control-lg" style="width: 300px" name="keyword" id="searchInput" value="{{ old('keyword', $keyword) }}">
+            <div class="d-flex flex-wrap flex-md-nowrap gap-2">
+                <input type="search" class="form-control form-control-lg order-first" style="width: 300px" name="keyword" id="searchInput" value="{{ old('keyword', $keyword) }}">
                 {{-- <button type="button" onclick="cancelSearch()">Cancel</button> --}}
                 <button type="button" class="btn filter-btn {{ request('min_price') != null || request('max_price') != null ? 'border-dashed fw-bold' : ''}}" style="{{ request('min_price') != null || request('max_price') != null ? 'border-color: #ff0405;background-color: rgb(255, 235, 238)' : '' }}" id="popupTriggerButton1">
                     @if (request('min_price') != null || request('max_price') != null)
@@ -37,7 +37,7 @@
                 <button type="button" class="btn btn-outline-main btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Créer une alerte
                 </button>
-                <div class="d-flex align-items-center gap-2 ms-auto">
+                <div class="d-flex align-items-center gap-2 ms-auto order-2 order-md-last">
                     <input type="checkbox" style="border-radius: 0px;" id="logements-louer" name="apartment_status" {{ request('apartment_status', 'off') === 'on' ? 'checked' : null }}>
                     <label for="logements-louer">Afficher les logements déjà loués</label>
                 </div>
