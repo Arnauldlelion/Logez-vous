@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\SendMailController;
+use App\Mail\NewAdminRequest;
+use Illuminate\Support\Facades\Mail;
+
 // use App\Http\Controllers\Admin\Auth\LoginController;
 // use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 
@@ -147,4 +150,17 @@ Route::group(['namespace' => 'web'], function () {
     Route::get('/help', 'PageController@help')->name('help');
 
     Route::get('/info', 'PageController@info')->name('info');
+
+    Route::prefix('test')->group(function () {
+        Route::get('mail', function () {
+            Mail::to('mundestephane13@gmail.com')->send(new NewAdminRequest([
+                'first_name' => 'Mundes',
+                'last_name' => 'Stephane',
+                'email' => 'mundestephane13@gmail.com',
+                'phone' => '676696442',
+                'location' => 'douala',
+                'description' => 'bla bla bla'
+            ]));
+        });
+    });
 });
