@@ -25,9 +25,9 @@
 
 
     <script type="text/javascript" src="{{ asset('assets/js/code.jquery.com_jquery-3.7.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/fancybox.umd.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/all.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
