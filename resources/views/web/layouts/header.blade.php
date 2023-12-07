@@ -3,10 +3,10 @@
     <nav class="navbar navbar-expand-lg navbar-light {{ request()->is('/') ? 'transparent' : 'white-navbar' }} fixed-top" id="navBar">
         <div class="container">
             <a class="navbar-brand" href="/"><img src="{{ asset('/storage/images/logos/logez-vous.png') }}" alt="logo" class="logo logo-white"></a>
-            <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarReference" aria-controls="navbarReference" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarReference">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center ">
                     <div class="search-box">
                         <form class="d-flex" role="search">
