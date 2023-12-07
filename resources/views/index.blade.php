@@ -33,7 +33,7 @@
                 @endforeach
             </div>
 
-            <div class="carousel-indicators d-lg-none">
+            <div class="d-lg-none">
                 <div class="owl-carousel owl-theme featured_carousel d-block d-md-none">
                     @foreach ($apartments as $apartment)
                     <div class="item">
